@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:56:09.724756+00:00",
+  "updated": "2026-10-31T23:56:34.371728+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -76,12 +76,8 @@
   ],
   "releases": [
     {
-      "tag": "inputs-c3fff91f5761",
-      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761"
-    },
-    {
-      "tag": "pipeline-status",
-      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/pipeline-status"
+      "tag": "stock-mirror",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/stock-mirror"
     }
   ],
   "disk_observations": [
@@ -115,23 +111,12 @@
     "credential_scan": "passed on committed source candidates",
     "scope": "Automation code only, NOT image boot or hardware"
   },
-  "active_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41254264078",
-  "verified_ci_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41254264373",
-  "base_input": {
-    "schema": 1,
-    "url": "https://github.com/itisFarzin/AxionOS_GSI/releases/download/AxionOS-2.8-20260930/AxionOS-2.8-20260930-VANILLA-GSI.img.xz",
-    "release": "inputs-c3fff91f5761",
-    "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
-    "size": 1313731068,
-    "parts": [
-      {
-        "name": "base-part-0001",
-        "size": 1313731068,
-        "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
-        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/inputs-c3fff91f5761/base-part-0001"
-      }
-    ],
-    "upstream_digest": "sha256:2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
-    "asset_updated_at": "2026-10-01T09:24:13Z"
-  }
+  "stock_mirror_parts": [
+    {
+      "name": "stock-part-0001",
+      "size": 1900000000,
+      "sha256": "492de06978f6e727880b04bbf8ad70245631a61e554afe2f86bd1172ba99f090",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0001"
+    }
+  ]
 }
