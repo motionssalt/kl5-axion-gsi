@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:51:37.765087+00:00",
+  "updated": "2026-10-31T23:53:55.282268+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -13,8 +13,8 @@
       ]
     },
     "2": {
-      "status": "pending",
-      "notes": "",
+      "status": "running",
+      "notes": "Stock mirror is the first heavy job.",
       "evidence": []
     },
     "3": {
@@ -83,6 +83,13 @@
       "label": "first-actions-run-after-cleanup",
       "free": 117938724864,
       "evidence": "Actions run 41253531553 input job log"
+    },
+    {
+      "at": "2026-10-31T23:53:55.282261+00:00",
+      "label": "mirror-start",
+      "total": 154894188544,
+      "free": 117938139136,
+      "used": 36939272192
     }
   ],
   "next_actions": [
