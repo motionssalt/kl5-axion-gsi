@@ -1,0 +1,55 @@
+name: KL5 compatibility pipeline
+on:
+  workflow_dispatch:
+    inputs:
+      stock_asset_url:
+        description: Optional direct Release asset URL for stock import
+        type: string
+        default: ''
+      base_url:
+        description: Optional new vanilla arm64 AxionOS .img.xz Release URL
+        type: string
+        default: ''
+  schedule:
+    - cron: '17 */6 * * *'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: kl5-pipeline
+  cancel-in-progress: false
+jobs:
+  inputs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.PIPELINE_PAT || github.token }}
+      - name: Git identity
+        run: |
+          git config user.name 'MOTIONSALT Pipeline'
+          git config user.email 'motionssalt@users.noreply.github.com'
+      - name: Free disk before the first heavy stage
+        run: bash scripts/free_disk.sh
+      - name: Install transfer helpers
+        run: python3 -m pip install --disable-pip-version-check 'requests==2.32.4' 'gdown==5.2.0'
+      - name: Mirror stock FIRST
+        id: stock
+        timeout-minutes: 290
+        env:
+          GH_TOKEN: ${{ secrets.PIPELINE_PAT || github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          INPUT_URL: ${{ inputs.stock_asset_url }}
+        run: python3 scripts/mirror.py stock --url "$INPUT_URL"
+      - name: Mirror base independently
+        if: always() && !cancelled()
+        timeout-minutes: 35
+        env:
+          GH_TOKEN: ${{ secrets.PIPELINE_PAT || github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          INPUT_URL: ${{ inputs.base_url }}
+        run: python3 scripts/mirror.py base --url "$INPUT_URL"
