@@ -154,13 +154,23 @@ def base():
 
 def collect(scope):
  inventories=[]; evidence={}
- fragments=state().get('audit_fragments',{}).get(scope,{})
+ fragments=dict(state().get('audit_fragments',{}).get(scope,{}))
+ # Assets may have completed just before a runner died prior to its state commit.
+ base_input=state().get('base_input',{})
+ known_tag='audit-stock' if scope=='stock' else 'audit-base-'+base_input.get('sha256','')[:12]
+ if scope=='stock' or base_input:
+  known=release(known_tag)
+  for a in assets(known):
+   match=re.fullmatch(re.escape(scope)+r'-(vendor|odm|product|system_ext|system)-audit\.tar\.gz',a['name'])
+   if match and match[1] not in fragments: fragments[match[1]]={'asset':a['name'],'release':known_tag}
  for partition,item in fragments.items():
   rel=release(item['release']); a=asset(rel,item['asset']); p=download(a['browser_download_url'],WORK/item['asset'])
   with tarfile.open(p,'r:gz') as tf:
    for member in tf:
     if not member.isfile(): continue
-    if member.name=='inventory.json': inventories.append(json.load(tf.extractfile(member)))
+    if member.name=='inventory.json':
+     inventory=json.load(tf.extractfile(member)); inventories.append(inventory)
+     s=state(); s.setdefault('audit_fragments',{}).setdefault(scope,{})[partition]={'asset':item['asset'],'release':item['release'],'records':len(inventory['records']),'errors':len(inventory['errors']),'filesystem':inventory['filesystem']}; save(s)
     elif member.size<=4*1024**2 and member.name.startswith('files/'):
      evidence[member.name]=tf.extractfile(member).read().decode(errors='replace')
   p.unlink()
@@ -185,7 +195,8 @@ def summarize():
  for k,v in coverage.items(): text+=f'| {k} | {v["stock_files"]} | {v["base_files"]} |\n'
  text+='\n## Ranked candidates\n\nVideo/camera, fingerprint and USB/OTG are first. Full details and exact stock paths/hashes are in audit.json and per-partition Release archives. Every candidate still needs proof of framework, linker, property, VINTF or SELinux mismatch. No speculative binary/manifest transplant is performed.\n\n## ELF dependency candidates\n\n'+', '.join(missing_deps)+'\n\n## Limitations\n\n'+'\n'.join('- '+x for x in result['limitations'])+'\n'
  (ROOT/'docs/AUDIT.md').write_text(text)
- complete=all(p in result['stock_partitions'] for p in ['vendor','product','system_ext']) and bool(baseinv)
+ complete=all(p in result['stock_partitions'] for p in ['vendor','product','system_ext']) and bool(baseinv) and not any(inv['errors'] for inv in stockinv+baseinv)
+ if complete: clear('audit-coverage')
  phase(3,'done' if complete else 'blocked','Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.',['docs/audit.json','docs/AUDIT.md'])
  if not complete: blocker('audit-coverage','Required stock partitions and/or base inventory remain incomplete.',3)
  rel=release('audit-report'); upload(rel,ROOT/'docs/audit.json',replace=True); upload(rel,ROOT/'docs/AUDIT.md',replace=True)

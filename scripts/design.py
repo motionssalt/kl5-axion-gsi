@@ -9,6 +9,8 @@ def design():
  if not auditpath.exists(): raise RuntimeError('No static audit exists; speculative compatibility fixes are prohibited')
  audit=json.loads(auditpath.read_text()); stock,text=collect('stock'); base,basetext=collect('base')
  stockrecords=[r for x in stock for r in x['records']]; baserecords=[r for x in base for r in x['records']]
+ sdk={rec.get('properties',{}).get('ro.build.version.sdk') for rec in baserecords}
+ if '36' not in sdk: raise RuntimeError('Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version')
  def systempath(r):
   if r['partition']!='system': return None
   p=r['path']; return '/'+p if p.startswith('system/') else '/system/'+p
@@ -39,7 +41,7 @@ def design():
    if list(contents): continue # Empty compatibility include only; actual codec changes stay proposed.
    name='0100-missing-codec-include-'+str(len(approved)+1); folder=ROOT/'patches'/name; folder.mkdir(exist_ok=True)
    (folder/'payload.xml').write_bytes(data)
-   spec={'id':name,'approved':True,'status':'evidence-gated','what':'Restore an empty XML include explicitly referenced by stock vendor configuration','why':'Absolute include is absent in base; exact stock system file is empty MediaCodecs XML. No codec declarations or performance behavior are changed.','evidence':[{'partition':rec['partition'],'path':rec['path'],'sha256':rec['sha256']},{'path':href,'sha256':source['sha256']}],'operations':[{'target':href,'source':'payload.xml','sha256':source['sha256'],'expected_before':None,'mode':'0644','uid':0,'gid':0,'selinux':'u:object_r:system_file:s0'}]}
+   spec={'id':name,'approved':True,'api_levels':[36],'status':'evidence-gated','what':'Restore an empty XML include explicitly referenced by stock vendor configuration','why':'Absolute include is absent in base; exact stock system file is empty MediaCodecs XML. No codec declarations or performance behavior are changed.','evidence':[{'partition':rec['partition'],'path':rec['path'],'sha256':rec['sha256']},{'path':href,'sha256':source['sha256']}],'operations':[{'target':href,'source':'payload.xml','sha256':source['sha256'],'expected_before':None,'mode':'0644','uid':0,'gid':0,'selinux':'u:object_r:system_file:s0'}]}
    (folder/'patch.json').write_text(json.dumps(spec,indent=2)+'\n'); approved.append(spec)
  for p in proposals:
   folder=ROOT/'patches'/p['id']; folder.mkdir(exist_ok=True); (folder/'patch.json').write_text(json.dumps(p,indent=2)+'\n')

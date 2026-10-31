@@ -9,7 +9,7 @@ def run():
   phase(6,'blocked','Deferred until phases 1–5 have produced a released, boot-tested image. No Apps client or Google packages injected.')
   blocker('sandbox-prerequisite','First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim.',6)
   checkpoint('state: sandboxed Play safely deferred'); return
- repos=['GrapheneOS/platform_packages_apps_GmsCompat','GrapheneOS/platform_frameworks_base','GrapheneOS/Apps','GrapheneOS/platform_packages_apps_GmsCompatConfig']
+ repos=['GrapheneOS/platform_packages_apps_GmsCompat','GrapheneOS/platform_frameworks_base','GrapheneOS/Apps','GrapheneOS/platform_external_GmsCompatConfig']
  pins=[]
  for repo in repos:
   try:

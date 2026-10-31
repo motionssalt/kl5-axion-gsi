@@ -45,7 +45,7 @@ def fetch_drive(path):
  if not path.exists() or path.stat().st_size<1024**2: raise RuntimeError('Drive response is not a firmware archive')
 
 def mirror(stock_url=''):
- phase(2,'running','Stock mirror is the first heavy job.'); disk('mirror-start'); checkpoint('state: stock mirror started')
+ phase(2,'running','Stock mirror is the first heavy job.'); clear('initial-state-race'); disk('mirror-start'); checkpoint('state: stock mirror started')
  rel=release('stock-mirror'); manifest=load_manifest(rel)
  if manifest.get('complete'):
   available={a['name']:a for a in assets(rel)}
@@ -66,7 +66,7 @@ def mirror(stock_url=''):
 
 def base(url=''):
  phase(2,'running','Mirroring base GSI independently of stock availability.'); disk('base-start')
- url=url or BASE_URL
+ url=url or state().get('base_input',{}).get('url') or BASE_URL
  if not re.match(r'^https://github\.com/[^/]+/[^/]+/releases/download/[^/]+/[^/]+\.img\.xz$',url): raise RuntimeError('Base must be an HTTPS GitHub Release .img.xz asset')
  owner,repo,tag,name=url.split('/')[3],url.split('/')[4],url.split('/')[7],url.split('/')[8]
  upstream=api('GET',f'/repos/{owner}/{repo}/releases/tags/{urllib.parse.unquote(tag)}')

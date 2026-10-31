@@ -30,6 +30,14 @@ def plan(mount,patches):
  for patch in patches:
   entry={'id':patch['id'],'status':'skipped','operations':[]}
   if not patch.get('approved'): entry['reason']='Proposed/unproven patch; not applied'; report.append(entry); continue
+  if patch.get('api_levels'):
+   sdk=None
+   for prop in [mount/'system/build.prop',mount/'build.prop',mount/'system/etc/prop.default',mount/'etc/prop.default']:
+    if prop.is_file():
+     match=re.search(r'^ro.build.version.sdk=(\d+)\s*$',prop.read_text(errors='replace'),re.M)
+     if match: sdk=int(match[1]); break
+   if sdk not in patch['api_levels']:
+    entry.update({'status':'conflicted','reason':'Unverified or incompatible Android API level'}); report.append(entry); continue
   for op in patch['operations']:
    target=safe_target(mount,op['target']); before=sha256(target) if target.exists() else None
    source=pathlib.Path(patch['_folder'])/op['source']
@@ -51,7 +59,7 @@ def edit(mount,operations):
   # Creating directories would require separate SELinux/ownership evidence.
   if not target.parent.is_dir(): raise RuntimeError('Target directory missing; refusing to invent metadata')
   subprocess.run(['sudo','install','-o',str(op.get('uid',0)),'-g',str(op.get('gid',0)),'-m',op['mode'],str(source),str(target)],check=True)
-  subprocess.run(['sudo','setfattr','-n','security.selinux','-v',op['selinux'],str(target)],check=True)
+  subprocess.run(['sudo','setfattr','-n','security.selinux','-v','0x'+(op['selinux']+'\x00').encode().hex(),str(target)],check=True)
   if sha256(target)!=op['sha256']: raise RuntimeError('Post-write patch checksum mismatch')
  subprocess.run(['sync'],check=True)
 
@@ -131,7 +139,9 @@ def pipeline():
  out=WORK/'KL5-AxionOS-patched.img.xz'; report=WORK/'patch-report.json'
  result=apply(inp,out,report); inp.unlink(); records=split_upload(out,rel,'system.img.xz.part')
  build={'base_sha256':manifest['sha256'],'patchset_sha256':fingerprint,'parts':records,'sha256':sha256(out),'release':tag,'boot_verified':False,'hardware_verified':False,'patch_report':result}
- json_asset(rel,'build-manifest.json',build); upload(rel,report); out.unlink()
+ json_asset(rel,'build-manifest.json',build); upload(rel,report)
+ if (WORK/'filesystem-check.txt').exists(): upload(rel,WORK/'filesystem-check.txt')
+ out.unlink()
  s=state(); s['candidate']=build; save(s); phase(4,'done','Candidate generated with static integrity checks. Boot/hardware unverified.'); clear('image-build'); checkpoint('build: candidate checksums and patch results'); notify('KL5 candidate image published for emulator testing. Hardware unverified.')
 
 if __name__=='__main__':

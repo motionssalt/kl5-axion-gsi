@@ -9,7 +9,8 @@ Official GrapheneOS documentation describes ordinary unprivileged Google Play ap
 - https://github.com/GrapheneOS/platform_packages_apps_GmsCompat
 - https://github.com/GrapheneOS/platform_frameworks_base
 - https://github.com/GrapheneOS/Apps
-- https://github.com/GrapheneOS/platform_packages_apps_GmsCompatConfig
+- https://github.com/GrapheneOS/platform_external_GmsCompatConfig
+- https://github.com/GrapheneOS/platform_packages_apps_GmsCompat/releases (GmsCompatConfig releases originate here; only config-holder and text config changes apply)
 
 The official Apps client repository is **GrapheneOS/Apps**, not the nonexistent `platform_packages_apps_Apps` path. Framework source contains `core/java/com/android/internal/gmscompat/`, including GmsHooks, GmsCompatApp/Lib, GmsCompatConfig, PlayStoreHooks, Binder/AIDL interfaces and related client/system-service code. This is not a standalone APK feature.
 
