@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:53:55.282268+00:00",
+  "updated": "2026-10-31T23:56:09.724756+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -60,15 +60,13 @@
     {
       "at": "2026-10-31T23:51:37.765087+00:00",
       "decision": "No speculative stock HAL/VINTF/SELinux transplant or performance modification. Do not label unchanged input as patched. Unsupported stock containers and unavailable matched ARM64 emulator artifacts are explicit blockers."
+    },
+    {
+      "at": "2026-10-31T23:56:08.149007+00:00",
+      "decision": "Provisioning verified the uploaded 1,313,731,068-byte base asset against its upstream SHA-256 and recovered its manifest without another image download. Stock mirror remains in the active Actions run."
     }
   ],
   "blockers": [
-    {
-      "id": "initial-state-race",
-      "at": "2026-10-31T23:51:37.765087+00:00",
-      "phase": 2,
-      "message": "Initial provisioning run hit a non-fast-forward state push; repair committed and latest pipeline will resume."
-    },
     {
       "id": "emulator-artifact-pin",
       "at": "2026-10-31T23:51:37.765087+00:00",
@@ -76,7 +74,16 @@
       "message": "Matching prebuilt Android 16 ARM64 Cuttlefish host/image pair is not pinned; no boot success is claimed."
     }
   ],
-  "releases": [],
+  "releases": [
+    {
+      "tag": "inputs-c3fff91f5761",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761"
+    },
+    {
+      "tag": "pipeline-status",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/pipeline-status"
+    }
+  ],
   "disk_observations": [
     {
       "at": "2026-10-31T23:51:37.765087+00:00",
@@ -93,17 +100,38 @@
     }
   ],
   "next_actions": [
-    "Dispatch complete pipeline; repair initial metadata checkpoint and attempt stock mirror first.",
-    "Audit actual input files selectively; publish evidence before designing compatibility changes.",
-    "Keep emulator and sandboxed Play unverified until genuine evidence exists."
+    "Retry stock mirroring after backoff or accept verified uploaded Release parts; independent base analysis can proceed.",
+    "Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.",
+    "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
+    "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
+    "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
   ],
   "provisioning_validation": {
-    "at": "2026-10-31T23:51:37.765087+00:00",
-    "unit_tests_passed": 11,
+    "at": "2026-10-31T23:56:06.395259+00:00",
+    "unit_tests_passed": 14,
     "python_compilation": "passed",
     "shell_syntax": "passed",
     "actionlint": "v1.7.7 passed",
     "credential_scan": "passed on committed source candidates",
     "scope": "Automation code only, NOT image boot or hardware"
+  },
+  "active_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41254264078",
+  "verified_ci_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41254264373",
+  "base_input": {
+    "schema": 1,
+    "url": "https://github.com/itisFarzin/AxionOS_GSI/releases/download/AxionOS-2.8-20260930/AxionOS-2.8-20260930-VANILLA-GSI.img.xz",
+    "release": "inputs-c3fff91f5761",
+    "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+    "size": 1313731068,
+    "parts": [
+      {
+        "name": "base-part-0001",
+        "size": 1313731068,
+        "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/inputs-c3fff91f5761/base-part-0001"
+      }
+    ],
+    "upstream_digest": "sha256:2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+    "asset_updated_at": "2026-10-01T09:24:13Z"
   }
 }
