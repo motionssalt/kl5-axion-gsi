@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:59:14.589898+00:00",
+  "updated": "2026-10-31T23:59:17.470102+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -13,9 +13,11 @@
       ]
     },
     "2": {
-      "status": "running",
-      "notes": "Stock mirror is the first heavy job.",
-      "evidence": []
+      "status": "done",
+      "notes": "Base mirrored with verified SHA-256; stock availability recorded separately.",
+      "evidence": [
+        "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761"
+      ]
     },
     "3": {
       "status": "pending",
@@ -78,6 +80,10 @@
     {
       "tag": "stock-mirror",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/stock-mirror"
+    },
+    {
+      "tag": "inputs-c3fff91f5761",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761"
     }
   ],
   "disk_observations": [
@@ -100,6 +106,13 @@
       "total": 154894188544,
       "free": 117937930240,
       "used": 36939481088
+    },
+    {
+      "at": "2026-10-31T23:59:16.281214+00:00",
+      "label": "base-start",
+      "total": 154894188544,
+      "free": 117937852416,
+      "used": 36939558912
     }
   ],
   "next_actions": [
@@ -143,5 +156,22 @@
       "sha256": "92643c8d1d4936be9d043acd600e5633b6e95a6d193ce35cbcc3689c3b75f4bf",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0004"
     }
-  ]
+  ],
+  "base_input": {
+    "schema": 1,
+    "url": "https://github.com/itisFarzin/AxionOS_GSI/releases/download/AxionOS-2.8-20260930/AxionOS-2.8-20260930-VANILLA-GSI.img.xz",
+    "release": "inputs-c3fff91f5761",
+    "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+    "size": 1313731068,
+    "parts": [
+      {
+        "name": "base-part-0001",
+        "size": 1313731068,
+        "sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/inputs-c3fff91f5761/base-part-0001"
+      }
+    ],
+    "upstream_digest": "sha256:2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+    "asset_updated_at": "2026-10-01T09:24:13Z"
+  }
 }
