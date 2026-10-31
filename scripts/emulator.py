@@ -48,7 +48,7 @@ def collect_boot(label,image,config):
  kvm=pathlib.Path('/dev/kvm').exists()
  env=os.environ.copy(); env['HOME']=str(cvd)
  # QEMU TCG is explicit when KVM unavailable; still bounded by the Actions job timeout.
- args=[str(launch),'--daemon','--system_image='+str(image),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
+ args=[str(launch),'--daemon','--resume=false','--system_image='+str(image),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
  if not kvm: args+=['--vm_manager=qemu_cli','--enable_kvm=false']
  r=subprocess.run(args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
  (evidence/'launcher.log').write_bytes(r.stdout)
@@ -57,6 +57,7 @@ def collect_boot(label,image,config):
   if r.returncode!=0: raise RuntimeError('Cuttlefish launcher failed; see launcher log')
   while time.monotonic()<deadline:
    try:
+    subprocess.run([str(cvd/'bin/adb'),'connect','127.0.0.1:6520'],capture_output=True,timeout=20)
     p=adb(['shell','getprop','sys.boot_completed'])
     if p.returncode==0 and p.stdout.strip()==b'1': completed=True; break
    except subprocess.TimeoutExpired: pass
@@ -70,7 +71,7 @@ def collect_boot(label,image,config):
   for name,command in screenshots:
    if command:
     p=adb(['shell']+command)
-    if p.returncode!=0: raise RuntimeError('Failed to navigate emulator UI: '+name)
+    if p.returncode!=0 or b'Error:' in p.stdout: raise RuntimeError('Failed to navigate emulator UI: '+name)
    time.sleep(4); p=adb(['exec-out','screencap','-p'],timeout=60)
    if p.returncode!=0 or not p.stdout.startswith(b'\x89PNG\r\n\x1a\n'): raise RuntimeError('No valid screenshot for '+name)
    (evidence/(name+'.png')).write_bytes(p.stdout)
@@ -110,7 +111,7 @@ def run():
   if not manifest: continue
   evidence=WORK/('emulator-'+label)
   try:
-   image_from_parts(manifest,image); result,evidence=collect_boot(label,image,config); results[label]=result
+   image_from_parts(manifest,image); result,evidence=collect_boot(label,image,config); result['image_sha256']=manifest['sha256']; results[label]=result
   except Exception as e:
    results[label]={'boot_completed':False,'error':str(e),'scope':'No hardware claim.'}
   finally:

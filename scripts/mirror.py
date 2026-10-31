@@ -21,7 +21,7 @@ def curl_drive(path):
   r.close(); raise RuntimeError('Drive cookie/confirm flow returned quota or confirmation page')
  # requests.Session maintains cookies across the confirmation flow. Transfer with curl,
  # with cookie file in work/ only. Never log a signed URL or cookie content.
- cookies=WORK/'drive-cookies.txt'; session.cookies.save if False else None
+ cookies=WORK/'drive-cookies.txt'
  with cookies.open('w') as f:
   f.write('# Netscape HTTP Cookie File\n')
   for c in session.cookies: f.write(f'{c.domain}\tTRUE\t{c.path}\tFALSE\t0\t{c.name}\t{c.value}\n')
@@ -81,10 +81,18 @@ def base(url=''):
   mirrored={a['name']:a for a in assets(rel)}
   if not all(p['name'] in mirrored and mirrored[p['name']].get('digest')=='sha256:'+p['sha256'] for p in manifest['parts']): raise RuntimeError('Base mirror digest mismatch')
  else:
-  path=download(url,WORK/'base.img.xz',digest); size=path.stat().st_size
-  records=split_upload(path,rel,'base-part')
-  manifest={'schema':1,'url':url,'release':tag,'sha256':sha256(path),'size':size,'parts':records,'upstream_digest':source.get('digest'),'asset_updated_at':source['updated_at']}
-  json_asset(rel,'base-manifest.json',manifest); path.unlink()
+  recovered=asset(rel,'base-part-0001')
+  if digest and source['size']<=PART_SIZE and recovered and recovered['size']==source['size'] and recovered.get('digest')=='sha256:'+digest:
+   # Recover metadata after interruption between asset upload and manifest commit.
+   records=[{'name':recovered['name'],'size':recovered['size'],'sha256':digest,'url':recovered['browser_download_url']}]
+   manifest={'schema':1,'url':url,'release':tag,'sha256':digest,'size':source['size'],'parts':records,'upstream_digest':source.get('digest'),'asset_updated_at':source['updated_at']}
+   json_asset(rel,'base-manifest.json',manifest)
+   decision('Recovered interrupted base mirror manifest from matching upstream and Release server-side SHA-256; avoided re-downloading 1.3 GB input.')
+  else:
+   path=download(url,WORK/'base.img.xz',digest); size=path.stat().st_size
+   records=split_upload(path,rel,'base-part')
+   manifest={'schema':1,'url':url,'release':tag,'sha256':sha256(path),'size':size,'parts':records,'upstream_digest':source.get('digest'),'asset_updated_at':source['updated_at']}
+   json_asset(rel,'base-manifest.json',manifest); path.unlink()
  s=state(); s['base_input']=manifest; save(s); clear('base-download')
  phase(2,'done' if (ROOT/'stock-manifest.json').exists() and json.loads((ROOT/'stock-manifest.json').read_text()).get('complete') else 'blocked','Base mirrored with verified SHA-256; stock availability recorded separately.',[rel['html_url']]); notify('KL5 base GSI mirrored and checksummed; stock audit status tracked separately.'); checkpoint('state: base input mirrored')
 

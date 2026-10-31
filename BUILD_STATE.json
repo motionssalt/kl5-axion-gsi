@@ -1,12 +1,16 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:39:03.826155+00:00",
-  "phase": "1",
+  "updated": "2026-10-31T23:51:37.765087+00:00",
+  "phase": "2",
   "phases": {
     "1": {
-      "status": "running",
-      "notes": "",
-      "evidence": []
+      "status": "done",
+      "notes": "Public repository, encrypted secrets, Actions workflows, disk/release helpers and persistent state installed. Local code tests passed.",
+      "evidence": [
+        ".github/workflows/pipeline.yml",
+        "scripts/common.py",
+        "tests/test_pipeline.py"
+      ]
     },
     "2": {
       "status": "pending",
@@ -34,9 +38,12 @@
       "evidence": []
     },
     "7": {
-      "status": "pending",
-      "notes": "",
-      "evidence": []
+      "status": "done",
+      "notes": "Daily upstream watcher and manual URL reapply workflow installed. Actual updated image still requires safe patches and emulator evidence.",
+      "evidence": [
+        ".github/workflows/update.yml",
+        ".github/workflows/pipeline.yml"
+      ]
     }
   },
   "decisions": [
@@ -45,12 +52,51 @@
     },
     {
       "decision": "Use repository secrets for all credentials, including continuation authentication. First heavy job mirrors stock."
+    },
+    {
+      "at": "2026-10-31T23:51:37.765087+00:00",
+      "decision": "Initial run 41253531553 mirrored the base asset but failed state pushes because provisioning code advanced main concurrently. Implemented bounded fetch/rebase/push retries and base-manifest recovery; rerun latest workflow without re-downloading the verified base asset."
+    },
+    {
+      "at": "2026-10-31T23:51:37.765087+00:00",
+      "decision": "No speculative stock HAL/VINTF/SELinux transplant or performance modification. Do not label unchanged input as patched. Unsupported stock containers and unavailable matched ARM64 emulator artifacts are explicit blockers."
     }
   ],
-  "blockers": [],
+  "blockers": [
+    {
+      "id": "initial-state-race",
+      "at": "2026-10-31T23:51:37.765087+00:00",
+      "phase": 2,
+      "message": "Initial provisioning run hit a non-fast-forward state push; repair committed and latest pipeline will resume."
+    },
+    {
+      "id": "emulator-artifact-pin",
+      "at": "2026-10-31T23:51:37.765087+00:00",
+      "phase": 5,
+      "message": "Matching prebuilt Android 16 ARM64 Cuttlefish host/image pair is not pinned; no boot success is claimed."
+    }
+  ],
   "releases": [],
-  "disk_observations": [],
+  "disk_observations": [
+    {
+      "at": "2026-10-31T23:51:37.765087+00:00",
+      "label": "first-actions-run-after-cleanup",
+      "free": 117938724864,
+      "evidence": "Actions run 41253531553 input job log"
+    }
+  ],
   "next_actions": [
-    "Install complete pipeline and launch stock mirror."
-  ]
+    "Dispatch complete pipeline; repair initial metadata checkpoint and attempt stock mirror first.",
+    "Audit actual input files selectively; publish evidence before designing compatibility changes.",
+    "Keep emulator and sandboxed Play unverified until genuine evidence exists."
+  ],
+  "provisioning_validation": {
+    "at": "2026-10-31T23:51:37.765087+00:00",
+    "unit_tests_passed": 11,
+    "python_compilation": "passed",
+    "shell_syntax": "passed",
+    "actionlint": "v1.7.7 passed",
+    "credential_scan": "passed on committed source candidates",
+    "scope": "Automation code only, NOT image boot or hardware"
+  }
 }

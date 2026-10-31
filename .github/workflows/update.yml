@@ -1,0 +1,31 @@
+name: Watch upstream vanilla GSI
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 4 * * *'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: kl5-pipeline
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_PAT || github.token }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PIPELINE_PAT || github.token }}
+      - name: Check upstream without rebuilding unchanged inputs
+        run: |
+          git config user.name 'MOTIONSALT Pipeline'
+          git config user.email 'motionssalt@users.noreply.github.com'
+          python3 -m pip install --disable-pip-version-check 'requests==2.32.4'
+          python3 scripts/watch_upstream.py

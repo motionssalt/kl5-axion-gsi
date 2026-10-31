@@ -1,0 +1,38 @@
+name: Import uploaded stock parts
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release containing stock-manifest.json and stock-part-0001...
+        type: string
+        default: stock-upload
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: kl5-pipeline
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_PAT || github.token }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PIPELINE_PAT || github.token }}
+      - name: Prepare runner
+        run: |
+          git config user.name 'MOTIONSALT Pipeline'
+          git config user.email 'motionssalt@users.noreply.github.com'
+          bash scripts/free_disk.sh
+          python3 -m pip install --disable-pip-version-check 'requests==2.32.4'
+      - name: Verify and import parts
+        env:
+          IMPORT_TAG: ${{ inputs.release_tag }}
+        run: python3 scripts/import_stock.py --tag "$IMPORT_TAG"
