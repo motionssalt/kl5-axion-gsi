@@ -46,7 +46,14 @@ def checkpoint(message):
   if (ROOT/path).exists(): subprocess.run(['git','add',path],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
  if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
   subprocess.run(['git','commit','-m',message],cwd=ROOT,check=True)
-  subprocess.run(['git','push','origin','HEAD:main'],cwd=ROOT,check=True)
+  for attempt in range(4):
+   pushed=subprocess.run(['git','push','origin','HEAD:main'],cwd=ROOT,capture_output=True,text=True)
+   if pushed.returncode==0: break
+   subprocess.run(['git','fetch','origin','main'],cwd=ROOT,check=True,capture_output=True)
+   # Replay this serialized job's state/docs checkpoint over newer code commits.
+   rebased=subprocess.run(['git','-c','core.editor=true','rebase','-X','theirs','origin/main'],cwd=ROOT,capture_output=True,text=True)
+   if rebased.returncode: raise RuntimeError('Checkpoint rebase conflict; local outputs remain in Releases')
+  else: raise RuntimeError('State push failed after bounded rebase retries')
 def sha256(path):
  h=hashlib.sha256()
  with open(path,'rb') as f:

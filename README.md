@@ -1,7 +1,41 @@
-# KL5 AxionOS GSI
+# KL5 AxionOS GSI compatibility pipeline
 
-Pipeline provisioning is in progress. No patched image or boot claim exists yet.
+**Device:** Tecno KL5 / mt6768 / TECNO-KL5. **Base:** vanilla ARM64 A/B AxionOS 2.8, Android 16 (API level must be verified from the image).
 
-This patches a prebuilt image only; no Android source build. Secrets are repository secrets only.
+This is a prebuilt-image patch pipeline, **not an Android source build**. The stock vendor partition stays on the phone. No performance tuning, background daemon, Xposed or LSPosed is added. Existing base performance patches are not deliberately changed.
 
-Emulator testing, when successful, proves boot/UI only, never MediaTek hardware compatibility.
+## Live status
+
+<!-- STATUS:START -->
+Provisioning complete enough to start input mirroring; the first Actions run has been dispatched. No patched image, boot screenshot or hardware fix has been verified yet. Read BUILD_STATE.json and Releases for subsequent results.
+<!-- STATUS:END -->
+
+[Actions](https://github.com/motionssalt/kl5-axion-gsi/actions) · [Releases](https://github.com/motionssalt/kl5-axion-gsi/releases) · [Persistent build state](BUILD_STATE.json)
+
+## Phone-only operation
+
+All heavy work runs in GitHub Actions. Open **Actions → KL5 compatibility pipeline → Run workflow**; empty inputs use the pinned original. A new upstream vanilla `.img.xz` URL can be supplied. The updater also checks upstream daily. A six-hour schedule retries incomplete input mirroring; stages with unchanged inputs/code are cached to avoid repeated expensive work.
+
+Stock input mirroring is attempted first. Assets are at most 1,900,000,000 bytes, below GitHub's 2 GiB limit. `stock-manifest.json` and each part contain/check SHA-256 integrity. After a complete mirror, stock extraction uses bounded Release range requests, not Google Drive. ZIP archives containing direct partition images or `super.img` are selectively inspected; unsupported containers produce explicit blockers rather than a full-unpack surprise.
+
+If Drive quota blocks the download, use the already prepared [Release import](NEEDS_STOCK_UPLOAD.md). **No user intervention is required merely to let independent GSI analysis continue.**
+
+## Delivery and verification policy
+
+`stock-mirror`, `inputs-*`, `audit-*`, `candidate-*`, and `pipeline-status` are intermediate prereleases. Only an actual modified image with real patched-image emulator evidence can become a `build-<date>-<run>` release. A green workflow means orchestration completed; **it does not mean every Android phase passed**. Blockers are state data, not fabricated successes.
+
+Emulator verification proves **boot and UI only**. MediaTek video encode/decode, camera, fingerprint, OTG, RIL/IMS and other physical hardware remain unverified until tested on the KL5. Missing stock files inside the GSI are not automatically defects, since vendor/odm remain present on the phone.
+
+See [audit coverage](docs/AUDIT.md), [implementation limits](docs/IMPLEMENTATION_STATUS.md), [patch format](patches/README.md), [manual OTG design](docs/MANUAL_OTG.md), [device tests](docs/DEVICE_TEST_CHECKLIST.md), [flashing/rejoin guide](docs/FLASHING.md) and [sandboxed Play status](docs/SANDBOXED_PLAY.md).
+
+Credentials are repository secrets only. Never put a PAT, Telegram token, cookies or chat ID into source, Release notes, collected public logs or BUILD_STATE.json. Logs from the physical phone can contain private identifiers; inspect them before publishing.
+
+## Reapply locally or in Actions
+
+`bash scripts/apply_patches.sh input.img.xz --output patched.img.xz --report patch-report.json`
+
+This Linux/root operation is intended for Actions, not for editing a mounted phone system. Approved patches require exact before/after SHA-256, stock evidence and explicit ownership/mode/SELinux metadata. Proposed patches are skipped, changed upstream files are conflicts, and an unchanged image is never republished as a patched build. Workflow manual input provides the phone-friendly path.
+
+## Security
+
+The credentials provided during provisioning were not committed. Because credentials appeared in the task conversation, rotation is prudent after provisioning; replacements belong in **Settings → Secrets and variables → Actions**, under `PIPELINE_PAT`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Replacing `PIPELINE_PAT` must preserve repo contents/workflow dispatch permissions. Keep the account/repository public for standard free runners; no paid services are provisioned.

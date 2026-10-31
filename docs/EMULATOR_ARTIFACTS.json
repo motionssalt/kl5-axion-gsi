@@ -1,0 +1,12 @@
+{
+  "api_level": 36,
+  "architecture": "arm64",
+  "build_id": null,
+  "host_url": null,
+  "host_sha256": null,
+  "images_url": null,
+  "images_sha256": null,
+  "estimated_unpacked_bytes": 12884901888,
+  "status": "blocked: matched Android 16 artifacts not pinned; no fake boot pass",
+  "reference": "https://source.android.com/docs/devices/cuttlefish/get-started"
+}
