@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-10-31T23:57:30.304073+00:00",
+  "updated": "2026-10-31T23:58:34.698477+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -123,6 +123,12 @@
       "size": 1900000000,
       "sha256": "b092291e29802e47ea289f9b855cf1ab8a5ec796f3a5b9e3c4813cf4a6e69545",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0002"
+    },
+    {
+      "name": "stock-part-0003",
+      "size": 1900000000,
+      "sha256": "fa1b5781ee378f1140d5df1fca09869cc291b56b72fa5ee2bf98827b82e722f3",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0003"
     }
   ]
 }
