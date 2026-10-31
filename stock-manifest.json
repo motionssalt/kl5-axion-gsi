@@ -1,5 +1,10 @@
 {
-  "complete": false,
+  "schema": 1,
+  "complete": true,
+  "source": "Google Drive ID 1xvBYSngZ24MW9N01uo_ZU5WMbmZfC_Uw",
+  "size": 6512327514,
+  "sha256": "9aa24d0518815a16b2d3c532825379b99595fdb701918c0dbeae738fa877b257",
+  "part_limit": 1900000000,
   "parts": [
     {
       "name": "stock-part-0001",
@@ -26,5 +31,7 @@
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0004"
     }
   ],
-  "part_limit": 1900000000
+  "observed_at": "2026-10-31T23:59:12.012617+00:00",
+  "format_magic_hex": "504b03040a000000000087532c590000000000000000000000002b0000005465",
+  "checksum_trust": "SHA-256 computed at first acquisition; no manufacturer checksum supplied"
 }
