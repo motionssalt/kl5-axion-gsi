@@ -1,0 +1,56 @@
+{
+  "project": "kl5-axion-gsi",
+  "updated": "2026-10-31T23:39:03.826155+00:00",
+  "phase": "1",
+  "phases": {
+    "1": {
+      "status": "running",
+      "notes": "",
+      "evidence": []
+    },
+    "2": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    },
+    "3": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    },
+    "4": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    },
+    "5": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    },
+    "6": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    },
+    "7": {
+      "status": "pending",
+      "notes": "",
+      "evidence": []
+    }
+  },
+  "decisions": [
+    {
+      "decision": "Compatibility-only changes; preserve base performance behavior. Never fabricate audit, boot or hardware verification."
+    },
+    {
+      "decision": "Use repository secrets for all credentials, including continuation authentication. First heavy job mirrors stock."
+    }
+  ],
+  "blockers": [],
+  "releases": [],
+  "disk_observations": [],
+  "next_actions": [
+    "Install complete pipeline and launch stock mirror."
+  ]
+}
