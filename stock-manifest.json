@@ -6,6 +6,12 @@
       "size": 1900000000,
       "sha256": "492de06978f6e727880b04bbf8ad70245631a61e554afe2f86bd1172ba99f090",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0001"
+    },
+    {
+      "name": "stock-part-0002",
+      "size": 1900000000,
+      "sha256": "b092291e29802e47ea289f9b855cf1ab8a5ec796f3a5b9e3c4813cf4a6e69545",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/stock-mirror/stock-part-0002"
     }
   ],
   "part_limit": 1900000000
