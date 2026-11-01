@@ -1,0 +1,5 @@
+{
+  "matches": [],
+  "selected": null,
+  "warning": "Unverified on physical KL5. Property invokes stock vendor init actions; does not prove USB HAL role negotiation or mouse enumeration."
+}

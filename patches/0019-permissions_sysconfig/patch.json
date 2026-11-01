@@ -1,0 +1,8 @@
+{
+  "id": "0019-permissions_sysconfig",
+  "status": "proposed",
+  "approved": false,
+  "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
+  "evidence": [],
+  "operations": []
+}

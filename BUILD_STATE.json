@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:29.374166+00:00",
-  "phase": "3",
+  "updated": "2026-11-01T00:19:35.129752+00:00",
+  "phase": "4",
   "phases": {
     "1": {
       "status": "done",
@@ -26,8 +26,10 @@
     },
     "4": {
       "status": "blocked",
-      "notes": "No approved evidence-backed compatibility patch; no image fabricated",
-      "evidence": []
+      "notes": "Design report generated. Proposed patches are never applied automatically.",
+      "evidence": [
+        "docs/PATCH_PLAN.json"
+      ]
     },
     "5": {
       "status": "blocked",
@@ -90,12 +92,6 @@
       "message": "Required stock partitions and/or base inventory remain incomplete."
     },
     {
-      "id": "patch-design",
-      "at": "2026-11-01T00:07:00.306527+00:00",
-      "phase": 4,
-      "message": "Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version"
-    },
-    {
       "id": "image-build",
       "at": "2026-11-01T00:07:04.637237+00:00",
       "phase": 4,
@@ -118,6 +114,18 @@
       "at": "2026-11-01T00:19:25.192630+00:00",
       "phase": 3,
       "message": "'sha256'"
+    },
+    {
+      "id": "no-proven-system-patch",
+      "at": "2026-11-01T00:19:35.123077+00:00",
+      "phase": 4,
+      "message": "Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched."
+    },
+    {
+      "id": "otg-control",
+      "at": "2026-11-01T00:19:35.128251+00:00",
+      "phase": 4,
+      "message": "No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed."
     }
   ],
   "releases": [

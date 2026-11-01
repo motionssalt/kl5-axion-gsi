@@ -1,0 +1,27 @@
+{
+  "approved": [],
+  "proposed": [
+    "0001-media",
+    "0002-camera",
+    "0003-fingerprint",
+    "0004-usb_otg",
+    "0005-vintf",
+    "0006-init",
+    "0007-props",
+    "0008-audio",
+    "0009-sensors",
+    "0010-gnss",
+    "0011-nfc",
+    "0012-bluetooth",
+    "0013-wifi",
+    "0014-telephony_ims",
+    "0015-display",
+    "0016-power_thermal_charging",
+    "0017-vibrator_lights",
+    "0018-overlays",
+    "0019-permissions_sysconfig",
+    "0020-selinux",
+    "0021-hardware_apps"
+  ],
+  "no_performance_changes": true
+}
