@@ -57,9 +57,11 @@ def collect_boot(label,image,config):
   if '<name>enable_kvm</name>' in flags: args+=['--enable_kvm=false']
   elif platform.machine() in ['aarch64','arm64']:
    (evidence/'tcg-prerequisite.txt').write_text('No /dev/kvm; this Cuttlefish package does not expose enable_kvm. Native ARM64 Linux QEMU manager may hardcode KVM. Boot must fail honestly if software fallback is unavailable.\n')
- completed=False; deadline=time.monotonic()+(3600 if kvm else 7200)
+ completed=False; boot_budget=3600 if kvm else 7200; deadline=time.monotonic()+boot_budget
+ if '<name>boot_timeout</name>' in flags: args+=['--boot_timeout='+str(boot_budget)]
+ (evidence/'launcher-budget.json').write_text(json.dumps({'boot_budget_seconds':boot_budget,'launcher_timeout_seconds':boot_budget+60,'kvm':kvm,'note':'TCG ARM64 boot may be slow; a 300-second launcher cutoff is insufficient.'},indent=2)+'\n')
  try:
-  try: r=subprocess.run(args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
+  try: r=subprocess.run(args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=boot_budget+60)
   except subprocess.TimeoutExpired as exc:
    (evidence/'launcher.log').write_bytes(exc.stdout or b'Launcher timed out')
    raise RuntimeError('Cuttlefish launcher timed out; partial launcher log retained') from None

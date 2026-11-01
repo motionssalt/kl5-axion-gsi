@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Conservative deterministic design: only proveable missing XML includes auto-apply."""
+"""Evidence-gated additions only; experimental manual helper is never a hardware fix."""
 import hashlib, json, pathlib, re, xml.etree.ElementTree as ET, zipfile
 from common import *
 from audit import collect
@@ -45,14 +45,15 @@ def design():
    (folder/'patch.json').write_text(json.dumps(spec,indent=2)+'\n'); approved.append(spec)
  for p in proposals:
   folder=ROOT/'patches'/p['id']; folder.mkdir(exist_ok=True); (folder/'patch.json').write_text(json.dumps(p,indent=2)+'\n')
- summary={'approved':[p['id'] for p in approved],'proposed':[p['id'] for p in proposals],'no_performance_changes':True}
+ helper=make_manual_typec(stockrecords,text)
+ if helper: approved.append(helper)
+ summary={'approved':[p['id'] for p in approved],'proposed':[p['id'] for p in proposals],'no_performance_changes':True,'hardware_fixes_verified':False,'manual_helper_only':bool(helper) and len(approved)==1}
  (ROOT/'docs/PATCH_PLAN.json').write_text(json.dumps(summary,indent=2)+'\n')
  if not approved: blocker('no-proven-system-patch','Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched.',4)
  else: clear('no-proven-system-patch')
- make_otg(text)
  clear('patch-design')
  phase(4,'pending' if approved else 'blocked','Design report generated. Proposed patches are never applied automatically.',['docs/PATCH_PLAN.json'])
- checkpoint('patches: evidence-gated design and OTG discovery'); notify('KL5 patch design complete: '+str(len(approved))+' proven-safe image operations; unproven gaps remain blocked.')
+ checkpoint('patches: evidence-gated design and manual Type-C helper'); notify('KL5 patch design: '+str(len(approved))+' approved additions. Manual Type-C helper is experimental, NOT a video/fingerprint/OTG hardware fix. Unproven gaps remain open.')
 
 def make_otg(text):
  matches=[]
@@ -92,6 +93,40 @@ echo 'Stock OTG trigger requested. Verify role and device enumeration; this is n
   info=zipfile.ZipInfo('system/bin/kl5-otg'); info.external_attr=0o100755<<16; z.writestr(info,script)
   z.writestr('stock-evidence.json',json.dumps(discovery,indent=2))
  rel=release('experimental-otg','EXPERIMENTAL manual OTG helper. Stock init property evidence is bundled. No boot daemon or auto-detection. No USB mouse/hardware success is claimed. KernelSU overlay availability varies.'); upload(rel,module,replace=True); module.unlink()
+
+def make_manual_typec(stockrecords,text):
+ # Stock USB HAL owns exactly these kernel Type-C ABI nodes. Their semantics are
+ # standardized upstream; unlike OTG_CTL this does not guess a vendor boolean.
+ expected='etc/init/android.hardware.usb@1.2-service-mediatekv2.rc'
+ rec=next((r for r in stockrecords if r['partition']=='vendor' and r['path']==expected),None)
+ content=text.get(rec.get('evidence_file',''),'') if rec else ''
+ required=['/sys/class/typec/port0/'+x for x in ['power_role','data_role','port_type']]
+ if not rec or not all(node in content for node in required):
+  blocker('otg-control','No exact stock USB HAL Type-C ABI evidence; no manual helper approved.',4)
+  return None
+ payload=(ROOT/'scripts/kl5-otg.sh').read_bytes()
+ folder=ROOT/'patches/0101-manual-typec-control'; folder.mkdir(exist_ok=True)
+ (folder/'kl5-otg').write_bytes(payload)
+ evidence=[{'partition':'vendor','path':expected,'sha256':rec['sha256'],'evidence_file':rec.get('evidence_file')},{'source':'https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-typec','meaning':'source=source-only DFP, sink=sink-only UFP, dual=DRP; active role shown in brackets'}]
+ spec={'id':'0101-manual-typec-control','approved':True,'api_levels':[36],'status':'experimental-manual-helper-only','what':'Add inert root-only on/off/restore/status Type-C helper','why':'User requested manual forced host state. Stock USB HAL exposes standard port_type ABI; helper writes source or sink only on explicit command. No boot service, polling, OTG_CTL guess, property tuning, SELinux bypass or vendor partition edit. Does NOT establish that deeper mouse enumeration issue is fixed.','hardware_verified':False,'evidence':evidence,'operations':[{'target':'/system/bin/kl5-otg','source':'kl5-otg','sha256':hashlib.sha256(payload).hexdigest(),'expected_before':None,'mode':'0755','uid':0,'gid':0,'selinux':'u:object_r:system_file:s0'}]}
+ (folder/'patch.json').write_text(json.dumps(spec,indent=2)+'\n')
+ discovery={'method':'explicit standard kernel Type-C port_type request','on':'source','off':'sink','restore':'saved pre-test type','boot_behavior':'none','OTG_CTL':'not touched; vendor semantics unproven','evidence':evidence,'hardware_verified':False,'warning':'May be rejected/overridden by HAL or fail to power/enumerate devices. Not a compatibility fix. Unplug charger/USB before on. Off leaves sink-only; restore re-enables original dual-role behavior if originally dual.'}
+ (ROOT/'docs/OTG_DISCOVERY.json').write_text(json.dumps(discovery,indent=2)+'\n')
+ module=WORK/'kl5-otg-manual-experimental.zip'
+ with zipfile.ZipFile(module,'w',zipfile.ZIP_DEFLATED) as z:
+  z.writestr('module.prop','id=kl5_otg_manual\nname=KL5 manual Type-C helper (EXPERIMENTAL)\nversion=2\nversionCode=2\nauthor=MOTIONSALT\ndescription=Manual-only standard Type-C control. NOT a hardware fix. No boot daemon.\n')
+  info=zipfile.ZipInfo('system/bin/kl5-otg'); info.external_attr=0o100755<<16; z.writestr(info,payload)
+  z.writestr('stock-evidence.json',json.dumps(discovery,indent=2))
+  z.writestr('stock-usb-hal.rc',content)
+  z.writestr('USAGE.txt','EXPERIMENTAL. NO hardware operation or enumeration verified.\nRoot: kl5-otg on|off|restore|status\nUnplug charger/USB before on, connect OTG device afterward.\nOff means sink-only; restore returns the pre-test port type.\nIf overlay mounting is unavailable: su -c sh /data/adb/modules/kl5_otg_manual/system/bin/kl5-otg status\nNo service.sh or boot work. No OTG_CTL writes, SELinux changes or vendor partition edits.\n')
+ rel=release('experimental-otg','EXPERIMENTAL manual Type-C helper only, NOT a hardware fix. No emulator or real KL5 operation verified. Uses stock HAL-exposed standard port_type ABI; no OTG_CTL guess, boot daemon or polling. Disconnect charger/USB before on; off means sink-only; restore returns original mode. It may not resolve mouse detection. Module and direct root script are provided separately from any ROM build.')
+ upload(rel,module,replace=True); upload(rel,ROOT/'scripts/kl5-otg.sh',name='kl5-otg.sh',replace=True)
+ json_asset(rel,'SHA256SUMS.json',{'module':sha256(module),'script':hashlib.sha256(payload).hexdigest()})
+ module.unlink()
+ clear('otg-control')
+ blocker('otg-hardware','Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5.',4)
+ blocker('hardware-compatibility','Media/camera/fingerprint and remaining vendor/framework gaps require evidence-backed fixes. Adding a manual helper does NOT resolve full stock-like compatibility.',4)
+ return spec
 
 if __name__=='__main__':
  try: design()
