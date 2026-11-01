@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:43:24.137289+00:00",
+  "updated": "2026-11-01T00:47:59.074950+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -131,6 +131,10 @@
     {
       "at": "2026-11-01T00:35:28.208496+00:00",
       "decision": "Supersede the older orchestration run if still active: its audit/build checkout predates the approved manual helper and cannot produce that candidate. Preserve all mirrored/audit assets and start the updated Actions pipeline. No verified boot result is discarded."
+    },
+    {
+      "at": "2026-11-01T00:42:35.491085+00:00",
+      "decision": "Removed now-invalid appended AVB footer from modified system image. No signing keys available; device-specific AVB handling remains mandatory. Stock boot/vendor_boot untouched."
     }
   ],
   "blockers": [
@@ -217,6 +221,10 @@
     {
       "tag": "experimental-otg",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/experimental-otg"
+    },
+    {
+      "tag": "candidate-2ad2e18b-04f2ef18",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-04f2ef18"
     }
   ],
   "disk_observations": [
