@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:29:36.281441+00:00",
+  "updated": "2026-11-01T00:29:39.195666+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -29,10 +29,8 @@
     },
     "4": {
       "status": "blocked",
-      "notes": "Design report generated. Proposed patches are never applied automatically.",
-      "evidence": [
-        "docs/PATCH_PLAN.json"
-      ]
+      "notes": "No approved evidence-backed compatibility patch; no image fabricated",
+      "evidence": []
     },
     "5": {
       "status": "blocked",
@@ -117,12 +115,6 @@
       "message": "Symlink records without SHA-256 crashed the gap summary. Code and regression test fixed in pushed commit cd57733; automatic regeneration pending."
     },
     {
-      "id": "image-build",
-      "at": "2026-11-01T00:19:42.638269+00:00",
-      "phase": 4,
-      "message": "No approved evidence-backed compatibility patch; no image fabricated"
-    },
-    {
       "id": "emulator",
       "at": "2026-11-01T00:23:23.612529+00:00",
       "phase": 5,
@@ -145,6 +137,12 @@
       "at": "2026-11-01T00:29:32.391537+00:00",
       "phase": 4,
       "message": "No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed."
+    },
+    {
+      "id": "image-build",
+      "at": "2026-11-01T00:29:39.194914+00:00",
+      "phase": 4,
+      "message": "No approved evidence-backed compatibility patch; no image fabricated"
     }
   ],
   "releases": [
@@ -191,6 +189,10 @@
     {
       "tag": "emulator-runtime-14981173-x86-host",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-runtime-14981173-x86-host"
+    },
+    {
+      "tag": "candidate-2ad2e18b-af1e7e20",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-af1e7e20"
     }
   ],
   "disk_observations": [
