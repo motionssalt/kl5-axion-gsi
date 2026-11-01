@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:23:38.670204+00:00",
-  "phase": "5",
+  "updated": "2026-11-01T00:23:39.889183+00:00",
+  "phase": "6",
   "phases": {
     "1": {
       "status": "done",
@@ -108,12 +108,6 @@
       "message": "Required stock partitions and/or base inventory remain incomplete."
     },
     {
-      "id": "sandbox-prerequisite",
-      "at": "2026-11-01T00:08:35.408028+00:00",
-      "phase": 6,
-      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
-    },
-    {
       "id": "summary-audit",
       "at": "2026-11-01T00:19:25.192630+00:00",
       "phase": 3,
@@ -142,6 +136,12 @@
       "at": "2026-11-01T00:23:23.612529+00:00",
       "phase": 5,
       "message": "Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted"
+    },
+    {
+      "id": "sandbox-prerequisite",
+      "at": "2026-11-01T00:23:39.889176+00:00",
+      "phase": 6,
+      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
     }
   ],
   "releases": [
