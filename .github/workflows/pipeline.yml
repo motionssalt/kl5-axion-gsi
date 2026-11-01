@@ -155,11 +155,18 @@ jobs:
           sudo groupadd -f render || true
           sudo usermod -aG kvm,cvdnetwork,render "$USER"
           if [ -e /dev/kvm ]; then sudo chmod a+rw /dev/kvm; fi
+          sudo modprobe vhost_vsock || true
+          sudo modprobe vhost_net || true
+          if [ -e /dev/vhost-vsock ]; then sudo chmod 666 /dev/vhost-vsock; fi
           sudo udevadm trigger || true
+          ls -la /dev/vhost* || true
       - name: Real ARM64 base and patched boot tests
         if: always() && !cancelled() && steps.pins.outputs.ready == 'true'
         timeout-minutes: 255
         run: |
+          sudo modprobe vhost_vsock || true
+          sudo modprobe vhost_net || true
+          if [ -e /dev/vhost-vsock ]; then sudo chmod 666 /dev/vhost-vsock; fi
           if getent group cvdnetwork >/dev/null 2>&1; then
             sg cvdnetwork -c 'python3 scripts/runner.py emulator'
           else

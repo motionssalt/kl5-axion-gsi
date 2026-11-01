@@ -51,7 +51,13 @@ def collect_boot(label,image,config):
  env=os.environ.copy(); env['HOME']=str(cvd)
  # QEMU TCG is explicit when KVM unavailable; still bounded by the Actions job timeout.
  flags=supported_flags(cvd,env)
+ try:
+  subprocess.run(['sudo','modprobe','vhost_vsock'],capture_output=True,timeout=10)
+  subprocess.run(['sudo','modprobe','vhost_net'],capture_output=True,timeout=10)
+  if pathlib.Path('/dev/vhost-vsock').exists(): subprocess.run(['sudo','chmod','666','/dev/vhost-vsock'],capture_output=True,timeout=10)
+ except Exception: pass
  args=[str(launch),'--daemon','--resume=false','--system_image_dir='+str(cvd),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
+ if '<name>vhost_user_vsock</name>' in flags: args+=['--vhost_user_vsock=true']
  args+=system_args(cvd,image,evidence,flags,env)
  if not kvm:
   args+=['--vm_manager=qemu_cli','--cpus=2','--memory_mb=4096']
@@ -68,16 +74,25 @@ def collect_boot(label,image,config):
    raise RuntimeError('Cuttlefish launcher timed out; partial launcher log retained') from None
   (evidence/'launcher.log').write_bytes(r.stdout)
   if r.returncode!=0: raise RuntimeError('Cuttlefish launcher failed; see launcher log')
+  poll_round=0
   while time.monotonic()<deadline:
+   poll_round+=1
+   if poll_round%3==0:
+    ps=subprocess.run(['pgrep','-f','run_cvd|qemu-system-aarch64'],capture_output=True,text=True)
+    if not ps.stdout.strip():
+     print("Emulator process monitor: background CVD/QEMU terminated; ending polling loop early to inspect logs.")
+     break
    try:
     subprocess.run([str(cvd/'bin/adb'),'connect','127.0.0.1:6520'],capture_output=True,timeout=20)
     p=adb(['shell','getprop','sys.boot_completed'])
     if p.returncode==0 and p.stdout.strip()==b'1': completed=True; break
    except subprocess.TimeoutExpired: pass
    time.sleep(20)
-  (evidence/'logcat.txt').write_bytes(adb(['logcat','-b','all','-d','-t','8000'],timeout=120).stdout)
-  (evidence/'properties.txt').write_bytes(adb(['shell','getprop']).stdout)
-  (evidence/'kernel.txt').write_bytes(adb(['shell','dmesg']).stdout)
+  def safe_dump(target, content, fallback=b"(no output recorded)\n"):
+   target.write_bytes(content if (content and len(content)>0) else fallback)
+  safe_dump(evidence/'logcat.txt',adb(['logcat','-b','all','-d','-t','8000'],timeout=120).stdout)
+  safe_dump(evidence/'properties.txt',adb(['shell','getprop']).stdout)
+  safe_dump(evidence/'kernel.txt',adb(['shell','dmesg']).stdout)
   if not completed: raise RuntimeError('sys.boot_completed=1 was not observed before timeout')
   actual_fingerprint=adb(['shell','getprop','ro.system.build.fingerprint']).stdout.decode(errors='replace').strip()
   architecture=adb(['shell','uname','-m']).stdout.decode(errors='replace').strip()
@@ -143,7 +158,7 @@ def run():
    (WORK/'runtime-test-vbmeta.img').unlink(missing_ok=True)
    if evidence.exists():
     for p in evidence.iterdir():
-     if p.is_file(): upload(testrel,p,name=label+'-'+p.name,replace=True)
+     if p.is_file() and p.stat().st_size>0: upload(testrel,p,name=label+'-'+p.name,replace=True)
    json_asset(testrel,'boot-results.json',results)
    s=state(); s['emulator']=results; save(s); checkpoint('test: '+label+' emulator evidence')
  if results.get('candidate',{}).get('boot_completed'):

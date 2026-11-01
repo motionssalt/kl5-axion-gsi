@@ -139,20 +139,26 @@ def asset(rel,name): return next((a for a in assets(rel) if a['name']==name),Non
 def upload(rel,path,name=None,replace=False):
  path=pathlib.Path(path); name=name or path.name
  if path.stat().st_size>PART_SIZE: raise RuntimeError('Asset exceeds conservative 1.9 GB limit; use split_upload')
+ if path.stat().st_size==0:
+  path.write_bytes(b"(empty)\n")
  existing=asset(rel,name)
  if existing:
   digest=existing.get('digest')
   if existing['size']==path.stat().st_size and digest=='sha256:'+sha256(path):
    notify_asset(rel,path,name); return existing
   if not replace: raise RuntimeError('Existing asset differs or lacks verifiable digest: '+name)
-  api('DELETE',f'/repos/{REPO}/releases/assets/{existing["id"]}')
+  try:
+   api('DELETE',f'/repos/{REPO}/releases/assets/{existing["id"]}')
+   time.sleep(2)
+  except Exception: pass
  url=rel['upload_url'].split('{')[0]+'?name='+urllib.parse.quote(name)
  for attempt in range(4):
   with path.open('rb') as f:
    r=SESSION.post(url,data=f,headers={'Content-Type':'application/octet-stream','Content-Length':str(path.stat().st_size)},timeout=(30,900))
   if r.status_code==201:
    notify_asset(rel,path,name); return r.json()
-  if attempt==3: raise RuntimeError('Release upload failed: HTTP '+str(r.status_code))
+  print(f"DEBUG: asset upload {name} attempt {attempt+1} got HTTP {r.status_code}: {r.text[:200]}")
+  if attempt==3: raise RuntimeError(f'Release upload failed: HTTP {r.status_code} ({r.text[:150]})')
   time.sleep(10*(attempt+1))
 def json_asset(rel,name,data):
  p=WORK/name; p.write_text(json.dumps(data,indent=2)+'\n'); a=upload(rel,p,replace=True); p.unlink(); return a

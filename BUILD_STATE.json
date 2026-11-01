@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T09:02:56.215355+00:00",
+  "updated": "2026-11-01T09:26:54.367Z",
   "phase": "5",
   "phases": {
     "1": {
@@ -33,13 +33,13 @@
       "evidence": []
     },
     "5": {
-      "status": "blocked",
-      "notes": "Release upload failed: HTTP 400",
+      "status": "running",
+      "notes": "Resolved vhost-vsock permissions, added QEMU fast fail process monitoring, and fixed Release upload HTTP 400 bug. Emulator run re-initiated.",
       "evidence": []
     },
     "6": {
       "status": "blocked",
-      "notes": "Deferred until phases 1\u20135 have produced a released, boot-tested image. No Apps client or Google packages injected.",
+      "notes": "Deferred until phases 1–5 have produced a released, boot-tested image. No Apps client or Google packages injected.",
       "evidence": []
     },
     "7": {
@@ -169,6 +169,10 @@
     {
       "at": "2026-11-01T06:49:57.010586+00:00",
       "decision": "Fixed Ubuntu 24.04 noble package compatibility in emulator host prerequisites: removed obsolete libgl1-mesa-glx dummy package, installed libgl1/libglx-mesa0/libgl1-mesa-dri/libpulse0, and added resilient group creation for kvm/cvdnetwork/render."
+    },
+    {
+      "at": "2026-11-01T09:26:54.367Z",
+      "decision": "Fixed QEMU vhost-vsock permission denied failure (modprobe vhost_vsock, chmod 666 /dev/vhost-vsock, vhost_user_vsock flag), added CVD process monitoring to terminate polling immediately upon unexpected exit, and eliminated Release upload 400/422 errors for 0-byte log artifacts."
     }
   ],
   "blockers": [
@@ -189,12 +193,6 @@
       "at": "2026-11-01T06:16:58.763692+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
-    },
-    {
-      "id": "emulator",
-      "at": "2026-11-01T09:02:38.062973+00:00",
-      "phase": 5,
-      "message": "Release upload failed: HTTP 400"
     }
   ],
   "releases": [
