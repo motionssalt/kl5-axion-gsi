@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:08:36.437838+00:00",
+  "updated": "2026-11-01T00:08:40.717185+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -139,6 +139,10 @@
     {
       "tag": "candidate-2ad2e18b-4f53cda1",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-4f53cda1"
+    },
+    {
+      "tag": "pipeline-status",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/pipeline-status"
     }
   ],
   "disk_observations": [
@@ -199,7 +203,6 @@
     }
   ],
   "next_actions": [
-    "Retry stock mirroring after backoff or accept verified uploaded Release parts; independent base analysis can proceed.",
     "Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.",
     "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
     "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
@@ -342,6 +345,13 @@
       "blockers": [
         "sandbox-prerequisite"
       ]
+    }
+  },
+  "telegram_deliveries": {
+    "document:FINAL_REPORT.md:2c7d769e140b7f42932c7c0b40f911401fd883dfb2cea4cfe92efb01662e6119": {
+      "at": "2026-11-01T00:08:40.717168+00:00",
+      "name": "FINAL_REPORT.md",
+      "sha256": "2c7d769e140b7f42932c7c0b40f911401fd883dfb2cea4cfe92efb01662e6119"
     }
   }
 }
