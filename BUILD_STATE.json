@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:17:03.973248+00:00",
+  "updated": "2026-11-01T06:17:07.307083+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -149,6 +149,10 @@
     {
       "at": "2026-11-01T06:00:56.161122+00:00",
       "decision": "Designed and approved evidence-gated compatibility patches for MT6768 MediaTek C2 1080p profiles (media_profiles_V1_0.xml), debug.stagefright.c2inputsurface=-1, vendor.camera.tran.nums=1, fingerprint sensor /dev nodes chown/chmod + vendor data dirs, USB controller musb-hdrc + tran_battery/OTG_CTL 5V VBUS trigger, VINTF compatibility matrix, and fixed missing libpulse0 emulator dependency in pipeline.yml."
+    },
+    {
+      "at": "2026-11-01T06:17:07.307070+00:00",
+      "decision": "Bounded self-dispatch continuation after interrupted/failed job; next attempt 1. Deterministic blockers use scheduled backoff instead of busy loops."
     }
   ],
   "blockers": [
