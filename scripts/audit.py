@@ -229,9 +229,10 @@ def summarize():
  missing_deps=sorted({dep for r in records for dep in r.get('needed',[]) if dep not in stocklibs and dep not in baselibs})
  # Dependency gaps are candidates, not proof: linker namespace/export restrictions need device logs.
  coverage={k:{'stock_files':sum(k in r['categories'] for r in records),'base_files':sum(k in r['categories'] for r in base_records),'status':'inventoried; not hardware tested' if any(k in r['categories'] for r in records) else 'not found in extracted partitions; not proof of absence'} for k in CATEGORIES}
+ base_hashes={r['sha256'] for r in base_records if r.get('sha256')}
  gaps=[]
  for n,cat in enumerate(['media','camera','fingerprint','usb_otg']+[k for k in CATEGORIES if k not in ['media','camera','fingerprint','usb_otg']]):
-  candidates=[{'partition':r['partition'],'path':r['path'],'sha256':r.get('sha256')} for r in records if cat in r['categories'] and not any(b['sha256']==r.get('sha256') for b in base_records)]
+  candidates=[{'partition':r['partition'],'path':r['path'],'sha256':r.get('sha256')} for r in records if cat in r['categories'] and r.get('sha256') and r['sha256'] not in base_hashes]
   gaps.append({'rank':n+1,'category':cat,'status':'needs device/framework linkage evidence; no blind vendor-file copying','stock_different_or_absent_in_base':candidates,'caveat':'Stock vendor/odm remain on device. Their absence inside GSI is not itself a defect.'})
  result={'schema':1,'stock_partitions':[x['partition'] for x in stockinv],'base_partitions':[x['partition'] for x in baseinv],'coverage':coverage,'stock':stockinv,'base':baseinv,'gap_list':gaps,'unresolved_sonames_candidates':missing_deps,'verification':'Static audit only; no hardware or emulator boot claim.','limitations':['Binary SELinux policy rules are not decompiled; contexts/CIL only when present.','VINTF XML inventory is not checkvintf proof.','Framework overlay resources decoded only when aapt succeeds.','Differences do not justify overriding stock vendor configs or base performance settings.']}
  (ROOT/'docs/audit.json').write_text(json.dumps(result,indent=2)+'\n')
