@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:38:29.948021+00:00",
+  "updated": "2026-11-01T06:38:33.556981+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -157,6 +157,10 @@
     {
       "at": "2026-11-01T06:32:18.422879+00:00",
       "decision": "Bounded self-dispatch continuation after interrupted/failed job; next attempt 2. Deterministic blockers use scheduled backoff instead of busy loops."
+    },
+    {
+      "at": "2026-11-01T06:38:33.556968+00:00",
+      "decision": "Bounded self-dispatch continuation after interrupted/failed job; next attempt 3. Deterministic blockers use scheduled backoff instead of busy loops."
     }
   ],
   "blockers": [
