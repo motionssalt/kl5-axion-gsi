@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:23:23.993109+00:00",
+  "updated": "2026-11-01T00:23:25.792318+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -454,12 +454,14 @@
       "retry_after": "2026-11-01T06:19:44.733713+00:00"
     },
     "emulator": {
-      "fingerprint": "c44d174d3044743723049362fdb9f048b49c3ac56e5bbadb9021b46d04327a09",
-      "at": "2026-11-01T00:08:19.931740+00:00",
+      "fingerprint": "05c7732bbdfc7b5cec2ded978a995432b8122246c3a2ca74f6ac90183067d697",
+      "at": "2026-11-01T00:23:25.791363+00:00",
       "exit_code": 0,
       "blockers": [
+        "summary-audit",
         "emulator"
-      ]
+      ],
+      "retry_after": "2026-11-01T06:23:25.792297+00:00"
     },
     "sandbox": {
       "fingerprint": "cd72e7ae369cea86d5e0c5f7deb50e72b61ab8c50a397feab61d98a07ab05df7",
@@ -516,9 +518,14 @@
       ]
     },
     "emulator": {
-      "status": "running",
+      "status": "blocked",
       "started": "2026-11-01T00:23:20.210765+00:00",
-      "run_id": "41255434608"
+      "run_id": "41255434608",
+      "finished": "2026-11-01T00:23:25.792315+00:00",
+      "blockers": [
+        "summary-audit",
+        "emulator"
+      ]
     }
   },
   "base_static_verification": {
