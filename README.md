@@ -9,7 +9,7 @@ This is a prebuilt-image patch pipeline, **not an Android source build**. The st
 <!-- STATUS:START -->
 ### Latest execution report
 
-Updated: 2026-11-01T09:02:53.409816+00:00
+Updated: 2026-11-01T14:03:01.228086+00:00
 
 **No emulator result proves MediaTek hardware compatibility.**
 
@@ -18,8 +18,8 @@ Updated: 2026-11-01T09:02:53.409816+00:00
 | 1 | done | Public repository, encrypted secrets, Actions workflows, disk/release helpers and persistent state installed. Local code tests passed. |
 | 2 | done | Base mirrored with verified SHA-256; stock availability recorded separately. |
 | 3 | done | Static inventory produced; see explicit coverage limits. Hardware equivalence is not established. |
-| 4 | done | Candidate generated with static integrity checks. Boot/hardware unverified. |
-| 5 | running | Fixed vhost-vsock permissions (modprobe + chmod 666), fast-fail process monitoring, and release upload HTTP 400 on 0-byte logs. |
+| 4 | done | Evidence-backed compatibility patches generated and approved: Media, Camera, Fingerprint, USB OTG, VINTF, Props, Hardware Permissions. |
+| 5 | blocked | Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass |
 | 6 | blocked | Deferred until phases 1–5 have produced a released, boot-tested image. No Apps client or Google packages injected. |
 | 7 | done | Daily upstream watcher and manual URL reapply workflow installed. Actual updated image still requires safe patches and emulator evidence. |
 
@@ -35,6 +35,7 @@ Public repository, encrypted secrets, Telegram notifications, stock-first split 
 
 - **fingerprint-usb-guard**: Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed.
 - **otg-hardware**: Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5.
+- **emulator**: Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass
 - **sandbox-prerequisite**: First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim.
 
 ## Next autonomous actions
