@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:13:58.828652+00:00",
+  "updated": "2026-11-01T06:14:04.790564+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -29,10 +29,8 @@
     },
     "4": {
       "status": "done",
-      "notes": "Evidence-backed compatibility patches generated and approved: Media, Camera, Fingerprint, USB OTG, VINTF, Props, Hardware Permissions.",
-      "evidence": [
-        "docs/PATCH_PLAN.json"
-      ]
+      "notes": "Candidate generated with static integrity checks. Boot/hardware unverified.",
+      "evidence": []
     },
     "5": {
       "status": "blocked",
@@ -832,145 +830,121 @@
   },
   "candidate": {
     "base_sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
-    "patchset_sha256": "04f2ef18095b0fec1204faac20a888e3d2ed410b6f4b9a83f8f10eb8ecac2ce3",
+    "patchset_sha256": "3c3afee118baa2b381f945d9061ab048ac53766973728933af6cf8c631bf765a",
     "parts": [
       {
         "name": "system.img.xz.part-0001",
-        "size": 1367825292,
-        "sha256": "27199642e1d3e6d3e4729731ed3778fcbdb38a0db0412d921051840f642ddaa8",
-        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/candidate-2ad2e18b-04f2ef18/system.img.xz.part-0001"
+        "size": 1367828468,
+        "sha256": "03a9065f2dc137b1617018cedee2bbc63f1ccd85562483d8b024b65a02566c3b",
+        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/candidate-2ad2e18b-3c3afee1/system.img.xz.part-0001"
       }
     ],
-    "sha256": "27199642e1d3e6d3e4729731ed3778fcbdb38a0db0412d921051840f642ddaa8",
-    "release": "candidate-2ad2e18b-04f2ef18",
+    "sha256": "03a9065f2dc137b1617018cedee2bbc63f1ccd85562483d8b024b65a02566c3b",
+    "release": "candidate-2ad2e18b-3c3afee1",
     "boot_verified": false,
     "hardware_verified": false,
     "patch_report": [
       {
         "id": "0001-media",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/media_profiles_V1_0.xml",
+            "status": "apply",
+            "before": null,
+            "after": "0802d59ed063138199592040b2662e9b71941a609ba785cae6281540bab9e109"
+          },
+          {
+            "target": "/system/etc/init/kl5_media.rc",
+            "status": "apply",
+            "before": null,
+            "after": "dde436845186e71c19d6c786f3ad6d963377cbac60c9fc324000c4baf134209f"
+          }
+        ]
       },
       {
         "id": "0002-camera",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/init/kl5_camera.rc",
+            "status": "apply",
+            "before": null,
+            "after": "6e4aacb10747553a5a0bafd4c4e7432905099935346ac5d9a228557e9cba7f3b"
+          }
+        ]
       },
       {
         "id": "0003-fingerprint",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/init/kl5_fingerprint.rc",
+            "status": "apply",
+            "before": null,
+            "after": "dd5627f55b84c7ec68d702587edfd0d1adb6025f95845bf2ecff3153c4944b57"
+          }
+        ]
       },
       {
         "id": "0004-usb_otg",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/init/kl5_usb.rc",
+            "status": "apply",
+            "before": null,
+            "after": "f8d2d67bfeb747ade276a15cdfa27bc3afa24d46a5efdbbfa51cf6196463bd52"
+          },
+          {
+            "target": "/system/bin/kl5-otg",
+            "status": "apply",
+            "before": null,
+            "after": "568c010b67e466a194f52a09bdc3d1f263c9eb67124ce785c9d5f4e57c116fa6"
+          }
+        ]
       },
       {
         "id": "0005-vintf",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0006-init",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/vintf/compatibility_matrix.kl5.xml",
+            "status": "apply",
+            "before": null,
+            "after": "7df1f6ff19af397368ead42b4acd8c66788b9e5c97a9505164a889b819d4ac2f"
+          }
+        ]
       },
       {
         "id": "0007-props",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0008-audio",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0009-sensors",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0010-gnss",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0011-nfc",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0012-bluetooth",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0013-wifi",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0014-telephony_ims",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0015-display",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0016-power_thermal_charging",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0017-vibrator_lights",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0018-overlays",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/etc/init/kl5_props.rc",
+            "status": "apply",
+            "before": null,
+            "after": "15f0aef8a4f56907823603d94276517f14ba7dab3a5e5b7b9cc5d236c9b06d40"
+          }
+        ]
       },
       {
         "id": "0019-permissions_sysconfig",
         "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0020-selinux",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
-      },
-      {
-        "id": "0021-hardware_apps",
-        "status": "skipped",
-        "operations": [],
-        "reason": "Proposed/unproven patch; not applied"
+        "operations": [
+          {
+            "target": "/system/etc/permissions/android.hardware.fingerprint.xml",
+            "status": "skipped",
+            "before": "2a71ae806bdc70e7f0f72c1ac010cae49fcb520efc4b10de52aaed57fe365662",
+            "after": "2a71ae806bdc70e7f0f72c1ac010cae49fcb520efc4b10de52aaed57fe365662"
+          },
+          {
+            "target": "/system/etc/permissions/android.hardware.usb.host.xml",
+            "status": "skipped",
+            "before": "a1e7f5a1014066e65bd674967bfcd84f9228e1d549af063a8d4874fa113a2c8c",
+            "after": "a1e7f5a1014066e65bd674967bfcd84f9228e1d549af063a8d4874fa113a2c8c"
+          }
+        ]
       },
       {
         "id": "0101-manual-typec-control",
@@ -980,7 +954,7 @@
             "target": "/system/bin/kl5-otg",
             "status": "apply",
             "before": null,
-            "after": "b1137d848b76164da782f44e4b2aa76fca53f80309ba980ca5d93e4f3e53ec77"
+            "after": "568c010b67e466a194f52a09bdc3d1f263c9eb67124ce785c9d5f4e57c116fa6"
           }
         ]
       }
