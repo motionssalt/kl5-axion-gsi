@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:06:11.950671+00:00",
+  "updated": "2026-11-01T06:13:58.828652+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -239,6 +239,10 @@
     {
       "tag": "emulator-evidence",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-evidence"
+    },
+    {
+      "tag": "candidate-2ad2e18b-3c3afee1",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-3c3afee1"
     }
   ],
   "disk_observations": [
