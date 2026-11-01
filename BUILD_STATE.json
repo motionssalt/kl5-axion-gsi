@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:03:26.059017+00:00",
+  "updated": "2026-11-01T06:05:28.208403+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -772,11 +772,9 @@
       ]
     },
     "base-audit": {
-      "status": "done",
-      "started": "2026-11-01T05:30:37.160039+00:00",
-      "run_id": "41277035674",
-      "finished": "2026-11-01T05:30:38.824835+00:00",
-      "blockers": []
+      "status": "running",
+      "started": "2026-11-01T06:05:28.208378+00:00",
+      "run_id": "41279115082"
     }
   },
   "base_static_verification": {
