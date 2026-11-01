@@ -2,7 +2,7 @@
 
 Static evidence only. Missing vendor files inside a GSI are NOT automatically gaps: the stock vendor stays on the device.
 
-Stock partitions: none
+Stock partitions: product, system, system_ext, tr_product, vendor
 
 Base partitions: system
 
@@ -10,27 +10,27 @@ Base partitions: system
 
 | Area | Stock files | Base files |
 |---|---:|---:|
-| vintf | 0 | 23 |
-| init | 0 | 103 |
-| props | 0 | 0 |
-| media | 0 | 57 |
-| camera | 0 | 37 |
-| fingerprint | 0 | 20 |
-| usb_otg | 0 | 17 |
-| audio | 0 | 498 |
-| sensors | 0 | 23 |
-| gnss | 0 | 19 |
-| nfc | 0 | 9 |
-| bluetooth | 0 | 19 |
-| wifi | 0 | 14 |
-| telephony_ims | 0 | 74 |
-| display | 0 | 176 |
-| power_thermal_charging | 0 | 46 |
-| vibrator_lights | 0 | 32 |
-| overlays | 0 | 483 |
-| permissions_sysconfig | 0 | 130 |
-| selinux | 0 | 78 |
-| hardware_apps | 0 | 13 |
+| vintf | 57 | 23 |
+| init | 289 | 105 |
+| props | 14 | 3 |
+| media | 157 | 57 |
+| camera | 192 | 39 |
+| fingerprint | 23 | 23 |
+| usb_otg | 55 | 19 |
+| audio | 600 | 500 |
+| sensors | 74 | 24 |
+| gnss | 58 | 19 |
+| nfc | 7 | 9 |
+| bluetooth | 60 | 20 |
+| wifi | 69 | 15 |
+| telephony_ims | 214 | 75 |
+| display | 118 | 176 |
+| power_thermal_charging | 183 | 48 |
+| vibrator_lights | 53 | 34 |
+| overlays | 47 | 483 |
+| permissions_sysconfig | 130 | 130 |
+| selinux | 53 | 78 |
+| hardware_apps | 5 | 13 |
 
 ## Ranked candidates
 
@@ -38,7 +38,7 @@ Video/camera, fingerprint and USB/OTG are first. Full details and exact stock pa
 
 ## ELF dependency candidates
 
-
+android.hardware.gnss-V1-ndk_platform.so, android.hardware.light-V1-ndk_platform.so, android.hardware.power-V2-ndk_platform.so, android.hardware.vibrator-V2-ndk_platform.so, android.system.keystore2-V1-ndk_platform.so, libadb_pairing_connection.so, libadb_pairing_server.so, libandroidicu.so, libicu.so, libnativehelper.so, libnativeloader.so, libneuralnetworks.so, libstatspull.so, libstatssocket.so, libtouch_ll_imp.so
 
 ## Limitations
 
