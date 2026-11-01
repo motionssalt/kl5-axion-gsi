@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:52:24.402475+00:00",
+  "updated": "2026-11-01T00:52:25.553741+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -33,11 +33,9 @@
       "evidence": []
     },
     "5": {
-      "status": "pending",
-      "notes": "Updated x86-host/ARM64-guest harness is queued after the active candidate build. No real base/candidate boot_completed or screenshots yet.",
-      "evidence": [
-        "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41257412968"
-      ]
+      "status": "running",
+      "notes": "Preparing real ARM64 emulator prerequisites.",
+      "evidence": []
     },
     "6": {
       "status": "blocked",
