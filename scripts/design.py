@@ -50,6 +50,7 @@ def design():
  if not approved: blocker('no-proven-system-patch','Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched.',4)
  else: clear('no-proven-system-patch')
  make_otg(text)
+ clear('patch-design')
  phase(4,'pending' if approved else 'blocked','Design report generated. Proposed patches are never applied automatically.',['docs/PATCH_PLAN.json'])
  checkpoint('patches: evidence-gated design and OTG discovery'); notify('KL5 patch design complete: '+str(len(approved))+' proven-safe image operations; unproven gaps remain blocked.')
 

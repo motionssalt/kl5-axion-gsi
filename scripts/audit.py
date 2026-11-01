@@ -92,6 +92,7 @@ def publish_partition(partition,path,scope,rel):
   subprocess.run(['sudo','chown','-R',str(os.getuid())+':'+str(os.getgid()),str(out)],check=True)
   result=json.loads((out/'inventory.json').read_text())
  result['audit_version']=AUDIT_VERSION
+ result['read_privilege']='root read-only; source file modes and labels were not modified'
  result['filesystem']=fs; result['image_sha256']=sha256(path)
  (out/'inventory.json').write_text(json.dumps(result,indent=2)+'\n')
  archive=WORK/name
@@ -118,7 +119,8 @@ def super_audit(z,entry,rel):
  r=subprocess.run(['python3',str(tool),'--info',str(superpath)],capture_output=True,text=True,timeout=300)
  info.write_text(r.stdout+'\n'+r.stderr); upload(rel,info,replace=True)
  # Per-partition extraction is strictly sequential; never unpack the whole super.
- for partition in ['vendor','odm','product','system_ext','system']:
+ failures=[]
+ for partition in ['vendor','odm','product','system_ext','system','tr_product']:
   if asset(rel,f'stock-{partition}-audit.tar.gz'): continue
   found=False
   for name in [partition+'_a',partition]:
@@ -126,10 +128,18 @@ def super_audit(z,entry,rel):
    p=subprocess.run(['python3',str(tool),'-p',name,str(superpath),str(out)],capture_output=True,text=True,timeout=1200)
    candidates=list(out.glob('*.img'))
    if p.returncode==0 and candidates:
-    image=candidates[0]; publish_partition(partition,image,'stock',rel); image.unlink(); found=True; break
+    image=candidates[0]
+    try:
+     if image.stat().st_size<2048: continue
+     publish_partition(partition,image,'stock',rel); found=True; break
+    except Exception as exc:
+     failures.append({'partition':partition,'logical_name':name,'error':str(exc)})
+    finally: image.unlink(missing_ok=True)
    shutil.rmtree(out,ignore_errors=True)
   if not found: decision('Stock logical partition '+partition+' was not extractable/present; audit coverage records the gap, not compatibility.')
  superpath.unlink()
+ json_asset(rel,'partition-extraction-errors.json',failures)
+ if failures: decision('Some stock partitions failed extraction/inventory; remaining partitions were still processed. See partition-extraction-errors.json.')
 
 def stock():
  phase(3,'running','Selective stock extraction and read-only filesystem audit.'); disk('stock-audit-start'); checkpoint('state: stock audit started')
@@ -144,7 +154,7 @@ def stock():
    if i.filename.lower().endswith('.txt'): headers[i.filename]['text']=head.decode(errors='replace')
  json_asset(rel,'stock-boot-and-scatter.json',headers)
  direct={}
- for partition in ['vendor','odm','product','system_ext','system']:
+ for partition in ['vendor','odm','product','system_ext','system','tr_product']:
   matches=[i for i in z.infolist() if re.search(r'(^|/)'+partition+r'(?:_a)?\.img$',i.filename,re.I)]
   if matches: direct[partition]=matches[0]
  for partition,entry in direct.items():
@@ -185,7 +195,7 @@ def collect(scope):
  if scope=='stock' or base_input:
   known=release(known_tag)
   for a in assets(known):
-   match=re.fullmatch(re.escape(scope)+r'-(vendor|odm|product|system_ext|system)-audit\.tar\.gz',a['name'])
+   match=re.fullmatch(re.escape(scope)+r'-(vendor|odm|product|system_ext|system|tr_product)-audit\.tar\.gz',a['name'])
    if match and match[1] not in fragments: fragments[match[1]]={'asset':a['name'],'release':known_tag}
  for partition,item in fragments.items():
   rel=release(item['release']); a=asset(rel,item['asset']); p=download(a['browser_download_url'],WORK/item['asset'])
