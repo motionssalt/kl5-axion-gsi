@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:15:19.031881+00:00",
-  "phase": "2",
+  "updated": "2026-11-01T00:15:20.785075+00:00",
+  "phase": "3",
   "phases": {
     "1": {
       "status": "done",
@@ -20,12 +20,9 @@
       ]
     },
     "3": {
-      "status": "blocked",
-      "notes": "Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.",
-      "evidence": [
-        "docs/audit.json",
-        "docs/AUDIT.md"
-      ]
+      "status": "running",
+      "notes": "Selective stock extraction and read-only filesystem audit.",
+      "evidence": []
     },
     "4": {
       "status": "blocked",
@@ -225,6 +222,13 @@
       "total": 154894188544,
       "free": 117936013312,
       "used": 36941398016
+    },
+    {
+      "at": "2026-11-01T00:15:20.785059+00:00",
+      "label": "stock-audit-start",
+      "total": 154894188544,
+      "free": 117800652800,
+      "used": 37076758528
     }
   ],
   "next_actions": [
