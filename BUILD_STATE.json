@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:36:07.488875+00:00",
-  "phase": "4",
+  "updated": "2026-11-01T00:36:08.680377+00:00",
+  "phase": "6",
   "phases": {
     "1": {
       "status": "done",
@@ -145,12 +145,6 @@
       "message": "Runtime artifact pinning is resolved. Real AxionOS ARM64 emulator boot/UI evidence remains unavailable; corrected queued workflow uses x86 host with explicit QEMU ARM64 guest."
     },
     {
-      "id": "sandbox-prerequisite",
-      "at": "2026-11-01T00:23:39.889176+00:00",
-      "phase": 6,
-      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
-    },
-    {
       "id": "no-proven-system-patch",
       "at": "2026-11-01T00:29:32.388201+00:00",
       "phase": 4,
@@ -167,6 +161,12 @@
       "at": "2026-11-01T00:29:39.194914+00:00",
       "phase": 4,
       "message": "No approved evidence-backed compatibility patch; no image fabricated"
+    },
+    {
+      "id": "sandbox-prerequisite",
+      "at": "2026-11-01T00:36:08.680369+00:00",
+      "phase": 6,
+      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
     }
   ],
   "releases": [
