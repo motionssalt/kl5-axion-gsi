@@ -24,6 +24,23 @@ def promote():
  api('PATCH',f'/repos/{REPO}/releases/{rel["id"]}',json={'prerelease':False})
  s=state(); s['published_build']=final; save(s); checkpoint('release: emulator-verified compatibility build'); notify('KL5 build Release published: '+rel['html_url']+'. Emulator boot/UI only; physical hardware still needs testing.')
 
+def resend_pending_screenshots():
+ # Reconcile Release screenshots from earlier sessions; never fabricate screenshots.
+ r=SESSION.get(API+'/repos/'+REPO+'/releases/tags/emulator-evidence',timeout=30)
+ if r.status_code==404: return
+ if r.status_code!=200:
+  blocker('telegram-backfill','Cannot enumerate prior emulator evidence for screenshot delivery; HTTP '+str(r.status_code)); return
+ rel=r.json()
+ for a in assets(rel):
+  if not a['name'].lower().endswith('.png'): continue
+  digest=a.get('digest','').removeprefix('sha256:')
+  key='photo:'+a['name']+':'+digest
+  if digest and key in state().get('telegram_deliveries',{}): continue
+  p=download(a['browser_download_url'],WORK/a['name'],digest or None)
+  try: send_telegram_file(p,'KL5 resumed screenshot: '+a['name']+'. Emulator boot/UI only; physical hardware unverified.','photo',delivery_name=a['name'])
+  finally: p.unlink(missing_ok=True)
+ checkpoint('notify: reconcile pending screenshot deliveries')
+
 def report():
  s=state(); lines=['# KL5 pipeline status','',f'Updated: {now()}','', '**No emulator result proves MediaTek hardware compatibility.**','', '| Phase | Status | Notes |','|---|---|---|']
  for number,p in sorted(s['phases'].items(),key=lambda x:int(x[0])): lines.append('| '+number+' | '+p['status']+' | '+p.get('notes','').replace('\n',' ').replace('|','/')+' |')
@@ -54,7 +71,7 @@ def report():
 
 def continuation():
  count=int(os.getenv('CONTINUATION_COUNT','0') or 0); s=state()
- incomplete=any(p['status']=='running' for p in s['phases'].values())
+ incomplete=any(p['status']=='running' for p in s['phases'].values()) or any(p.get('status')=='running' for p in s.get('stages',{}).values())
  failed=os.getenv('INFRA_FAILED')=='true'
  if (incomplete or failed) and count<3:
   decision('Bounded self-dispatch continuation after interrupted/failed job; next attempt '+str(count+1)+'. Deterministic blockers use scheduled backoff instead of busy loops.')
@@ -65,6 +82,6 @@ if __name__=='__main__':
  import sys
  try:
   if '--promote' in sys.argv: promote()
-  else: report(); continuation()
+  else: resend_pending_screenshots(); report(); continuation()
  except Exception as e:
   blocker('report-delivery',str(e)); checkpoint('state: final report/release delivery blocker'); notify('KL5 report delivery needs retry: '+str(e)); raise

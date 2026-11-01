@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Input/code-fingerprinted stage cache. Unsupported inputs do not cause busy loops."""
-import hashlib, json, os, subprocess, sys
+import datetime, hashlib, json, os, subprocess, sys
 from common import *
 TASKS={'stock-audit':['audit.py','stock'],'base-audit':['audit.py','base'],'summary':['audit.py','summary'],'design':['design.py'],'build':['patch_image.py'],'emulator':['emulator.py'],'sandbox':['sandboxed_play.py']}
 
@@ -14,14 +14,27 @@ def run(name):
  if name=='emulator' and (ROOT/'docs/EMULATOR_ARTIFACTS.json').exists(): h.update((ROOT/'docs/EMULATOR_ARTIFACTS.json').read_bytes())
  fingerprint=h.hexdigest(); cached=s.get('stage_cache',{}).get(name,{})
  if cached.get('fingerprint')==fingerprint:
-  print('Unchanged stage evidence/inputs; skipped:',name); return
+  retry_at=cached.get('retry_after')
+  if not cached.get('blockers') and cached.get('exit_code')==0:
+   print('Unchanged successful stage evidence/inputs; skipped:',name); return
+  if retry_at and datetime.datetime.fromisoformat(retry_at)>datetime.datetime.now(datetime.timezone.utc):
+   print('Blocked stage is in bounded retry backoff:',name); return
+  print('Retrying blocked/interrupted stage after backoff:',name)
  # Only initial phases need input prerequisites. Base analysis proceeds without stock.
  if name=='stock-audit' and not ((ROOT/'stock-manifest.json').exists() and json.loads((ROOT/'stock-manifest.json').read_text()).get('complete')): print('Stock audit awaits complete mirror'); return
  if name in ['base-audit','build','emulator'] and not s.get('base_input'): print('Stage awaits base mirror:',name); return
  notify('KL5 stage '+name+' started.')
+ s=state(); s.setdefault('stages',{})[name]={'status':'running','started':now(),'run_id':os.getenv('GITHUB_RUN_ID')}; save(s)
+ checkpoint('stage: '+name+' started')
  before={b['id']:b for b in s['blockers']}
  p=subprocess.run([sys.executable,str(ROOT/'scripts'/cmd[0])]+cmd[1:])
+ if p.returncode: blocker('stage-'+name,'Stage process exited '+str(p.returncode)+'; Release checkpoints retained.')
+ else: clear('stage-'+name)
  after=state(); after.setdefault('stage_cache',{})[name]={'fingerprint':fingerprint,'at':now(),'exit_code':p.returncode,'blockers':[b['id'] for b in after['blockers'] if b['id'] not in before or before[b['id']]!=b]}; save(after)
+ issues=after['stage_cache'][name]['blockers']
+ after['stage_cache'][name]['retry_after']=(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(hours=6)).isoformat() if issues or p.returncode else None
+ after.setdefault('stages',{})[name].update({'status':'blocked' if issues or p.returncode else 'done','finished':now(),'blockers':issues})
+ save(after)
  checkpoint('cache: '+name+' input fingerprint')
  issues=after['stage_cache'][name]['blockers']
  notify('KL5 stage '+name+' finished'+(' with blockers: '+', '.join(issues) if issues else '.')+' This is not a hardware verification result.')

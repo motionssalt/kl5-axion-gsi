@@ -34,7 +34,11 @@ def plan(mount,patches):
    sdk=None
    for prop in [mount/'system/build.prop',mount/'build.prop',mount/'system/etc/prop.default',mount/'etc/prop.default']:
     if prop.is_file():
-     match=re.search(r'^ro.build.version.sdk=(\d+)\s*$',prop.read_text(errors='replace'),re.M)
+     try: content=prop.read_text(errors='replace')
+     except PermissionError:
+      # Stock/GSI build.prop is often mode 0600. Never change source permissions.
+      content=subprocess.run(['sudo','cat','--',str(prop)],check=True,capture_output=True,text=True).stdout
+     match=re.search(r'^ro.build.version.sdk=(\d+)\s*$',content,re.M)
      if match: sdk=int(match[1]); break
    if sdk not in patch['api_levels']:
     entry.update({'status':'conflicted','reason':'Unverified or incompatible Android API level'}); report.append(entry); continue

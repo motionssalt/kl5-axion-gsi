@@ -34,10 +34,17 @@ def unpack(path,dest):
     if not valid(m.filename): raise RuntimeError('Unsafe emulator ZIP path')
     if (m.external_attr>>16)&0o170000==0o120000: raise RuntimeError('Symlink in emulator ZIP refused')
    z.extractall(dest)
+   # zipfile does not preserve executable mode bits; image ZIPs may include tools.
+   for m in z.infolist():
+    mode=(m.external_attr>>16)&0o777
+    if mode and not m.is_dir(): (dest/m.filename).chmod(mode)
  else:
   with tarfile.open(path) as tf:
    for m in tf:
-    if not valid(m.name) or m.isdev() or m.isfifo() or m.issym() or m.islnk(): raise RuntimeError('Unsafe emulator tar entry')
+    if not valid(m.name) or m.isdev() or m.isfifo(): raise RuntimeError('Unsafe emulator tar entry')
+    if m.issym() or m.islnk():
+     target=(dest/m.linkname) if m.islnk() else (dest/m.name).parent/m.linkname
+     if pathlib.PurePosixPath(m.linkname).is_absolute() or not target.resolve().is_relative_to(dest): raise RuntimeError('Escaping emulator archive link refused')
    tf.extractall(dest,filter='data')
 
 def adb(cmd,timeout=30):
@@ -49,11 +56,19 @@ def collect_boot(label,image,config):
  env=os.environ.copy(); env['HOME']=str(cvd)
  # QEMU TCG is explicit when KVM unavailable; still bounded by the Actions job timeout.
  args=[str(launch),'--daemon','--resume=false','--system_image='+str(image),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
- if not kvm: args+=['--vm_manager=qemu_cli','--enable_kvm=false']
- r=subprocess.run(args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
- (evidence/'launcher.log').write_bytes(r.stdout)
+ if not kvm:
+  args+=['--vm_manager=qemu_cli']
+  helptext=subprocess.run([str(launch),'--helpxml'],cwd=cvd,env=env,capture_output=True,text=True,timeout=60)
+  if '<name>enable_kvm</name>' in helptext.stdout: args+=['--enable_kvm=false']
+  else:
+   (evidence/'tcg-prerequisite.txt').write_text('No /dev/kvm; this Cuttlefish package does not expose enable_kvm. Native ARM64 Linux QEMU manager may hardcode KVM. Boot must fail honestly if software fallback is unavailable.\n')
  completed=False; deadline=time.monotonic()+(3600 if kvm else 7200)
  try:
+  try: r=subprocess.run(args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
+  except subprocess.TimeoutExpired as exc:
+   (evidence/'launcher.log').write_bytes(exc.stdout or b'Launcher timed out')
+   raise RuntimeError('Cuttlefish launcher timed out; partial launcher log retained') from None
+  (evidence/'launcher.log').write_bytes(r.stdout)
   if r.returncode!=0: raise RuntimeError('Cuttlefish launcher failed; see launcher log')
   while time.monotonic()<deadline:
    try:
@@ -80,7 +95,8 @@ def collect_boot(label,image,config):
   (evidence/'ui-hierarchy.xml').write_bytes(adb(['exec-out','cat','/sdcard/kl5-ui.xml']).stdout)
   return {'boot_completed':True,'screenshots':[x[0]+'.png' for x in screenshots],'kvm':kvm,'scope':'Emulator proves boot and UI ONLY. MediaTek video/camera/fingerprint/OTG unverified.'},evidence
  finally:
-  subprocess.run([str(cvd/'bin/stop_cvd')],cwd=cvd,env=env,capture_output=True,timeout=120)
+  try: subprocess.run([str(cvd/'bin/stop_cvd')],cwd=cvd,env=env,capture_output=True,timeout=120)
+  except (OSError,subprocess.TimeoutExpired): (evidence/'stop-warning.txt').write_text('stop_cvd failed or timed out; CI runner teardown remains the cleanup boundary.\n')
   # Collect host/device logs, not just logcat. Limit individual files.
   for source in cvd.glob('cuttlefish*/instances/*/logs/*'):
    if source.is_file() and source.stat().st_size<16*1024**2: shutil.copy2(source,evidence/('host-'+source.name))

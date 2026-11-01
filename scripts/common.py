@@ -41,14 +41,14 @@ def notify(text):
   r=requests.post('https://api.telegram.org/bot'+token+'/sendMessage',json={'chat_id':chat,'text':text[:3500]},timeout=20)
   if r.status_code!=200: blocker('telegram','Telegram notification failed (HTTP '+str(r.status_code)+').')
  except requests.RequestException: blocker('telegram','Telegram notification transport failed; credentials not logged.')
-def send_telegram_file(path,caption,kind=None):
+def send_telegram_file(path,caption,kind=None,delivery_name=None):
  """Never expose secret-bearing request URLs; persist content-hash delivery receipts."""
  path=pathlib.Path(path); token=os.getenv('TELEGRAM_BOT_TOKEN'); chat=os.getenv('TELEGRAM_CHAT_ID')
  if not token or not chat:
   if os.getenv('CI')=='true': blocker('telegram','Telegram media delivery requires repository secrets.')
   return False
  kind=kind or ('photo' if path.suffix.lower()=='.png' else 'document')
- digest=sha256(path); key=kind+':'+path.name+':'+digest
+ digest=sha256(path); key=kind+':'+(delivery_name or path.name)+':'+digest
  if key in state().get('telegram_deliveries',{}): return True
  if path.stat().st_size>10*1024**2:
   notify(caption+' (too large for configured media limit; see GitHub Release)'); return False
@@ -57,15 +57,15 @@ def send_telegram_file(path,caption,kind=None):
    response=requests.post('https://api.telegram.org/bot'+token+('/sendPhoto' if kind=='photo' else '/sendDocument'),data={'chat_id':chat,'caption':caption[:1000]},files={kind:(path.name,f)},timeout=(20,90))
   if response.status_code!=200:
    blocker('telegram-media','Telegram '+kind+' delivery HTTP '+str(response.status_code)+'; Release artifact retained.'); return False
-  s=state(); s.setdefault('telegram_deliveries',{})[key]={'at':now(),'name':path.name,'sha256':digest}; save(s); return True
+  s=state(); s.setdefault('telegram_deliveries',{})[key]={'at':now(),'name':delivery_name or path.name,'sha256':digest}; save(s); return True
  except requests.RequestException:
   blocker('telegram-media','Telegram media transport failed; Release artifact retained; credentials not logged.'); return False
 
 def notify_asset(rel,path,name):
  if name.lower().endswith('.png'):
-  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name+'. Emulator boot/UI only; physical hardware unverified.','photo')
+  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name+'. Emulator boot/UI only; physical hardware unverified.','photo',delivery_name=name)
  elif any(x in name.lower() for x in ['logcat','launcher.log','kernel.txt','boot-results','final_report']):
-  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name,'document')
+  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name,'document',delivery_name=name)
 
 def checkpoint(message):
  if os.getenv('CI')!='true': return

@@ -69,13 +69,20 @@ def inspect_tree(root,partition,output):
        except ET.ParseError: rec['parse_error']='XML parse failed'
      else: rec['extraction_skipped']='Text evidence budget exceeded'
     if name.endswith('.so') or '/hw/' in rel:
+     with p.open('rb') as elf: elf_header=elf.read(20)
+     if elf_header.startswith(b'\x7fELF') and len(elf_header)>=20:
+      rec['elf_class']=64 if elf_header[4]==2 else 32
+      rec['elf_machine']=int.from_bytes(elf_header[18:20],'little' if elf_header[5]==1 else 'big')
      r=subprocess.run(['readelf','-d',str(p)],capture_output=True,text=True,timeout=15)
      rec['needed']=re.findall(r'\(NEEDED\).*?\[(.*?)\]',r.stdout); rec['soname']=re.findall(r'\(SONAME\).*?\[(.*?)\]',r.stdout)
     if name.endswith('.apk') and ('overlays' in cats or 'hardware_apps' in cats) and shutil.which('aapt'):
      r=subprocess.run(['aapt','dump','badging',str(p)],capture_output=True,text=True,timeout=30)
      rec['apk_badging']=r.stdout[:16000]
+     rec['apk_badging_returncode']=r.returncode
      if 'overlays' in cats:
       r=subprocess.run(['aapt','dump','--values','resources',str(p)],capture_output=True,text=True,timeout=60)
+      rec['resource_decode_returncode']=r.returncode
+      if r.returncode: errors.append({'path':rel,'error':'RRO resources not decoded; aapt exit '+str(r.returncode)})
       target=evidence/(rel+'.resources.txt'); target.parent.mkdir(parents=True,exist_ok=True); target.write_text(r.stdout[:4*1024**2]); rec['resource_dump']=str(target.relative_to(output))
     records.append(rec)
    except (OSError,subprocess.TimeoutExpired) as e: errors.append({'path':rel,'error':type(e).__name__})
@@ -157,18 +164,22 @@ def stock():
  for partition in ['vendor','odm','product','system_ext','system','tr_product']:
   matches=[i for i in z.infolist() if re.search(r'(^|/)'+partition+r'(?:_a)?\.img$',i.filename,re.I)]
   if matches: direct[partition]=matches[0]
+ direct_errors=[]
  for partition,entry in direct.items():
   if asset(rel,f'stock-{partition}-audit.tar.gz'): continue
   require_space(min(entry.file_size,5*1024**3)); path=WORK/(partition+'.img')
   try:
    with z.open(entry) as src: raw_from_stream(src,path)
    publish_partition(partition,path,'stock',rel)
+  except Exception as exc:
+   direct_errors.append({'partition':partition,'entry':entry.filename,'error':str(exc)})
   finally: path.unlink(missing_ok=True)
+ if direct_errors: json_asset(rel,'direct-partition-errors.json',direct_errors)
  superentries=select_super(z)
  if superentries:
   decision('Canonical stock super selected by scatter-directory proximity: '+superentries[0].filename+'. Alternate Open/super is not assumed equivalent.')
   json_asset(rel,'stock-selected-super.json',{'selected':superentries[0].filename,'alternatives':[i.filename for i in superentries[1:]],'audit_version':AUDIT_VERSION})
- if superentries and not all(asset(rel,f'stock-{p}-audit.tar.gz') for p in ['vendor','product','system_ext']): super_audit(z,superentries[0],rel)
+ if superentries and not all(asset(rel,f'stock-{p}-audit.tar.gz') for p in ['vendor','product','system_ext','system']): super_audit(z,superentries[0],rel)
  if not direct and not superentries:
   payload=any(n.endswith('payload.bin') for n in names)
   raise RuntimeError('OTA payload.bin detected; delta/full payload extraction is not yet implemented safely.' if payload else 'No supported direct partition images or super.img in ZIP; inspect archive inventory in audit-stock Release.')
