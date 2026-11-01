@@ -118,6 +118,7 @@ def make_manual_typec(stockrecords,text):
   info=zipfile.ZipInfo('system/bin/kl5-otg'); info.external_attr=0o100755<<16; z.writestr(info,payload)
   z.writestr('stock-evidence.json',json.dumps(discovery,indent=2))
   z.writestr('stock-usb-hal.rc',content)
+  z.writestr('customize.sh','#!/system/bin/sh\nset_perm "$MODPATH/system/bin/kl5-otg" 0 0 0755\n')
   z.writestr('USAGE.txt','EXPERIMENTAL. NO hardware operation or enumeration verified.\nRoot: kl5-otg on|off|restore|status\nUnplug charger/USB before on, connect OTG device afterward.\nOff means sink-only; restore returns the pre-test port type.\nIf overlay mounting is unavailable: su -c sh /data/adb/modules/kl5_otg_manual/system/bin/kl5-otg status\nNo service.sh or boot work. No OTG_CTL writes, SELinux changes or vendor partition edits.\n')
  rel=release('experimental-otg','EXPERIMENTAL manual Type-C helper only, NOT a hardware fix. No emulator or real KL5 operation verified. Uses stock HAL-exposed standard port_type ABI; no OTG_CTL guess, boot daemon or polling. Disconnect charger/USB before on; off means sink-only; restore returns original mode. It may not resolve mouse detection. Module and direct root script are provided separately from any ROM build.')
  upload(rel,module,replace=True); upload(rel,ROOT/'scripts/kl5-otg.sh',name='kl5-otg.sh',replace=True)
