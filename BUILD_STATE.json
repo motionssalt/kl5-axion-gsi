@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:07:01.469331+00:00",
+  "updated": "2026-11-01T00:07:04.638055+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -29,7 +29,7 @@
     },
     "4": {
       "status": "blocked",
-      "notes": "Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version",
+      "notes": "No approved evidence-backed compatibility patch; no image fabricated",
       "evidence": []
     },
     "5": {
@@ -95,6 +95,12 @@
       "at": "2026-11-01T00:07:00.306527+00:00",
       "phase": 4,
       "message": "Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version"
+    },
+    {
+      "id": "image-build",
+      "at": "2026-11-01T00:07:04.637237+00:00",
+      "phase": 4,
+      "message": "No approved evidence-backed compatibility patch; no image fabricated"
     }
   ],
   "releases": [
@@ -117,6 +123,10 @@
     {
       "tag": "audit-report",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-report"
+    },
+    {
+      "tag": "candidate-2ad2e18b-4f53cda1",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-4f53cda1"
     }
   ],
   "disk_observations": [
