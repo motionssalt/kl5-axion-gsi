@@ -1,6 +1,6 @@
 # KL5 pipeline status
 
-Updated: 2026-11-01T06:44:54.648437+00:00
+Updated: 2026-11-01T09:02:53.409816+00:00
 
 **No emulator result proves MediaTek hardware compatibility.**
 
@@ -10,7 +10,7 @@ Updated: 2026-11-01T06:44:54.648437+00:00
 | 2 | done | Base mirrored with verified SHA-256; stock availability recorded separately. |
 | 3 | done | Static inventory produced; see explicit coverage limits. Hardware equivalence is not established. |
 | 4 | done | Candidate generated with static integrity checks. Boot/hardware unverified. |
-| 5 | blocked | Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass |
+| 5 | blocked | Release upload failed: HTTP 400 |
 | 6 | blocked | Deferred until phases 1–5 have produced a released, boot-tested image. No Apps client or Google packages injected. |
 | 7 | done | Daily upstream watcher and manual URL reapply workflow installed. Actual updated image still requires safe patches and emulator evidence. |
 
@@ -25,9 +25,9 @@ Public repository, encrypted secrets, Telegram notifications, stock-first split 
 ## Open blockers
 
 - **fingerprint-usb-guard**: Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed.
-- **emulator**: Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass
 - **otg-hardware**: Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5.
 - **sandbox-prerequisite**: First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim.
+- **emulator**: Release upload failed: HTTP 400
 
 ## Next autonomous actions
 
