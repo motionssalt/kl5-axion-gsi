@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T05:33:47.661359+00:00",
+  "updated": "2026-11-01T05:37:21.149685+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -676,6 +676,21 @@
       "at": "2026-11-01T00:56:13.596978+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "870cedf5bb36228f644f6ae2d08eed551f53ad8ede2498a997ddd0a2de1f496b"
+    },
+    "document:base-host-launcher.log:d704c5717a96d8802ee85e3eaa05102c6e16cae861abf7947f1642d16d6e0543": {
+      "at": "2026-11-01T05:37:12.538027+00:00",
+      "name": "base-host-launcher.log",
+      "sha256": "d704c5717a96d8802ee85e3eaa05102c6e16cae861abf7947f1642d16d6e0543"
+    },
+    "document:base-launcher.log:6dcd8ee9ecf6e71bdef826569120b68f9a293e5289e755261542741ec1bc82cc": {
+      "at": "2026-11-01T05:37:14.034283+00:00",
+      "name": "base-launcher.log",
+      "sha256": "6dcd8ee9ecf6e71bdef826569120b68f9a293e5289e755261542741ec1bc82cc"
+    },
+    "document:boot-results.json:48f4b1bc28f32830eebaa3d3c1ad5fb656e329d47988e12a758c391503f361bf": {
+      "at": "2026-11-01T05:37:21.148419+00:00",
+      "name": "boot-results.json",
+      "sha256": "48f4b1bc28f32830eebaa3d3c1ad5fb656e329d47988e12a758c391503f361bf"
     }
   },
   "stages": {
@@ -930,12 +945,7 @@
   "emulator": {
     "base": {
       "boot_completed": false,
-      "error": "Emulator super does not identify exactly one populated system/system_a partition",
-      "scope": "No hardware claim."
-    },
-    "candidate": {
-      "boot_completed": false,
-      "error": "Emulator super does not identify exactly one populated system/system_a partition",
+      "error": "Cuttlefish launcher failed; see launcher log",
       "scope": "No hardware claim."
     }
   }
