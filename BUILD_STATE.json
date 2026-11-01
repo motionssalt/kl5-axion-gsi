@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:05:55.262865+00:00",
-  "phase": "3",
+  "updated": "2026-11-01T06:06:07.529650+00:00",
+  "phase": "4",
   "phases": {
     "1": {
       "status": "done",
@@ -29,16 +29,9 @@
     },
     "4": {
       "status": "done",
-      "notes": "Evidence-backed patch set generated and approved: MediaTek C2/OMX 1080p profiles, C2 input surface fix, Camera property, Fingerprint sensor permissions & HAL binding, USB OTG controller/VBUS power trigger, VINTF declarations, Stock props, and Hardware permissions XML.",
+      "notes": "Evidence-backed compatibility patches generated and approved: Media, Camera, Fingerprint, USB OTG, VINTF, Props, Hardware Permissions.",
       "evidence": [
-        "docs/PATCH_PLAN.json",
-        "patches/0001-media/patch.json",
-        "patches/0002-camera/patch.json",
-        "patches/0003-fingerprint/patch.json",
-        "patches/0004-usb_otg/patch.json",
-        "patches/0005-vintf/patch.json",
-        "patches/0007-props/patch.json",
-        "patches/0019-permissions_sysconfig/patch.json"
+        "docs/PATCH_PLAN.json"
       ]
     },
     "5": {
@@ -168,12 +161,6 @@
       "message": "Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed."
     },
     {
-      "id": "otg-hardware",
-      "at": "2026-11-01T05:31:14.253802+00:00",
-      "phase": 4,
-      "message": "Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5."
-    },
-    {
       "id": "emulator",
       "at": "2026-11-01T05:40:26.841424+00:00",
       "phase": 5,
@@ -184,6 +171,12 @@
       "at": "2026-11-01T05:40:42.482410+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
+    },
+    {
+      "id": "otg-hardware",
+      "at": "2026-11-01T06:06:07.062997+00:00",
+      "phase": 4,
+      "message": "Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5."
     }
   ],
   "releases": [
