@@ -15,15 +15,8 @@ def discover():
    if config.get('api_level')!=36 or config.get('architecture')!='arm64': raise RuntimeError('Emulator must be Android 16/API 36 ARM64')
    if not config.get('host_sha256') or not config.get('images_sha256') or not config.get('build_id'): raise RuntimeError('Matching host/image build ID and SHA-256 are mandatory')
    return config
- attempts=[]
- # Discover only; do not download unmatched artifacts or silently use x86 system images.
- for endpoint in ['https://androidbuildinternal.googleapis.com/android/internal/build/v4/builds','https://www.googleapis.com/android/internal/build/v3/builds']:
-  try:
-   r=requests.get(endpoint,params={'branch':'aosp-android16-release','target':'aosp_cf_arm64_only_phone-userdebug','maxResults':1,'buildAttemptStatus':'complete','successful':'true'},timeout=30)
-   attempts.append({'endpoint':endpoint,'http_status':r.status_code,'body_excerpt':r.text[:1000]})
-  except requests.RequestException: attempts.append({'endpoint':endpoint,'error':'transport failure'})
- (ROOT/'docs/emulator-discovery.json').write_text(json.dumps(attempts,indent=2)+'\n')
- raise RuntimeError('No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes.')
+ from emulator_runtime import ensure_runtime
+ return ensure_runtime()
 
 def unpack(path,dest):
  dest=dest.resolve(); dest.mkdir(exist_ok=True)
@@ -52,15 +45,15 @@ def adb(cmd,timeout=30):
 
 def collect_boot(label,image,config):
  cvd=WORK/'cvd'; launch=cvd/'bin/launch_cvd'; evidence=WORK/('emulator-'+label); evidence.mkdir(exist_ok=True)
- kvm=pathlib.Path('/dev/kvm').exists()
+ kvm=pathlib.Path('/dev/kvm').exists() and platform.machine() in ['aarch64','arm64']
  env=os.environ.copy(); env['HOME']=str(cvd)
  # QEMU TCG is explicit when KVM unavailable; still bounded by the Actions job timeout.
  args=[str(launch),'--daemon','--resume=false','--system_image='+str(image),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
  if not kvm:
-  args+=['--vm_manager=qemu_cli']
+  args+=['--vm_manager=qemu_cli','--cpus=2','--memory_mb=4096']
   helptext=subprocess.run([str(launch),'--helpxml'],cwd=cvd,env=env,capture_output=True,text=True,timeout=60)
   if '<name>enable_kvm</name>' in helptext.stdout: args+=['--enable_kvm=false']
-  else:
+  elif platform.machine() in ['aarch64','arm64']:
    (evidence/'tcg-prerequisite.txt').write_text('No /dev/kvm; this Cuttlefish package does not expose enable_kvm. Native ARM64 Linux QEMU manager may hardcode KVM. Boot must fail honestly if software fallback is unavailable.\n')
  completed=False; deadline=time.monotonic()+(3600 if kvm else 7200)
  try:
@@ -114,8 +107,11 @@ def image_from_parts(manifest,path):
 
 def run():
  phase(5,'running','Preparing real ARM64 emulator prerequisites.'); checkpoint('state: emulator prerequisite validation')
- if platform.machine() not in ['aarch64','arm64']: raise RuntimeError('ARM64 image requires native ARM64 host or explicit emulated machine; no architecture substitution allowed')
- config=discover(); require_space(config.get('estimated_unpacked_bytes',12*1024**3))
+ config=discover()
+ host=config.get('host_architecture','arm64')
+ actual='arm64' if platform.machine() in ['aarch64','arm64'] else platform.machine()
+ if host!=actual: raise RuntimeError('Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted')
+ require_space(config.get('estimated_unpacked_bytes',12*1024**3))
  cvd=WORK/'cvd'; cvd.mkdir(exist_ok=True)
  for key in ['host','images']:
   p=download(config[key+'_url'],WORK/(key+'.archive'),config[key+'_sha256']); unpack(p,cvd); p.unlink()

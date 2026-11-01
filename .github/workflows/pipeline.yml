@@ -118,8 +118,8 @@ jobs:
   emulator:
     needs: audit-build
     if: always() && !cancelled()
-    runs-on: ubuntu-24.04-arm
-    timeout-minutes: 285
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
         with:
@@ -134,6 +134,7 @@ jobs:
         run: bash scripts/free_disk.sh
       - name: Resolve matching Android 16 ARM64 emulator pins before heavy setup
         id: pins
+        timeout-minutes: 35
         run: |
           python3 -m pip install --disable-pip-version-check 'requests==2.32.4'
           python3 scripts/emulator_preflight.py
