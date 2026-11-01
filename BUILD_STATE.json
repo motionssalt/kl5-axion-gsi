@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:06:47.778088+00:00",
+  "updated": "2026-11-01T00:06:55.083021+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -21,8 +21,11 @@
     },
     "3": {
       "status": "blocked",
-      "notes": "Image is neither raw ext4 nor EROFS",
-      "evidence": []
+      "notes": "Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.",
+      "evidence": [
+        "docs/audit.json",
+        "docs/AUDIT.md"
+      ]
     },
     "4": {
       "status": "pending",
@@ -80,6 +83,12 @@
       "at": "2026-11-01T00:06:46.093792+00:00",
       "phase": 3,
       "message": "Image is neither raw ext4 nor EROFS"
+    },
+    {
+      "id": "audit-coverage",
+      "at": "2026-11-01T00:06:51.241808+00:00",
+      "phase": 3,
+      "message": "Required stock partitions and/or base inventory remain incomplete."
     }
   ],
   "releases": [
@@ -98,6 +107,10 @@
     {
       "tag": "audit-stock",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-stock"
+    },
+    {
+      "tag": "audit-report",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-report"
     }
   ],
   "disk_observations": [
