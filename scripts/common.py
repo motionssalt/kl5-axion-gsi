@@ -30,14 +30,43 @@ def blocker(key,text,phase=None):
 def clear(key):
  s=state(); s['blockers']=[b for b in s['blockers'] if b.get('id')!=key]; save(s)
 def phase(p,status,notes='',evidence=None):
- s=state(); s['phase']=str(p); s['phases'][str(p)]={'status':status,'notes':notes,'evidence':evidence or []}; save(s)
+ s=state(); previous=s['phases'].get(str(p),{}); s['phase']=str(p); s['phases'][str(p)]={'status':status,'notes':notes,'evidence':evidence or []}; save(s)
+ if previous.get('status')!=status or previous.get('notes')!=notes: notify('KL5 phase '+str(p)+' '+status+': '+notes[:1200])
 def notify(text):
  token=os.getenv('TELEGRAM_BOT_TOKEN'); chat=os.getenv('TELEGRAM_CHAT_ID')
- if not token or not chat: return
+ if not token or not chat:
+  if os.getenv('CI')=='true': blocker('telegram','Required Telegram repository secrets are unavailable; pipeline continues without notifications.')
+  return
  try:
   r=requests.post('https://api.telegram.org/bot'+token+'/sendMessage',json={'chat_id':chat,'text':text[:3500]},timeout=20)
   if r.status_code!=200: blocker('telegram','Telegram notification failed (HTTP '+str(r.status_code)+').')
  except requests.RequestException: blocker('telegram','Telegram notification transport failed; credentials not logged.')
+def send_telegram_file(path,caption,kind=None):
+ """Never expose secret-bearing request URLs; persist content-hash delivery receipts."""
+ path=pathlib.Path(path); token=os.getenv('TELEGRAM_BOT_TOKEN'); chat=os.getenv('TELEGRAM_CHAT_ID')
+ if not token or not chat:
+  if os.getenv('CI')=='true': blocker('telegram','Telegram media delivery requires repository secrets.')
+  return False
+ kind=kind or ('photo' if path.suffix.lower()=='.png' else 'document')
+ digest=sha256(path); key=kind+':'+path.name+':'+digest
+ if key in state().get('telegram_deliveries',{}): return True
+ if path.stat().st_size>10*1024**2:
+  notify(caption+' (too large for configured media limit; see GitHub Release)'); return False
+ try:
+  with path.open('rb') as f:
+   response=requests.post('https://api.telegram.org/bot'+token+('/sendPhoto' if kind=='photo' else '/sendDocument'),data={'chat_id':chat,'caption':caption[:1000]},files={kind:(path.name,f)},timeout=(20,90))
+  if response.status_code!=200:
+   blocker('telegram-media','Telegram '+kind+' delivery HTTP '+str(response.status_code)+'; Release artifact retained.'); return False
+  s=state(); s.setdefault('telegram_deliveries',{})[key]={'at':now(),'name':path.name,'sha256':digest}; save(s); return True
+ except requests.RequestException:
+  blocker('telegram-media','Telegram media transport failed; Release artifact retained; credentials not logged.'); return False
+
+def notify_asset(rel,path,name):
+ if name.lower().endswith('.png'):
+  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name+'. Emulator boot/UI only; physical hardware unverified.','photo')
+ elif any(x in name.lower() for x in ['logcat','launcher.log','kernel.txt','boot-results','final_report']):
+  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name,'document')
+
 def checkpoint(message):
  if os.getenv('CI')!='true': return
  subprocess.run(['git','add','BUILD_STATE.json','stock-manifest.json','docs','patches','README.md'],cwd=ROOT,check=False,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -72,7 +101,9 @@ def release(tag,body=None):
   rel=api('POST',f'/repos/{REPO}/releases',json={'tag_name':tag,'name':tag,'body':body or 'Pipeline intermediate artifacts; NOT a hardware-verified ROM.','prerelease':True,'target_commitish':'main'})
  else: raise RuntimeError('Cannot access Release: HTTP '+str(r.status_code))
  s=state()
- if not any(x.get('tag')==tag for x in s['releases']): s['releases'].append({'tag':tag,'url':rel['html_url']}); save(s)
+ if not any(x.get('tag')==tag for x in s['releases']):
+  s['releases'].append({'tag':tag,'url':rel['html_url']}); save(s)
+  notify('KL5 Release published: '+rel['html_url']+' (intermediate unless explicitly verified)')
  return rel
 def assets(rel):
  out=[]; page=1
@@ -87,14 +118,16 @@ def upload(rel,path,name=None,replace=False):
  existing=asset(rel,name)
  if existing:
   digest=existing.get('digest')
-  if existing['size']==path.stat().st_size and digest=='sha256:'+sha256(path): return existing
+  if existing['size']==path.stat().st_size and digest=='sha256:'+sha256(path):
+   notify_asset(rel,path,name); return existing
   if not replace: raise RuntimeError('Existing asset differs or lacks verifiable digest: '+name)
   api('DELETE',f'/repos/{REPO}/releases/assets/{existing["id"]}')
  url=rel['upload_url'].split('{')[0]+'?name='+urllib.parse.quote(name)
  for attempt in range(4):
   with path.open('rb') as f:
    r=SESSION.post(url,data=f,headers={'Content-Type':'application/octet-stream','Content-Length':str(path.stat().st_size)},timeout=(30,900))
-  if r.status_code==201: return r.json()
+  if r.status_code==201:
+   notify_asset(rel,path,name); return r.json()
   if attempt==3: raise RuntimeError('Release upload failed: HTTP '+str(r.status_code))
   time.sleep(10*(attempt+1))
 def json_asset(rel,name,data):

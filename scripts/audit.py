@@ -24,6 +24,21 @@ CATEGORIES={
  'selinux':r'(selinux/|sepolicy|contexts|\.cil$)',
  'hardware_apps':r'(ims|camera|fingerprint|biometric|engineermode|hardware|usb|nfc).*\.apk$'
 }
+AUDIT_VERSION=2
+
+def stock_release_tag():
+ manifest=json.loads((ROOT/'stock-manifest.json').read_text())
+ return 'audit-stock-'+manifest.get('sha256','unknown')[:12]+'-v2'
+
+def base_release_tag():
+ return 'audit-base-'+state()['base_input']['sha256'][:12]+'-v2'
+
+def select_super(z):
+ # SP Flash Tool scatter references the super next to it, not optional Open/ images.
+ candidates=[i for i in z.infolist() if re.search(r'(^|/)super(?:_a)?\.img$',i.filename,re.I)]
+ scatter_dirs={str(pathlib.PurePosixPath(i.filename).parent) for i in z.infolist() if re.search(r'scatter.*\.txt$',i.filename,re.I)}
+ return sorted(candidates,key=lambda i:(str(pathlib.PurePosixPath(i.filename).parent) not in scatter_dirs,len(pathlib.PurePosixPath(i.filename).parts),-i.file_size,i.filename))
+
 TEXT_SUFFIX=('.xml','.rc','.prop','.cil','.conf','.cfg','.ini','.json','.txt','_contexts','.te')
 
 def inspect_tree(root,partition,output):
@@ -70,7 +85,13 @@ def publish_partition(partition,path,scope,rel):
  name=f'{scope}-{partition}-audit.tar.gz'; existing=asset(rel,name)
  if existing: print('Already audited:',partition); return
  out=WORK/'audit-fragment'; shutil.rmtree(out,ignore_errors=True); out.mkdir()
- with readonly_mount(path) as (mnt,fs): result=inspect_tree(mnt,partition,out)
+ with readonly_mount(path) as (mnt,fs):
+  # Android props/init can be 0600 root-owned. Do not chmod/chown stock partitions.
+  # Privilege ONLY this read-only inventory subprocess; no secrets are passed to sudo.
+  subprocess.run(['sudo','python3',str(ROOT/'scripts/audit.py'),'inspect',str(mnt),partition,str(out)],check=True,timeout=2400)
+  subprocess.run(['sudo','chown','-R',str(os.getuid())+':'+str(os.getgid()),str(out)],check=True)
+  result=json.loads((out/'inventory.json').read_text())
+ result['audit_version']=AUDIT_VERSION
  result['filesystem']=fs; result['image_sha256']=sha256(path)
  (out/'inventory.json').write_text(json.dumps(result,indent=2)+'\n')
  archive=WORK/name
@@ -112,7 +133,7 @@ def super_audit(z,entry,rel):
 
 def stock():
  phase(3,'running','Selective stock extraction and read-only filesystem audit.'); disk('stock-audit-start'); checkpoint('state: stock audit started')
- rel=release('audit-stock'); remote,z=archive_stock()
+ rel=release(stock_release_tag()); remote,z=archive_stock()
  names=z.namelist(); listing=WORK/'stock-archive-inventory.json'; listing.write_text(json.dumps([{'name':i.filename,'size':i.file_size,'compressed':i.compress_size} for i in z.infolist()],indent=2)); upload(rel,listing,replace=True)
  # Small headers/scatter metadata first; no writable mounting or boot patching.
  headers={}
@@ -133,7 +154,10 @@ def stock():
    with z.open(entry) as src: raw_from_stream(src,path)
    publish_partition(partition,path,'stock',rel)
   finally: path.unlink(missing_ok=True)
- superentries=[i for i in z.infolist() if re.search(r'(^|/)super(?:_a)?\.img$',i.filename,re.I)]
+ superentries=select_super(z)
+ if superentries:
+  decision('Canonical stock super selected by scatter-directory proximity: '+superentries[0].filename+'. Alternate Open/super is not assumed equivalent.')
+  json_asset(rel,'stock-selected-super.json',{'selected':superentries[0].filename,'alternatives':[i.filename for i in superentries[1:]],'audit_version':AUDIT_VERSION})
  if superentries and not all(asset(rel,f'stock-{p}-audit.tar.gz') for p in ['vendor','product','system_ext']): super_audit(z,superentries[0],rel)
  if not direct and not superentries:
   payload=any(n.endswith('payload.bin') for n in names)
@@ -143,7 +167,7 @@ def stock():
 def base():
  manifest=state().get('base_input')
  if not manifest: raise RuntimeError('Base input is not mirrored yet')
- rel=release('audit-base-'+manifest['sha256'][:12])
+ rel=release(base_release_tag())
  if asset(rel,'base-system-audit.tar.gz'): print('Base audit already exists'); return
  remote=MultipartRemote(manifest['parts']); path=WORK/'base.raw.img'
  try:
@@ -154,10 +178,10 @@ def base():
 
 def collect(scope):
  inventories=[]; evidence={}
- fragments=dict(state().get('audit_fragments',{}).get(scope,{}))
+ fragments={}
  # Assets may have completed just before a runner died prior to its state commit.
  base_input=state().get('base_input',{})
- known_tag='audit-stock' if scope=='stock' else 'audit-base-'+base_input.get('sha256','')[:12]
+ known_tag=stock_release_tag() if scope=='stock' else base_release_tag() if base_input else ''
  if scope=='stock' or base_input:
   known=release(known_tag)
   for a in assets(known):
@@ -197,6 +221,8 @@ def summarize():
  (ROOT/'docs/AUDIT.md').write_text(text)
  complete=all(p in result['stock_partitions'] for p in ['vendor','product','system_ext']) and bool(baseinv) and not any(inv['errors'] for inv in stockinv+baseinv)
  if complete: clear('audit-coverage')
+ if stockinv: clear('stock-audit')
+ if baseinv and not any(inv['errors'] for inv in baseinv): clear('base-audit')
  phase(3,'done' if complete else 'blocked','Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.',['docs/audit.json','docs/AUDIT.md'])
  if not complete: blocker('audit-coverage','Required stock partitions and/or base inventory remain incomplete.',3)
  rel=release('audit-report'); upload(rel,ROOT/'docs/audit.json',replace=True); upload(rel,ROOT/'docs/AUDIT.md',replace=True)
@@ -205,6 +231,9 @@ def summarize():
 if __name__=='__main__':
  import sys
  stage=sys.argv[1]
+ if stage=='inspect':
+  out=pathlib.Path(sys.argv[4]); result=inspect_tree(pathlib.Path(sys.argv[2]),sys.argv[3],out)
+  (out/'inventory.json').write_text(json.dumps(result,indent=2)+'\n'); sys.exit(0)
  try: {'stock':stock,'base':base,'summary':summarize}[stage]()
  except Exception as e:
   blocker(stage+'-audit',str(e),3); phase(3,'blocked',str(e)); notify('KL5 '+stage+' audit blocked: '+str(e)); checkpoint('state: audit blocker recorded')

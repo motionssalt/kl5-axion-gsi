@@ -132,7 +132,13 @@ jobs:
           git config user.email 'motionssalt@users.noreply.github.com'
       - name: Free disk
         run: bash scripts/free_disk.sh
+      - name: Resolve matching Android 16 ARM64 emulator pins before heavy setup
+        id: pins
+        run: |
+          python3 -m pip install --disable-pip-version-check 'requests==2.32.4'
+          python3 scripts/emulator_preflight.py
       - name: Install Cuttlefish host prerequisites from official signed repository
+        if: steps.pins.outputs.ready == 'true'
         timeout-minutes: 20
         run: |
           python3 -m pip install --disable-pip-version-check 'requests==2.32.4'
@@ -147,7 +153,7 @@ jobs:
           if [ -e /dev/kvm ]; then sudo chmod a+rw /dev/kvm; fi
           sudo udevadm trigger || true
       - name: Real ARM64 base and patched boot tests
-        if: always() && !cancelled()
+        if: always() && !cancelled() && steps.pins.outputs.ready == 'true'
         timeout-minutes: 255
         run: sg cvdnetwork -c 'python3 scripts/runner.py emulator'
       - name: Persist job status

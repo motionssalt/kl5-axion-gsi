@@ -18,9 +18,12 @@ def run(name):
  # Only initial phases need input prerequisites. Base analysis proceeds without stock.
  if name=='stock-audit' and not ((ROOT/'stock-manifest.json').exists() and json.loads((ROOT/'stock-manifest.json').read_text()).get('complete')): print('Stock audit awaits complete mirror'); return
  if name in ['base-audit','build','emulator'] and not s.get('base_input'): print('Stage awaits base mirror:',name); return
+ notify('KL5 stage '+name+' started.')
  before={b['id']:b for b in s['blockers']}
  p=subprocess.run([sys.executable,str(ROOT/'scripts'/cmd[0])]+cmd[1:])
  after=state(); after.setdefault('stage_cache',{})[name]={'fingerprint':fingerprint,'at':now(),'exit_code':p.returncode,'blockers':[b['id'] for b in after['blockers'] if b['id'] not in before or before[b['id']]!=b]}; save(after)
  checkpoint('cache: '+name+' input fingerprint')
+ issues=after['stage_cache'][name]['blockers']
+ notify('KL5 stage '+name+' finished'+(' with blockers: '+', '.join(issues) if issues else '.')+' This is not a hardware verification result.')
 
 if __name__=='__main__': run(sys.argv[1])
