@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T09:35:00.938399+00:00",
+  "updated": "2026-11-01T09:37:23.419144+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -1029,6 +1029,11 @@
       "at": "2026-11-01T09:02:56.215342+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "8e66440096c26010307145abea3287b4987d25aac0d8cb1a046714fb4e53ec82"
+    },
+    "document:base-launcher.log:0b993099efdbb3725744f9ab444e203388d9e07572730dea35efde41806bf109": {
+      "at": "2026-11-01T09:37:19.552693+00:00",
+      "name": "base-launcher.log",
+      "sha256": "0b993099efdbb3725744f9ab444e203388d9e07572730dea35efde41806bf109"
     }
   },
   "stages": {
@@ -1258,11 +1263,6 @@
   },
   "emulator": {
     "base": {
-      "boot_completed": false,
-      "error": "Cuttlefish launcher failed; see launcher log",
-      "scope": "No hardware claim."
-    },
-    "candidate": {
       "boot_completed": false,
       "error": "Cuttlefish launcher failed; see launcher log",
       "scope": "No hardware claim."
