@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:03:39.970592+00:00",
+  "updated": "2026-11-01T00:06:46.124120+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -20,8 +20,8 @@
       ]
     },
     "3": {
-      "status": "running",
-      "notes": "Selective stock extraction and read-only filesystem audit.",
+      "status": "blocked",
+      "notes": "Image is neither raw ext4 nor EROFS",
       "evidence": []
     },
     "4": {
@@ -74,6 +74,12 @@
       "at": "2026-10-31T23:51:37.765087+00:00",
       "phase": 5,
       "message": "Matching prebuilt Android 16 ARM64 Cuttlefish host/image pair is not pinned; no boot success is claimed."
+    },
+    {
+      "id": "stock-audit",
+      "at": "2026-11-01T00:06:46.093792+00:00",
+      "phase": 3,
+      "message": "Image is neither raw ext4 nor EROFS"
     }
   ],
   "releases": [
@@ -88,6 +94,10 @@
     {
       "tag": "audit-base-2ad2e18b7046",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-base-2ad2e18b7046"
+    },
+    {
+      "tag": "audit-stock",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-stock"
     }
   ],
   "disk_observations": [
