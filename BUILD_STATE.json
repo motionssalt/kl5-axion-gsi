@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:54:14.207399+00:00",
+  "updated": "2026-11-01T00:55:40.614336+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -619,6 +619,11 @@
       "at": "2026-11-01T00:54:14.206105+00:00",
       "name": "boot-results.json",
       "sha256": "d940a5d2f868ff3bbc32056f093ddc385fe56433637d747a64a5be250e186861"
+    },
+    "document:boot-results.json:99f6fdc71756ccc0d427d67e7a18fba823e0db879ecc5c76fc731f08cab6fd13": {
+      "at": "2026-11-01T00:55:40.613035+00:00",
+      "name": "boot-results.json",
+      "sha256": "99f6fdc71756ccc0d427d67e7a18fba823e0db879ecc5c76fc731f08cab6fd13"
     }
   },
   "stages": {
@@ -872,6 +877,11 @@
   },
   "emulator": {
     "base": {
+      "boot_completed": false,
+      "error": "Emulator super does not identify exactly one populated system/system_a partition",
+      "scope": "No hardware claim."
+    },
+    "candidate": {
       "boot_completed": false,
       "error": "Emulator super does not identify exactly one populated system/system_a partition",
       "scope": "No hardware claim."
