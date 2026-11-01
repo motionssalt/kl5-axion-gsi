@@ -3,6 +3,112 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "system",
+      "path": "system/framework/fingerprintservice.jar",
+      "sha256": "457e6f0cc0ba15138e83486ed5347e52591c589c6c8c43935bcf877d8645d42a"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/fingerprintservice.odex",
+      "sha256": "881130883ea3a6b38dee573ad0722d60fbae3f89934c679907fe30637d39505f"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/fingerprintservice.vdex",
+      "sha256": "a25c76d7f510a6d9f8ae2344932f36727dc190de98e63f1da699db7bc977d109"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/fingerprintservice.odex",
+      "sha256": "d445f9c301eb4d677f5990cc467b45fa34ba8159236c92ed4c55751d2fd9cf08"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/fingerprintservice.vdex",
+      "sha256": "a25c76d7f510a6d9f8ae2344932f36727dc190de98e63f1da699db7bc977d109"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.biometrics.face@1.0-service.example",
+      "sha256": "de1aff015b30639b631f3917467602d95f7084a9c5fda47cf8b08cebc5690a85"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.biometrics.fingerprint@2.1-service",
+      "sha256": "6f2922faed000870d483266cf5966db5854f0fd0dc618a8399b14fb34de99ffe"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/vendor.focaltech.hardware.biometrics.fingerprint@1.0-service",
+      "sha256": "c02d93930b91bdc5fe65e8681f7b989c509979c481c383cac3271dc5b76448dc"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.biometrics.face@1.0-service.rc",
+      "sha256": "33e829e62e7a0eb480153cca69afba4f0ec29ac6a0734e46d31146c5556a5ab0"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc",
+      "sha256": "339991b630f369b1cdbd3d47d327d42b91858b6d76893847283c2c8edcdd7b25"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/vendor.focaltech.hardware.biometrics.fingerprint@1.0-service.rc",
+      "sha256": "a94e50d6ca061722a36b768cd667443deddc4a0afeed8de3ad3b8dd27e265ca9"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/vendor.goodix.rc",
+      "sha256": "1def1d987086031b60b72c1ea705125ab40aff09a2d6e351eae83dfe4897f60b"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml",
+      "sha256": "473cf370500637de575dc89fbac74e4942d969717a0a72cb5adaa3511bdba693"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/fpsensor_fingerprint.default.so",
+      "sha256": "9cf9bc122eebb9a6e097e36f37bf2dc87e00bc37b1c30725b59b449bf19ad846"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.biometrics.face@1.0.so",
+      "sha256": "37af02d0d8aa68c66595a6cfaaaa60da3e612c8eea47363e31649adb35e32b5d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.biometrics.fingerprint@2.1.so",
+      "sha256": "21586e5a90a03cbf3d9e6df80dd6cf24ad1851fdc0aa3281013355018f293727"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libgoodixhwfingerprint.so",
+      "sha256": "69e84c431be11ae7a8ff123e9a569b219ac643e1c732a1285af85699c44f935b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so",
+      "sha256": "c0665243fc6796949fdceb00935e802a82bd10b83a588e4149751e1a84408b7c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/focal_fingerprint.default.so",
+      "sha256": "89ad337696f75a94bacc1939660b7260403227d9a21e45c3225629049017af7a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/fpsensor_fingerprint.default.so",
+      "sha256": "e3f1593f1f732926ef9a48d8ca029e688157dae900e2f1881ea3467f86be7a61"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/gf_fingerprint.default.so",
+      "sha256": "e82581c99c8ed2306005ea2d5ea7376fc968da762f6300a3a8abb0eba37c8095"
+    }
+  ],
   "operations": []
 }

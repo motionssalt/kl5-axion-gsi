@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "app/SrDtsAudio/SrDtsAudio.apk",
+      "sha256": "38e783a0ab8abbafd77e380b768ff911075582e6ac87ef12903807f4c789fd2b"
+    },
+    {
+      "partition": "product",
+      "path": "app/SrDtsAudio/oat/arm64/SrDtsAudio.odex",
+      "sha256": "ac7e1e2440c16963688e42112993499d2d7a4e3ea8466ab76b8274dbfe9b9cad"
+    },
+    {
+      "partition": "product",
+      "path": "app/SrDtsAudio/oat/arm64/SrDtsAudio.vdex",
+      "sha256": "2b625fe1da755be6dd30058f74d4b7194fdddf23affba441f3c3d793e8df6b69"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Alarm.ogg",
+      "sha256": "c6e7cc22bdc5d9d768f96da31eb187d8b147d0c5ce58634eaaea8f0066fa18c9"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Alarm_Clock.ogg",
+      "sha256": "29d689ac0de7d6b5420a1541238737dbdb709a808c14442a5fc95ac6afba826f"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Alcohol.ogg",
+      "sha256": "ea59f0af7450dc10b4ec4e02a634d91205f7c1e5c39221582680eda4e1e19899"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Confident.ogg",
+      "sha256": "c349ffa0d1587085b2188db95bf8ff0eebc397b7c43d7ad5e7d8c4c116a391d7"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Crisp.ogg",
+      "sha256": "5eaad8d79a0360bc0bbe648984fa5d2c7612b20d3672471f14587f9517412107"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Double_Guitar.ogg",
+      "sha256": "d1f3fa58ec929469e08de855ca4a229c27a7dd7d58b12f8eb424a93367e089b0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Enchanted_Forest.ogg",
+      "sha256": "52ed983e451217816364240d3622ff41e86f42290845cae847a28f3a79af4aac"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Excitative.ogg",
+      "sha256": "eafdfe96118826c4ff2c7de645b7ba34ffc1db66d155dfc3a73c6422da1e8e09"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Good_Times.ogg",
+      "sha256": "957848343b2abf22f3d53909fb852cc5b96b213984f980170a2f1f747fbe8df3"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Hasty.ogg",
+      "sha256": "2cf38b4d56d9139c8fdfe2db76d18d28295427caa328ba4916d5f486d5c5f4ad"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Love_of_The_Sea.ogg",
+      "sha256": "bb959e35e84c946a680b6b4e55aac25debab687b799b9bbdc2d4badb7866e2ef"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Miss_You.ogg",
+      "sha256": "b94d8075881c318814155eb9337c3aedee9ce0f8552a74161b9c227755ebb863"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Mountain_Village.ogg",
+      "sha256": "67883211194295eb175e4b6930ad998a55e23d6a8f30fe04becc1e5dcf584c53"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Noisy.ogg",
+      "sha256": "910c66b055bccc90327334d46e4ed860645ebbc9718788a9140a52bbc3d82a05"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Peripatetic.ogg",
+      "sha256": "c2f7e2da7a69ad190e9086cad9739963bab3a753b9e945fbc16c3cd0b6f45ce0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Piano.ogg",
+      "sha256": "1340e55e81b175801434857499d0b0100a5cdf0cb55084b0cc83859efdbe5e31"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Porcelain.ogg",
+      "sha256": "b2a80683152801491c0b202e03661323138831d8108bc7c23913b1e223239a7d"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Psychedelic.ogg",
+      "sha256": "d9026421d2a78f0067665ef09d3672fc392f0b3b1f479527a31138239749fc37"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Radar.ogg",
+      "sha256": "4ab275fc5c11d863220d81c5d15bb425788c6ee83e59027d740a2aa8b6ba9bec"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Repetitive.ogg",
+      "sha256": "589df59bcb89057b2d6b15429a6c15ab55d21a4319de2e71f23d309675702eb6"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Sunrise.ogg",
+      "sha256": "2291db0ea2f6304106730ead54e8957f06905087561c13c2db435cbe89891bd0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Sweet_Dreams.ogg",
+      "sha256": "d2caad7b28abd4aa22b5d210d5d67ef6b4f53da26e29391541caa43d5c88b316"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Warm_Spring.ogg",
+      "sha256": "d12ebbe121923a34a6a07b49a283d9ba1162d2018e51ef91451715a65a08a6f3"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/We_Can_Bell.ogg",
+      "sha256": "51c167a58b2a2a5eca1353d0da856f65f40b4161f654b1786d787c01932997dd"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/We_Can_Jazz.ogg",
+      "sha256": "cbeb5f6006a427feb445bcc10ec5ca2cfc2886ef3693109b4a3d341efa692440"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/alarms/Yesterday.ogg",
+      "sha256": "19bcf3dc6c5efe877505bbae0ff148ad908c8b9b704ef62e7a50418606197b3c"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Adagio.ogg",
+      "sha256": "96a6e2b185913da23e130531612abff4dd882bcf61fe53ee29cd655bc0700a75"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Awakening.ogg",
+      "sha256": "2001f0683f7bdd5636b03823b429e8a78011e707ecb9ab7ba18aa9fd6d8522d2"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Bubble_Gum.ogg",
+      "sha256": "95192062dd1399d354e3734a5f9c40d0bc976f05b60b8e7987be7e8f9430c507"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Carrageenan.ogg",
+      "sha256": "66d52dc51d8e3d5cf0f894cb8f5adad28953d27c2dfb3a4d945d0d43c43f8a39"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Clattering.ogg",
+      "sha256": "10ebdaa0ea1b4c80cdabc4d85a34225a222538fc54e81b0f576d59e86e085395"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Colloid.ogg",
+      "sha256": "a1156120a78c503002ca2a8308a868d79cb961dee8c4df6213f53aef53d3481c"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Copper.ogg",
+      "sha256": "ac4c86d45b24fdb84faffbbba0b824c2d0b906b452f81dbbab966261aca1340b"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Ding.ogg",
+      "sha256": "c2f13c0f89e345550470d1fe0129a040999d2353da52d2612b125e69826e7a1a"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Dripping.ogg",
+      "sha256": "8b779fc4e7580ffd2ec66a96bfd044640906fa94ffbd239d38d6c848ce422f44"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Drop.ogg",
+      "sha256": "823520eb256c442df31df5fbe5550b875f8c5554d5098f59b15f248a15f374a8"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Email.ogg",
+      "sha256": "e2f6ac7ac2fe87936186042befcb85883429559f1e17606fdd5368132254d159"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Gentle.ogg",
+      "sha256": "555757191d7a1a4205a7324834ef9da2269c534e99c62584909a77a4293fbb29"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Gliss.ogg",
+      "sha256": "9bcb84a60b74e6d263f62df78a010156927a8c7a30924b5b04f0f655934f5249"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Hardwood.ogg",
+      "sha256": "e9e521a872e8dda3feb86aac56540286db968180c112d8af8f18833d256726eb"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Human_Whistle.ogg",
+      "sha256": "ed8af64ca3930a038e248bdaf425309c7f98235b439f772d52fbf5a8daa0dbd0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Inductance.ogg",
+      "sha256": "6cf7e5a8bdb7434175ca0ea1f28a6762a0c19d40e52d6948c77e9e0578e2e825"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Mallet.ogg",
+      "sha256": "c20d9ac241b098af207bc4d4c71cf76b41cfc292f49ba802fc1a563f822c12d7"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Penetrating.ogg",
+      "sha256": "ff11c7d499c5f737242964793cc78003903fff5f9dc4c3ff96865270865b93d9"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Sour.ogg",
+      "sha256": "bb4c15950f13e3a179e2fbdf06b8fdce3edaa86eb2a1731d4997c33f3847891d"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Transparent.ogg",
+      "sha256": "b36345954ffbd09f711146be4469e30458189c60f835d7698f1eee5be0313350"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Woodblock.ogg",
+      "sha256": "2985b5b3fe6eb7d6729b497f08b87f0fd4f86d5e72567384ea14536e8b457e20"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/notifications/Zero.ogg",
+      "sha256": "fac003680533d170a288dd8aabcb7c5595a7bd344605512bd9bb6b2e63cb4ad3"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Bamblong.ogg",
+      "sha256": "33104152aa18010e81d15b412c4ac0add111a32718fcd414160d2a0638632323"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Beau.ogg",
+      "sha256": "a7aae6de73c8c32db39b5f8275779dad5f40641ebb50a55ac14c63dd005371b1"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Desk_Phone.ogg",
+      "sha256": "89177348ea3a0659408a2ccb82c524967dfca9f2f96a5add6860226a82aa06d9"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Fantastic.ogg",
+      "sha256": "1ca396ea70609d0949e8558ab023b997fdf5506b505951e5db928f9ff9e9cd94"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Festivity.ogg",
+      "sha256": "3b6d7eca7a9bbaad01a6a3e9439f85282790ccca7ad4e811da1f86d35534c85a"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Flea.ogg",
+      "sha256": "72015f35ee74ce2c7a9480239a784a9bb545cb5a603be8bd49dee511a06abf4e"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Galactic.ogg",
+      "sha256": "87c879e4e5918dbd063af9af7db9a10c7c995c42feaf73e62c4a5912c8dff53d"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Glockenspiel.ogg",
+      "sha256": "0d6605c8b1755dd186535e461f524b2fba26482aa595cc2028728c793288aeef"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Happy_Marimba.ogg",
+      "sha256": "1c81fa1ba31cd18e23de611501c15887b0560831edc531c637243d6708ffba29"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Joyful.ogg",
+      "sha256": "a2883af76746e4d763e402387d454ecac9f4896699a259e6db89347c81f363d0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Lating.ogg",
+      "sha256": "9692dbfa481f455df39d039c9d7f783873c71749a259734ffabe7b941fccd8a1"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Leather.ogg",
+      "sha256": "ece6dc13e0126d8c98ecc6f3cba9f4aae0f559fd52a97ecdb056f03c8e65af83"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Old_Telephone.ogg",
+      "sha256": "95e7a949213caf971890612e11164cf276c5d561f2c625343058e477f6fbbd90"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Pluto.ogg",
+      "sha256": "cf720da7920b19670feeab7f27f6783d45f5b0360b488eb91e0b8ca63ab3d0ce"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Reggae.ogg",
+      "sha256": "bb6eda9491cfc08dd444bd538247eb9f1b9fb73f515783f5f7fdf5fd9608a99c"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Restlessness.ogg",
+      "sha256": "6c16e6d3d589d6a52c7de55fdda80d148f5c0fd75751ff580a13a9ec8bec0ffa"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Sudd.ogg",
+      "sha256": "d1f8bbc9775698d2680a02c006de9ad0dbbdd8a8b0bb7d0b8c8ed90ced462078"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Suling_Flute.ogg",
+      "sha256": "8aa9330862f86afe8e88128ecdbf493c539d759b40cbcca33a0283e79f4d5639"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Ukulele.ogg",
+      "sha256": "3f23cd5a9759132aa9a54880958f848f4b1cc27a3ff347d48e576d0d08eab373"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Vitality.ogg",
+      "sha256": "74a7fd86e0766f899a069221855d70d020682061e092d49eabfa84fb880f71d7"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/We_Can.ogg",
+      "sha256": "00fa6808d55f4d2bd174f502eb6975cc8bacdd81c5d0c4cfed0e80606bc33eb1"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/We_Can_Crystal.ogg",
+      "sha256": "b7a7e50b5aa5a9755a9ac0956f8b43bf06a29628bc1a49dd2eb62db44ed1266c"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/We_Can_Dance.ogg",
+      "sha256": "a8731aae16fff69ab8df7abde5186315a9ff4df420067c034cfece65ee4e7b0f"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/We_Can_Simple.ogg",
+      "sha256": "beec458a357c28c129f2ed450b2474e7ee8b324458ea06c4f7c63924c7a5cfb8"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Whistle.ogg",
+      "sha256": "ac649f5dfd789f24121ed1d28be6b236716bf984feaa45c8b4debd547fd26897"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ringtones/Your_Eyes.ogg",
+      "sha256": "d5bffc4e9793b9d216f0f42f9371c0c8ed0160d90fe1a2e8b58832bd14316ef6"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Calculagraph.ogg",
+      "sha256": "fbc839b14640e8846712fa8b55056cea9729d5b2562c4bebbb15b12ea79c2130"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Sequential.ogg",
+      "sha256": "62b07721119def09dd678760e1a72dbba43abcac2a475739969372d1b1dee7ae"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_10sec.ogg",
+      "sha256": "34b78a68540eeabbc0dabb12e26c850ec7f02278272e378741c4a6d4d2c4b707"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_3sec.ogg",
+      "sha256": "c753b7ef8546624943e13dd2bc95a483328b2b7072d35eacf5808062f68b20bc"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_5sec.ogg",
+      "sha256": "086814c3b162c28011ffeaf15480020f6f7cecfe03e4f6fcdc80ce7a53722087"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Disconnect.ogg",
+      "sha256": "3e895cc2c8b5b1ad42dcd7c0603903a759eb991685a8615959a96fc062280160"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Dock.ogg",
+      "sha256": "79392e8a4d407e536cbb5eab45335472bab5e38746c4363b03a27ed142294ecc"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Effect_Tick.ogg",
+      "sha256": "5faa58e91aabd0d1819948ebc3ca67d479cbec0b1b653ff373fd363d1f966909"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Fail.ogg",
+      "sha256": "ed9d9d3027430589d90ac9e92f228fd8df40615e7943d4b50007563def4a1e55"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Gear.ogg",
+      "sha256": "e26f922c914828317d45101991d519acb27850c49c0ee3bc150a2c492ae53198"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/KeypressDelete.ogg",
+      "sha256": "855e17a952bf2115f9246e46fb7445311f5af522156c9003919f6ec955cdf7b0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/KeypressInvalid.ogg",
+      "sha256": "9d20666ebe41cb606808d4bdbd16d760fc0b00014fe4e8b602cfea3b79730da7"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/KeypressReturn.ogg",
+      "sha256": "6cc78e1e1371238952d48fbd507dabe1648e8f7f05889e529d1261dbc50a69ee"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/KeypressSpacebar.ogg",
+      "sha256": "917cbd7e7ed2b3ed9cff8ae61530341a13edb913a7ea6a4be9990060c5daee76"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/KeypressStandard.ogg",
+      "sha256": "c571ed99e9831b8eec3cc42b9123ea498b349c2f300ba36af84870485eab2dc0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Lock.ogg",
+      "sha256": "6d885f8d2757b2ecf6b33ccf130a991c7e4ceeaa13f6c5050958fb8b3230afe1"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/LowBattery.ogg",
+      "sha256": "cda04ba769533527f62a40b9b15ba34b27d59c8686a1bad7a5103fe2f82e550e"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Screenshots.ogg",
+      "sha256": "2aa2a8d0c5f1b838636ca48d676f631b91dafa6d6af64b818e23cf6f05c9b6cb"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Second_Hand.ogg",
+      "sha256": "6adbd525633524c449f19ea2147a3250c3704c7f4f7aa60f41f9195bcaa5b372"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Sent_Success.ogg",
+      "sha256": "b2edde9b07fc6021e94a915531c4693dea1df8b66685da267ccd3f3e51e20c9d"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Success.ogg",
+      "sha256": "a27d5f6dbad23d5ce48867162a084c6fd489c230568c05494893034801dfe62f"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Tecno_ring_click.ogg",
+      "sha256": "a3fb697c9647dc30a157d6719854b5288dd0b53997f12b18f5e4ca6019bb5e58"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Undock.ogg",
+      "sha256": "b0ece8041e0b5431accc1acb4ed19b4849b19f426cb87b2dc97d5393f6abd39b"
+    }
+  ],
   "operations": []
 }

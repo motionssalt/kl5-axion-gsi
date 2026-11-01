@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/performance/griffin/camera_optimize_config.json",
+      "sha256": "7bdf65ca2d5b52edea122633b04b4a5c0b78c0ed53acce43aa4d2398e6a97dd0"
+    },
+    {
+      "partition": "product",
+      "path": "etc/performance/healthstandard/camera/healthstandard_config_camera.json",
+      "sha256": "2851cf7dcb223c6c0529db25c7594fa199945a2af9a8fa01212a2c5182af1d33"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Sequential.ogg",
+      "sha256": "62b07721119def09dd678760e1a72dbba43abcac2a475739969372d1b1dee7ae"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_10sec.ogg",
+      "sha256": "34b78a68540eeabbc0dabb12e26c850ec7f02278272e378741c4a6d4d2c4b707"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_3sec.ogg",
+      "sha256": "c753b7ef8546624943e13dd2bc95a483328b2b7072d35eacf5808062f68b20bc"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/Camera_Timer_5sec.ogg",
+      "sha256": "086814c3b162c28011ffeaf15480020f6f7cecfe03e4f6fcdc80ce7a53722087"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/camera_click.ogg",
+      "sha256": "1680ad401f4b1b2ba341ab3b9a9dba1f35dfa15cb89e2bd2c0af3fc0e12e130b"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/camera_focus.ogg",
+      "sha256": "03efd9ab5b1da15a3b27e799a3a093e2f01c31e9e2e9f1169f2fc1e40ab266d0"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/camera_shutter.ogg",
+      "sha256": "22932e83a9545062bc1763eab8c8e28753b0fa3909fe1d6ee4188fa419f33f81"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/CameraExtensionsProxy/CameraExtensionsProxy.apk",
+      "sha256": "e7c250af7ff42a2b9521a8d5b0ba311b6889f8543b86d1730d522fcfcd8574dc"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/CameraExtensionsProxy/oat/arm64/CameraExtensionsProxy.odex",
+      "sha256": "2157daa1ec0b1cd88e10f58f20311c1d84d6e26a9f012e4a37454367c8a6b5f3"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/CameraExtensionsProxy/oat/arm64/CameraExtensionsProxy.vdex",
+      "sha256": "e6b3d6d042080d32263cec1e244c16601b12d8cf7395efc0557d0f9e6acfd8cb"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/cameraserver",
+      "sha256": "461cc86c5597634836bd9c87a641384e97ca081573c3924754328d52a547e0fc"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/cameraserver.rc",
+      "sha256": "33b3a8744353b36e25d60d98b57891bf6696c65dfbbe1b740cc86904619ee0ea"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service.xml",
+      "sha256": "7e0b12eb0fb43e88d79e39dc8f0abf4d8d804562fa85b0d18d1e5024ba98e260"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/batterytempwarnforcamera.jar",
+      "sha256": "de93db86b38de32c85a449659c53bae17928b564102b203315c643940a0866de"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/batterytempwarnforcamera.odex",
+      "sha256": "9427aa0cfd58a1dbe1a380d4cecee4ad4e356ffd4af6067de228abd5bf490da5"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/batterytempwarnforcamera.vdex",
+      "sha256": "4068cc33900cb6fed8218bdf32d0466db2dd7c98e673a24b899798601a59fc1e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/batterytempwarnforcamera.odex",
+      "sha256": "6b5fde382009a30b7e3f16eb59cc3ffd51e7edecea63c68fe012447390490280"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/batterytempwarnforcamera.vdex",
+      "sha256": "4068cc33900cb6fed8218bdf32d0466db2dd7c98e673a24b899798601a59fc1e"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.camera.common@1.0.so",
+      "sha256": "77a8e5b7bdbc542ab56f6740c99427cd66b7774d11cbe338753816457300d5fa"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.camera.device@3.2.so",
+      "sha256": "7871f63bae28d8171a6f039da995f129cef29f2a40e791f000c42f1e9e625b7f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libcamera2ndk.so",
+      "sha256": "703ca2de7db6897b7fbfdd1ebfd1a78ccf5733e1a3d638e66179b0c30d9fbc05"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libcamera_client.so",
+      "sha256": "4f7c383c360389f5da50978aef3b51abf261d01a2325d44e2239b556dabdd65d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libcamera_metadata.so",
+      "sha256": "22b82479fd5f5e8cb9f74a230a4928a6b2825749b97bfb87bb26789abe20e2fd"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.common-V1-ndk.so",
+      "sha256": "0666d697dbf59814f175104f25928e9f7e12d8daf7d43895343626f2a59026dc"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.common@2.0.so",
+      "sha256": "c720933fc742c142c53adf336144783fd4b30088f4a7e1b6c13bdb0f45448720"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.device-V1-ndk.so",
+      "sha256": "16b25a3fe6fbdcbdd75ca2edb0eb9f24b80bdeca3a934bed8fddd7546fcfdbf5"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.device@2.0.so",
+      "sha256": "f1c51cbded50f6c6529a92b2d646f5b570d733c9abc3bc3e9c4c42cec7bbe19d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.device@2.1.so",
+      "sha256": "a9b0069e2af8396669981085f49dd6598584a85091029fde44edf1836af7ab0d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.service-V1-ndk.so",
+      "sha256": "bf84c1b7f5c161670c99ed35663f842395787b307d25a98cb9cbe61dc45956e6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.service@2.0.so",
+      "sha256": "cb995367006e4680e96e0327edc801ad47f0945f26e5964a7e1e170daabba867"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.service@2.1.so",
+      "sha256": "ae618892163befa5bac0f3967ceef34fb024ff662e0bb273e694284ca6243fcb"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.cameraservice.service@2.2.so",
+      "sha256": "7752c41138f9b9e85ea1d50b68caa0cc7a5e36db6cad1b32463d52e7953721d7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.common-V1-ndk.so",
+      "sha256": "9b080355a0dbb39e236dba47996d41a58035e04f3e7f1d4ce0e57e401521104a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.common@1.0.so",
+      "sha256": "d0a9650ebc1c68bf8f19203939ed20005d02bab4adbdbad32ff31d55d1c4143f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device-V2-ndk.so",
+      "sha256": "c97b0a2659a6c77289062180d1250ab7b99c51c36e7f88d3772853f0905a4c5b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@1.0.so",
+      "sha256": "b19b102309a0a5b8dec7d396eba13f89a66d74bd0945812999929898353ed2f2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.2.so",
+      "sha256": "bd3defd0649ac5aa52fa74d182639788fffb77e0fb308d0d540a0f7e2abecc61"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.3.so",
+      "sha256": "a8b7b685bad48bc0d29b1a38cbf569551fcfd9e5d9628c799d6681da3d591829"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.4.so",
+      "sha256": "6f746c9d4812d714961640e690dd33dbe8bc04121c7699ce848949d165ea3dd4"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.5.so",
+      "sha256": "c680b482665d86cfda24d2be8dcf145188f95c654f4aac108d1acedc067fb0c4"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.6.so",
+      "sha256": "d7b9186460f371a90da8b4f278f8081851082adf822c533d23ded5edc11632e2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.device@3.7.so",
+      "sha256": "3813c7c607aefbc31704f2ee34b6d7f00c878be8fc034d16786876f573c9631b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata-V2-ndk.so",
+      "sha256": "c6b0272aa6af165eb9fe94077f9326839600be5163c0e77186baf33335387e0f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata@3.2.so",
+      "sha256": "4ab0a985a4cc2c1c12dd3eebea3e3bed5ae29d63ccafb332488069d4d4a5addc"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata@3.3.so",
+      "sha256": "a2b66eac428c0d18aee765b7181be5aa3d9da8e21e3d14900cc7e46f5c0f3910"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata@3.4.so",
+      "sha256": "66255bb76d287983da04b13c5832dd55755c7bc2cff9f51359f4d2e652da504c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata@3.5.so",
+      "sha256": "b9b6d736e5e4109a3fc848e9f461c5f5ceff81bb364518b5b07a8e87f9d86def"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.metadata@3.6.so",
+      "sha256": "4eeb4f9dd0cd15254eea72f2564e7d341ef2828567e937baff060ff312a0c4b2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.provider-V2-ndk.so",
+      "sha256": "27d16ff72e6c83dc45a5d738b6be29f6f877d2717aa87a5cd180a65b5334292f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.provider@2.4.so",
+      "sha256": "bc8eb95cb12a5b290b230637f4b9b502793175de3b7cfeac6416d7d01558e21e"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.provider@2.5.so",
+      "sha256": "32992306d9c01481b951282f5caa599583d1bff01e7cddfca3870c8c907086b2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.provider@2.6.so",
+      "sha256": "b4b6866cc22e5f4733ace1f4a8881629a9d36c712ff39c2bc07a8b4faec6e142"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.camera.provider@2.7.so",
+      "sha256": "563a33146bdc32469963cbf5f63068579c6247d3f93e8db6340d324fb0b7609a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libcamera2ndk.so",
+      "sha256": "d65e8156c6e4f99fbcc9f2aea438c76cac31b9eed1cc60320ebc7169325d5f7f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libcamera_client.so",
+      "sha256": "1aec693d80d4d149994c8f020db178bc9f79f6776f9b4dcde203ba3c48fed100"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libcamera_metadata.so",
+      "sha256": "067b5a853ce4474b9b22bb69ce2fd89a3418a093a4570db91c8fd0ecf53c2b67"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libcameraservice.so",
+      "sha256": "239fb3a0cc3e0b7696e506d7e9e469c19a1cd124ddc38e84be78e8dd09f31803"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionCamera/TranssionCamera.apk",
+      "sha256": "418423b7bd1a4440dfd8e6304d1f728f56aa059f2266ae8194824431af68da5d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionCamera/oat/arm64/TranssionCamera.odex",
+      "sha256": "aea81748155b552ee2d6f107ce41dd029bb1d8501ac99f97e172be480f6d0e03"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionCamera/oat/arm64/TranssionCamera.vdex",
+      "sha256": "72b476587689cb1ee70874e879817d74c88406cdd65dcaba5a85de95c4b0c8ad"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/camerahalserver",
+      "sha256": "bef0ef3b99b922e289ed728ddb436f19d45f0293dc6259d6eb6b2af2c617261b"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/configs/TranssionWM.json",
+      "sha256": "56ff4ea1efc1efb563539fc35b71b43fbef545cb9837e4a56515316b7495a078"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/HurmeGeometricSans3_SemiBold.otf",
+      "sha256": "dc336174d2645a808752ea288296a703e6630b373649da58fd9d780799ca1488"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/HurmeGeometricSans_No3_3_Light.otf",
+      "sha256": "fdd21150cd340f56e87574895a07ec956625190a19d85e46744b952dab57e2db"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/HurmeGeometricSans_No3_4_Regular.otf",
+      "sha256": "f28ca68ae6d2dcb8a7ac9d2256c9838fde4a0c4c37b859d5784e1a1b08076452"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OFL.txt",
+      "sha256": "29d0877530019331700511ef4224c74fbb2d46c98f96a3ef511f19ca2e5c1cd1"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-Bold.ttf",
+      "sha256": "bc73c45e5810a0971ebeaef4eb6c35dec84607dbe02da6757f9f43d958b6da5f"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-ExtraBold.ttf",
+      "sha256": "0c078107776634131162be46a38245399040c2becc495e93d69d9b6edd65a98d"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-Light.ttf",
+      "sha256": "46ead38978e28f32ad7dc10d467efe8d8b5786ff98020c3718a296f88ef7f1cc"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-Medium.ttf",
+      "sha256": "2ab15629424ace86d429dbc0e5a7beb30d2af3db998a2b03a71601ee6965c334"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-Regular.ttf",
+      "sha256": "6530480277da62efde047eb26e78a7e532d1cfaeec91603e68d63876b9669f0d"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/OpenSans-SemiBold.ttf",
+      "sha256": "e603135cc3b1200c7260b34f37f9cb1f2178a42b363037e26a1e18276ab78bf0"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/ROBOTO-MEDIUM.TTF",
+      "sha256": "02868d6a7e80d4e7836b6263dd50d26a63e923a1223c9e027aad6dc2501c27cc"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/fonts/ROBOTO-REGULAR.TTF",
+      "sha256": "16466ef65064e6f3885a6d2806b8949ac1ac38b524dd0cf8fc96565eb4cc28e8"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/+5g-L.svg",
+      "sha256": "f404492dafc6044c6f4d78c2d7a94dea058b7f13485cc632a7117075a6833dae"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/+5g-S.svg",
+      "sha256": "8a90c1f0123ee9f0d2dc6407c54efc00e388cf6e59497379b53fe026d55b07ea"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/5g-L.svg",
+      "sha256": "843276d5aa546a988566399b2d1405a889ea24cb019a88ae1cb162fc327410d6"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/5g-S.svg",
+      "sha256": "2d9ceda6322e1b2323d03f931ebf3048bdd89bcfcc9b848b3462326d391c553a"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/GrayBackground.svg",
+      "sha256": "5a6ae8fb5d01b157c4fd4a391868c88fa0300d066a7a1e07939c680ba8b5a4cd"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/KLBackground.svg",
+      "sha256": "4f77c50dc0fc68062750ec128cddc03ccc08dcf9d338d7defd57a3805bc5e07c"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/Logo.svg",
+      "sha256": "e4ded82e9fe33f656a0093fef3b91a88e12f33a286cc442713cc9cdea7187ed6"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/RedPoint-kl.svg",
+      "sha256": "41c761c223cb3d609ef29cc6c5bcf5140f995169b66b1b761ace92364ad982af"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/RedPoint.svg",
+      "sha256": "944522de475b18fdf74024df14584d3f5c2053ace5bdf4b6e942a6a1140412b0"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/blank-L.svg",
+      "sha256": "19cb23f03b4cd23fab1de724a70378d5cd08c892a3008e1ee0b52768ac7a8e4c"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/blank-S.svg",
+      "sha256": "a8b5f89832aec21af6cd3998fc3c9918e6f0146c06b1a4f9e70a03de66053502"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/blank.svg",
+      "sha256": "7e7ac969af0605de4787de5c5887346f96836a048e28a0ce9a9b856dcbc2170f"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/gopro.svg",
+      "sha256": "4f36a70da43784f1fb5207f1c08616e8695123240217ab2da6fe0a434088dd8c"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/logo-zero40-5g.svg",
+      "sha256": "447def57612dcc9f4de6fefce68ed3e02076689ebbc31d13dd6b8ce4a3f79c9f"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/logo-zero40-Flip.svg",
+      "sha256": "192334a11b1704bf005182b2bb67e305b4ad9a83ebe52f9d4c0ed401889b00cd"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/goldwatermark/resources/icons/logo-zero40.svg",
+      "sha256": "36f9b8242a533e1ce317dcb0438d261f338ef6211d79516d8ebffde5332063b6"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_black_front.png",
+      "sha256": "ca0a846c10bf61524f12fd37a46ecfc412917cbac32239d351608c5206b4cdd3"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_black_rear.png",
+      "sha256": "e5bf7f67a5b1ce6439f4b4c438a8f3f9b3e57b93db83d2af38a75eb41e275639"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_brown_front.png",
+      "sha256": "b4ca03a57273f8bcb9958b2f742a2912721ebfe608a8232382de2ad14b588e02"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_brown_rear.png",
+      "sha256": "417b6d3444c5b33b0f21d6cb71647491cf0c94d6f1558b91962d1cadc41a61bc"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_white_front.png",
+      "sha256": "2232352a1fcffa6361bd9c5e3890739c8ba32e853bf28f73234dd3db99bffe14"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_white_rear.png",
+      "sha256": "33cb9cccf167bf3aa645a0f405577142718080a1f8059d70b1305ac2e91992e5"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Camon_front.png",
+      "sha256": "d2e81bb7ee6447ea5434aad986a8f6061e520784bf9df9c3477c5a0448b9b6df"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Camon_rear.png",
+      "sha256": "96e8b6294ac899a6033f69ecf9d019096ce5f7833465664f38ac32aeaf1c81f9"
+    }
+  ],
   "operations": []
 }

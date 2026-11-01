@@ -3,6 +3,297 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "system",
+      "path": "system/app/BluetoothMidiService/BluetoothMidiService.apk",
+      "sha256": "4ef67febcd8cc81377a60c743da3d8684ab30c92aa0293a0a088ffbdfdab274d"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/BluetoothMidiService/oat/arm64/BluetoothMidiService.odex",
+      "sha256": "293678574a96007f9b8bc01b68501978b3b87a4ab1cb44a5e1ed8cb9ba0eb880"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/BluetoothMidiService/oat/arm64/BluetoothMidiService.vdex",
+      "sha256": "9eaee009e867721620e2f407d63119ed61d42aadaa62d3082ada673304ede6e6"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/bluetooth/bt_mtk_iot_list.conf",
+      "sha256": "a0d6ba8eb1da4246208c0f343fdfd70eb62817430c11b53027e9bd5dbe9bdf7a"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/bluetooth/mtk_bt_fw.conf",
+      "sha256": "9c7d0a8f5edd4795c4a82242b9f488fd28fc1bad8030ed9f072726b2f3b94804"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/bluetooth/mtk_bt_stack.conf",
+      "sha256": "2e1a86ea5bbb7ecfb6967914a8e0d7758871da3cf466dbda5022a11b6b524eb1"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/bluetooth.rc",
+      "sha256": "a16559c23b61131f352b0b89c817253dee122656adef59b21b6b86626319a377"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/apex@com.android.btservices@javalib@service-bluetooth.jar@classes.odex",
+      "sha256": "6d9ffe3b39f63863bf8eb184b8b6d9c9c439b733ebe8dccd60f6505b57b1f916"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/apex@com.android.btservices@javalib@service-bluetooth.jar@classes.vdex",
+      "sha256": "d31293a1e24271e7d738661ba84766ab3489eeafae8199b6ed7972ff12cb637b"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/audio_policy_configuration_bluetooth_legacy_hal.xml",
+      "sha256": "73dff13eb8898cf189597534fff59a1d7fce354204d905a4c9f8d966a1e58a66"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/bluetooth_audio_policy_configuration.xml",
+      "sha256": "877d8745fe542a2e1070d773d64c7c6b3d03168679d3d8355dd8ee283c5ec884"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/permissions/com.transsion.settings.bluetooth.sr.xml",
+      "sha256": "952b232d96abf47d90da2a6527ecb2e51fabea9a8cd5cf66fb82c5e7a91a9f90"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/TranBluetoothSettings_tecno/TranBluetoothSettings_tecno.apk",
+      "sha256": "29632b0aed60358a6608702655a01a5f4742ddf17d00883f7c89046574aed613"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.bluetooth@1.1-service-mediatek",
+      "sha256": "1352e6327e28068840ad10e88bd547af7a72c54facdc9c3c53159bd41010389f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/audio_policy_configuration_bluetooth_legacy_hal.xml",
+      "sha256": "788b585dfc0372e1aec5d320276ab8fc4009bfa1462e622f77ed2a5ad875a686"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/bluetooth_audio_policy_configuration.xml",
+      "sha256": "6bebd0b3451f136b0de815b0e0053f57abc922ddc199161e4c31569e89377af1"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/bluetooth_offload_audio_policy_configuration.xml",
+      "sha256": "64e1776f0b36af9b4af2dcce6f00a8ccea52435af212f9ad1b09eef8f1d07280"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/dts/current_bluetooth44k",
+      "sha256": "80bdbdfd7a1e3808f44f1254f1da4388770c909c506a3e55018cbf12ba0c1c2e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/dts/current_bluetooth48k",
+      "sha256": "f592d2053f6aa4d005e0b617b0ee3a0d51b10b0d5e22cbc6e3beb2de748f82ba"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.bluetooth@1.1-service-mediatek.rc",
+      "sha256": "fa44f29d03214d5dd995b33724ff32180a194a55d4f26d36d014bdfc52f3e2de"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.hardware.bluetooth.audio@2.0.so",
+      "sha256": "7b01786e17bc13f8776bf898eeda046d4cbf0a9a4812f493587bf8b23b83f44c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.hardware.bluetooth.audio@2.1.so",
+      "sha256": "075c526739fd7dc96c45bf314a88e122a351d437d44e3befa43560572ccf36b5"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.hardware.bluetooth@1.0.so",
+      "sha256": "a394fc91a6b9dfd23b37ee295878dd019ffe3c3a28c6cb558a798c95465803a5"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.hardware.bluetooth@1.1.so",
+      "sha256": "98d8385f5b6edbbe1fb3b49e2264b78d2aeed8c93f22383af41abaf7f1548dfd"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_audio_session.so",
+      "sha256": "7995e5590250f30fa11b9fb63a9d28f132d8dfbb6056294420dd950e53b19a2d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_audio_session_mediatek.so",
+      "sha256": "ea2709947cdb0ab7a53ace19b30f3107893023422711e729dc689c45e1f21a98"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_hw_test.so",
+      "sha256": "3d50afed378b51d2d041684bb109519d21d20a2fee769e840510570c4d45912d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_mtk.so",
+      "sha256": "7ce28f6a439401a80b8c363fad10fff4ab9863214b629c6b65193d93d2e33c60"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_mtk_pure.so",
+      "sha256": "25d88cd459029c0d38770ee052dfbb154df2e66f5549a62b57d6e4e175c2ff42"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetooth_relayer.so",
+      "sha256": "4302b7a58d891191087b3fac44e26aafce6a3cd169202815696ed69e740a094d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libbluetoothem_mtk.so",
+      "sha256": "ca9b3ce1ec2d1d61458dda29024749a125c20d3ce245dbbb3d97c460661fd642"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/vendor.mediatek.hardware.bluetooth.audio@2.1.so",
+      "sha256": "dc69014645be1eb22a3ef9e547acb5cc64fe2b61c7d4e5da06268cf15e941f04"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/vendor.mediatek.hardware.bluetooth.audio@2.2.so",
+      "sha256": "51812258c73e96e594cb784859c5ade1082417df4edc5a0452a691c97f814bd2"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/android.hardware.bluetooth.audio@2.0-impl.so",
+      "sha256": "72aeef6cf44d2f8288c27c3a7e17b1b2d44c6d4984df6a087791f9cd630fd07a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/android.hardware.bluetooth.audio@2.1-impl.so",
+      "sha256": "d47d7cb7b653ea4bdbbaef2915e91972d23ff7ac9e505c06e7f29a62f5316a5c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/android.hardware.bluetooth@1.1-impl-mediatek.so",
+      "sha256": "9e18371a3244378e4893a1de0b386fb412e0d4dc8ea6a68e47c4dd72c705f772"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/audio.bluetooth.default.so",
+      "sha256": "cc53d6455a7cb8aeaa5298a87730c233d8ac3a11abae395445363904d5ff0bff"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so",
+      "sha256": "6d25069e468b37c5d853257a25900b5d6fcee0f69efa541c60b3bab82cea4d9f"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so",
+      "sha256": "3c7df400764a9991823a0a7eb50dba37623c3f4d627fb04b3b700d0cb7c4b63d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.bluetooth.audio@2.0.so",
+      "sha256": "86c635d963efe047f23a4743ba76783c009e73218ea6b89e28d229f0648a0e8b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.bluetooth.audio@2.1.so",
+      "sha256": "a088f7ec1ebed77a5ffd829b568eea34da55e2884bb0651cca4397dc79c646ba"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.bluetooth@1.0.so",
+      "sha256": "015a9894977b7ac9dd95b1b5a4acbc445d4520b4333d0cdf8969d5560b887465"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.bluetooth@1.1.so",
+      "sha256": "93be8a1c975e5f909f8486371ff570632d5d633de754bb362059025be2828815"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_audio_session.so",
+      "sha256": "a049828bc2abb164ff8a9b7b569dac1dc3a062afc9504f2515bfc590757d0085"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_audio_session_mediatek.so",
+      "sha256": "74578f4a56fc06c0bc9e66c0921bda1fcde84c80d81c497ecfda967adaa1210b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_hw_test.so",
+      "sha256": "a2e0e970dc430f6c37dad17aa5c426786cbc8bd4370b5520c8655bf99884d602"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_mtk.so",
+      "sha256": "704fe139c768c2110aea679111c78809b27cc7e537d6ecd5c59a42890a261b6e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_mtk_pure.so",
+      "sha256": "bf9b7b0d4270328788374496e42d971cc67e185a4d4decd4431ece135580d688"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetooth_relayer.so",
+      "sha256": "8cbbb07bc317fa93b6f1305a9076a49f32b63089af1a690e4edd7ba906b3861a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libbluetoothem_mtk.so",
+      "sha256": "4a2d328eb317d55834040397997dfee3ecc8c8e1df6e2fd76f235dc1bcea804b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so",
+      "sha256": "7cd8ea277c58029b1c0112dfba9420c784011e8e67438a048ae1fb49af53c2fc"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so",
+      "sha256": "d90ba86a62c6363b5c2de3a0015ba55e2c2b080f8bdd3080289ef79ba171366a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so",
+      "sha256": "c31d36c29937533d18bd42ed06a674948c3647ec97a94f655f238e964b093bb2"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so",
+      "sha256": "3a3f07bfb3aa01c3d2b2fe6466da2946291bcf578b28acd81d4ee00296b04646"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.bluetooth@1.1-impl-mediatek.so",
+      "sha256": "47d36e44087e927e883acb67ffb2ee567c5540d5ef8925aa7782e49aa712e5cc"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/audio.bluetooth.default.so",
+      "sha256": "08941674e0570c9dbb20fd792b9a7f99cdab632ec6a9245c99b83722e549f040"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so",
+      "sha256": "ad3fa78d67c6d8f3d38fd25b3810155f803830c336f42c43e08d490d539518cc"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so",
+      "sha256": "a32933d035f3b294a3416abab58e649b2428c66c76a960b9be121c48963e8342"
+    }
+  ],
   "operations": []
 }

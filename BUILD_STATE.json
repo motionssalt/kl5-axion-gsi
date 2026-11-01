@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:29:25.994903+00:00",
-  "phase": "3",
+  "updated": "2026-11-01T00:29:32.392651+00:00",
+  "phase": "4",
   "phases": {
     "1": {
       "status": "done",
@@ -29,8 +29,10 @@
     },
     "4": {
       "status": "blocked",
-      "notes": "No approved evidence-backed compatibility patch; no image fabricated",
-      "evidence": []
+      "notes": "Design report generated. Proposed patches are never applied automatically.",
+      "evidence": [
+        "docs/PATCH_PLAN.json"
+      ]
     },
     "5": {
       "status": "blocked",
@@ -115,18 +117,6 @@
       "message": "Symlink records without SHA-256 crashed the gap summary. Code and regression test fixed in pushed commit cd57733; automatic regeneration pending."
     },
     {
-      "id": "no-proven-system-patch",
-      "at": "2026-11-01T00:19:35.123077+00:00",
-      "phase": 4,
-      "message": "Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched."
-    },
-    {
-      "id": "otg-control",
-      "at": "2026-11-01T00:19:35.128251+00:00",
-      "phase": 4,
-      "message": "No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed."
-    },
-    {
       "id": "image-build",
       "at": "2026-11-01T00:19:42.638269+00:00",
       "phase": 4,
@@ -143,6 +133,18 @@
       "at": "2026-11-01T00:23:39.889176+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
+    },
+    {
+      "id": "no-proven-system-patch",
+      "at": "2026-11-01T00:29:32.388201+00:00",
+      "phase": 4,
+      "message": "Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched."
+    },
+    {
+      "id": "otg-control",
+      "at": "2026-11-01T00:29:32.391537+00:00",
+      "phase": 4,
+      "message": "No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed."
     }
   ],
   "releases": [

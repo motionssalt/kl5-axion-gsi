@@ -3,6 +3,267 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/sysconfig/preinstalled-packages-platform-handheld-product.xml",
+      "sha256": "3ba33a8fc36e4b166c462f7ce58f13e555f92c65ee838a6bdfd6c69c5adbbedd"
+    },
+    {
+      "partition": "product",
+      "path": "etc/sysconfig/preinstalled-packages-platform-overlays.xml",
+      "sha256": "4839f3792b4272795f7b6ef9da27fc8abd1741de7499372c87c98dad78a1f58b"
+    },
+    {
+      "partition": "product",
+      "path": "etc/sysconfig/preinstalled-packages-platform-telephony-product.xml",
+      "sha256": "ea41ebc8c47564d8fa09f105fae131137ffa1c7d171c19f7de85b3d23b865a10"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GoogleDeviceLockControllerOverlay.apk",
+      "sha256": "22930d49b134494c98534ca2b6b761b8e95b7059850a60933e56291c7b19c0af"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GoogleDocumentsUIOverlay.apk",
+      "sha256": "7bcfd379e7d2f811360f758c81caa2af3fe74d52f1ab8bafcf7947fff1ef4b94"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/NotesRoleEnabled/NotesRoleEnabledOverlay.apk",
+      "sha256": "784f1e0d0b2d8615303b496ea6673759064388e88b0f17f60013d6d6df4c1dd9"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/permissions/GoogleDocumentsUI_permissions.xml",
+      "sha256": "fd470308df4abf137a4bc83386dbd9528c13ffdbd8d20e95cd309ab4c1a21e99"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/sysconfig/preinstalled-packages-com.google.android.providers.media.module.xml",
+      "sha256": "e06f4ec5ff2eea087b7af3b7ea9eaa9cf5c6e5841dc1bea4b829c729d1cf75bf"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/sysconfig/preinstalled-packages-platform-handheld-system.xml",
+      "sha256": "dd8a853b0b7ef4bda76cce935315679e19098b9e51ade3770e8cb23ee7598480"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/sysconfig/preinstalled-packages-platform.xml",
+      "sha256": "d73fdd23ed86afcf3228d5097d9604939cc29bebae0f5bb08a0e8c53624d5368"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/tranlightservice.jar",
+      "sha256": "ab040d64a2e2a94da1c7a17df2ecae016f293814cba0c4d4a030d69396f09cf8"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/tranlightservice.odex",
+      "sha256": "8dc3f50e0e4880381052392b0c61c8ebafef7d0791480ba86a4685d98666fa93"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/tranlightservice.vdex",
+      "sha256": "25a74d21bfcbde4d75cc0d2a02f131adf962c9ebbc02a9d0e2db2c44f9b0cdc9"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/tranlightservice.odex",
+      "sha256": "2127cb7ddb8f1e19b07cea384e19e87268ced5d03506cff3a11077d77258df31"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/tranlightservice.vdex",
+      "sha256": "25a74d21bfcbde4d75cc0d2a02f131adf962c9ebbc02a9d0e2db2c44f9b0cdc9"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.vibrator-V2-cpp.so",
+      "sha256": "3fc9655d5d0d681ea33d88beb6a1dbf4dd5171da210123da537d921c60020ddb"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.vibrator@1.0.so",
+      "sha256": "5fe8100a5febf47b8b15ff3da4bc0e81b179f9c54795d0dcfbbcd5c4bf3176de"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.vibrator@1.1.so",
+      "sha256": "110b208abd5afe19f809a24b950ff248839db23a8394b147f2630ed92838460c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.vibrator@1.2.so",
+      "sha256": "2f17027bf884878014c99d41e785a083df73f2c17063d292b9f0bb96c811d640"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.vibrator@1.3.so",
+      "sha256": "7685fd98dddcb883e757264105a2e95f0765e1549061d8e796e628e5cc446ff4"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libvibrator.so",
+      "sha256": "1a09073a8aff05a1d16918351d0f1c3ac50ea119bbb3d20789d57c6f0df97960"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libvibratorservice.so",
+      "sha256": "93ab1025b88791c3a07ebb8abb94568768c7e95b40efb7de1f4bdd3045b2e0b7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.vibrator-V2-cpp.so",
+      "sha256": "5042094532f1e084599d3740a0ae42c766ae677b86e8ac8cc7dcc7218da3fa35"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.vibrator@1.0.so",
+      "sha256": "e609ba0cdc696ebd2f9c41717093bbf29854d61effa80c0c969987525f0bca3c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.vibrator@1.1.so",
+      "sha256": "e735c3e50d33828da7cddeeb5455c7e05d3d9c91452c1885bdee1808d30f7697"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.vibrator@1.2.so",
+      "sha256": "456127caa623f7b4895e0c98ec9fe2780047bcacee73a15a0298e2b2d85a4c67"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.vibrator@1.3.so",
+      "sha256": "f23c84e8bbfe966d4ccef7e929da5eb1b67942d743e1bebfc476729bd8b32598"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libvibrator.so",
+      "sha256": "eedfaf0d85fdcccd069438db829990e56ab9068b9335d5cf63e2825bd76e0323"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libvibratorservice.so",
+      "sha256": "9179f0f25bc66325420e68ec5eb1df87da04f4f4ccf4fbeb30d0c9c06c61092e"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.lights-service.mediatek",
+      "sha256": "798a48b2ecf51cdfc73017d01c2de748764cbcebaf4ab85bec83edb7747f316f"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.vibrator-service.mediatek",
+      "sha256": "64c93bcb86712e1bb4009a154dbb98588f3bc5452ffcd55ad9f18db852c3f00a"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/lights-mtk-default.rc",
+      "sha256": "ca75e640bd6227110d2ee954109fb2ef68b66486b8ed52b5641fbc3d56c4ddc1"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/vibrator-mtk-default.rc",
+      "sha256": "cebc634fddae3b0dfacfba4512096aadc9a7bfd4d29d5153b9741b29541cdca9"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy",
+      "sha256": "17fe67ec703999f45a485ae56a6e62a54538cb5fb5899ba533d7c913c5c7366f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256",
+      "sha256": "c0b8262f4f55ca0533e8f51b7bf5a66210286152bc0761f53a19853dbfd8557a"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256",
+      "sha256": "0623ce8ebd46f840883533a8da811bed6a7bb8ff107f415aad0b94b0fe2afa33"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/lights-mtk-default.xml",
+      "sha256": "570ac710477a2e70c8c983e4eea18ddd398907af0502ac95557f4293e9f85cc9"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/vibrator-mtk-default.xml",
+      "sha256": "ce66728b143af94fcca3736ce87fe371ffadd4f2da86561ae859391f0db4947e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/librgbwlightsensor.so",
+      "sha256": "ded6c007f5c12e0484d5168e92bf321a2f314449efdf6deefd10071d17e03fce"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libvibrator.so",
+      "sha256": "3693fc5dfac4fb8db0a275a7e8d872f3b34a60a1733df4fbdcfd571fd78b6ec7"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/lights.mt6768.so",
+      "sha256": "26109e58c1a46be61229f3881fcbe9d3899e3ece05c8b1357e2ea2f0d7c540ab"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/vibrator.default.so",
+      "sha256": "48194862de6b4fe7f4c2c04e0815f06561320f00eec85a432b35d1d4891a41c6"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/vibrator.mt6768.so",
+      "sha256": "b686658163d40a6f6a8f6ee95bd049b3b4d86fdfe67c597eec93aadbd1e223de"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/leds-mt6370-flash.ko",
+      "sha256": "86fb707d4402a6c86923663522d584665e8e387b276b4f2e25ab4668bbda6283"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/v4l2-flash-led-class.ko",
+      "sha256": "66a43051d198a7003d23d0d2129eed04956f07715c000817f363c7be37a72a0f"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libaacvibrator.so",
+      "sha256": "324377ef99ddabb173ffc2e1ccf35e01a52f3017c76f906925617d1fc774f004"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/librgbwlightsensor.so",
+      "sha256": "0f5fc655120c9d66ae8e14dd04df210ae16dec47c96c704bfced83b6b4d8707d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libvibrator.so",
+      "sha256": "9cc36ce8b77a06315137a5aab9b13f171b0b7ce1cffadc6a40fcd6ee99d51f4e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so",
+      "sha256": "8806e76ee2b405c1d991ea77bd10f972e6a3cc78f71261d6da31bc359ebf2f48"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/lights.mt6768.so",
+      "sha256": "4a71e6ae3a2cfc8e4a31360871c9505677bd393e4f11f25e3f146b5272c5f13c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/vibrator.default.so",
+      "sha256": "c5a013a1869e459dd49e2288dd777fa3a16878848a1c23cf91dfe271fe941314"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/vibrator.mt6768.so",
+      "sha256": "5d3c1b0fcd2c248b12c61a30f37df40b814839422815361468a324fc67b2f991"
+    }
+  ],
   "operations": []
 }

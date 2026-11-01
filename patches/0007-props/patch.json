@@ -3,6 +3,67 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/build.prop",
+      "sha256": "116eebb1ebf34f0fc5ad474196e8b250025978ea30739f78fefd441deeb529df"
+    },
+    {
+      "partition": "system",
+      "path": "system/build.prop",
+      "sha256": "ac91ad220bb0f3f2aaa4be49d439a3d0ba03f5b2278e3cb91e892e8ff4054e3d"
+    },
+    {
+      "partition": "system",
+      "path": "system/ro.prop",
+      "sha256": "b861a26a7cedec6360bf068c478ab025b81e49dbe7e37d81ebc8353a4b1e6459"
+    },
+    {
+      "partition": "system",
+      "path": "system/system_dlkm/etc/build.prop",
+      "sha256": "dddf3d4f814b36ed692cb1a7cb88bae5e3d07fa46fab0b3cb7628f479099cae6"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/build.prop",
+      "sha256": "a2326e8ec97ef92d19cb719aa1bb6db18ba9483738dbf932e14032c47b0bcad8"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/mtklog-config.prop",
+      "sha256": "d2a52033d48fda22a898b56cece1129b4969cd2a193727a505eed55ca331a2dd"
+    },
+    {
+      "partition": "tr_product",
+      "path": "etc/build.prop",
+      "sha256": "2bf726286f69b2d0a69630460e5693497a4a80d508941b6cf7e2ec0b66ab5e15"
+    },
+    {
+      "partition": "vendor",
+      "path": "build.prop",
+      "sha256": "6131137f994af2bf3e494ad784b7c8d24128780507bc0b763bbe173a4b023bd2"
+    },
+    {
+      "partition": "vendor",
+      "path": "ro.prop",
+      "sha256": "99a6ad67d19e2b01aae9ccdbab140d6137c16c0cb124d0aff658382605f8b7c2"
+    },
+    {
+      "partition": "vendor",
+      "path": "odm/etc/build.prop",
+      "sha256": "dcf2d22b377c688e24b3d60df48ad90053dd8dfe9b451dbf0f95021e92240f27"
+    },
+    {
+      "partition": "vendor",
+      "path": "odm_dlkm/etc/build.prop",
+      "sha256": "a3ef0166a7cfdf6205ea17179aa503ba518add2d77ae965ddb4981a09940c87a"
+    },
+    {
+      "partition": "vendor",
+      "path": "vendor_dlkm/etc/build.prop",
+      "sha256": "df670c3832a2d1f1a37a4a4792e2a4898c8ca8ad74504b86a0cdae841f2f978d"
+    }
+  ],
   "operations": []
 }

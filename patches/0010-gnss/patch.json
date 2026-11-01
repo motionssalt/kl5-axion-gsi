@@ -3,6 +3,292 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/performance/healthstandard/gps/healthstandard_config_gps.json",
+      "sha256": "c2bef735bdb7474e84f1c60d8baefc590345d6422e7284c7dbef34cc131ce5fb"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss-V3-cpp.so",
+      "sha256": "d45661776fb2b21bba07b61b074f74787e31aca5841eaa3953f7afc69b7f95c3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss.measurement_corrections@1.0.so",
+      "sha256": "b5150b014ba24bc885cc0d92e7a7ad93817806d657ee7fce4fc7cbd48a12ddf5"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss.measurement_corrections@1.1.so",
+      "sha256": "fb8d5638876187ea419b24741129442c1a4ab900c5b425d179ea6ac043d17e4f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss.visibility_control@1.0.so",
+      "sha256": "e7c59fca6b4ec6da2c33bef208dd224e6d6e135d9ce52c3d04495465e2e21262"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss@1.0.so",
+      "sha256": "eb26ec86b150e3a84b4168f65cdb5ab5b94b24ae29a6ff2d2316746705ed94f0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss@1.1.so",
+      "sha256": "d8a97aa73da0a88b7673450f5ab3a8f06afe42eae8f1be629a4665eeb6884e52"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss@2.0.so",
+      "sha256": "8cbc6ac80bab44a00a0090627f200485ee8e87d2df86f8430b6b836a45514e11"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.gnss@2.1.so",
+      "sha256": "7aa79c7205218c930f4afcf4c23d5fe0ec444245a2c6300d1db5ca29155600be"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libservices.core-gnss.so",
+      "sha256": "1f01aadeca371a7a8f1d14c2652b34830d91179f8a53b8c76ef3b42d43e14c52"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss-V3-cpp.so",
+      "sha256": "42d83547ae6441431e5585002b1fcebd43b0f7abaf9973b1b1309ca9d6b6d40d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss.measurement_corrections@1.0.so",
+      "sha256": "70a54b2bf08eb0118f165a0ab7cf1b6698bb6ced14cac479644a8dca5b08cea5"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss.measurement_corrections@1.1.so",
+      "sha256": "6b5994c550b12a03bba9b068055a61e8ba096ed4e47b72f568e69553dc80e7e1"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss.visibility_control@1.0.so",
+      "sha256": "6d8ddd69b4291344cc4b0c08edda5c220e66254a50b4b47ea602e62e59f4682d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss@1.0.so",
+      "sha256": "3730bca4aad099f981e43f0c9eadc0ae93ffe3a39ff22642ecd9a7a55ffa9bd8"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss@1.1.so",
+      "sha256": "8ffbe39577f62a7750560302d23695e528c4f5a7269ada3c6352ff18b19d53c6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss@2.0.so",
+      "sha256": "689a3f5b1ebd4647ece8e4812bb379685cae883b118e2a381e39b1ca9676f6f9"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.gnss@2.1.so",
+      "sha256": "30bfc94ccb521b3d2891346276bf40266759ab8f1397871f50975c6027fa1bda"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libservices.core-gnss.so",
+      "sha256": "00f9b003b0b9828a293c3a5fa174c2498c6352eae0552a06c07b48573a6492b5"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/YGPS/YGPS.apk",
+      "sha256": "a1e95d208aaa83864e45e05fdb9af1675b9e76c7312a68efe5bba9dabf5a40e7"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/YGPS/oat/arm64/YGPS.odex",
+      "sha256": "58dd6f96d0da1f83fb611db519d0d07e2a5be78295dc8039b497a7cf0e3398cb"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/YGPS/oat/arm64/YGPS.vdex",
+      "sha256": "9723bd9b2f0e251b51c741afc1af3b2be880afcb2f797089f9dea7d10d311a85"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/mtk_agpsd",
+      "sha256": "80dac5ad64b855edf685e783e0d596ad7c84dd3e0bf516dfac7529f7274bc853"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.gnss-service.mediatek",
+      "sha256": "87dbe1862f5b5cc2a15643bab22de990f7f04090dacaa1cd67560b640615a484"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/agps_profiles_conf2.xml",
+      "sha256": "a309a05fffcd4481ebeae354895fd07738c03172faa8ad6f83309d06ecee31cd"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_Mexico.xml",
+      "sha256": "05cd06731459729ef72c9715d45ab1e9f2e3f66db3bca6f33a6b80e7b4fcf627"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_US.xml",
+      "sha256": "5f8ca21aa96bc193168ce26251660b7c50ce5b8d95ee95ab714a94872838db02"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_CT.xml",
+      "sha256": "3b5f129efba32855928f0e489dbf8bf42ab6ad46fa536309564ed642dd94646e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Claro_Peru.xml",
+      "sha256": "b93d3c97de5f0c1d9f874c595fe965043962c51ef0d96df9aeda31489b02e51e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Entel_Peru.xml",
+      "sha256": "a06f179fffb85f7d61f8574a3f1097a77a53882eaf52bddf84b47355ac728129"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_KDDI.xml",
+      "sha256": "3fcde2af516c350776dc72a78e4705632a81a5767b74517897cc53d6c65e84f5"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_SK_Telecom.xml",
+      "sha256": "843092ee177a35b6d5bed6990311b1df4974709c91244941d3a4f3db954750c0"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_SoftBank.xml",
+      "sha256": "402ab6124f248037ebb121443d5b29adc951e504f55e54be6455a9501c9ebbc6"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Sprint.xml",
+      "sha256": "b0a2628264bedc7c0757f67a20432fda99f8384a4bc08b977f337e277727f91f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_T-Mobile_US.xml",
+      "sha256": "aaa6a024e8d6577e01813be37ff55caf076312f7670d5acab3e155e88e837cc1"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM1.xml",
+      "sha256": "7a88e84c5ce739f5afa1511fe475ceb86e8268431e5494d2f4f3d7aa3a287cd5"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM2.xml",
+      "sha256": "07850c91bab4c348da70ec67b8ce9d5e4505b5ac32e889ecfb5cc2737257e29b"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/gnss/carrier/agps_profiles_conf2_carrier_Verizon_Wireless.xml",
+      "sha256": "aceb4772fd404b596e21de4aa6ea4914f70f482db8e1860900a94d0dda6cdc76"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.gnss-service.mediatek.rc",
+      "sha256": "6be546b0f7ec194fbd39f19dca60cf47956028653f896f45ec22e18cf088c93a"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/init.gps_drv.rc",
+      "sha256": "4cfe0a8f1b30acaf6c1d9365dedd56755d23f1892e0bf0b702404b4ca42814ac"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/mtk_agpsd_p.rc",
+      "sha256": "bd967073fa77e9f9be471ffdf796079f7c524402380409fc014466c710b8246c"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.location.gps.xml",
+      "sha256": "24bcd790812b438782c59424ec0db74b4dff228d8a96919ce39cf428ffc9c903"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/gnss-default.xml",
+      "sha256": "d13e1e03d7a8fa64b57fd85b1792637ff6aede5e265f7d19b48c882eff58ac70"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/gnss@2.1-service.xml",
+      "sha256": "a12da17c3bfcba05f8a92c304a694e080244b34c1f88abb61d5351340493c505"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/gps.default.so",
+      "sha256": "c007972e1bd89e53549324d4e0d79e6d95b90efff1c08c3e7a4c7f4e957657d9"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/c2k_usb_f_via_gps.ko",
+      "sha256": "3490d80b4f13aceac0db2ccd08d377b4d28acf6b529352658cc7adc45d1ded77"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/gps_drv_stp.ko",
+      "sha256": "6988da1bd67ca9da5736701976bc53c583519f191176d919d404d5978582871c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss.measurement_corrections@1.0.so",
+      "sha256": "f4b0079b1594b366ecbee4c4ffa6d63fdb20815837463cbfcef49b8d1e39138e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss.measurement_corrections@1.1.so",
+      "sha256": "7b49d68753b0c071503a18e22599c738cc85e1d65200cdce9f9e2b75abecf741"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss.visibility_control@1.0.so",
+      "sha256": "e1966bdd2d4303bcd41183a3296f885f6c652019208e6b696c3db37995f68589"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss@1.0.so",
+      "sha256": "a75de7e1d90081f11ee052b51739c2e1b1cfba7bf6672afe6076c4e0a2f88ed7"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss@1.1.so",
+      "sha256": "f2ff89ab34a74304b26ce2f24d38bc0e6ebe1d32c7b21b8cad1982ff089cfa29"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss@2.0.so",
+      "sha256": "d766cebc5d80fe888314596efd2eb38a95699dcdf48c5682bad94c1dee0fb225"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.gnss@2.1.so",
+      "sha256": "376a929f45979acc3825b18d8787623bcd26049a543528f1d94edb2e9fcebcfc"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.gnss-impl-mediatek.so",
+      "sha256": "1d02921215549b53486288aa90e23e2af68a001faec3ba125a8ea1ef05a03f9c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.gnss@2.1-impl-mediatek.so",
+      "sha256": "29497027309a0288fa6405963542c30463a7988f2b5241ae7edd7df961854dfb"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/gps.default.so",
+      "sha256": "55979e7e74bb9ed5e01e505ff297a9b5c5adad5d9605a901a2384860c6fa698f"
+    }
+  ],
   "operations": []
 }

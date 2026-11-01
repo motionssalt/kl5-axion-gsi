@@ -3,6 +3,42 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "system",
+      "path": "system/etc/permissions/com.android.nfc_extras.xml",
+      "sha256": "67c6a494c4a68a07067f5a17025b3a03458ee36a856adc7336883a8ecb326ba1"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/com.android.nfc_extras.jar",
+      "sha256": "e33589c0f911eaacb86013bdb90651db39641aad5484b0c51c5924802ed610c6"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/com.android.nfc_extras.odex",
+      "sha256": "e15bc60c78f519d2de65716085996e4929a5a63d2f2adafae53b37e943d568ba"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/com.android.nfc_extras.vdex",
+      "sha256": "5bfdbc41c9a458484d47ec1832040fc22434620b97ad7482c9a4339805ca9561"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/com.android.nfc_extras.odex",
+      "sha256": "e211abf9893932fdce3ef2f392bc9b241c879dc6bcf8b9ee3b91f2935d2f3cd7"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/com.android.nfc_extras.vdex",
+      "sha256": "5bfdbc41c9a458484d47ec1832040fc22434620b97ad7482c9a4339805ca9561"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/nfc_i2c.ko",
+      "sha256": "bea989d5b6e4e114e6a2184435a103c94f2da7d6f7212b021c258a1ae9b093dd"
+    }
+  ],
   "operations": []
 }

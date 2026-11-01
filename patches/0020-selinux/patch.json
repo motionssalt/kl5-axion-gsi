@@ -3,6 +3,237 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/bug_map",
+      "sha256": "94103e437957ad8f5779baf629bd6c7bd94ff092965f39bf18152ba7ecf249ee"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_file_contexts",
+      "sha256": "6c50fd8f99ae78cf2e82987a6ebe57d0013efa598c230221f39f6489836cf534"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_hwservice_contexts",
+      "sha256": "5eae772c38b35c0538a55a38d337923db67c79960845775e940bd6484a688c50"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_keystore2_key_contexts",
+      "sha256": "5bf2b6521e232d7ae801df44cd43f4840b6fd6ec53e555ad1b68d591ed5fb35d"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_mac_permissions.xml",
+      "sha256": "d3f445575cc0cb999e7f9ddbc3ac08dae4909497df7165d85b67cc85795e5c95"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_property_contexts",
+      "sha256": "378aa9fa50294c5fea4110415ab5ab5aae4a5c5860ef97e10b011f93f9faaf9a"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_seapp_contexts",
+      "sha256": "ca9206aa16783a85052e4286c7cb2d11edfedf1c9c5867a478473e506e5dd739"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_sepolicy.cil",
+      "sha256": "9b57cf354918c6882b9c3bd484a798c60f723d6ff75636007e4d33307636cc72"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_sepolicy_and_mapping.sha256",
+      "sha256": "c0b8262f4f55ca0533e8f51b7bf5a66210286152bc0761f53a19853dbfd8557a"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/plat_service_contexts",
+      "sha256": "6b9aaa182e4722d11a60b6bcffb1a3b689b9233f397c7185ce4de8dc19c274aa"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/29.0.cil",
+      "sha256": "ca0ce6a07bbb4c95ef825308191de6629e78412dda4dfd2ee9b2dcdd6ec5bf61"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/29.0.compat.cil",
+      "sha256": "f4946f88fd8b113526daa3f40b04c5836ce52d61dec716863b131b141472a2af"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/30.0.cil",
+      "sha256": "71e76e8c68fe9a2a7a0aae85222c4b4bf42de02a4d0ebde3523d623c949199a8"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/30.0.compat.cil",
+      "sha256": "1175e95bee74172cee330fffd8b341a641cfb3dd7229bc618649e87d220b58d9"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/31.0.cil",
+      "sha256": "b3427009c183747eef6ccdf4c6f2590d9503003d72cfc3c00f4754cdfac0d6ac"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/32.0.cil",
+      "sha256": "e4db09ae32094b9499e369532915998da988a5559f336f4f194d69f681d93e8d"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/33.0.cil",
+      "sha256": "6824728fcfac629e31f6754a08cc69b81d51c04166e452ebde63b74e0a906306"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/33.0.compat.cil",
+      "sha256": "526d48f31c919a7b392fdd86ac596eae2b26bdbd4a35e818dd3c920335ea29b8"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/selinux/mapping/34.0.cil",
+      "sha256": "53435805ca07e5b0a66bc91b8fab494bb84f6290b7d56ee1ce84057ae2897322"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_file_contexts",
+      "sha256": "534a465bdebfc5bb59f8173eb1db9c0ccac03cb8a281da1f777902f8d974f6c0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_property_contexts",
+      "sha256": "e30a4ab3b3924b935e5bec4dfa4c078f56a2f3034ab1cdc663e9c1a553baeac0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_seapp_contexts",
+      "sha256": "0f36278b920b14033bd43bcdc35ec57266e979579159d5db2ae8f83ccca9a23d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_sepolicy.cil",
+      "sha256": "ef6e35fb0a0d87546b38a491b5905a31941a5e1189c068b53873d5d223f1d9e2"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_sepolicy_and_mapping.sha256",
+      "sha256": "0623ce8ebd46f840883533a8da811bed6a7bb8ff107f415aad0b94b0fe2afa33"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/system_ext_service_contexts",
+      "sha256": "1ac63fb95e39083649d96ec638f097be1551bd1e02695d03dee84e28969dfc3f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/30.0.cil",
+      "sha256": "a9fcc28eaae2dea3ca4a5210d92153b935f64cb63dec791b139cae9967c2ec58"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/30.0.compat.cil",
+      "sha256": "837c7efec5ea2a8a0be7e772ee2544b84ea469298d9c323d5f021aa1cf74e9a7"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/31.0.cil",
+      "sha256": "0c2f404d824788bb62eb0bab6cb671e378f3630b312e52f94b29c49528a35f95"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/31.0.compat.cil",
+      "sha256": "eadeb3a933ab8c525467e94858a895c0ec203fc10b2fb2a65e7092953f9dac4b"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/33.0.cil",
+      "sha256": "801a18db2af8b3fc65dcdb1a7c18e113e31e94e434b961f7c844cb1010e8d960"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/33.0.compat.cil",
+      "sha256": "eadeb3a933ab8c525467e94858a895c0ec203fc10b2fb2a65e7092953f9dac4b"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/selinux/mapping/34.0.cil",
+      "sha256": "2ac69454f3322e81a9718d5b710627e316d181ceb342680c025ed6df30dbf3f6"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/plat_pub_versioned.cil",
+      "sha256": "1a64b0276388431f7087aec6c9c3f4f0bf411edc2c71ded7d7fa01fa3e815c4f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/plat_sepolicy_vers.txt",
+      "sha256": "c1be93ff1e96d84c1d4f3cffbaa3654adfe996bb2c8263733d4f6aabed72b37f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy",
+      "sha256": "17fe67ec703999f45a485ae56a6e62a54538cb5fb5899ba533d7c913c5c7366f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256",
+      "sha256": "c0b8262f4f55ca0533e8f51b7bf5a66210286152bc0761f53a19853dbfd8557a"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256",
+      "sha256": "0623ce8ebd46f840883533a8da811bed6a7bb8ff107f415aad0b94b0fe2afa33"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/selinux_denial_metadata",
+      "sha256": "d34dc2f3db8497a3064b0ab204c68516d4c51326b7fdbd3819d7b53fe307e63f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_file_contexts",
+      "sha256": "cbf83dc109ab125607a06eee44ca7ed6e00a2162460f504d7ea51d5d8943bcb7"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_hwservice_contexts",
+      "sha256": "40028e609ee653f172a9ae9872bf778717277b197e819a92e922034e3154725b"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_mac_permissions.xml",
+      "sha256": "42653623e205c00bdbe04521e89c17f45d186674a5a35e80dd57fa886ef50cc5"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_property_contexts",
+      "sha256": "f79d65df3d2b64ff013ea47cb2b720b94ad998f6d8d914b58d2473a79b730fe1"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_seapp_contexts",
+      "sha256": "6b4bed2ca53fffbb9e177789abc61071457496ab9e54fd7db867725cd9c4cfb6"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_sepolicy.cil",
+      "sha256": "c9e74fec0253985533920386a2b432dd0d8ef0f735c37dac1595cd4599baced3"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vendor_service_contexts",
+      "sha256": "c72409e3955b781117c37a6b346d1d4618c97316dffd3177bc69414424778714"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/selinux/vndservice_contexts",
+      "sha256": "01d183c5bf1ff2d8b69290dd8b1ef3bda3d225fa63b2d063759ade79760a695a"
+    }
+  ],
   "operations": []
 }

@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/aivoice/vad/model/CRDNN_init.mnn",
+      "sha256": "86ab4195f0933bb9472bcf49591e4035d511518bd0ce6fc938f22cf15bf69d99"
+    },
+    {
+      "partition": "product",
+      "path": "etc/init/init.magellan.rc",
+      "sha256": "4b2d863d7a2f27e24c13bdc0c9489672cd6bcaf9ef2f517bc017c232a1f368f9"
+    },
+    {
+      "partition": "system",
+      "path": "init.environ.rc",
+      "sha256": "cb612c1ab9a5edf2a70664a881e6f80aa3b97088c98ef7a8dca69d569c1a8b14"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/oem-iptables-init.sh",
+      "sha256": "e44134c91f7f6687de65bfc899b39223017f0ae0107f9932550b2eec8bcc714d"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/ueventd.rc",
+      "sha256": "a4d7778764dd03462b2ca83e98a8c625f9140ed9fd01dd3a1a4a8dccb4998f2f"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/android.hidl.allocator@1.0-service.rc",
+      "sha256": "a56e76ce0cb3933dcda463c7b401aee5bf15c78d16279edc98db7bda23bf4ec9"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/apexd.rc",
+      "sha256": "1f4fc2d8195da261dddcbbc3cf0759ef48b2d14c4e98c445be0bb50a4ac077ba"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/atrace.rc",
+      "sha256": "33df76e778dfc9446cd01f287aaa8e4f91a711604af228dc16c1c8901538d0c6"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/audioserver.rc",
+      "sha256": "1fbd6669b8ea05c712c167b2a51363baef724b4751f65e8cc940e9287807cf71"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/bluetooth.rc",
+      "sha256": "a16559c23b61131f352b0b89c817253dee122656adef59b21b6b86626319a377"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/bootanim.rc",
+      "sha256": "382ed2278a1dc9a4b8c2c58d0f225bb7b266cf11b54aea79445385dcf3e21877"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/bpfloader.rc",
+      "sha256": "30eba3417418b44c973daca8814525dc9c349eb16ceb7ae6e441a09903d413a6"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/cameraserver.rc",
+      "sha256": "33b3a8744353b36e25d60d98b57891bf6696c65dfbbe1b740cc86904619ee0ea"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/drmserver.rc",
+      "sha256": "e0b25e036752fa80b54f0923f4661594d5194c81b7c42b4b69de2f0e43c95a5b"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/fatalcatch.rc",
+      "sha256": "18c603acc74e8133e5663fcc3fa6d223dc9651c7ef741da94331ced97075dfbd"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/griffin.rc",
+      "sha256": "7664e25eb67197caf9a508706783a977bce0f0073a96a5a385dea75bbbba4358"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hwservicemanager.rc",
+      "sha256": "e74c6f117deacdf0d59e799eb807311775a2ee888a2f9208e210f6bcf2de73f8"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.avatarpipe.rc",
+      "sha256": "39a9871021db056819da0873fc881e61b50b7f8cde18f9630d9570597d8df371"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.crashsplit.rc",
+      "sha256": "b85d7864221e3f4a7ce1c4275ce028cfbdf59a30887050871a6c3b9e5b1ea1c2"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.services_spdopts.rc",
+      "sha256": "d7aa69f8cba460bb161596556fd6911811660b07b143fb135e4d27b338ff97b6"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.stucklogo.rc",
+      "sha256": "64d44d49ac6e48f854e5a22a680fb15d3c79f9608e220b65ae19bd717f048bf3"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.tran_aisupporter.rc",
+      "sha256": "4e82cc36f574a7a6d65a405d893610ced2a59a181d667ca8f4c9afdab0b79a5e"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.tran_appm.rc",
+      "sha256": "8316832b64fab2918ddda6664354636abd0e1311dae0e3859d92ed931e181b3d"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/init.tran_pdb.rc",
+      "sha256": "52a51f38cbd22186dc0b6545d59a054ad8bde6d633ecfba7e5de87f64ee36043"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/keystore2.rc",
+      "sha256": "5a34941c7935ecd3b6e3e58487c0ab51365a52feae297cdf63de11e163f8068a"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/llkd.rc",
+      "sha256": "915ed69cf1cca279e4a0a8ce03d9b79fd4e274f688cd07d47bdb85e13e93a5c3"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/lmkd.rc",
+      "sha256": "686f034c1be7e7c79562ad145710d9e4f568ab6356d2cb112cc0d318a040af40"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/logd.rc",
+      "sha256": "42d49cb06c2f6fd317a4d145e4c260d095a35d9258c1cf93a72cd5b9695a7078"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/mem_debug.rc",
+      "sha256": "356c4cf570ee09b728fb27e8a5d11aafe7ace14c26666ce2d90c03b3065c0881"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/mtectrl.rc",
+      "sha256": "998cd5d0ec0e88429e276fa3c279ea349a84d9191f0e336eac58f7aadc38fb75"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/mtpd.rc",
+      "sha256": "242323dcf2fa1517f0c89e2dd58697aa4f378df1da0c9223270171f7e9e9a380"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/netd.rc",
+      "sha256": "163c34a8cb4b6b53d689acfa9cca1399e8e0e5ac262fa87d423b9d5c5287a404"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/odsign.rc",
+      "sha256": "0434f58a9e095e78076da1390ed168dc819fce4a18787961154ad7547e5cea0e"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/osi.rc",
+      "sha256": "d755ae780e3a87cb0f5a355977774264c5221b6cae1c7cbc6fd6456765071dc1"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/otapreopt.rc",
+      "sha256": "d707a32d43b672c168fc086903fc86d750dbfc42388b1a990f4b4bec5931458f"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/perfetto.rc",
+      "sha256": "f47522471505bf15a6f1f141466d7d43ce0e0f9d21e7e2229142f3d6279a0609"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/racoon.rc",
+      "sha256": "c58b0ffdf22e92b58655464d6a9671c00830f572bd3ca4b8afdbaae6f60f7b91"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/servicemanager.rc",
+      "sha256": "1618b9a153a9ba62c7db8a447b2c985587afe0a6fede3d62ec320988058e803b"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/simpleperf.rc",
+      "sha256": "f82a0d4de6efcb8430e606c8a5da8650c2aebd3cfb75000d8ff3bef83e920c74"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/storaged.rc",
+      "sha256": "f8cc5d53578c64987148ffc8651c041700f7e4ff4805c42aafeb240f4b47d6c3"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/surfaceflinger.rc",
+      "sha256": "571e9121176fcbc8603c8b421c85620d75f97119aefc254630b6725dd96c9d12"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/tne.rc",
+      "sha256": "62d98a8dbb76a4c752dedba389f3cab8946ada85cdad05a4c1a39dbaaa0057f8"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/traced_perf.rc",
+      "sha256": "2b4d800381c9a515766fc978a4276fd75530652807fa88ffd7a42f10ce55b277"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/uncrypt.rc",
+      "sha256": "63b33e2a2271d0c598bca842d0e6b03564004ed1e0e2995e8dd8ed5616455e82"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/update_engine.rc",
+      "sha256": "a947a06c24fbe98f0523afba9c25fc1dfa197b44e2fee58949fdbcf889f96309"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/update_verifier.rc",
+      "sha256": "6e638383186dcf2f481764618d602ddc9cea588c34ee060872bff399fa75bc35"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/vold.rc",
+      "sha256": "64cac70519120965345473beabe7ee3876b4bc67ee80bb695d71fa81d354d760"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/wifi.rc",
+      "sha256": "d2c32a50b7ed4c7b5b83e70f56f7ecb04c649f89d04b92ab12b43dc7432701c4"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/init.rc",
+      "sha256": "f343c9af2b15725c2891474955813d4c489e9c7bd2c6c200d05215539baf48a0"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/init.usb.rc",
+      "sha256": "91e79aab1c819397fc050c27b21853253c0e1711423760c9ee3f5af7ed10d59b"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/init.zygote32.rc",
+      "sha256": "e3857dd9ac01857a5913e2a22866a5de505f72b559c37a954be6bd2436942a1d"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/init.zygote64.rc",
+      "sha256": "17eb74839bb93b2e5464398a479b05717342ed8ddf524196f9d5fe7dcc68619e"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/mediaserver.zygote64.rc",
+      "sha256": "25fc8aa193e12e810ed61c982e39f7585e74ad8fc60d6936027b1ae9cb91c79b"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/hw/mediaserver.zygote64_32.rc",
+      "sha256": "01c14415e16d4f777e1fee17633cdf94d0c2dc4c27b352e46903cf0c2c476eb1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/aee_aed.rc",
+      "sha256": "584557124a5ed1667e4bbe9e3028e264b77f23a748209c7d282c5f613e0e4851"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/aee_aed64.rc",
+      "sha256": "aab64d7d6e3c73b2773a5278dba95875da32d2993bd1bd5b13ab01bf37ba0bb3"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/aee_aed64_v2.rc",
+      "sha256": "c1fb1c06df2a8bd9c205da801afd127000f537e0cc1f5025299ffc8e27b19501"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/batterywarning.rc",
+      "sha256": "6e60fbac280b15467e7fc5fa735f9751d44eb610a8aaa0b2ce5975d32dbc3fa8"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/bootlogoupdater.rc",
+      "sha256": "7e58b0c82114ac091f5e1b9aa69a3c5fb090e69cac2acf2e98da4a9071bf9d0d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/consyslogger.rc",
+      "sha256": "b631c295f48982f79ca9b89f2d58205300113d61deb84e8dde410f1f7d7d2678"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/emdlogger.rc",
+      "sha256": "fc7cdd9673c33aba78be8b038e6f1d5706932d9055177437e9ea61afe4310274"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/gift.rc",
+      "sha256": "3e3a954f96a4707078f86599d7f56a4c947ac7bb0a7cae33de138ae67c0e6c4e"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.hbt.leroy.rc",
+      "sha256": "fb3dc5fa5c9b9073b42ab080d2c776de785243bfbac89629a70ef97cec0c0e7f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.hbt.rc",
+      "sha256": "7b7ae09553addff9157f2a68a0c66b4f63164949c2b87ac8a5454ad874bf48ce"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.hiber.rc",
+      "sha256": "8a0472e1e96acb920b9c0131511ab4902fc090a9f1358e39c16ccec1bf84b1c8"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.hoffnung.rc",
+      "sha256": "b46aad608c77806839774dc62319d8684c6a795bf2d533f214f8cce5559a0d2a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.lbs_dbg.rc",
+      "sha256": "fd464c4477b1d5d644759739d92524038de8e04fa46377187229ff0273946064"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.os.typeface.rc",
+      "sha256": "0004a78516e3dc9f8192ff8ce671b8f5a502792e84c6be4eda10e421f6a1da20"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.pq.rc",
+      "sha256": "c905ede5f85625da0630d02875633b7117725d392355aa75911c1a219264513e"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.preload.rc",
+      "sha256": "377f3cd6267bfba2da0581e119446720a862c5416a9cfae1ef66a1dc141bfd12"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.thermald.rc",
+      "sha256": "ea730a8db8d60eb55487d657b412ce6d977d76223a587fb6a3078c9cea87c4c3"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.uiawarescheduling.rc",
+      "sha256": "df0f53858d2d557e4ac7c16544b947003a03a3cbee915d74e3c0a7dff7136c5f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.vtservice.rc",
+      "sha256": "9df51aa74b0ed175bcd008e29a9daf88060abeb36eb3bd5a593a66b7edbeb33f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.xhide.rc",
+      "sha256": "5a1e58a756c0059a1a0ce645b4bae0dbbaf95f7ae0669b6af52aa3fca0e5c524"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/kpoc_charger.rc",
+      "sha256": "d327f0e98c997d64002bcdcfef0f50261d0f0a3fa49d69da265ab924584f5c8a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/loghidlsysservice.rc",
+      "sha256": "0770d3003c4afbdeb90b94852550d19d601335304b0d0fd207f54f8f387d3c2a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/magt.rc",
+      "sha256": "a381d32231ae073682d3a7a32c04672eeee9e35a9247fd6c6b6b716338438c8a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/mdlogger.rc",
+      "sha256": "fee64b45b2f6f365975056c81f8e17dbacaf2b04e0815cae5d283cfbffb4b1a5"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/mediaserver_dynamic.rc",
+      "sha256": "13008c1e781b495546bfbb9daa838de3d396ecfd3e1082e450e1e32cffe50b1c"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/mobile_log_d.rc",
+      "sha256": "a164ad2ef8d8313f8bd128315d4ecac54d1a404a2aba62dc838f47b2e8319e19"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/mtk-plpath-utils.rc",
+      "sha256": "72332701e861794a45f6f7d625441c79ac55975a14ab80e2b3fa6321d53a39f4"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/netdiag.rc",
+      "sha256": "be10dc1560cb0731c174fb4342a0a5500f05d394042e9af99f4acd749deaf653"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/terserver.rc",
+      "sha256": "ef110097669a76ba6915a5c7321375a6d376401acafde6732aa45b957462d3c1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/hw/init.aee.rc",
+      "sha256": "c7a6ffe1be040b74f16c58fa546ad9c9bebc77469796e48662e92c063c220b7f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/hw/init.usb.rc",
+      "sha256": "e49e92ee3d182f833f89419eba4c3564c365aadf8af7a129d788d5cdd88931ab"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/hw/meta_init.system.rc",
+      "sha256": "bfbb2adb364e2ce7bb23f7761d887abbc362fc595440d6b66427f86b48a6af5f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/hw/vendor_init_as_system.rc",
+      "sha256": "a03b8e506b0588d2c30c5c88e5a55fcc2a38983c2ea61aba96700fd6142b4cf2"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/init.insmod.sh",
+      "sha256": "7316866bdc8105ce5bb1da86453b18ec824515e4b2661b11c2bf1bf269e68e9b"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/init.spd_cpu_set.sh",
+      "sha256": "81e5e1337c3ec29ba64dc8d5ff7dadffef3e769a7ad5670a1f69266740e26076"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/init.tran_mcf.sh",
+      "sha256": "9d3fd7c51e069961b850dd90f3d2a2fbd32e4866456c00b4c9a6dee1059f27b7"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/fstab.enableswap",
+      "sha256": "78d21aff965b24b8cc721a26d66094122b7198f8757e3acf9f0538e2f43fa40b"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/fstab.mt6768",
+      "sha256": "2f83c3cdd4efa00f23900944b682af64524dfe2b2ba3d12d9a58f1d0f76bc882"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init.insmod.mt6768.cfg",
+      "sha256": "2006c72e4b08281dae8126f17a9e8a69547fed2b2f5ad814677d2f8f4a0097fa"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/ueventd.rc",
+      "sha256": "78b86bf5fd57c89a6c44aba5b792170bcb35567b4c4a7410a73e7eeb2cd5edbe"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/aee_aedv.rc",
+      "sha256": "2b0ff66d6e37dd98887100e8e6e701becc83afa1ab1f1b3c9e3d0eb718fe8d9f"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/aee_aedv64.rc",
+      "sha256": "1e39df9d9c987895ca8c56e8531dfc25daaa2ef84f20d82b972cb769dc363e8e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.audio.service.mediatek.rc",
+      "sha256": "ac741a01c22cd9540c63bd1466db23f1cb35ce00025e06c94ba78908d3eda489"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.biometrics.face@1.0-service.rc",
+      "sha256": "33e829e62e7a0eb480153cca69afba4f0ec29ac6a0734e46d31146c5556a5ab0"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc",
+      "sha256": "339991b630f369b1cdbd3d47d327d42b91858b6d76893847283c2c8edcdd7b25"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.bluetooth@1.1-service-mediatek.rc",
+      "sha256": "fa44f29d03214d5dd995b33724ff32180a194a55d4f26d36d014bdfc52f3e2de"
+    }
+  ],
   "operations": []
 }

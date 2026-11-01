@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "app/AIChargeProvider/AIChargeProvider.apk",
+      "sha256": "57ed535bcf321ea74e85f07c0dee2d0934ed27a1bd3164fa493174fe8b30902e"
+    },
+    {
+      "partition": "product",
+      "path": "app/AIChargeProvider/oat/arm64/AIChargeProvider.odex",
+      "sha256": "72765e37fc92bcbe551c0fcadf160429649c3544ce3efcbbc58904d391963f0f"
+    },
+    {
+      "partition": "product",
+      "path": "app/AIChargeProvider/oat/arm64/AIChargeProvider.vdex",
+      "sha256": "5efec097d7ebddbaa50fbd3b76723f44f444cdad0b2c404b23bc4ca5a659ffa7"
+    },
+    {
+      "partition": "product",
+      "path": "etc/tran_thermal_light_limit_config.xml",
+      "sha256": "c740cbf3b95aa4cfe90c9c85d9c580cf1574194d3c8ba1e0f4102232039a3774"
+    },
+    {
+      "partition": "product",
+      "path": "etc/lucid/PowerXtendAutomaticMode.xml",
+      "sha256": "904996abbd06938a9455260ac9d00c1573417e5e6a7c35d315f5d0f146244e54"
+    },
+    {
+      "partition": "product",
+      "path": "etc/lucid/PowerXtendCommonConfig.xml",
+      "sha256": "1cd60e1f67260d4328f7d42bf1754a1504490f3d40745cfef91a5692536d8c42"
+    },
+    {
+      "partition": "product",
+      "path": "etc/lucid/PowerXtendConfig.xenc",
+      "sha256": "0deaa4f194d38d39563dc1e475d6a262b31aae3df6867d9948eb537e4a773c16"
+    },
+    {
+      "partition": "product",
+      "path": "etc/lucid/PowerXtendCustomerConfig.xml",
+      "sha256": "9363e71445010bd8f8870ad484a6dcf852038b4586b55031838ddf8a6287435e"
+    },
+    {
+      "partition": "product",
+      "path": "etc/powerhub/config/layer_control_config.json",
+      "sha256": "3d172da2bfc7b0b4e7decbb5b9562025ec94a1365b7fe863626401a5f5c41c40"
+    },
+    {
+      "partition": "product",
+      "path": "etc/videocallpowersave/videocall_powersave_config.json",
+      "sha256": "6ada46e7cdbaecbf6fee0a167ebd0265ec82f744eab8c0143c2e9acd07f6a21c"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/LowBattery.ogg",
+      "sha256": "cda04ba769533527f62a40b9b15ba34b27d59c8686a1bad7a5103fe2f82e550e"
+    },
+    {
+      "partition": "product",
+      "path": "media/audio/ui/WirelessChargingStarted.ogg",
+      "sha256": "9dcfc303908ce8d7f0c8273693e342f652fbd230feedd3064fe85249f071ca00"
+    },
+    {
+      "partition": "product",
+      "path": "sleep_master/config/power.json",
+      "sha256": "a710a78f3c4c7dec0c66af0e8a5845dceccccc8659a1705da221068cd0649905"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/charge_config.xml",
+      "sha256": "e97d239fbd2a96d567b34ced08283471256df4cc3968c60abc397b9df275ea73"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/hios_wire_charging.mp4",
+      "sha256": "2f38a913b0b3d405a1140e49527be8355f982cf7fe17c2d58da88ac2dc83e32a"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/hios_wire_charging_lockscreen.mp4",
+      "sha256": "6c499e5efd77ddd46534ba7bf611ea9f51e2c7a6f457d97b0da3f150aad88840"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/lockscreen_charge_config.xml",
+      "sha256": "851a98aaaf8d70bf0aebd9876abeb081fdc42e8973c97ae634e2de7df07bb547"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/static_image_0.png",
+      "sha256": "014c0327502dd8bdd9a979e6837cf82eec80ad295d61c7d89f35a7f6eb86f454"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/static_image_1.png",
+      "sha256": "f8c5a4ee9071ec435ef968d827f0c87686a16f8dccfbdf7279da3bad6c71e855"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/static_image_2.png",
+      "sha256": "d44ec14c9d6af9b6cdc486aaf5e9ecafe70ab74652a5f952732ed2345329e693"
+    },
+    {
+      "partition": "product",
+      "path": "theme/charge/static_image_3.png",
+      "sha256": "d3e7c3e1cb10af4a6471175c4ca6494ea3df53b1ac2326c0cb32d121e5f235cd"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/charger",
+      "sha256": "2a3f081a802b44772e80cfa196f5d243fe84651369c88283f58d5967dd09b87f"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/aicharge.jar",
+      "sha256": "45d055ec743f8a38e920322064359660bd59691107f50eb3b0a121241187d76e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/batterytempwarnforcamera.jar",
+      "sha256": "de93db86b38de32c85a449659c53bae17928b564102b203315c643940a0866de"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/lowbatterynotify.jar",
+      "sha256": "0f704be3fa4c6b99540dae4235b6633a88772ec666f19a5796f63ab421898433"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/tranaipowerlabservice.jar",
+      "sha256": "1ddc0c3397279bca73d7793781ba307cafe8ed3182ee35b2a0080186b67b3370"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/aicharge.odex",
+      "sha256": "86668f90bdede19547194ec4f2ff262b819a3f8e60d9ab52ca6cec7dd946358f"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/aicharge.vdex",
+      "sha256": "efd42685ec484a995624fae8c97a75a6635a034e74e50527c438f6d8565701f1"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/batterytempwarnforcamera.odex",
+      "sha256": "9427aa0cfd58a1dbe1a380d4cecee4ad4e356ffd4af6067de228abd5bf490da5"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/batterytempwarnforcamera.vdex",
+      "sha256": "4068cc33900cb6fed8218bdf32d0466db2dd7c98e673a24b899798601a59fc1e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/lowbatterynotify.odex",
+      "sha256": "eda3678c36f335347c2857e68a2e5fafca3ae8151dccddd5c3b37c5f9c9039f2"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/lowbatterynotify.vdex",
+      "sha256": "daeefc61f380628beefd7e0ebe1ac0bc2aafe51dcf80ab82789b9c67a5f526c3"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/tranaipowerlabservice.odex",
+      "sha256": "6f57bc3d2db1fe798bbcedcf858f449d8ef84e580fd3155463e5e2ef1b827458"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/tranaipowerlabservice.vdex",
+      "sha256": "49b4e044a7bc1a3e2192aa50e8c89873ea677616b84d2ee5ce585ba0b0d4149c"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/aicharge.odex",
+      "sha256": "e31363faaf4b305955822ce39284b1416aa4f5f912a1fd396524fec76fe2c2b7"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/aicharge.vdex",
+      "sha256": "efd42685ec484a995624fae8c97a75a6635a034e74e50527c438f6d8565701f1"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/batterytempwarnforcamera.odex",
+      "sha256": "6b5fde382009a30b7e3f16eb59cc3ffd51e7edecea63c68fe012447390490280"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/batterytempwarnforcamera.vdex",
+      "sha256": "4068cc33900cb6fed8218bdf32d0466db2dd7c98e673a24b899798601a59fc1e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/lowbatterynotify.odex",
+      "sha256": "3fa7d4e22eb29fd0b12f22282f2f7db5b57990e6de8ec3718ae35dc80bc689d6"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/lowbatterynotify.vdex",
+      "sha256": "daeefc61f380628beefd7e0ebe1ac0bc2aafe51dcf80ab82789b9c67a5f526c3"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/tranaipowerlabservice.odex",
+      "sha256": "ad848995609ad19bb5123492de64e04fcf6bb6785b214a17c218ee773cda8da8"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/tranaipowerlabservice.vdex",
+      "sha256": "49b4e044a7bc1a3e2192aa50e8c89873ea677616b84d2ee5ce585ba0b0d4149c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power-V4-cpp.so",
+      "sha256": "cef02f6d6d7abecd9bfc59fc2e8ad8c9c9dbf23db004fc27d28e81f65bca9401"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power-V4-ndk.so",
+      "sha256": "d8feb737e8a561d1564195d75e43444f4796453a0482f36636be258ee61a0d55"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power.stats-V1-ndk.so",
+      "sha256": "9d68593612eb5c1b2eca303e405dc083eb9c5d7f03efc1a38a8bd52c834f4209"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power.stats@1.0.so",
+      "sha256": "796b4508ea130adbbb962e6ccde650254b0c4ecf81bb4f3e130a9abda12b2ea6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power@1.0.so",
+      "sha256": "7b2122d40c280d948c451df5831c02a4dcd7ff1e4f3b43b4ea123ad7be1efd77"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power@1.1.so",
+      "sha256": "3b2228119f3dec75bd0b9eea579c04d098b8c337259dc7667d45c0b11e66a3a6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power@1.2.so",
+      "sha256": "4476574c79456f935b6ebc8c6f3051a4e89d9c9d2b9326c362b7af7ed12edd8a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.power@1.3.so",
+      "sha256": "ad5b1477869e0ec99a20a9847053ebf292d41260a6002472abe1e8f843045d75"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.thermal-V1-ndk.so",
+      "sha256": "2f524108a94abc4f854a3e6a1220f6a16bd7a3c7aad4b35a217943357a98712d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.thermal@1.0.so",
+      "sha256": "76e61468b020a793c58155792472750a280f3a2dc053c882cfefbb7bac1c4625"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libPowerStretch.so",
+      "sha256": "85ea2617229946299e8ed655715e7cf5bd174380c82a565edfd62c47295c9adc"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libPowerStretch_base.so",
+      "sha256": "6b0cf8d203a0e10e78e31a87c123aa09149e9121c6527c095e3e2cb837fbea06"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libbattery.so",
+      "sha256": "3a177682265758e6ce5b5456e2a3c7631069a454d21dc6d39753f9b63220d659"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libbatterystats_aidl.so",
+      "sha256": "6f4826f8267c807cd6d0acb75a80658de6a8f4f1988dff54fd9434ce1a64e66c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libpower.so",
+      "sha256": "ac854a69db8c776fae5ea96398c58f58ceebb852b7bec6038d0fbf15e38d6543"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libpowermanager.so",
+      "sha256": "ba879b67462bd83683e8dd84a2f5de0456ff720d880581c33a1858fdfd5f5565"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power-V4-cpp.so",
+      "sha256": "a89429b013d0bcb211d16ae03b2126bd3e815a0111e44b319ab070258f77b4d8"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power-V4-ndk.so",
+      "sha256": "acfddf77458de42590f83da3d1059626b745334fac2d356a1840d21be6daa176"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power.stats-V1-cpp.so",
+      "sha256": "e0754fae87461015f0ca761a243e0f15ba53685456beca2415db66757b7c78c9"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power.stats-V1-ndk.so",
+      "sha256": "60498c7f156ad8c8b32b0b4d567bc9d9ce9a55b134a31e650e0704c029c583ed"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power.stats@1.0.so",
+      "sha256": "ef6e4c297cc21a5cfb404f2d777e2cf1e473569ff574fb4f2eeaaef37274b740"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power@1.0.so",
+      "sha256": "0245e3be8a90bc57b0270f876d0667a72268ffce759d876ce3284b475808bb80"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power@1.1.so",
+      "sha256": "0761ed2a749bd51cc2bb6a78400ce54cb8eaa43aa4456218dc920483247ffce7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power@1.2.so",
+      "sha256": "f977c899957767525ba4e9cf3040837ed3f18cc4b972055a96d1b9dd2ef820b7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.power@1.3.so",
+      "sha256": "b7222cb2fb54b5a90afdacad5231595b73fc4e9d524de16ee2225f2e22a55ea6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.thermal-V1-ndk.so",
+      "sha256": "1523046e845ec8c856fcbed5ffb0640aaf41ed70716baae87f8aa942eb687b68"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.thermal@1.0.so",
+      "sha256": "2692967e4a7331b73f98a9822a162a2958b87d15d6206e86ff74f22374f97140"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.thermal@2.0.so",
+      "sha256": "97419310ffd294409d78265bfca35344a859f146b6b2579ced61100e89bf4e6f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libPowerStretch.so",
+      "sha256": "2d17536fbafcf3c916c82e6fbf10694005be7c8a3bdca8cfd31d604ba85306f5"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libPowerStretch_base.so",
+      "sha256": "d5effa84a929e66fdaf66b877bd90180a765afea7a944272ac51cf83348736e3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libbattery.so",
+      "sha256": "524bef0660379c28aff3002796a1858cdc7ec247627bc146ed3f1903ca8221c6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libbatterystats_aidl.so",
+      "sha256": "95269568ccdb34364f1bcd4fd057a4afdf3dedc5930fcb1618e707edb642fd86"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libpower.so",
+      "sha256": "9723c7231b7775d97811353b5b604d2e57fcf3d63bff03fa9ba5418e7bb32345"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libpowermanager.so",
+      "sha256": "563bf3560a760df7353ec6406aef7e539ad041d120608101988d5fa0b36deafa"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryLab/BatteryLab.apk",
+      "sha256": "0bc7845ec08df1ffe3aee6c889f3b8cd4c7fb75869d1c7e2d94addb6f5c9c5ad"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryLab/oat/arm64/BatteryLab.odex",
+      "sha256": "0c8a12cacecff77390f57186208c96a19d7f08617aa22e98e0a70d19c0fdf7a1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryLab/oat/arm64/BatteryLab.vdex",
+      "sha256": "33c9a0786db1984b9892e83ca40809ee2912f2aec707c443c2ad13f745c0cf37"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryWarning2/BatteryWarning2.apk",
+      "sha256": "57e8243b081c6f9abd202e03b82e34854cd2c39140be2bc6d8daaea41336c73f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryWarning2/oat/arm64/BatteryWarning2.odex",
+      "sha256": "87a78d23e24e7b82db0b4bb7fd285e22d75e027ca7e72edfa0610062d4b25459"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/BatteryWarning2/oat/arm64/BatteryWarning2.vdex",
+      "sha256": "3da7b392d963be273028003288a88faeaaaccac6afe1f53c53d721bd03c98e50"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranSchedulePowerOnOffApk/TranSchedulePowerOnOffApk.apk",
+      "sha256": "a269b4f8186a1a140a60aed242a8296673e3fa14515ce24a608c10643d0bfaaa"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranSchedulePowerOnOffApk/oat/arm64/TranSchedulePowerOnOffApk.odex",
+      "sha256": "f03993c1d929558744e0d4373687635e5c37a1340ec2b48a68afced85c7a0328"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranSchedulePowerOnOffApk/oat/arm64/TranSchedulePowerOnOffApk.vdex",
+      "sha256": "65c6abdfda38eb947e75bfb8c824a57444770b116da908f2293280cd7398c201"
+    },
+    {
+      "partition": "system_ext",
+      "path": "bin/batterywarning",
+      "sha256": "8eeb78e9ea3fb954ad99cb492b3ec1108daa66faca41bd2892f4893773388208"
+    },
+    {
+      "partition": "system_ext",
+      "path": "bin/kpoc_charger",
+      "sha256": "ff82357518756127327ed0da2ff3474b2e177ac069d062ecb207c5f18295da7d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "bin/thermald",
+      "sha256": "12771bb4cc261643713d5ccf5f1350abcabdf456faf1f074b9252906ec1ec7d0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/batterywarning.rc",
+      "sha256": "6e60fbac280b15467e7fc5fa735f9751d44eb610a8aaa0b2ce5975d32dbc3fa8"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/init.thermald.rc",
+      "sha256": "ea730a8db8d60eb55487d657b412ce6d977d76223a587fb6a3078c9cea87c4c3"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/init/kpoc_charger.rc",
+      "sha256": "d327f0e98c997d64002bcdcfef0f50261d0f0a3fa49d69da265ab924584f5c8a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/libpowerhalwrap.so",
+      "sha256": "0bc1c587c2113768b96959b46f0f1205f00913a041cab4fe657c94a89906007e"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/libpowerhalwrap_jni.so",
+      "sha256": "e776236be6520b19ead7b7bf3bee49975cb4e9b509f9466627101606e7549572"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/vendor.mediatek.hardware.mtkpower-V1-ndk.so",
+      "sha256": "46ff2b2eec48195aa835513a909841ef335b6661caeea31463d65146ae318322"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/vendor.mediatek.hardware.mtkpower@1.0.so",
+      "sha256": "8470a8556e6774bf167e85a09cf34cbc4b4f5e3e6903f87cdf09c9dbb62f8c84"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/vendor.mediatek.hardware.mtkpower@1.1.so",
+      "sha256": "cab037f86b3e370f04b63973c10867fd46e188bd8dd965b8bf3cf78f74aaac3a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/vendor.mediatek.hardware.mtkpower@1.2.so",
+      "sha256": "e7c41f71d70c0881da4929c52d8c90f94bbcf7761c7407af452b7f78691714aa"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/vendor.mediatek.hardware.mtkpower_applist-V1-ndk.so",
+      "sha256": "99720cf144a03d46142f28e1c854e3832c420d19a3273fdeec2d07d6d9de6c0a"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/libpowerhalwrap.so",
+      "sha256": "b42a8abd17ab0ce87720a879d29441f8854c918a69feee21744a9f7c880adf75"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/libpowerhalwrap_jni.so",
+      "sha256": "02ba4dc8a476240d09b6bfbdd963f0c8c3caf8a5f7def0ccee90f2f821809f67"
+    }
+  ],
   "operations": []
 }

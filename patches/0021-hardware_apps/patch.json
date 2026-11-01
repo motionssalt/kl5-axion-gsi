@@ -3,6 +3,32 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "priv-app/ImsServiceEntitlement/ImsServiceEntitlement.apk",
+      "sha256": "cf79713ec5d519f7ee3cf0009630abf117f6e7e762ca39c859ed057d10d8ea44"
+    },
+    {
+      "partition": "system",
+      "path": "system/app/CameraExtensionsProxy/CameraExtensionsProxy.apk",
+      "sha256": "e7c250af7ff42a2b9521a8d5b0ba311b6889f8543b86d1730d522fcfcd8574dc"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/EngineerMode/EngineerMode.apk",
+      "sha256": "989786c58cba6ff7667c85065288596274e6b633e3a1c36799f8ddc742a4ddaa"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionCamera/TranssionCamera.apk",
+      "sha256": "418423b7bd1a4440dfd8e6304d1f728f56aa059f2266ae8194824431af68da5d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/ImsService/ImsService.apk",
+      "sha256": "17bd54713040f4dbaa483e597e13225e77457822cb0710cf9386d59ebd61af58"
+    }
+  ],
   "operations": []
 }

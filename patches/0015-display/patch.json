@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "apm/config/project_refresh_rate_config.json",
+      "sha256": "309be1590f1a019b69cf866c698eb0e1811c1ea3f986f465a1bb73c0dceb8172"
+    },
+    {
+      "partition": "product",
+      "path": "apm/config/refresh_rate_config.json",
+      "sha256": "5e7cc3ff3dc51c81f0e197a7288d5a1582de046adc2dc4dd15c25cc54a9fce91"
+    },
+    {
+      "partition": "product",
+      "path": "apm/config/refresh_rate_switch_config.json",
+      "sha256": "18f29673b2382807a84dc5cb74c3ddab26d6f347a6f652c2811006a0b3af1380"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk",
+      "sha256": "89beebdb858646df57eeb18d8cdab63d17bfbaad8df32e8931fa698ada5bc456"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk",
+      "sha256": "299a66571b417f8e89913ccf279dc3cddee1e5d3d34d6a08d6457f86b9b612da"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationHole/DisplayCutoutEmulationHoleOverlay.apk",
+      "sha256": "3d865160ca035aa81c7ac5694c6bfbbdd94609ed7e469cadc66d1434f6ce84ac"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk",
+      "sha256": "98c782937786aa7cde61c395753f8f5c941e0a9e9a80b37ed460ef2a922b439a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationWaterfall/DisplayCutoutEmulationWaterfallOverlay.apk",
+      "sha256": "72768ec51345ff8a026e7e59ada0ed11fe52c0fa9785764c222f2e95508a91eb"
+    },
+    {
+      "partition": "product",
+      "path": "theme/coloricon_config.xml",
+      "sha256": "859da7d708b19c7c962db76414350e304fd1b0f9329031cb8fb44121c339ffa2"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/permissions/com.android.media.remotedisplay.xml",
+      "sha256": "8e2a2c7b20a4ad100947dbd0a5c39ff9dd718b3b4c322d420b5abbdcc3873bf7"
+    },
+    {
+      "partition": "system",
+      "path": "system/fonts/NotoColorEmoji.ttf",
+      "sha256": "83914c48dc1bb7ff27cd06a3728d2f997dbcdc15cdc81b7deb21079c6d36e108"
+    },
+    {
+      "partition": "system",
+      "path": "system/fonts/NotoColorEmojiFlags.ttf",
+      "sha256": "a20c15a60b7761b8241ee5fe2b7538acca06198b9c5e2333ce87912f32183dd2"
+    },
+    {
+      "partition": "system",
+      "path": "system/fonts/NotoColorEmojiLegacy.ttf",
+      "sha256": "0b095a1b6e166815a4d7b8ded374efe8f0e3179ade143ce25735d5a30600e097"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-framework-graphics.vdex",
+      "sha256": "a546156b1d87764306405a00d231036a3aeab686c0197a6bc294088cb1797fa4"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/com.android.media.remotedisplay.jar",
+      "sha256": "6706a3e3541aa9129693f72d09b036fbd4842bf6556ed7ea6dd7b87f3365ed9e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/framework-graphics.jar",
+      "sha256": "b2eaab5498608566640d5b3bce8bd4e152ef34d92fa8c5d07c97f1277c709d36"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-framework-graphics.art",
+      "sha256": "4e69e65885213122a52c8c7146683ca548eb9495d253108474b46b68f3679285"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-framework-graphics.oat",
+      "sha256": "bc886e30a43a64a63acd44922ebd29adbfeb2def4d6bb90240746d286cf34417"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-framework-graphics.art",
+      "sha256": "a01131058dfeda6ac98dc5eb8218148ca2af5dc297e729f11e09909406672508"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-framework-graphics.oat",
+      "sha256": "f3368659f841a636e2c1460899d082ddcefa1129a133f2eb26a62817e0ee3d1c"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/com.android.media.remotedisplay.odex",
+      "sha256": "3c30ead68044e31140aadfd2074c84d878489ad26ac14c08cc8f44b94da1fa48"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/com.android.media.remotedisplay.vdex",
+      "sha256": "d24045b9e1bd64001c6055ae43ce04bb64675784585db185cb4ac65d0c6399af"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/com.android.media.remotedisplay.odex",
+      "sha256": "5333eb31d73a0d188dfa97bc3ab2035a64e99d983d5bd3c43b4472a7df2f47b8"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/com.android.media.remotedisplay.vdex",
+      "sha256": "d24045b9e1bd64001c6055ae43ce04bb64675784585db185cb4ac65d0c6399af"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.allocator-V2-ndk.so",
+      "sha256": "07e6543ff9db533244c90bbb3766d669bcac5354bc0e5672216ad4ae5c4fd442"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.allocator@2.0.so",
+      "sha256": "90abaa7b642b298d86c3a72176c2695a3ba7411ea1e315b0db15d389c6c02da3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.allocator@3.0.so",
+      "sha256": "b497e9e0dc9a48cb70a2ade96c5742abc21f96be6dc1148ff671a357cf563dc7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.allocator@4.0.so",
+      "sha256": "8e5083775f239362c23d47e4eaa4eebd5c24777fa5c78d2b55b4f0a6fbb27c22"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.bufferqueue@1.0.so",
+      "sha256": "676d42751b69eb5f9327e03bb20ccff3ce6b88751ad52c2a312f174aaaf65790"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.bufferqueue@2.0.so",
+      "sha256": "26a5d3fad300b385aae2b52fbee68a369580da97dce2991be9d23e56e70818d2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.common-V4-ndk.so",
+      "sha256": "305a45e297a527e18e3d04572b8a338cf30a6e054ffc0fd36dc0aa68995e50de"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.common@1.0.so",
+      "sha256": "69d7c2cf243dc8b9b9d7b411eead795665962f0c9f11027a96c88cf7cf58edaa"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.common@1.1.so",
+      "sha256": "83bb7f85af802792733a02dd173e7db6acfdd452abfb3916a6c18b8c93e4f669"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.common@1.2.so",
+      "sha256": "516464b65407458e9b2472a8a8bf4b97ced667492d89bdf3aabe5e8980557436"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.composer3-V2-ndk.so",
+      "sha256": "178e738935d2206b948bda2279739b470fc93e9ab0743b6346532cc9cbc85343"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.mapper@2.0.so",
+      "sha256": "73196d7b18471ec7d0effc57d897aa2c8db06bd56b11066c12f3977b0c06f2b4"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.mapper@2.1.so",
+      "sha256": "d935ea8086f1c5c21d5d37178e515ec4524f7ed5e7b8d7fd6422624c0c6424a9"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.mapper@3.0.so",
+      "sha256": "dd489d798cef4762d7cdcf351db67b15d15ce674d2d706b340563a0b8ff3f529"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.graphics.mapper@4.0.so",
+      "sha256": "ee6faca3d4791875e179f03909f8013f66fd1d38c0820b82b1444700fe3ba414"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libgraphicsenv.so",
+      "sha256": "7f3d1a072296a7fc5a41b7898bddb72448a4cf18828a6c294965bdba5b69ffb4"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libjnigraphics.so",
+      "sha256": "bde26e053981ce763090bf1ce301bfca59c1baa6d3ddc77bd4766a2eb183802b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libnativedisplay.so",
+      "sha256": "0c5d1800e9410213e471241f27b32464f2eb7d4af14e758846b98bb093953ed6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libultrahdr.so",
+      "sha256": "762b51f784f58cc5feece714aa29cd47b2a722a41c69692ccbb95872b631da79"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.displayservice@1.0.so",
+      "sha256": "91c889877a07d561e294a256b5b1b987cc53a3272c81057920c1999e792e3b26"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.allocator-V2-ndk.so",
+      "sha256": "a23fa2b0e8209764404ea39f18925d0cc0f0e0d5efb3ddf60c1cda9bfac16a7f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.allocator@2.0.so",
+      "sha256": "862a95d223cf09a37edd425c443da16382bf2ac87bfb9469e53ef1ffe62403b3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.allocator@3.0.so",
+      "sha256": "795f81f0ba8a8e27ed99a0aaccdd9f06c1ec008b33f63957a35d71c4904e5a9f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.allocator@4.0.so",
+      "sha256": "04ad72a30f58a31a487adcf48acac2664e370187260df5fea6994df0da2c2c79"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.bufferqueue@1.0.so",
+      "sha256": "2bd11de005506b18c6e0af55876e1ca89436b11b5435cb609b28c7fd3b11be75"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.bufferqueue@2.0.so",
+      "sha256": "6c8b23a79b6f6d807f47e1d900b788394153102bbee361e243a336eda590fa2f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.common-V4-ndk.so",
+      "sha256": "99e321042fd8c292d131c0b9571d8502f2fac9646fc913908d3033bf208f1914"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.common@1.0.so",
+      "sha256": "90d6b1bc013cb78f4b9d874327cdd3debfcac9f509561243ad06c8cc7071803d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.common@1.1.so",
+      "sha256": "1c0d5c32e770669e4c9d5174df4ae3a2d4009c57109b95025f1ee62341f6d04b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.common@1.2.so",
+      "sha256": "99228472261709e88d4ca1406be4c30cb8cec92d150ba02d24b50e8207b62d80"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.composer3-V2-ndk.so",
+      "sha256": "7d7a383f2f9d8e5a4b6e9fccb43b1fa15db979199c6066b229accd49e4fecda7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.composer@2.1.so",
+      "sha256": "a2a546a872d3de89befdb283196b1d0a499f2d7cb0280d60a509b70d006109b0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.composer@2.2.so",
+      "sha256": "a0652f7f2aeff2164a33edbb17fbed5f9b47bd29643831aecee8f3c1996e786d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.composer@2.3.so",
+      "sha256": "df753971d1d03f63cbde2d4451b78173a72fc0b5b1a134c8d01790702a540020"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.composer@2.4.so",
+      "sha256": "b25ec97bd2a07c88f5a7af503c5a50844a8975cd0b75b87bcf05b4a5b06bfffa"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.mapper@2.0.so",
+      "sha256": "788bc9e0fdea43db6ad8782c8794968693d1d9469f1fe26ca548533bba61280f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.mapper@2.1.so",
+      "sha256": "b3adfb3ecc0ee9b5c0f285f8b86979f6b295e2ae3a829177b6a6f5936a80f81a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.mapper@3.0.so",
+      "sha256": "818a7e09c752d3b5fb47caa7124932d9840a7bcb94b94fe8f35c7e03648d802a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.graphics.mapper@4.0.so",
+      "sha256": "5797f1f5a6ae984e6051d1c3c204267278e499014ce4aaf8a06e80a1a7f9226d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libdisplayservicehidl.so",
+      "sha256": "239ba942528f0171cace46fe43a4ce22fb4a7e147d677d993b36be8e6b8e7cc3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libgraphicsenv.so",
+      "sha256": "605943b2621ef1994bfe0580ea158a2d332b8691f70da294e5e3735310341a0b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libjnigraphics.so",
+      "sha256": "9bb807563d21af0160dbc5fae292442446854f421141f5558da4d815e05ae5c8"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libnativedisplay.so",
+      "sha256": "48e43cd16b61ae9e34c632f7de542f706096ea065798a422228b42a860beb3df"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libultrahdr.so",
+      "sha256": "9e672ecab037f5e76b7b98640d8fb5a196f1e66ab9c836f057eebfee9449926e"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/libcomposer_ext.so",
+      "sha256": "73292a64168abf312e3daebc8a9b840f5e15df88cf0c300cda7dd01bee7ba1a1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so",
+      "sha256": "70dbdf8e7c4e7718a88cbd96d2c4f382dbab2ec8918661b6b6034738473589f1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/vendor.mediatek.hardware.composer_ext@1.0.so",
+      "sha256": "2fe93752755700a0ddffa4e9540998852cebebbf4013733a9b9a9ccdb26a3ea0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/SecondaryDisplayLauncher/SecondaryDisplayLauncher.apk",
+      "sha256": "fd2c510e37ef99859f372dc0b37a832d0c321f49f851e522b5eefac98fc19ba3"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/SecondaryDisplayLauncher/oat/arm64/SecondaryDisplayLauncher.odex",
+      "sha256": "3829b84160865001352d672ca50ca636bce8ecd7aca41c38d29f6cc7b6ac67e5"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/SecondaryDisplayLauncher/oat/arm64/SecondaryDisplayLauncher.vdex",
+      "sha256": "e905d0d12015a96ce01f98769aaced985f9a70569bf3968834ce398ac094556d"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek",
+      "sha256": "40dac5cc215ed14d158e3912c6d421dcd3f1b4be1b7cdb95131cc3eb76acb2ce"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.graphics.composer@2.1-service",
+      "sha256": "679074ca13500fd2ddc14bd82c3693f3a4ef580297a8e82590ead7b6eafbd49c"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_black_front.png",
+      "sha256": "ca0a846c10bf61524f12fd37a46ecfc412917cbac32239d351608c5206b4cdd3"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_black_rear.png",
+      "sha256": "e5bf7f67a5b1ce6439f4b4c438a8f3f9b3e57b93db83d2af38a75eb41e275639"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_brown_front.png",
+      "sha256": "b4ca03a57273f8bcb9958b2f742a2912721ebfe608a8232382de2ad14b588e02"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_brown_rear.png",
+      "sha256": "417b6d3444c5b33b0f21d6cb71647491cf0c94d6f1558b91962d1cadc41a61bc"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_white_front.png",
+      "sha256": "2232352a1fcffa6361bd9c5e3890739c8ba32e853bf28f73234dd3db99bffe14"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Bright_white_rear.png",
+      "sha256": "33cb9cccf167bf3aa645a0f405577142718080a1f8059d70b1305ac2e91992e5"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Camon_front.png",
+      "sha256": "d2e81bb7ee6447ea5434aad986a8f6061e520784bf9df9c3477c5a0448b9b6df"
+    },
+    {
+      "partition": "vendor",
+      "path": "data/camera/lut/colorEnhance/imgstyle_lut/Camon_rear.png",
+      "sha256": "96e8b6294ac899a6033f69ecf9d019096ce5f7833465664f38ac32aeaf1c81f9"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/AbnormalDisplayLog_dynamic.xml",
+      "sha256": "485f6a0491c18f23ade20c8c4d7f3364f1eb2f9ad4027e7447e801c4a42e6bb7"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc",
+      "sha256": "0d5db942d7e95fa1e6f384a3dd2f0b776a474231fdc5d9aaf794ce5468876316"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.graphics.composer@2.1-service.rc",
+      "sha256": "4ee1b538379e772e8404f59e723f67b64e5566cb54983953d135248528afbe2d"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/manifest_hwcomposer.xml",
+      "sha256": "dfbb5aaf60a3d56389e13e985680709ac247d32e4c593bd6e6142b7a1950bd22"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/soc1_0_patch_mcu_1a_1_hdr.bin",
+      "sha256": "9f7efd43d1afd5c9afd104107fc31d3571b5124d9afdb86df8c41a27ddbd7dc0"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/soc1_0_ram_bt_1a_1_hdr.bin",
+      "sha256": "afeddedaec783bf07f1b52bf774e133b55e837d89c94cf5be4c1a91bc530dc5d"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/soc1_0_ram_mcu_1a_1_hdr.bin",
+      "sha256": "a1f9117bcdfe8e682f7a8286e1167c157ee13c2b6d033f059c78986342c34287"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/soc1_0_ram_wifi_1a_1_hdr.bin",
+      "sha256": "b8c537e2690955a4a0dec84a7fd6f82c60bbcf810c73a335f3a585ba66129e65"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/arm.graphics-V1-ndk_platform.so",
+      "sha256": "cf8339d6b927e75fa5c6d3d86bda913203cc858853627ebd20c235f68d984a19"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libgamehdr.so",
+      "sha256": "99a592aeb3a9935ba1b32ddf2350f4c51e84ea9aa7473d90bd5516323f716a7c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so",
+      "sha256": "da1583eeabda925d126ed7c524a0e7bfda2fca4441204ef033b2ab52dd41d3ef"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so",
+      "sha256": "040d4e0013981585496745c008d1770b58a78b46effb29ae30c751819bbc6653"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.graphics.composer@2.1-resources.so",
+      "sha256": "1d92996b8b3649cc6249ab339d58528ef2a577f6526e24056d984e136fcab809"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.graphics.composer@2.1.so",
+      "sha256": "01d9cf4c9b2c6e4280f0808062d7689b2a71553d80c81b21c7357ba84df1aab8"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/arm.graphics-V1-ndk_platform.so",
+      "sha256": "2864a9dafdf6ec3a2d870ab1b575d138f88fcc163a75b01dc988e2b897422c28"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libTranArcHDR.so",
+      "sha256": "01ef31533c63f85f0130b3a90a136fc4961ffbe9536f7943c94542e0ee6dd04d"
+    }
+  ],
   "operations": []
 }

@@ -3,6 +3,347 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/performance/healthstandard/wifi/healthstandard_config_wifi.json",
+      "sha256": "91c15a21e8f1c8145206db9759ae734e623b34aa3bc314f745c982f8ddc4422e"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/WifiSystemResMainlineOverlay/WifiSystemResMainlineOverlay.apk",
+      "sha256": "7f60eb26f1a69a6cbcd90b4de4ac7c8b5432ed20ce8fc54c4d884e9136f9027a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/WifiSystemResOverlay/WifiSystemResOverlay.apk",
+      "sha256": "47a5b5fd3723173cc801793a7e569247d45eb7d93d46bda751ff3abc8b648361"
+    },
+    {
+      "partition": "system",
+      "path": "system/apex/com.google.android.wifi.apex",
+      "sha256": "dcd0c13bd894d9e76b455233f135ccf6acb90384901ee58e2e12a8d63842b170"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/wificond",
+      "sha256": "5aa43f34d60c1e99b2f3702c9ed0f386ab2abbcd18a1ed3c50787d00c2208db1"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/init/wifi.rc",
+      "sha256": "d2c32a50b7ed4c7b5b83e70f56f7ecb04c649f89d04b92ab12b43dc7432701c4"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/apex@com.android.wifi@javalib@service-wifi.jar@classes.odex",
+      "sha256": "cbaec0f45c5b84ad39362c13fcd4f540966df5c74bf47b356a1b613192aa50f7"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/apex@com.android.wifi@javalib@service-wifi.jar@classes.vdex",
+      "sha256": "4397af447c36323afc0bfe6544a0bf02929311917ab45a459953a399fc636337"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.system.wifi.keystore@1.0.so",
+      "sha256": "d168c2900b775d465e96f0ef82558037aa6e31a368d54ddf04a71c0568211bc6"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libwifi-system-iface.so",
+      "sha256": "316efd2b475ed1a4ef3437e5198905eb5ea1748f8fba17af8ac5bffbb01a3e87"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/permissions/com.transsion.settings.wifi.sr.xml",
+      "sha256": "be91e05f2d5d43c49c9c0cfd51ebfe7bda2795684d409a86df6b16cc4b333bb9"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/libem_wifi_jni.so",
+      "sha256": "fb0fe1e717fbe955b16a6d2e508ba53626797bf353014421e99964007c8430eb"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib64/libem_wifi_jni.so",
+      "sha256": "5f23ab4b1383c0879d35051f3381355e92ba29497528bba83d9bb11c57b54336"
+    },
+    {
+      "partition": "system_ext",
+      "path": "priv-app/TranWifiSettings_tecno/TranWifiSettings_tecno.apk",
+      "sha256": "ec06b5b94dcce7e9821120178d498c9c47918787ff166cc9aa54d4342a34e2cc"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hostapd_cli",
+      "sha256": "6ea73d14e69efc4fc2839d65f4703489c62d25cd6e7fb5b3c358770751423c26"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/wlan_assistant",
+      "sha256": "8c5777a6f34c09ff6870afd4e404fad2ccee83aaa3ac16878f45180fb7a8468f"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/wpa_cli",
+      "sha256": "54db2f80744bb2172a2dfd190a1aadd55daabb9b36cbea6d86dee98b4be24572"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.wifi@1.0-service-lazy",
+      "sha256": "9f6a57776e4adbca695a5f432124983b59d6e1d533f06f6e21905d849fcc508e"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/hostapd",
+      "sha256": "00dc78bc7ddc4a9e80ff4336408ebb86a141e5a96c32fd8df051e3a5c44f47e6"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/wpa_supplicant",
+      "sha256": "d89f2d45950bc2700878282f05d2728ad0d221edef70502a0a90c457d13ef9b9"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.wifi.supplicant-service.rc",
+      "sha256": "2191a9a234b697406c6bc1b00ea054571bfa3e57f92e69337bd8c7aadb3cc101"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.wifi@1.0-service-lazy.rc",
+      "sha256": "2e7bae1683bfc97c1d132023b96bce6bc75828eb358e6cf1190c512a22f4ddff"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/hostapd.android.rc",
+      "sha256": "9de134d460f67d3cf9c6f26086ceb51d765439aa6a840e2a3616451b1e252acc"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/init.wlan_drv.rc",
+      "sha256": "a362c2c5c43a45808ec58d4a3570db71e246836a4ea945df5e624e2333355194"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/wlan_assistant.rc",
+      "sha256": "1a7b5b331c70f79a44a7875fbf6bb68d50ee0bd2237f0babf420917e7b4f14ef"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.wifi.direct.xml",
+      "sha256": "88816300cf08cae66fb8346550d3a8cb27b7ac679827ca86ef5840aedc472cd5"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.wifi.passpoint.xml",
+      "sha256": "9996ae086333a6abcc7a1d124280d48e9632f02db8f38ba0bde7c529cbba6d1e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.wifi.xml",
+      "sha256": "c1315743359a2c41344582074fd6238ce22600c0b28183e2901d9075585ff0a2"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/android.hardware.wifi.hostapd.xml",
+      "sha256": "cb99eb8ea91f729549d2e3bab766869066d1b693524aa9cc8872fb7411944f8d"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/android.hardware.wifi.supplicant.xml",
+      "sha256": "5495ed30c5f5a99a306db5e4fa4a9ddf3180f22a691f0098590fc52d27c3b4be"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/vintf/manifest/android.hardware.wifi@1.0-service.xml",
+      "sha256": "35681b40ec1804b9ec4c30e46f5e775abf7c241710c4d350345f28065f2ada5e"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/wifi/p2p_supplicant_overlay.conf",
+      "sha256": "6277fa4421bee905fb74f2d6a3f561a43c7b3a922cfa8a5e82beb217461e1cab"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/wifi/wpa_supplicant.conf",
+      "sha256": "51ccec28eda1bd90e810557d0ebbc72b89ef38631f690a7c9eb89bfccc3c42fc"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/wifi/wpa_supplicant_overlay.conf",
+      "sha256": "d5cc6c93e3c268d4ea58dc2f841e2bb63b4cdf47786379fcc828b71811706b77"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/WIFI_RAM_CODE_soc1_0_1a_1.bin",
+      "sha256": "7b5b0f74519aab6fb07a32cb5519437510297b1e369f867359670e545f00fc6b"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/soc1_0_ram_wifi_1a_1_hdr.bin",
+      "sha256": "b8c537e2690955a4a0dec84a7fd6f82c60bbcf810c73a335f3a585ba66129e65"
+    },
+    {
+      "partition": "vendor",
+      "path": "firmware/wifi.cfg",
+      "sha256": "ca8b1cd8944a46f736680981cf63b40baca3d634ad6f3c299106b8faa8a03942"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.system.wifi.keystore@1.0.so",
+      "sha256": "bea339505f701b97c5a0fa22aca4ba04df30cef111dcf91fd2a59e609c6682d6"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libkeystore-wifi-hidl.so",
+      "sha256": "d35707906092c631c8e6502477f2bd7c6a769678df7e2170bf08d424bf491ce2"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libwpa_client.so",
+      "sha256": "dc2edf6ad35e9f01aea4a8f6faed36437f44dd670b905b1d0e03641b4b05e1f0"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/meta_wifi_data.so",
+      "sha256": "dfaadb2150de6e6fcda7c63a27d1207f9834faf9bb0d082a4820059da6f1730e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/wlan_drv_gen4m.ko",
+      "sha256": "a5b7b1b9168da53eaad69fc674729375833e66db3724b4d9c269faff7c092764"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/wmt_chrdev_wifi.ko",
+      "sha256": "78e98d8e85cb470604db12fe4b5e0d95277742641b8fe3c2e2b12eac0b8be671"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.hostapd@1.0.so",
+      "sha256": "08836e2210e2ff5c68fba41f4b86d725fb294998093eafd6bc5fbce75ad52ddb"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.hostapd@1.1.so",
+      "sha256": "ac8088fa91c5c6f33a6beefef7d972bdbbc5c24d7ffb09067dc49aacef15e4a5"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.hostapd@1.2.so",
+      "sha256": "612f2492a64f5ee93928733443fa8b55237ce4cfc67da9f76bbcfb7edab3d785"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.hostapd@1.3.so",
+      "sha256": "ea3b61a664996823d56e86a128ebd2d3e201cd1b9a38d26b920266c3381f59d9"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.supplicant@1.0.so",
+      "sha256": "2ca12f68f790231ad3e6d4a5f8340fdee565b077d779a42775e270836d621bad"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.supplicant@1.1.so",
+      "sha256": "547eb43844e3d98b3ada3e7f3f3b71f75c7014de46a297560fe1d23dcf963a86"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.supplicant@1.2.so",
+      "sha256": "3d82fe8677fcf7fefbed63f6bca63f9c30d751555b935069b8a7ff4eba0e3f7a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.supplicant@1.3.so",
+      "sha256": "3ce4c62028cc364c0c542776634356844c4c5177c1c888b60150ddd0e27f02f5"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi.supplicant@1.4.so",
+      "sha256": "002e6d43b724cf2eeca679be5d4686e2caa482c4423ccaa100e7b6e84a1b64f6"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.0.so",
+      "sha256": "20c64a097e351390cf348ef2d7d2e6ec9066c108ae957deb12c649a0073a6943"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.1.so",
+      "sha256": "72ba392f2e77cbfa9de1211882294d99a5ad894c2740ffb72bdf6003be1b5c88"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.2.so",
+      "sha256": "c95f0f51007d531d88b0ba3625e7c7cca0d3f7f6f278d6576de8a9669ab9580b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.3.so",
+      "sha256": "08e10c218f91839a04ded50f1be0f262e90a5791987ff4cf4ce98b976263897d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.4.so",
+      "sha256": "83a36706a0991d808f5b7c1206a1cdf521260bc3557473dc571030eb8b8ec28d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.wifi@1.5.so",
+      "sha256": "b028515b6f5bfed065afcddc34176ca6c3346e6d50117393ba95667774943da2"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.system.wifi.keystore@1.0.so",
+      "sha256": "8c697fbb2802108b67d63da7d6cf1562c633bf8d836804ac59d6017b6e117866"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libkeystore-engine-wifi-hidl.so",
+      "sha256": "0f665603b17bfac52f9330871ff67a3d0557580100ab2d71d2aa7c7fbbdd5c18"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libkeystore-wifi-hidl.so",
+      "sha256": "b41890334660abe716008be70b9667ba039d4b4f24b485ccdfeaee5f7a358a89"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libwifi-hal.so",
+      "sha256": "de35de0cef4fcd7c50cf99985c3a9709a129de1fbda8ac93ab30217127fe9318"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libwifitest.so",
+      "sha256": "733da0d151618156d86f59c50dbd3dd3a95c38223d8bc9d59f9078f8a40581da"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libwpa_client.so",
+      "sha256": "60ba863ce545a11b65426470d25ea669be0e0ef3207938160c4a31636436a163"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/meta_wifi_data.so",
+      "sha256": "bd0cd600fdcfbe2cc75c1a65c61a4c2b7cf074b3daf87e25a6e4770dff675eed"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/vendor.transsion.hardware.wifi.hostapd@1.0.so",
+      "sha256": "ee074a048f72a2b161952159f4b0927e49b1ad2ac5432a2dd95ac8d1be613da4"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk",
+      "sha256": "d9b2d2949ed21bbeca45193139e92d81fb61c5bba6f55f2b7323df19462bceef"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/WifiResOverlay/WifiResOverlay.apk",
+      "sha256": "a71e682d85f6d26718286934c14a9150ed7308abb23510000ec1902856bf3061"
+    }
+  ],
   "operations": []
 }

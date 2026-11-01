@@ -3,6 +3,507 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "etc/sysconfig/preinstalled-packages-platform-telephony-product.xml",
+      "sha256": "ea41ebc8c47564d8fa09f105fae131137ffa1c7d171c19f7de85b3d23b865a10"
+    },
+    {
+      "partition": "product",
+      "path": "priv-app/ImsServiceEntitlement/ImsServiceEntitlement.apk",
+      "sha256": "cf79713ec5d519f7ee3cf0009630abf117f6e7e762ca39c859ed057d10d8ea44"
+    },
+    {
+      "partition": "product",
+      "path": "priv-app/ImsServiceEntitlement/oat/arm64/ImsServiceEntitlement.odex",
+      "sha256": "a89ea84eb40122058174593b34e0d2509f326e819f7a27acb6cce8b48628fd01"
+    },
+    {
+      "partition": "product",
+      "path": "priv-app/ImsServiceEntitlement/oat/arm64/ImsServiceEntitlement.vdex",
+      "sha256": "35ecac2c65410a1d7d7d49a8ccc9dfffec876fe1ac743d316dbcc430cd1c9b59"
+    },
+    {
+      "partition": "system",
+      "path": "system/etc/TelephonyLog_dynamic.xml",
+      "sha256": "25ba32a43a92145209e257239a53d653e9e82f3dc682e22ef5b1b22dc60a7bde"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-ims-common.vdex",
+      "sha256": "f401925aa7fc46d7f6ef0d9008abda905c98815c505af6a994e0317377ed71ce"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-mediatek-ims-base.vdex",
+      "sha256": "ababece375021de957e1d40c939ff35bb3b5c3bd38a820a7918a44677ee441e8"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-mediatek-ims-common.vdex",
+      "sha256": "c8eb87cee691207bad4762cf7ba1e6fb0a0f608205b1db7cb93384ab704e7382"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-mediatek-telephony-base.vdex",
+      "sha256": "70820994ad39c3684bdf3778edc658547d3cfcd8ff643df06573fb79912c456c"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-mediatek-telephony-common.vdex",
+      "sha256": "5eeffe9d216572e344ee9c3d1cf5f12eacc33d635c54ffb9787e29650eeac23a"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/boot-telephony-common.vdex",
+      "sha256": "96ee3e392686e2993a963c80b60cc981946e2fedc40da0d55e03e966ec9a5d2a"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/dualsimswitch.jar",
+      "sha256": "14d115e25974de61784553c40d55c426bdd1344eee38f6e7dfa22e9496dd8035"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/ims-common.jar",
+      "sha256": "9c7d451216d2b3ba17980c8de0659e92059170b2a8abb619dbec7d6742f0832e"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/telephony-common.jar",
+      "sha256": "3952dab29dee924cb2a0433ac74a0af3f58fef46ca28105c2cd292bd985f1aae"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-ims-common.art",
+      "sha256": "d7b1b858ec30f5c6303317a5e78210cbf95861505bd23f21211dceaac5806e4f"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-ims-common.oat",
+      "sha256": "0ee4aa67e6462533b3f75043687d6b122bc23ef4b6ce7bc254a8c4a5c6616272"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-ims-base.art",
+      "sha256": "b9eef17e100aff440511f78cdce0dff9fff94886c9863865d110891d789c94df"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-ims-base.oat",
+      "sha256": "a047fff1f646b5af4059622f19f354825cd7e40b2cebb0321cd8145db29f6f3c"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-ims-common.art",
+      "sha256": "4b7fc4174f36318ed900adf1c068a479b919ad62806ef6e89f0be186d5bec4cd"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-ims-common.oat",
+      "sha256": "00e9c162c170a111ef44af4c6dd531d78e42c0468f0e92b10ef77f965ce2fe81"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-telephony-base.art",
+      "sha256": "b3a077781870c3fd930b772e13034933801246b6d97d6677a8914acbb3f34807"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-telephony-base.oat",
+      "sha256": "42d25f648a8abdba4fdf8231ddd958ecf1ca44e86edef6ddc9eb1379df260e1d"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-telephony-common.art",
+      "sha256": "00f9520ea771b41cfe219ba87724224f5f6b1ae4e49ca4d8fe21846928989cc3"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-mediatek-telephony-common.oat",
+      "sha256": "0fb884de043e0be72f12c152efc87d785f560710ded7fbcf8e2ff183269adda2"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-telephony-common.art",
+      "sha256": "c1740abf85c3ec93f5a7179b3cca7cbb825486362eabaa38acba648798e4acba"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm/boot-telephony-common.oat",
+      "sha256": "33dfe46eafd785f1f7ae6a5065bd69252bdc40160a82ce4858b98146e2217a21"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-ims-common.art",
+      "sha256": "e38dda3fdbc7ae2695d8b0516dd28e378bd2d3ded90738c57c9d51efafe549bc"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-ims-common.oat",
+      "sha256": "168dca5ead12d9fd261338a53ebaae68398cf5288aa2d7abe86fbd0dbc2589b7"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-ims-base.art",
+      "sha256": "057e0e7d2a097da5a619609c13d39c8c58e7db39d8a97cb86dee65ef54e04144"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-ims-base.oat",
+      "sha256": "cdfab61af2b15252d14e4010eec6d65ebd4e6c6debfa037a0b68fc2755b63b12"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-ims-common.art",
+      "sha256": "cb6089abc4430306f835038d3967b6dd1214146490e20417dd91d634b55c9982"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-ims-common.oat",
+      "sha256": "f7f7636c4a891eee55cecf3d025dbf781b8d568afa4b2b6a2a1c29d3687b2d95"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-telephony-base.art",
+      "sha256": "b7cbb9de03e1aa3afff2692db2001d74b25bcf62250e5af756ea1ea2ff21b086"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-telephony-base.oat",
+      "sha256": "53c988bd73731f8c603bd31ba1501431e3a82e4a0ae2daf56b9159e039e8c797"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-telephony-common.art",
+      "sha256": "082ca67bbfb96a4e8ce73b5ec08e5ba7071ccbade8cb38c48a2d98c73f480175"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-mediatek-telephony-common.oat",
+      "sha256": "c1daf2fc55a098d942efd53b53f1ecb8f0cbb4b2a5c36dcc04e0e419c9d87ed4"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-telephony-common.art",
+      "sha256": "ab989efbbbd972b70bb9104501786f10f64168fa2800ae2d0f31de5eb73385f9"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/arm64/boot-telephony-common.oat",
+      "sha256": "f74afcde37611a5a8f386bcdcb9270122e9c931549d681199cc7c1a09a12cf73"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/dualsimswitch.odex",
+      "sha256": "d4b1b7fee1453f7748a5dbfa826c86d79c81315ed4c5df46a1f990c0667a72c2"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm/dualsimswitch.vdex",
+      "sha256": "9b41ad4945659ec676f44e4850762755e8c5c7cf1c2a8ffffa4998b38a193892"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/dualsimswitch.odex",
+      "sha256": "ca234820f156ad848a18cf56547e0bd5a1c7f976a6973cdc4ea2137de28d5df2"
+    },
+    {
+      "partition": "system",
+      "path": "system/framework/oat/arm64/dualsimswitch.vdex",
+      "sha256": "9b41ad4945659ec676f44e4850762755e8c5c7cf1c2a8ffffa4998b38a193892"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.broadcastradio@1.0.so",
+      "sha256": "8a7d7344564e1c1d0f800d65f932b0cf0a99ff58c6525aeb34c0b7c977acb19d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.broadcastradio@1.1.so",
+      "sha256": "e114d16f3b4ba2573acf935bf2733457c51d11fc07fff22d461ff088782c8f56"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio-V2-ndk.so",
+      "sha256": "0606344d3d7e53b0a053bf9807d0a389d1f89e73f72d1559a13da50edb6d4bf9"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio.config@1.0.so",
+      "sha256": "fcc53d1b0360ff731bcf1d9a38b89b531c97a3d3aa10735b89272172d60dd6d0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio@1.0.so",
+      "sha256": "3852ab92fedb67194cdb5bc66dfa7bf3b2e26cd59e946062872ef4d3af665f0a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio@1.1.so",
+      "sha256": "a958738b641ee1785bcd9bcd37dcfcbd5848e324319d58f8e1fd454117f63196"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio@1.2.so",
+      "sha256": "336f3fcf3f626afa3efbe8a9f6b41e79a5a767e06013f62d329858ec068b3e76"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio@1.3.so",
+      "sha256": "74267bdf7f7b986b73defdc06b9a2fc8388ebaa6b8e309254e8ac917d7ba79d5"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.radio@1.4.so",
+      "sha256": "d3a375ee636ff70a6670ddef63ce4545785205d33a50e1835d3f820f79d66b48"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libradio_metadata.so",
+      "sha256": "18c399ac0647250a05634fa456905b5df1ac3c4ab4528c51844a787436af52ca"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.broadcastradio@1.0.so",
+      "sha256": "9d3b6f249372a451f34c211c01b1ff6e62200f79990ec172d1b90ffa1707d2f8"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.broadcastradio@1.1.so",
+      "sha256": "35bdd06e598adfbc42a70c6ea7098bd0e470069518a475cd1bffa83621794097"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio-V2-ndk.so",
+      "sha256": "48cc015396b2d85f14903e6965f0733dab02d9831c6c10cef1e1a9b63f975168"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio.config@1.0.so",
+      "sha256": "b7d470c17c8d2a136bba976d96949eeb8e32000562fdf55dfc32b4e5fa343c9d"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio@1.0.so",
+      "sha256": "2f2d4d20bdb19352d5cc0f56d34b06195fc75c1aa648122ba4e9e624f1660de0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio@1.1.so",
+      "sha256": "34d5516621eef456085983dd03bbe2e2f527a8860df89387a226f408f9668339"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio@1.2.so",
+      "sha256": "6e854d992479c95febce740f91b560c7e4105281b4ab88aff4adc8fd9235b400"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio@1.3.so",
+      "sha256": "3e9c3eea5ad9d8c5c64b5da4fca9d5efedb323516331bd76ff34cead39dbb738"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.radio@1.4.so",
+      "sha256": "4bbc226676482f6760ebd472d95b5b4d52f92b4f16c000d9c811b6c2d0e8a2c0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libbrillo-binder.so",
+      "sha256": "d9899d6a38c478fe32238fa93a416086ffa33e0471832a00b4595f4c093613b0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libbrillo-stream.so",
+      "sha256": "8100a2a1e58d82746b98bb1853cd5c1a6dc3d29a16445591e2737d38bd3466e3"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libbrillo.so",
+      "sha256": "6447178c5cba681f5f8d4a606b6a3b9f50cb54840c50647d3997beae394dc9f0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libradio_metadata.so",
+      "sha256": "4dc783160f72de9fa1db647e2d3de949172b6445a04db12fcc2bf98f6f9b29ff"
+    },
+    {
+      "partition": "system",
+      "path": "system/priv-app/MtkTelephonyProvider/MtkTelephonyProvider.apk",
+      "sha256": "0becc710c2943de1f258ad3cc57b5edbc145e5d817b7df2681f1cb81f9d5c621"
+    },
+    {
+      "partition": "system",
+      "path": "system/priv-app/MtkTelephonyProvider/oat/arm64/MtkTelephonyProvider.odex",
+      "sha256": "162108904c102863bd593b877a2a6ec9e3d07557d833affee3d6604184fd3be8"
+    },
+    {
+      "partition": "system",
+      "path": "system/priv-app/MtkTelephonyProvider/oat/arm64/MtkTelephonyProvider.vdex",
+      "sha256": "df4fe619867b80f52c519cc6419d0eb8483c5040e29f2ec4acfc52a33a171bbd"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranRadioNetService/TranRadioNetService.apk",
+      "sha256": "3cdb42795f72dd3d5d5900474ea99cc545e7c8c76f5bc70c938dcef3abbca61f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranRadioNetService/oat/arm64/TranRadioNetService.odex",
+      "sha256": "ae87f980d45c0cd70bb5bc212f3d32e7dd1d48365069ba3cd29830818a2e11ce"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranRadioNetService/oat/arm64/TranRadioNetService.vdex",
+      "sha256": "8cea0b585e33431fff5ac7eec2def2afd013c43f7da2b77b27a848270166d1c1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionFMRadio/TranssionFMRadio.apk",
+      "sha256": "265bd1e6a023060962d8b2995bc1946a27d811749def340fb7506bc264774598"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionFMRadio/oat/arm64/TranssionFMRadio.odex",
+      "sha256": "8a7bb6cae8d2bc86b975161b3dd4dfacf6c678640fd7e46565bd80163f62eeb1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "app/TranssionFMRadio/oat/arm64/TranssionFMRadio.vdex",
+      "sha256": "504222f0774813d58b9ea9f74147c1e3802f84fa0be992898d556213820a346d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/permissions/com.transsion.fmradio.xml",
+      "sha256": "93ca5ddc8283ecb2697c32e45dab7c4c1f62c864ce2005c54642db8c2f1c6d14"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/permissions/com.transsion.tranradionet.chipsetplugin.xml",
+      "sha256": "9c1bc68602ebbea3895853884bcd52566be7078e3cca8b0be2d29ed0e93d32c9"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/permissions/com.transsion.tranradionet.manager.xml",
+      "sha256": "38148dfbd12521b7bded5f10069b43ca40f6075a07839a4550cf4bde2c7ddf61"
+    },
+    {
+      "partition": "system_ext",
+      "path": "etc/sysconfig/com.mediatek.ims.config.xml",
+      "sha256": "031208e1b41327c4584d3698c773e70741a442aaa87d5fe1bcbe549918f50b7f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/mediatek-ims-base.jar",
+      "sha256": "a86df86b075d19317cdf514b0fb7e24dae82b5d576cad84f0b710138a498b0db"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/mediatek-ims-common.jar",
+      "sha256": "39fe769f3f6058567e55109f90e27432e4029dc7987d5ad30cdee188c47f7575"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/mediatek-ims-extension-plugin.jar",
+      "sha256": "65485f8ac12394efcdec32e3d2b8959871d170e235821f8dcd2c5223f68f48fd"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/mediatek-telephony-base.jar",
+      "sha256": "9690f2705b47c1ed7eb537564f6c00df36a375f8ad2efe3cd7527d2f914234c0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/mediatek-telephony-common.jar",
+      "sha256": "8e50e385557f7c4672a9bd54d874e65b740130cc6b75071cfba8d47abf21a83c"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/tranradionet-chipset-plugin.jar",
+      "sha256": "a545cb80b575218bf79d31874655f55d9a04314402a2226eb081f6ac653f934f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/tranradionet-manager.jar",
+      "sha256": "ec794fb5d04032bd9c2c738a321eba4a130f3378f19fe882c311b938d4d21fd2"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/mediatek-ims-extension-plugin.odex",
+      "sha256": "99be326bb59975d40645e1f895368bc7a30b7d8343e1aaa7c5f7a550f7f5f00f"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/mediatek-ims-extension-plugin.vdex",
+      "sha256": "e8465a6cbe721065cf788d0216e33aa05c2c29c3a2c952b4a109d365e6a5a152"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/tranradionet-chipset-plugin.odex",
+      "sha256": "4ff790c1e30c1037d5191d04ac78b0df508a805bd26fecae3c848c3d08ba895d"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/tranradionet-chipset-plugin.vdex",
+      "sha256": "006d0f6aea9f0c6cee2eecc158eb8aa16f19ba88804499af2f30363bf07c50ff"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/tranradionet-manager.odex",
+      "sha256": "edeb388cb35f9565cfd27af1db0c650560b90c69c11dcbcb38be844f7cae7ae0"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm/tranradionet-manager.vdex",
+      "sha256": "557707c36803b932e5397d48b6883b334c03c183c0dd4d1c959492ce0eba4816"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/mediatek-ims-extension-plugin.odex",
+      "sha256": "2752684c4356bd5f4ffc3bc87225e1770f4ff104246a5d92788515d0899bb4e1"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/mediatek-ims-extension-plugin.vdex",
+      "sha256": "e8465a6cbe721065cf788d0216e33aa05c2c29c3a2c952b4a109d365e6a5a152"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/tranradionet-chipset-plugin.odex",
+      "sha256": "524ed6975d8c92d2102a1529a0c5f80d07a7831f8be5cbc0776c77a5ebd42794"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/tranradionet-chipset-plugin.vdex",
+      "sha256": "006d0f6aea9f0c6cee2eecc158eb8aa16f19ba88804499af2f30363bf07c50ff"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/tranradionet-manager.odex",
+      "sha256": "00c7d46b38308eb92763927d1eec1251cb673b1f788946e2991c3f369d94aa5b"
+    },
+    {
+      "partition": "system_ext",
+      "path": "framework/oat/arm64/tranradionet-manager.vdex",
+      "sha256": "557707c36803b932e5397d48b6883b334c03c183c0dd4d1c959492ce0eba4816"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/android.hardware.radio.config@1.1.so",
+      "sha256": "fc53a4b99b4c83c03281bcd88b3a313d15782ecdbc4f0491cd44e06eb52f0d45"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/android.hardware.radio.config@1.2.so",
+      "sha256": "40b543225beca84cf43690e9713e34081e1b89ecd4fc6f63717e1f1e5da616ff"
+    },
+    {
+      "partition": "system_ext",
+      "path": "lib/android.hardware.radio.config@1.3.so",
+      "sha256": "41b1a2436ba9c90ce4127db1e69454509e02768695971e8de213dc2ab7ca1b9b"
+    }
+  ],
   "operations": []
 }

@@ -3,6 +3,362 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "app/fpsensormmitest_noicon/fpsensormmitest_noicon.apk",
+      "sha256": "c7dfb9dd4728620f122df16e289ea8363c253a39a5fe870cd7ea493e9c905440"
+    },
+    {
+      "partition": "product",
+      "path": "app/fpsensormmitest_noicon/oat/arm64/fpsensormmitest_noicon.odex",
+      "sha256": "4916468d8e2c7bd49e4dddac92e5349a2cfe01daf4885e44d68bff9a62331b3d"
+    },
+    {
+      "partition": "product",
+      "path": "app/fpsensormmitest_noicon/oat/arm64/fpsensormmitest_noicon.vdex",
+      "sha256": "6ba38f01888ea3200964d2e2652d6176d598af25fc6b59fae0b190ed3496a3db"
+    },
+    {
+      "partition": "product",
+      "path": "etc/performance/healthstandard/sensor/healthstandard_config_sensor.json",
+      "sha256": "8ba4b3c38d770dd6c26686a7c2c2e0fd9d833a1eb54e7af36eea1b89ecba0159"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/elliptic_sensor_test",
+      "sha256": "fc8d5e0fc289eb7218c48af47d36e9930924205de8898df669d431c71b8a7bcf"
+    },
+    {
+      "partition": "system",
+      "path": "system/bin/sensorservice",
+      "sha256": "ba19ef84900cfcee61de2eb9ce30b77c1847d5f21db72c647a793363c0fdd9ca"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.frameworks.sensorservice-V1-ndk.so",
+      "sha256": "87f2cb171c76b17c04e59be195139dd5efa5a120c5255202b2eb40f7f4aff6e0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.frameworks.sensorservice@1.0.so",
+      "sha256": "4b2b50226b0954dcbfa3b7613926c9bfe49f138cbb57a60c38cf05f2688e3897"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.sensors-V2-ndk.so",
+      "sha256": "bb88ea67c1ebc09605b090a51990770289f2afe7fd2fe734ddbb1f12c780ab35"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.sensors@1.0.so",
+      "sha256": "9d2ee44eae78ec867dc650a52420da6ed81c8874aeb6a974158653e6c89e807c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.sensors@2.0.so",
+      "sha256": "9daf85068a8f1c0ebb55c80917c8e0f11cf1ee0180142eaf45287a018bde8245"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/android.hardware.sensors@2.1.so",
+      "sha256": "7a64cbbca397e335f323e773f57ac494ad01584693b26847f0990b733793cd0a"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libsensor.so",
+      "sha256": "5ba7bfd5897f6e58d15b9876e704e98c2ca0be50f9c072211ec166325ba6e0c7"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libsensorprivacy.so",
+      "sha256": "ab01e7d5ff7fec17b2c92721e7ef23ef74367e8005d1a84183a75a885879b661"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libsensorservice.so",
+      "sha256": "bf23baec385b89d6bdd1d446aebd40569fb133418d398e8ba1a6ffd4ebfa191e"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libsensorserviceaidl.so",
+      "sha256": "91881d553a69d2f7fcdb8a1d41a88c18e1d5f3d0f50d0cbc7bc7718d2421ef6b"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib/libsensorservicehidl.so",
+      "sha256": "10e5c2dc4232c10401b5bd426206ef95b5678aa66af732caa4623a2b6eac2ec1"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.sensorservice-V1-ndk.so",
+      "sha256": "a6bccf3bef814382621a641be72988330ead8889b1a783c8b9ecf5baad627593"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.frameworks.sensorservice@1.0.so",
+      "sha256": "777236a9996d55776bf77376c3dc026c220af4de0b06e2d9752a307d0d69089e"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.sensors-V2-ndk.so",
+      "sha256": "bbe9cdc642b2d76e6e1e47e1c2ca19f2f1675bfb61ff9ce3a178b6b5ab6cd81c"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.sensors@1.0.so",
+      "sha256": "59578f04a005d40374b26b21d52191b30a28742c4d6f40fd5157dd590ed867b2"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.sensors@2.0.so",
+      "sha256": "3b8e638703ba06f2cf673f0f12b6ba263ad0feb125c8945e288212a2cfc34036"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/android.hardware.sensors@2.1.so",
+      "sha256": "4b0e74d7bba450692b79f362bd0d24ae467e1ec521c747d2a2623bb9a3c31508"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libag_sensor.so",
+      "sha256": "fa019c41a1132d47a9d082e7301b8015c7d18e72564604d5b02e41db30dfe400"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libcellSensorCal.so",
+      "sha256": "ddfe493b2a6854f008e0d0bcae2e3b2e61210178219901c9ec947679d6982001"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libmidSensorCal.so",
+      "sha256": "1e88f3844aa9c90b8bd19e1d270f0edf38b71fb13d7a90c646afccb238d3dadb"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libsensor.so",
+      "sha256": "5927234c92c9b0c02bceebab968e5efd64c1562dacf92b0b36aa89f5a9ddb33f"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libsensorprivacy.so",
+      "sha256": "e282d23c9e2b72bcd646e3ddc21a2207fc6079c84844caa8f340ce724abe66e0"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libsensorservice.so",
+      "sha256": "d61aee84637251cdea84bb3214a74bd42fbd82d4816e306f15a2e848c64a0d41"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libsensorserviceaidl.so",
+      "sha256": "ea07781e5eadd1cf269b913586553bccc1fb4f4d16405c3aec40b7b1b53d0ccf"
+    },
+    {
+      "partition": "system",
+      "path": "system/lib64/libsensorservicehidl.so",
+      "sha256": "ac96e8a2a52b1ed7bae8a0ec9fb252ac31a22cddf237cf04298fd2ebd7530882"
+    },
+    {
+      "partition": "vendor",
+      "path": "bin/hw/android.hardware.sensors@2.0-service.multihal-mediatek",
+      "sha256": "05023dd4cc55185b840551a71ad9dd8b97a61828d34fbd0b39c31f49be774526"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.sensors@2.0-service.multihal-mediatek.rc",
+      "sha256": "7e8833a77c4a20e0c3975f012e92e40110d74d0c7bdca4cdaee62cde940659e0"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/vendor.fpsensor.rc",
+      "sha256": "241f4f88632f5dcf821c906f859c076a76388544467bda7778b9499c35cab4b3"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/init/hw/init.sensor_1_0.rc",
+      "sha256": "64a1b5ac6c6849816d9060d8fc8b5b102325fe0f75cf1a0d41b7a3f3ba3fd172"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.accelerometer.xml",
+      "sha256": "03a2f333ebc3f5441647091b5a116086208202488cf2a12090544e3d548a619b"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.compass.xml",
+      "sha256": "164e93e847646f073519302f6bf255e1f49fbea670220440dfc2350e6cd61fb1"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.gyroscope.xml",
+      "sha256": "d5a02589eb5e38dfb4b899f66daf42da496e64580cb8c72501c43e107699728a"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.light.xml",
+      "sha256": "548fe200278a6c9ba393066b3eb1a4151c8ea452efe5c7acaa4aee1f17046ce3"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.proximity.xml",
+      "sha256": "0881f1838f0aceeb9d0af8598c2a4205c36367659786f63ce017567d86f99614"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.stepcounter.xml",
+      "sha256": "dfbb4e8b499d63bf387dfac27f2e4ef91e85318bb1cb82a834b671c667eaf8b8"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/permissions/android.hardware.sensor.stepdetector.xml",
+      "sha256": "246de98eb3ee0a26ddb568aeefba42ca154ca31a4e112f1c11fcec49ce56b5ef"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/sensors/hals.conf",
+      "sha256": "48e44538544045fec4b08c1e64883b8e09f276bb75aefd145b59b780f3f316d2"
+    },
+    {
+      "partition": "vendor",
+      "path": "etc/tranfac/aidl/default/SensorNv.json",
+      "sha256": "7caf4d5c0012920354b4534509839d2a0209e885bef6be4bb476cf34b2545e0b"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.frameworks.sensorservice@1.0.so",
+      "sha256": "484073104c19f7d273b1cfaf3927a499ace37a7f258b0e0120a49177d7015ae0"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/android.hardware.sensors@1.0.so",
+      "sha256": "5fca49cca073c76cfc7b13418851e3b5038e6d58f5a00f0a85022bca6a2ff601"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libcam.halsensor.hwintegration.so",
+      "sha256": "f6198898d7e68b33094b5845b683e30cc85abf0436074ab9d5202b094e848080"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/librgbwlightsensor.so",
+      "sha256": "ded6c007f5c12e0484d5168e92bf321a2f314449efdf6deefd10071d17e03fce"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/libsensorndkbridge.so",
+      "sha256": "7601cd1279123eacda1481c9c95792d25d72a83cb33a7d3b9312311bf803987d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/vendor.fpsensor.hardware.fpsensorhidlsvc@2.0.so",
+      "sha256": "4dea655cff0cb070bb49ebb8af3889dccfb0a5d3d827c0cf94a5819fc5be8482"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/hw/fpsensor_fingerprint.default.so",
+      "sha256": "9cf9bc122eebb9a6e097e36f37bf2dc87e00bc37b1c30725b59b449bf19ad846"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/imgsensor_isp4.ko",
+      "sha256": "4530fc879213716f04b5bccb60e86ad89c9a7d4cc56fac1537908c9dac17c6d9"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/sensorHub.ko",
+      "sha256": "2d30eacd2274e384d345b3c747347b79a38b929beda74b1def8c13771d378635"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/sensor_list.ko",
+      "sha256": "5c88126f6c3cd2f9017dd150f44e46bb611ab6911350d75372ae6002d577f3aa"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib/modules/sensor_probe.ko",
+      "sha256": "947e3e593801e6fc30507b968e895274300f1f9aefef69427ee4e7cdb5a5b6cb"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.frameworks.sensorservice@1.0.so",
+      "sha256": "265c1a2604a84063a52f332495c8bd2136f32b6d7d019171fbe5d958b4e16aef"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.sensors@1.0.so",
+      "sha256": "f26f7ba81dce1b888e4d728ade4a95a3de3fbdf29221d56f53e1b4fbf37a9a69"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.sensors@2.0-ScopedWakelock.so",
+      "sha256": "f24022548f14aba47171dea3e605ca528f8a933d56be31c5b2abab476d14457a"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.sensors@2.0.so",
+      "sha256": "384233a2610124372f74eb0cc78e9250a3e05d5d27b30f73651d4e9280bd6d44"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/android.hardware.sensors@2.1.so",
+      "sha256": "90dd0e10ce32abf9f7b4e579d995117b3e667807f0198090164ec82cc98dfe26"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libcam.halsensor.hwintegration.so",
+      "sha256": "0bc90099f874fa70ee5767d0480af1d7392803cbc9be1f7c865000ed0203d771"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libcam.halsensor.so",
+      "sha256": "510ea2036ccc08d648ec0bd4a0425e62c3fa4d6dc818880e217e8a59f7a6f022"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libcam.utils.sensorprovider.so",
+      "sha256": "ffa79f5967be8e12b9aea09692594b647d24800b4b3952b9917924e6d7856e01"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libksensor.so",
+      "sha256": "61afab35d2025d62b3ee34e191b5ff7be960ca0e2c0f8c813f9f928779891b4e"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/librgbwlightsensor.so",
+      "sha256": "0f5fc655120c9d66ae8e14dd04df210ae16dec47c96c704bfced83b6b4d8707d"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libsensor_custom.so",
+      "sha256": "58c126f2a5e302324636d6f123eafd0fbfe4aa0f00fe974f66d016c1b4c116db"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/libsensorndkbridge.so",
+      "sha256": "33d1595f3136c6be79c2cc2ac22f0d305092cd26f3b290f75e278146ae12ac80"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/vendor.fpsensor.hardware.fpsensorhidlsvc@2.0.so",
+      "sha256": "bef1811a7687c1fd6d0501077a456d30815d75c3bfdf617226e7c748ebcfc12c"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so",
+      "sha256": "e545b33ff6426de8392cf6e5483cf4f9dc9ab67eb13b1bb367ba301c706101c1"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/fpsensor_fingerprint.default.so",
+      "sha256": "e3f1593f1f732926ef9a48d8ca029e688157dae900e2f1881ea3467f86be7a61"
+    },
+    {
+      "partition": "vendor",
+      "path": "lib64/hw/sensors.mt6768.so",
+      "sha256": "a2afb6c91927461a04bd5863e1eb03e0cdf5fea7264143a74c5d2501a0001b72"
+    }
+  ],
   "operations": []
 }

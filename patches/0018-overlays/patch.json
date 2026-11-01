@@ -3,6 +3,242 @@
   "status": "proposed",
   "approved": false,
   "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
-  "evidence": [],
+  "evidence": [
+    {
+      "partition": "product",
+      "path": "overlay/CaptivePortalLoginFrameworkOverlay.apk",
+      "sha256": "bfea867493d239a970cad5613051f7ac9b37056728ae4d1842ed081b91d8c1e6"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/CellBroadcastReceiverRRO.apk",
+      "sha256": "d5880466942edd313bb3f95520676345a2265bc5dd2a970bcddc1a8144af2a37"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DynamicBarOverlay.apk",
+      "sha256": "9e51bd520d7569b32b00cc8194030bc78036008a92788d9a320e4600a38b4deb"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayASI.apk",
+      "sha256": "2fd6fab00d086216d66c3caf37310edab80974a5dbc64e65e33c74150c4c8479"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayCommon.apk",
+      "sha256": "77833a0cc485bab60d440a9b5563bfbffcd95a359ab6c9e04a2d42bd5c914ca8"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayGSA.apk",
+      "sha256": "e0a95f0b468ba3aff02e539d52d9996964ea7d8bdac28dc5dc18ddea701e4bd5"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayGeotz.apk",
+      "sha256": "de71e0cfc595c8478867fc1e5c7c49ab8ad8a26399d74900c9fb5e5dd66e8c13"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayPersonalSafety.apk",
+      "sha256": "1cecb3f9f11662388a43f0a01318f0a90d55ecba49e9165f3b0e1f3e91d8c4d2"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GmsConfigOverlayPhotos.apk",
+      "sha256": "0e41352f27067c8fc5b0199b84ba52def566f46ae8befa19b63b74c4212c7225"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GoogleDeviceLockControllerOverlay.apk",
+      "sha256": "22930d49b134494c98534ca2b6b761b8e95b7059850a60933e56291c7b19c0af"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GoogleDocumentsUIOverlay.apk",
+      "sha256": "7bcfd379e7d2f811360f758c81caa2af3fe74d52f1ab8bafcf7947fff1ef4b94"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GoogleExtServicesConfigOverlay.apk",
+      "sha256": "4b2726502ec86d826ce8389f28b5816d6d1412070794123f49643e953e630fce"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/GooglePermissionControllerFrameworkOverlay.apk",
+      "sha256": "a78876e66d9bea09ec68910ff28f564ca75ddf090de9a0777c05d98b9118df14"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/IconDefaultShape.apk",
+      "sha256": "0e09fbffe7e7b5338d1aa1c2b28223f75302acfb116cae40b199b1e2e405c028"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/IconDefaultShape_X57.apk",
+      "sha256": "dd4b3b0d8f8dbf9246b42c858b90685685df688b23518480fda87e37f046611b"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/IconDefaultShape_X58.apk",
+      "sha256": "b1a4921d9156400d22fd58fbdf916212384b5b40c4d0bfff0ed6df5a131815da"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/ModuleMetadataGoogleOverlay.apk",
+      "sha256": "cc9a98f1dbddb6d462eb58880c99cc132493bfe74dc7b1220cf4bba454d79c1a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/SystemUIOverlay.apk",
+      "sha256": "378f842018e62a60f3f36e52c6149d13ebd1ecb40d770cdb121bf51d82ced73d"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/TranGooglePackageInstallerOverlay.apk",
+      "sha256": "04e430d00a846a21bb7db64cd2c78f43ec9ba8283507d1457dfc9be5b1338c34"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/TranGooglePermissionControllerOverlay.apk",
+      "sha256": "1d26097bb4e6f41f5be2b39d1e17a3cb3586bed09646173c32d35ac041a88bd6"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/framework-res__auto_generated_rro_product.apk",
+      "sha256": "8ea1170231f98e3730477db9e7b495a90a8f1ef12960c2f2b7e5f41dbb579867"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/ChildModeResOverlayThub/ChildModeResOverlayThub.apk",
+      "sha256": "7f32899b87c9c1b155c90599ee302861d767f440ce127d77f81f5c4d30666a77"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk",
+      "sha256": "89beebdb858646df57eeb18d8cdab63d17bfbaad8df32e8931fa698ada5bc456"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk",
+      "sha256": "299a66571b417f8e89913ccf279dc3cddee1e5d3d34d6a08d6457f86b9b612da"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationHole/DisplayCutoutEmulationHoleOverlay.apk",
+      "sha256": "3d865160ca035aa81c7ac5694c6bfbbdd94609ed7e469cadc66d1434f6ce84ac"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk",
+      "sha256": "98c782937786aa7cde61c395753f8f5c941e0a9e9a80b37ed460ef2a922b439a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/DisplayCutoutEmulationWaterfall/DisplayCutoutEmulationWaterfallOverlay.apk",
+      "sha256": "72768ec51345ff8a026e7e59ada0ed11fe52c0fa9785764c222f2e95508a91eb"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/FontNotoSerifSource/FontNotoSerifSourceOverlay.apk",
+      "sha256": "f9ffed3df89501ae4fbf83e22ae0896c96b61d6198ed6846396158ee5d3c3c79"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/NavigationBarMode3Button/NavigationBarMode3ButtonOverlay.apk",
+      "sha256": "67c80a7655c07e6c9229a1570015847eb2eed288e6c72f4838e91ee9736ebb5d"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk",
+      "sha256": "e3278ce6d2dffe367acb7cca9e55646a410e230573d6f5d1af5dbcecea8f7587"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/NotesRoleEnabled/NotesRoleEnabledOverlay.apk",
+      "sha256": "784f1e0d0b2d8615303b496ea6673759064388e88b0f17f60013d6d6df4c1dd9"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/OOBEResOverlay/OOBEResOverlay.apk",
+      "sha256": "9872a543389f878d253ec56745c7778e161c7fd5b9bc51c615978179a8d89f5e"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/TranSettingsApkResOverlay/TranSettingsApkResOverlay.apk",
+      "sha256": "e088345a40d0d601693b75570baedd507fe75ca168f671f8f969ae9c5aacb48a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/TransparentNavigationBar/TransparentNavigationBarOverlay.apk",
+      "sha256": "d7db42e8602cdf2b9357dbd305d7f8d7049687054672e643a61fae28f9fb9fa8"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/WifiSystemResMainlineOverlay/WifiSystemResMainlineOverlay.apk",
+      "sha256": "7f60eb26f1a69a6cbcd90b4de4ac7c8b5432ed20ce8fc54c4d884e9136f9027a"
+    },
+    {
+      "partition": "product",
+      "path": "overlay/WifiSystemResOverlay/WifiSystemResOverlay.apk",
+      "sha256": "47a5b5fd3723173cc801793a7e569247d45eb7d93d46bda751ff3abc8b648361"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk",
+      "sha256": "efd13ef414ad03a9830f35bb7fb79f0ef1a93e3a49415e6e32e7141c9c5fca93"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/ConnectivityResOverlay/ConnectivityResOverlay.apk",
+      "sha256": "f82906702d177b9e3471dea8775b55311d750bfa8e04dc0bb5e07a54aeffe112"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/FrameworkResOverlay/FrameworkResOverlay.apk",
+      "sha256": "6021c33dd94e50e5c137b02d0193c7628e9593828a6ea033414ad18fb693c049"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk",
+      "sha256": "6d3de8e715c2322966b852ee4f674cdbc352a29370bbba10aebe205c5e81c2fb"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk",
+      "sha256": "84697e40af8a1be7f7c358d4b016bd32930389eb411cb753eef5ce52f619d51a"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk",
+      "sha256": "d0c0453d9c93c8f609d1ffbdc494b4d0c165ec521cea8adfaa0d96195218d997"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk",
+      "sha256": "475a23b91fca4b5cf21cb224eabce2897a6dc93cd398ef826bc3aa946c5e7b62"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/SystemUIResOverlay/SystemUIResOverlay.apk",
+      "sha256": "66249d2e3fe0ffc51a2886f0e36960f6eb797ae5495058b81476a1e874fe38f1"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/SystemUIWmShellResOverlay/SystemUIWmShellResOverlay.apk",
+      "sha256": "3bd89789d4732375982e75620d6cf1c6f727084f7eb97461a476219ed55d0244"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk",
+      "sha256": "d9b2d2949ed21bbeca45193139e92d81fb61c5bba6f55f2b7323df19462bceef"
+    },
+    {
+      "partition": "vendor",
+      "path": "overlay/WifiResOverlay/WifiResOverlay.apk",
+      "sha256": "a71e682d85f6d26718286934c14a9150ed7308abb23510000ec1902856bf3061"
+    }
+  ],
   "operations": []
 }
