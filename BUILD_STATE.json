@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:58:34.030898+00:00",
+  "updated": "2026-11-01T09:02:38.585067+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -33,8 +33,8 @@
       "evidence": []
     },
     "5": {
-      "status": "running",
-      "notes": "Preparing real ARM64 emulator prerequisites.",
+      "status": "blocked",
+      "notes": "Release upload failed: HTTP 400",
       "evidence": []
     },
     "6": {
@@ -179,12 +179,6 @@
       "message": "Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed."
     },
     {
-      "id": "emulator",
-      "at": "2026-11-01T05:40:26.841424+00:00",
-      "phase": 5,
-      "message": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass"
-    },
-    {
       "id": "otg-hardware",
       "at": "2026-11-01T06:06:07.062997+00:00",
       "phase": 4,
@@ -195,6 +189,12 @@
       "at": "2026-11-01T06:16:58.763692+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
+    },
+    {
+      "id": "emulator",
+      "at": "2026-11-01T09:02:38.062973+00:00",
+      "phase": 5,
+      "message": "Release upload failed: HTTP 400"
     }
   ],
   "releases": [
@@ -963,6 +963,16 @@
       "at": "2026-11-01T06:38:29.948008+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "a546099d9c1a5d8d75dfac545034829fccd75435601b2e925955608de174fcf6"
+    },
+    "document:base-host-launcher.log:428152493fb47fc16575560820a083afef815b4c75755e098a46d931fb3b8c0e": {
+      "at": "2026-11-01T09:01:32.058842+00:00",
+      "name": "base-host-launcher.log",
+      "sha256": "428152493fb47fc16575560820a083afef815b4c75755e098a46d931fb3b8c0e"
+    },
+    "document:base-launcher.log:44cdcdb8fa13a4120fff75e61541eb1be750f6df291d577418f8ec821dc7f772": {
+      "at": "2026-11-01T09:01:37.395633+00:00",
+      "name": "base-launcher.log",
+      "sha256": "44cdcdb8fa13a4120fff75e61541eb1be750f6df291d577418f8ec821dc7f772"
     }
   },
   "stages": {
