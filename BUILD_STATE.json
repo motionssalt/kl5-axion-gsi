@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:08:16.787734+00:00",
+  "updated": "2026-11-01T00:08:18.587105+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -33,8 +33,8 @@
       "evidence": []
     },
     "5": {
-      "status": "running",
-      "notes": "Preparing real ARM64 emulator prerequisites.",
+      "status": "blocked",
+      "notes": "No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes.",
       "evidence": []
     },
     "6": {
@@ -101,6 +101,12 @@
       "at": "2026-11-01T00:07:04.637237+00:00",
       "phase": 4,
       "message": "No approved evidence-backed compatibility patch; no image fabricated"
+    },
+    {
+      "id": "emulator",
+      "at": "2026-11-01T00:08:18.586558+00:00",
+      "phase": 5,
+      "message": "No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes."
     }
   ],
   "releases": [
