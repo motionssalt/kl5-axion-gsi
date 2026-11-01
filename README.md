@@ -7,46 +7,48 @@ This is a prebuilt-image patch pipeline, **not an Android source build**. The st
 ## Live status
 
 <!-- STATUS:START -->
-### Latest execution report
+# KL5 execution checkpoint — 2026-11-01
 
-Updated: 2026-11-01T00:08:37.835499+00:00
+**The resumable GitHub Actions pipeline is deployed and running. No final patched GSI, successful emulator boot, hardware fix or sandboxed Play installation is claimed. Do not flash intermediate assets.**
 
-**No emulator result proves MediaTek hardware compatibility.**
+## Delivered and verified
 
-| Phase | Status | Notes |
-|---|---|---|
-| 1 | done | Public repository, encrypted secrets, Actions workflows, disk/release helpers and persistent state installed. Local code tests passed. |
-| 2 | done | Base mirrored with verified SHA-256; stock availability recorded separately. |
-| 3 | blocked | Static inventory produced; see explicit coverage limits. Hardware equivalence is not established. |
-| 4 | blocked | No approved evidence-backed compatibility patch; no image fabricated |
-| 5 | blocked | No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes. |
-| 6 | blocked | Deferred until phases 1–5 have produced a released, boot-tested image. No Apps client or Google packages injected. |
-| 7 | done | Daily upstream watcher and manual URL reapply workflow installed. Actual updated image still requires safe patches and emulator evidence. |
+- Existing public repository resumed; credentials are encrypted repository secrets, not committed values. Telegram session delivery succeeded; workflow notifications continue independently.
+- Complete stock archive mirrored: 6,512,327,514 bytes, four Release parts, each at most 1,900,000,000 bytes, plus SHA-256 manifest. Later stages use GitHub Releases, not Google Drive.
+- Base mirrored and checksummed: 1,313,731,068-byte compressed GSI. Raw image is ext4. Corrected read-only audit verifies Android 16/API 36/SDK-full 36.1, with zero base inventory errors.
+- Corrected canonical stock vendor, product, system_ext and system inventories published, each with zero inventory errors. The optional Open/super image is no longer mistaken for the scatter-adjacent firmware super.
+- Root-only 0600 configuration reads fixed without changing source modes. Numbered evidence-gated patch engine, checksum/rejoin utilities, flashing guide and physical-device checklist are in the repository.
+- Official Android Build v4 discovery works. Build 14981173 independently verifies Android 16/API 36.1 ARM64; matched x86 host and ARM64 guest runtime mirroring is automated. API 37 latest build was deliberately rejected. No client key or temporary signed URL is written to the repository.
+- Telegram screenshot/photo and key-file/document delivery, durable delivery receipts/backfill, bounded retries, concurrent-state journal preservation and daily/manual upstream update workflows are implemented.
+- 33 local regression tests passed, Python compilation passed, and shell syntax checks passed. GitHub safety checks for commit 1d524fe passed; newer checks run automatically.
 
-## Delivered infrastructure
+## Still open
 
-Public repository, encrypted secrets, Telegram notifications, stock-first split mirror/checksums, selective static audit, exact-hash patch application/reporting, manual OTG evidence discovery, ARM64 emulator harness, scheduled upstream/manual update and Release import workflows. Infrastructure is not a claim that device fixes are complete.
+The stock/base gap summary encountered a symlink-without-sha256 exception. Its code and regression test are fixed and pushed; the queued run must regenerate the report. No safe, evidence-backed image compatibility patch is currently approved, so an unchanged input is not republished as a patched ROM. Video/recording, fingerprint and OTG remain unverified and unfixed. Stock OTG init grants node permissions but does not provide a paired property toggle; no guessed always-on workaround is shipped.
 
-## Actual image status
+Matching emulator runtime acquisition and real AxionOS guest boot/UI testing remain pending. The currently active older workflow may still hit its old ARM-host configuration; a queued newer workflow uses the explicit x86-host/ARM64-QEMU path and reuses Release checkpoints. Default AOSP guest boot is never accepted as AxionOS boot.
 
-**No final patched, emulator-verified GSI build exists yet. Do not flash intermediate/status assets.**
+Sandboxed Google Play stays absent: no safe Android 16 framework-layer port or installation proof exists. It must not delay delivery of a future genuine compatibility build.
 
-## Open blockers
+**Any eventual emulator result proves boot and UI only. MediaTek codecs, camera, fingerprint, USB OTG and other physical features require testing on the actual KL5.**
 
-- **emulator-artifact-pin**: Matching prebuilt Android 16 ARM64 Cuttlefish host/image pair is not pinned; no boot success is claimed.
-- **stock-audit**: Image is neither raw ext4 nor EROFS
-- **audit-coverage**: Required stock partitions and/or base inventory remain incomplete.
-- **patch-design**: Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version
-- **image-build**: No approved evidence-backed compatibility patch; no image fabricated
-- **emulator**: No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes.
-- **sandbox-prerequisite**: First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim.
+## Delivery links
 
-## Next autonomous actions
+Repository: https://github.com/motionssalt/kl5-axion-gsi
 
-- Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.
-- Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.
-- Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.
-- Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release.
+Stock mirror: https://github.com/motionssalt/kl5-axion-gsi/releases/tag/stock-mirror
+
+Base input: https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761
+
+Canonical stock audit: https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-stock-9aa24d051881-v2
+
+Corrected base audit: https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-base-2ad2e18b7046-v2
+
+Queued corrected workflow: https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41255933320
+
+Live report: https://github.com/motionssalt/kl5-axion-gsi/releases/tag/pipeline-status
+
+The workflows continue after this session. BUILD_STATE.json records decisions, checkpoints, blockers and next actions. Credentials shared in the task conversation should be rotated; replacements belong only in the existing repository secrets.
 
 <!-- STATUS:END -->
 

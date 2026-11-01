@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:22:28.913599+00:00",
+  "updated": "2026-11-01T00:23:15.427235+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -78,6 +78,26 @@
     {
       "at": "2026-11-01T00:22:26.793305+00:00",
       "decision": "Corrected emulator discovery to official Android Build v4 public API. Latest build 16644040 is API 37 and rejected. Pin matched build 14981173 verified as Android 16/API 36.1 ARM64. Use matching x86_64 host package on free x86 runner for the explicit QEMU TCG ARM64 guest path, avoiding unsupported native ARM64 KVM fallback. Public client key and temporary artifact URLs remain process-only."
+    },
+    {
+      "at": "2026-11-01T00:23:15.427235+00:00",
+      "decision": "Canonical v2 stock vendor/product/system_ext/system fragments have now been published; all report zero inventory errors. Vendor properties declare SDK 31/VNDK 31, while the base declares SDK 36.1. This is an integration risk to investigate, not proof of a specific runtime cause."
+    },
+    {
+      "at": "2026-11-01T00:23:15.427235+00:00",
+      "decision": "Observed summary KeyError on symlink records without sha256; fixed hashed-file comparison and added regression coverage. Fix is pushed; queued automatic run must regenerate the ranked gap report. No speculative fixes approved."
+    },
+    {
+      "at": "2026-11-01T00:23:15.427235+00:00",
+      "decision": "Guest boot acceptance now requires the actual AxionOS system fingerprint, API 36 and ARM64 uname, in addition to boot_completed and genuine PNGs. If a launcher lacks a system-image override, it must integrate the GSI into emulator super with verified tools or fail; generic default AOSP boot is never a pass."
+    },
+    {
+      "at": "2026-11-01T00:23:15.427235+00:00",
+      "decision": "Current stock init.otg.rc only sets OTG_CTL permissions; it supplies no paired property triggers. USB HAL init sets Type-C role-node ownership. No unproven always-on OTG service, SELinux bypass or guessed sysfs helper is delivered."
+    },
+    {
+      "at": "2026-11-01T00:23:15.427235+00:00",
+      "decision": "All 33 local regression tests and Python/shell syntax checks passed. GitHub safety checks for commit 1d524fe also passed; later safety runs and the firmware workflow continue independently. A newer x86-host/ARM64-guest pipeline run is queued behind the active older workflow."
     }
   ],
   "blockers": [
@@ -103,7 +123,7 @@
       "id": "summary-audit",
       "at": "2026-11-01T00:19:25.192630+00:00",
       "phase": 3,
-      "message": "'sha256'"
+      "message": "Symlink records without SHA-256 crashed the gap summary. Code and regression test fixed in pushed commit cd57733; automatic regeneration pending."
     },
     {
       "id": "no-proven-system-patch",
@@ -263,19 +283,20 @@
     }
   ],
   "next_actions": [
-    "Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.",
-    "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
-    "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
-    "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
+    "Finish active emulator runtime mirror using the official matched Android 16 build 14981173.",
+    "Run queued pipeline 41255933320 on x86 host with explicit ARM64 QEMU guest; reuse already mirrored stock/base and canonical partition evidence.",
+    "Regenerate audit/gap report with symlink-safe hash comparison, then require evidence-backed compatibility patch operations before publishing a candidate.",
+    "Obtain genuine patched-image boot, identity, screenshots and logs before any build-* Release. Emulator boot/UI never verifies KL5 hardware.",
+    "Keep sandboxed Play disabled until a compatibility build is released and its framework port can be rigorously validated."
   ],
   "provisioning_validation": {
-    "at": "2026-11-01T00:17:07.140094+00:00",
-    "unit_tests_passed": 26,
+    "at": "2026-11-01T00:23:15.427235+00:00",
+    "unit_tests_passed": 33,
     "python_compilation": "passed",
     "shell_syntax": "passed",
     "actionlint": "v1.7.7 passed",
     "credential_scan": "passed on tracked source; no supplied secret values committed",
-    "scope": "Automation code plus genuine base static audit only; NOT emulator boot or physical hardware"
+    "scope": "Automation regression tests and read-only image inventory; no emulator or hardware success claimed."
   },
   "stock_mirror_parts": [
     {
