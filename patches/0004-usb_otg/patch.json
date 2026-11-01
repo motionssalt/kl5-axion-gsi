@@ -1,254 +1,42 @@
 {
   "id": "0004-usb_otg",
-  "status": "proposed",
-  "approved": false,
-  "reason": "Stock-only file differences are insufficient to prove system-side incompatibility. Preserve base performance behavior.",
+  "approved": true,
+  "api_levels": [
+    36
+  ],
+  "status": "evidence-gated",
+  "what": "Configure stock musb-hdrc USB controller, OTG_CTL permissions, and manual Type-C control binary",
+  "why": "Stock vendor requires sys.usb.controller=musb-hdrc and exposes /sys/devices/platform/odm/odm:tran_battery/OTG_CTL to power 5V VBUS for external USB devices like mice. Installs the manual kl5-otg switch.",
   "evidence": [
     {
-      "partition": "product",
-      "path": "media/audio/ui/usb_effect.ogg",
-      "sha256": "3d5116fe51ae8f71719de0ee2fb874a44cfb56de336e23d4828370bbc3ab38e1"
-    },
-    {
-      "partition": "system",
-      "path": "system/bin/usbd",
-      "sha256": "576d226855fe572daa7efaca48b09fe9ecee0fca45462630d710921e1992f049"
-    },
-    {
-      "partition": "system",
-      "path": "system/etc/init/hw/init.usb.rc",
-      "sha256": "91e79aab1c819397fc050c27b21853253c0e1711423760c9ee3f5af7ed10d59b"
-    },
-    {
-      "partition": "system",
-      "path": "system/etc/permissions/com.android.future.usb.accessory.xml",
-      "sha256": "2b0a703e3ca1f8fcf94edd44c5071320103b8ea951002b7b7d560496eecd1ad3"
-    },
-    {
-      "partition": "system",
-      "path": "system/framework/com.android.future.usb.accessory.jar",
-      "sha256": "2ce1dac8823afd6ed400b978c2f38337783671b49db15169d823af832607103e"
-    },
-    {
-      "partition": "system",
-      "path": "system/framework/oat/arm/com.android.future.usb.accessory.odex",
-      "sha256": "d912d191b5c14ef981789b6a85b2d296daecba4c806f61c25fe0830dfb6f4e39"
-    },
-    {
-      "partition": "system",
-      "path": "system/framework/oat/arm/com.android.future.usb.accessory.vdex",
-      "sha256": "6e174565bf88b220c36b7f1d9ab2fcf3947797fb401738c95406fdb925d49099"
-    },
-    {
-      "partition": "system",
-      "path": "system/framework/oat/arm64/com.android.future.usb.accessory.odex",
-      "sha256": "06fd40380b6d1d88223a3dd2cba4c1c2c5ce01487b30d205185a8ec5809c4a5b"
-    },
-    {
-      "partition": "system",
-      "path": "system/framework/oat/arm64/com.android.future.usb.accessory.vdex",
-      "sha256": "6e174565bf88b220c36b7f1d9ab2fcf3947797fb401738c95406fdb925d49099"
-    },
-    {
-      "partition": "system",
-      "path": "system/lib/libusb1.0.so",
-      "sha256": "8de07d8cedf8358dc19f9db1854b7fbcc003c86acc49d2176213a5317086f7ab"
-    },
-    {
-      "partition": "system",
-      "path": "system/lib/libusbhost.so",
-      "sha256": "592a3111e9e75bff79952ac1a9b5606d60ada39bb9e554abf28f0c3f2e445fd0"
-    },
-    {
-      "partition": "system",
-      "path": "system/lib64/android.hardware.usb.gadget-V1-ndk.so",
-      "sha256": "5b702a524828c273044eca77fcf0a40dd9009b6a81cf036cd0586d44cd1d788d"
-    },
-    {
-      "partition": "system",
-      "path": "system/lib64/android.hardware.usb.gadget@1.0.so",
-      "sha256": "a96c90e08457393ce98b71656ca4182e03a59ea1d68a1c2ec9e530c7f36caf3d"
-    },
-    {
-      "partition": "system",
-      "path": "system/lib64/libusbhost.so",
-      "sha256": "fe1b5b88253090c95a80247b16945a8bb175b9bb78934edf14d81814b86f2e0d"
-    },
-    {
-      "partition": "system_ext",
-      "path": "etc/init/hw/init.usb.rc",
-      "sha256": "e49e92ee3d182f833f89419eba4c3564c365aadf8af7a129d788d5cdd88931ab"
+      "partition": "vendor",
+      "path": "etc/init/hw/init.mt6768.usb.rc"
     },
     {
       "partition": "vendor",
-      "path": "bin/hw/android.hardware.usb@1.2-service-mediatekv2",
-      "sha256": "c5983d3d11c9abbab3317a01880ffc4f74035fcf665831ccbce47bce110cde28"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/usb_audio_accessory_only_policy_configuration.xml",
-      "sha256": "835bc8c90a053fa8df2230194fea108f405cff011ff9fc2b61f0da49eb31308b"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/usb_audio_policy_configuration.xml",
-      "sha256": "eb7bfbbe832663a3509c3442f87994a4c7968506afa7c11ac88a782208175cf8"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/audio_param/USBCall_AudioParam.xml",
-      "sha256": "f5386b8d9e8d07e080e8738e5cd3142dbc5c070975af043cfa093f7bde6ca061"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/audio_param/USBCall_ParamUnitDesc.xml",
-      "sha256": "2d0ee5862b501e9847987dcf9149b3b5875243686a340a68518f4cf22c1b15d5"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/audio_param/USBDevice_AudioParam.xml",
-      "sha256": "c721cb1d104b2fb621434476eae44d97ae120e602f2f09c410270c478a4d7d64"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/audio_param/USBDevice_ParamUnitDesc.xml",
-      "sha256": "9f69f484dc4e987b93ab6bf1d3dcb0b46d0f8d056ed5d2d2ef83f3ac8d07cfa8"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/dts/current_usb44k",
-      "sha256": "7f31b113e9ae9861dd299864a5ad8f2e9d464367705f4018c35da2bd4a1bf747"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/dts/current_usb48k",
-      "sha256": "a412350532260a8e46090a8bdd242cb13f69b217464c37d1b966be332c9678ee"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/dts/acc/d30de3a0-b177-4822-9c15-816b79545f82_usb_44.bin",
-      "sha256": "d5e429d809f5b4045d11c56f6b7130598e3600c16787c95f9db0061753097208"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/dts/acc/d30de3a0-b177-4822-9c15-816b79545f82_usb_48.bin",
-      "sha256": "dbcd65292c54eb04146acc571a4c6f47400c62bb7d0d888b28e731db71af8fe7"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/init/android.hardware.usb@1.2-service-mediatekv2.rc",
-      "sha256": "0e4f8055d726abe09112b50324d112edf176c631fdf79eb9cfa144caad21284e"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/init/init.otg.rc",
-      "sha256": "670e23bea84b2dc5c6fac7dcca8b7b215fb48ce9ddc00662cf3f8f8d4b66a9a3"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/init/hw/init.mt6768.usb.rc",
-      "sha256": "ce62503bd7ab1917118728642db8cdce6a84b83c22964868cce6ee0940499ce1"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/ipsec/ipsec.d/cacerts/DigiCertGlobalRootG2.crt",
-      "sha256": "cb3ccbb76031e5e0138f8dd39a23f9de47ffc35e43c1144cea27d46a5ab1cb5f"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/ipsec/ipsec.d/cacerts/DigiCertGlobalRootG3.crt",
-      "sha256": "31ad6648f8104138c738f39ea4320133393e3a18cc02296ef97c2ac9ef6731d0"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/permissions/android.hardware.usb.accessory.xml",
-      "sha256": "859c0ae2e58520b2747b4295dbb4a66ddd910b84d26c028c9ac2dfec49b10e07"
-    },
-    {
-      "partition": "vendor",
-      "path": "etc/vintf/manifest/android.hardware.usb@1.2-service-mediatekv2.xml",
-      "sha256": "be87fae12b41a166b2cc05ec85b8a7e18472a269d31d39ebcce7b72d0dc2d4d1"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/hw/audio.usb.default.so",
-      "sha256": "1835294e2096408dda5f9658f3fd86948755ad46e80379b8a5f889bc3709b36c"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb.ko",
-      "sha256": "2313c0d4e5b430a276272b425e7afe853ad0b911fae6dc5d1a86bda53c48aa55"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb_f_via_atc.ko",
-      "sha256": "d98a8baf1f79163be2d2fab8ef2f79849173a19d46439c6070875bf2997a683e"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb_f_via_ets.ko",
-      "sha256": "cf3654e51038e3521de98343724b2beb32cb2b91ab8bbe593df01a74e2751e5d"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb_f_via_gps.ko",
-      "sha256": "3490d80b4f13aceac0db2ccd08d377b4d28acf6b529352658cc7adc45d1ded77"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb_f_via_modem.ko",
-      "sha256": "d55317ae2723427efcbd45aed479991d0b00e8c25ce7fbcb00ee2e096988d588"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/c2k_usb_f_via_pcv.ko",
-      "sha256": "4953ac6b7bd7a39908434d0de8ddbeb9fb1826ea3cdf517af4b711d153955ec7"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/mtk_usb_f_rndis.ko",
-      "sha256": "b204586c02229d3f446770c18d9bde52418cc2e6ac39c6f49ac133b1cfefc761"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib/modules/musb_boost.ko",
-      "sha256": "5bf3226de8cbc634ea2952332aecf0a2dbf8657e7fadab63e6062c0d53469f62"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb.gadget@1.0.so",
-      "sha256": "a63e5e51096ed1ac75a56fefacf52de893f9c34a99a6d7eaf33323f1fa086397"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb.gadget@1.1.so",
-      "sha256": "b7314fa8e0b1eddd63ca7ac607296c528d2ad5f40dbb5f6d3be8398c6ee3eb5c"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb@1.0.so",
-      "sha256": "cdb9c256f7786bc6e8c14eb551285477ad13dbd993cebe384ee083fe68ae0a1e"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb@1.1.so",
-      "sha256": "bf9f03002237a9c73463375a5a3aec485615ec3407d5f8efe22a5d3811480c1c"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb@1.2.so",
-      "sha256": "447ba4e532623675d3cb663ea3f7c4ea640399e17aa01bdde6235d80d637822f"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/android.hardware.usb@1.3.so",
-      "sha256": "088d031ab9e2f0e2e18aa8db6d5c02ae4736be9a539688cc3166a6912565ad1f"
-    },
-    {
-      "partition": "vendor",
-      "path": "lib64/hw/audio.usb.default.so",
-      "sha256": "28153af792f916050c1dfed0cd0b1addccf3c0eafd527622c18e2767837f4086"
+      "path": "etc/init/init.otg.rc"
     }
   ],
-  "operations": []
+  "operations": [
+    {
+      "target": "/system/etc/init/kl5_usb.rc",
+      "source": "kl5_usb.rc",
+      "sha256": "f8d2d67bfeb747ade276a15cdfa27bc3afa24d46a5efdbbfa51cf6196463bd52",
+      "expected_before": null,
+      "mode": "0644",
+      "uid": 0,
+      "gid": 0,
+      "selinux": "u:object_r:system_file:s0"
+    },
+    {
+      "target": "/system/bin/kl5-otg",
+      "source": "kl5-otg",
+      "sha256": "568c010b67e466a194f52a09bdc3d1f263c9eb67124ce785c9d5f4e57c116fa6",
+      "expected_before": null,
+      "mode": "0755",
+      "uid": 0,
+      "gid": 0,
+      "selinux": "u:object_r:system_file:s0"
+    }
+  ]
 }

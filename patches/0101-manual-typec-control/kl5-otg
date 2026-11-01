@@ -62,6 +62,21 @@ fi
 if [ "$ACTION" != restore ] && [ ! -e "$STATE/original-port-type" ]; then
     printf '%s\n' "$ORIGINAL" > "$STATE/original-port-type" || exit 1
 fi
+if [ "" = on ]; then
+    if [ -w /sys/devices/platform/odm/odm:tran_battery/OTG_CTL ]; then
+        echo 1 > /sys/devices/platform/odm/odm:tran_battery/OTG_CTL 2>/dev/null || true
+    fi
+    if [ -w /sys/devices/platform/extcon_usb/extcon/extcon0/cable.1/state ]; then
+        echo 1 > /sys/devices/platform/extcon_usb/extcon/extcon0/cable.1/state 2>/dev/null || true
+    fi
+elif [ "" = off ]; then
+    if [ -w /sys/devices/platform/odm/odm:tran_battery/OTG_CTL ]; then
+        echo 0 > /sys/devices/platform/odm/odm:tran_battery/OTG_CTL 2>/dev/null || true
+    fi
+    if [ -w /sys/devices/platform/extcon_usb/extcon/extcon0/cable.1/state ]; then
+        echo 0 > /sys/devices/platform/extcon_usb/extcon/extcon0/cable.1/state 2>/dev/null || true
+    fi
+fi
 # Kernel Type-C class defines source as source-only DFP (host), sink as UFP.
 # Synchronous ABI request; never loop/retry or repeatedly fight the vendor HAL.
 if ! printf '%s\n' "$TARGET" > "$PORT/port_type"; then

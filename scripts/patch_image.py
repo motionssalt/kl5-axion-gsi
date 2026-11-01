@@ -10,7 +10,7 @@ def specs():
   s=json.loads(p.read_text()); s['_folder']=str(p.parent)
   if s.get('approved'):
    if not s.get('evidence') or not s.get('operations'): raise RuntimeError('Approved patch requires evidence and operations: '+s.get('id','?'))
-  result.append(s)
+   result.append(s)
  return result
 
 def safe_target(mount,target):

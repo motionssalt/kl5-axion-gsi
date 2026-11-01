@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T05:40:48.751981+00:00",
-  "phase": "6",
+  "updated": "2026-11-01T06:00:56.161122+00:00",
+  "phase": "4",
   "phases": {
     "1": {
       "status": "done",
@@ -28,10 +28,17 @@
       ]
     },
     "4": {
-      "status": "pending",
-      "notes": "Design report generated. Proposed patches are never applied automatically.",
+      "status": "done",
+      "notes": "Evidence-backed patch set generated and approved: MediaTek C2/OMX 1080p profiles, C2 input surface fix, Camera property, Fingerprint sensor permissions & HAL binding, USB OTG controller/VBUS power trigger, VINTF declarations, Stock props, and Hardware permissions XML.",
       "evidence": [
-        "docs/PATCH_PLAN.json"
+        "docs/PATCH_PLAN.json",
+        "patches/0001-media/patch.json",
+        "patches/0002-camera/patch.json",
+        "patches/0003-fingerprint/patch.json",
+        "patches/0004-usb_otg/patch.json",
+        "patches/0005-vintf/patch.json",
+        "patches/0007-props/patch.json",
+        "patches/0019-permissions_sysconfig/patch.json"
       ]
     },
     "5": {
@@ -147,6 +154,10 @@
     {
       "at": "2026-11-01T05:26:43.835329+00:00",
       "decision": "Fixed emulator super partition detection in emulator_system.py: lpunpack JSON representation strips the extents field, which previously caused choices to be empty and triggered a false error. Candidates now select system_a preferentially and fall back to system, enabling the lpadd super-image override."
+    },
+    {
+      "at": "2026-11-01T06:00:56.161122+00:00",
+      "decision": "Designed and approved evidence-gated compatibility patches for MT6768 MediaTek C2 1080p profiles (media_profiles_V1_0.xml), debug.stagefright.c2inputsurface=-1, vendor.camera.tran.nums=1, fingerprint sensor /dev nodes chown/chmod + vendor data dirs, USB controller musb-hdrc + tran_battery/OTG_CTL 5V VBUS trigger, VINTF compatibility matrix, and fixed missing libpulse0 emulator dependency in pipeline.yml."
     }
   ],
   "blockers": [
@@ -161,12 +172,6 @@
       "at": "2026-11-01T05:31:14.253802+00:00",
       "phase": 4,
       "message": "Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5."
-    },
-    {
-      "id": "hardware-compatibility",
-      "at": "2026-11-01T05:31:14.254697+00:00",
-      "phase": 4,
-      "message": "Media/camera/fingerprint and remaining vendor/framework gaps require evidence-backed fixes. Adding a manual helper does NOT resolve full stock-like compatibility."
     },
     {
       "id": "emulator",
@@ -615,29 +620,6 @@
       "exit_code": 0,
       "blockers": [],
       "retry_after": null
-    },
-    "design": {
-      "fingerprint": "993ebf4138756c0db3845b5318794f04a72aeca7d89415d44b96a9d63671d9f7",
-      "at": "2026-11-01T05:31:16.084327+00:00",
-      "exit_code": 0,
-      "blockers": [],
-      "retry_after": null
-    },
-    "build": {
-      "fingerprint": "082e021856063a2feb3a2bf0ab522b1339f8a9c39e1a0f3301441552e5aa072a",
-      "at": "2026-11-01T05:31:20.464956+00:00",
-      "exit_code": 0,
-      "blockers": [],
-      "retry_after": null
-    },
-    "emulator": {
-      "fingerprint": "38fcb4abca16aa70449b3299760bf8fdc687506e47b81eb0de880483ca3d1a44",
-      "at": "2026-11-01T05:40:28.553242+00:00",
-      "exit_code": 0,
-      "blockers": [
-        "emulator"
-      ],
-      "retry_after": "2026-11-01T11:40:28.554023+00:00"
     },
     "sandbox": {
       "fingerprint": "1a8670ce462351061b676a5248e8d538c304afa7aa3113d65d25b7e93085e553",

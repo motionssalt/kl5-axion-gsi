@@ -1,0 +1,4 @@
+# Camera HAL configuration for Tecno KL5
+on early-boot
+    setprop vendor.camera.tran.nums 1
+    setprop ro.camera.sound.forced 0

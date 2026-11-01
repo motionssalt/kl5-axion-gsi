@@ -1,0 +1,10 @@
+# USB controller & Type-C OTG initialization for Tecno KL5
+on init
+    setprop sys.usb.controller musb-hdrc
+
+on post-fs-data
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/OTG_CTL
+    chmod 0666 /sys/class/typec/port0/port_type
+    chmod 0666 /sys/class/typec/port0/power_role
+    chmod 0666 /sys/class/typec/port0/data_role
+    chmod 0666 /sys/devices/platform/extcon_usb/extcon/extcon0/cable.1/state

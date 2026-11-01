@@ -24,7 +24,7 @@
     {
       "target": "/system/bin/kl5-otg",
       "source": "kl5-otg",
-      "sha256": "b1137d848b76164da782f44e4b2aa76fca53f80309ba980ca5d93e4f3e53ec77",
+      "sha256": "568c010b67e466a194f52a09bdc3d1f263c9eb67124ce785c9d5f4e57c116fa6",
       "expected_before": null,
       "mode": "0755",
       "uid": 0,

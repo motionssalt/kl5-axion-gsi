@@ -1,0 +1,6 @@
+# MediaTek MT6768 stock platform properties for Tecno KL5
+on early-init
+    setprop ro.mediatek.version.branch alps-mp-u0.mssi1
+    setprop ro.mediatek.version.release alps-mp-u0.mp1-V6.54
+    setprop ro.sys.usb.storage.type mtp
+    setprop ro.audio.usb.period_us 16000

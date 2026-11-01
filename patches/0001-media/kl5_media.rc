@@ -1,0 +1,6 @@
+# MediaTek hardware video codec & camera recording initialization for Tecno KL5
+on early-init
+    setprop debug.stagefright.c2inputsurface -1
+    setprop media.stagefright.thumbnail.prefer_hw_codecs true
+    setprop media.c2.dmabuf.padding 3072
+    setprop ro.vendor.mtk_c2_vdec_hevc_support 1

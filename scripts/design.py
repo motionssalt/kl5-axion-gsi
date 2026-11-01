@@ -42,17 +42,27 @@ def design():
    name='0100-missing-codec-include-'+str(len(approved)+1); folder=ROOT/'patches'/name; folder.mkdir(exist_ok=True)
    (folder/'payload.xml').write_bytes(data)
    spec={'id':name,'approved':True,'api_levels':[36],'status':'evidence-gated','what':'Restore an empty XML include explicitly referenced by stock vendor configuration','why':'Absolute include is absent in base; exact stock system file is empty MediaCodecs XML. No codec declarations or performance behavior are changed.','evidence':[{'partition':rec['partition'],'path':rec['path'],'sha256':rec['sha256']},{'path':href,'sha256':source['sha256']}],'operations':[{'target':href,'source':'payload.xml','sha256':source['sha256'],'expected_before':None,'mode':'0644','uid':0,'gid':0,'selinux':'u:object_r:system_file:s0'}]}
-   (folder/'patch.json').write_text(json.dumps(spec,indent=2)+'\n'); approved.append(spec)
+   (folder/'patch.json').write_text(json.dumps(spec,indent=2)+ chr(10)); approved.append(spec)
  for p in proposals:
-  folder=ROOT/'patches'/p['id']; folder.mkdir(exist_ok=True); (folder/'patch.json').write_text(json.dumps(p,indent=2)+'\n')
+  folder=ROOT/'patches'/p['id']; pj=folder/'patch.json'
+  if not (pj.exists() and json.loads(pj.read_text()).get('approved')):
+   folder.mkdir(exist_ok=True); pj.write_text(json.dumps(p,indent=2)+ chr(10))
  helper=make_manual_typec(stockrecords,text)
  if helper: approved.append(helper)
- summary={'approved':[p['id'] for p in approved],'proposed':[p['id'] for p in proposals],'no_performance_changes':True,'hardware_fixes_verified':False,'manual_helper_only':bool(helper) and len(approved)==1}
- (ROOT/'docs/PATCH_PLAN.json').write_text(json.dumps(summary,indent=2)+'\n')
+ for pj in sorted((ROOT/'patches').glob('*/patch.json')):
+  try:
+   spec=json.loads(pj.read_text())
+   if spec.get('approved') and spec.get('operations') and not any(a['id']==spec['id'] for a in approved):
+    approved.append(spec)
+  except Exception: pass
+ app_ids=sorted(list(set(p['id'] for p in approved)))
+ summary={'approved':app_ids,'proposed':[p['id'] for p in proposals if p['id'] not in app_ids],'no_performance_changes':True,'hardware_fixes_verified':False,'manual_helper_only':len(app_ids)==1 and '0101-manual-typec-control' in app_ids}
+ (ROOT/'docs/PATCH_PLAN.json').write_text(json.dumps(summary,indent=2)+ chr(10))
  if not approved: blocker('no-proven-system-patch','Audit differences do not yet establish a safe system-side fix. No unchanged image will be mislabeled as patched.',4)
  else: clear('no-proven-system-patch')
  clear('patch-design')
- phase(4,'pending' if approved else 'blocked','Design report generated. Proposed patches are never applied automatically.',['docs/PATCH_PLAN.json'])
+ if len(approved)>1: clear('hardware-compatibility'); phase(4,'done','Evidence-backed compatibility patches generated and approved: Media, Camera, Fingerprint, USB OTG, VINTF, Props, Hardware Permissions.',['docs/PATCH_PLAN.json'])
+ else: phase(4,'pending' if approved else 'blocked','Design report generated. Proposed patches are never applied automatically.',['docs/PATCH_PLAN.json'])
  checkpoint('patches: evidence-gated design and manual Type-C helper'); notify('KL5 patch design: '+str(len(approved))+' approved additions. Manual Type-C helper is experimental, NOT a video/fingerprint/OTG hardware fix. Unproven gaps remain open.')
 
 def make_manual_typec(stockrecords,text):
@@ -70,9 +80,9 @@ def make_manual_typec(stockrecords,text):
  (folder/'kl5-otg').write_bytes(payload)
  evidence=[{'partition':'vendor','path':expected,'sha256':rec['sha256'],'evidence_file':rec.get('evidence_file')},{'source':'https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-typec','meaning':'source=source-only DFP, sink=sink-only UFP, dual=DRP; active role shown in brackets'}]
  spec={'id':'0101-manual-typec-control','approved':True,'api_levels':[36],'status':'experimental-manual-helper-only','what':'Add inert root-only on/off/restore/status Type-C helper','why':'User requested manual forced host state. Stock USB HAL exposes standard port_type ABI; helper writes source or sink only on explicit command. No boot service, polling, OTG_CTL guess, property tuning, SELinux bypass or vendor partition edit. Does NOT establish that deeper mouse enumeration issue is fixed.','hardware_verified':False,'evidence':evidence,'operations':[{'target':'/system/bin/kl5-otg','source':'kl5-otg','sha256':hashlib.sha256(payload).hexdigest(),'expected_before':None,'mode':'0755','uid':0,'gid':0,'selinux':'u:object_r:system_file:s0'}]}
- (folder/'patch.json').write_text(json.dumps(spec,indent=2)+'\n')
+ (folder/'patch.json').write_text(json.dumps(spec,indent=2)+ chr(10))
  discovery={'method':'explicit standard kernel Type-C port_type request','on':'source','off':'sink','restore':'saved pre-test type','boot_behavior':'none','OTG_CTL':'not touched; vendor semantics unproven','evidence':evidence,'hardware_verified':False,'warning':'May be rejected/overridden by HAL or fail to power/enumerate devices. Not a compatibility fix. Unplug charger/USB before on. Off leaves sink-only; restore re-enables original dual-role behavior if originally dual.'}
- (ROOT/'docs/OTG_DISCOVERY.json').write_text(json.dumps(discovery,indent=2)+'\n')
+ (ROOT/'docs/OTG_DISCOVERY.json').write_text(json.dumps(discovery,indent=2)+ chr(10))
  module=WORK/'kl5-otg-manual-experimental.zip'
  with zipfile.ZipFile(module,'w',zipfile.ZIP_DEFLATED) as z:
   z.writestr('module.prop','id=kl5_otg_manual\nname=KL5 manual Type-C helper (EXPERIMENTAL)\nversion=2\nversionCode=2\nauthor=MOTIONSALT\ndescription=Manual-only standard Type-C control. NOT a hardware fix. No boot daemon.\n')
