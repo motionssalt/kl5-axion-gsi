@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:36:09.691569+00:00",
+  "updated": "2026-11-01T00:36:13.731098+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -361,9 +361,8 @@
     }
   ],
   "next_actions": [
-    "Reuse mirrored and SHA-256-pinned Android 16 runtime from emulator-runtime-14981173-x86-host; no external artifact re-download needed.",
     "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
-    "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
+    "Reuse the already mirrored/pinned Android 16 ARM64 runtime; resolve launcher integration and collect genuine base/candidate boot/UI evidence.",
     "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
   ],
   "provisioning_validation": {
@@ -557,6 +556,11 @@
       "at": "2026-11-01T00:23:46.105630+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "0c9d2cdcca9c6f17959a66eb577900b468e8c38a1e43275d6fb4cef6836f5a1c"
+    },
+    "document:FINAL_REPORT.md:a71522c4cec0a1ec6001fff0530946f1378b76d44df57308ba8e52c3bfece672": {
+      "at": "2026-11-01T00:36:13.731083+00:00",
+      "name": "FINAL_REPORT.md",
+      "sha256": "a71522c4cec0a1ec6001fff0530946f1378b76d44df57308ba8e52c3bfece672"
     }
   },
   "stages": {
