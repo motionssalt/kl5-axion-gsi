@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:47:59.074950+00:00",
+  "updated": "2026-11-01T00:48:04.917703+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -28,11 +28,9 @@
       ]
     },
     "4": {
-      "status": "pending",
-      "notes": "Design report generated. Proposed patches are never applied automatically.",
-      "evidence": [
-        "docs/PATCH_PLAN.json"
-      ]
+      "status": "done",
+      "notes": "Candidate generated with static integrity checks. Boot/hardware unverified.",
+      "evidence": []
     },
     "5": {
       "status": "blocked",
@@ -143,12 +141,6 @@
       "at": "2026-11-01T00:23:23.612529+00:00",
       "phase": 5,
       "message": "Runtime artifact pinning is resolved. Real AxionOS ARM64 emulator boot/UI evidence remains unavailable; corrected queued workflow uses x86 host with explicit QEMU ARM64 guest."
-    },
-    {
-      "id": "image-build",
-      "at": "2026-11-01T00:29:39.194914+00:00",
-      "phase": 4,
-      "message": "No approved evidence-backed compatibility patch; no image fabricated"
     },
     {
       "id": "sandbox-prerequisite",
@@ -689,5 +681,161 @@
       "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-base-support-2ad2e18b7046"
     ],
     "run_id": "41257774157"
+  },
+  "candidate": {
+    "base_sha256": "2ad2e18b70464338c857f51df9d0c540ce2a109cca09ac87bba14920627c52da",
+    "patchset_sha256": "04f2ef18095b0fec1204faac20a888e3d2ed410b6f4b9a83f8f10eb8ecac2ce3",
+    "parts": [
+      {
+        "name": "system.img.xz.part-0001",
+        "size": 1367825292,
+        "sha256": "27199642e1d3e6d3e4729731ed3778fcbdb38a0db0412d921051840f642ddaa8",
+        "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/download/candidate-2ad2e18b-04f2ef18/system.img.xz.part-0001"
+      }
+    ],
+    "sha256": "27199642e1d3e6d3e4729731ed3778fcbdb38a0db0412d921051840f642ddaa8",
+    "release": "candidate-2ad2e18b-04f2ef18",
+    "boot_verified": false,
+    "hardware_verified": false,
+    "patch_report": [
+      {
+        "id": "0001-media",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0002-camera",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0003-fingerprint",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0004-usb_otg",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0005-vintf",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0006-init",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0007-props",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0008-audio",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0009-sensors",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0010-gnss",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0011-nfc",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0012-bluetooth",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0013-wifi",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0014-telephony_ims",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0015-display",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0016-power_thermal_charging",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0017-vibrator_lights",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0018-overlays",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0019-permissions_sysconfig",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0020-selinux",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0021-hardware_apps",
+        "status": "skipped",
+        "operations": [],
+        "reason": "Proposed/unproven patch; not applied"
+      },
+      {
+        "id": "0101-manual-typec-control",
+        "status": "applied",
+        "operations": [
+          {
+            "target": "/system/bin/kl5-otg",
+            "status": "apply",
+            "before": null,
+            "after": "b1137d848b76164da782f44e4b2aa76fca53f80309ba980ca5d93e4f3e53ec77"
+          }
+        ]
+      }
+    ]
   }
 }
