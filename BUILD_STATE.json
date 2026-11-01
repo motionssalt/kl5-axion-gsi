@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:01.937006+00:00",
+  "updated": "2026-11-01T00:19:11.977123+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -357,6 +357,13 @@
         "asset": "stock-system_ext-audit.tar.gz",
         "release": "audit-stock-9aa24d051881-v2",
         "records": 520,
+        "errors": 0,
+        "filesystem": "erofs"
+      },
+      "system": {
+        "asset": "stock-system-audit.tar.gz",
+        "release": "audit-stock-9aa24d051881-v2",
+        "records": 1458,
         "errors": 0,
         "filesystem": "erofs"
       }
