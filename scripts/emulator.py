@@ -4,6 +4,7 @@ import argparse, json, lzma, os, pathlib, platform, re, shutil, subprocess, tarf
 import requests
 from common import *
 from images import raw_from_stream
+from emulator_system import expected_identity,supported_flags,system_args
 
 # Pin a matched Android 16 device-image/host pair, NEVER mix latest host and old images.
 # Public Android build API v3 returned 403 during provisioning; v4 discovery is attempted.
@@ -48,11 +49,12 @@ def collect_boot(label,image,config):
  kvm=pathlib.Path('/dev/kvm').exists() and platform.machine() in ['aarch64','arm64']
  env=os.environ.copy(); env['HOME']=str(cvd)
  # QEMU TCG is explicit when KVM unavailable; still bounded by the Actions job timeout.
- args=[str(launch),'--daemon','--resume=false','--system_image='+str(image),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
+ flags=supported_flags(cvd,env)
+ args=[str(launch),'--daemon','--resume=false','--system_image_dir='+str(cvd),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
+ args+=system_args(cvd,image,evidence,flags,env)
  if not kvm:
   args+=['--vm_manager=qemu_cli','--cpus=2','--memory_mb=4096']
-  helptext=subprocess.run([str(launch),'--helpxml'],cwd=cvd,env=env,capture_output=True,text=True,timeout=60)
-  if '<name>enable_kvm</name>' in helptext.stdout: args+=['--enable_kvm=false']
+  if '<name>enable_kvm</name>' in flags: args+=['--enable_kvm=false']
   elif platform.machine() in ['aarch64','arm64']:
    (evidence/'tcg-prerequisite.txt').write_text('No /dev/kvm; this Cuttlefish package does not expose enable_kvm. Native ARM64 Linux QEMU manager may hardcode KVM. Boot must fail honestly if software fallback is unavailable.\n')
  completed=False; deadline=time.monotonic()+(3600 if kvm else 7200)
@@ -74,6 +76,12 @@ def collect_boot(label,image,config):
   (evidence/'properties.txt').write_bytes(adb(['shell','getprop']).stdout)
   (evidence/'kernel.txt').write_bytes(adb(['shell','dmesg']).stdout)
   if not completed: raise RuntimeError('sys.boot_completed=1 was not observed before timeout')
+  actual_fingerprint=adb(['shell','getprop','ro.system.build.fingerprint']).stdout.decode(errors='replace').strip()
+  architecture=adb(['shell','uname','-m']).stdout.decode(errors='replace').strip()
+  sdk=adb(['shell','getprop','ro.system.build.version.sdk']).stdout.decode(errors='replace').strip()
+  identity={'expected_system_fingerprint':expected_identity(),'observed_system_fingerprint':actual_fingerprint,'guest_architecture':architecture,'guest_system_sdk':sdk}
+  (evidence/'guest-identity.json').write_text(json.dumps(identity,indent=2)+'\n')
+  if actual_fingerprint!=identity['expected_system_fingerprint'] or architecture not in ['aarch64','arm64'] or sdk!='36':raise RuntimeError('Booted guest identity/API/architecture does not match the intended AxionOS ARM64 GSI; generic AOSP boot rejected')
   adb(['shell','input','keyevent','KEYCODE_WAKEUP']); adb(['shell','wm','dismiss-keyguard']); adb(['shell','input','keyevent','KEYCODE_HOME']); time.sleep(5)
   screenshots=[('home',[]),('about',['am','start','-a','android.settings.DEVICE_INFO_SETTINGS']),('settings',['am','start','-a','android.settings.SETTINGS']),('quick-settings',['cmd','statusbar','expand-settings'])]
   for name,command in screenshots:
@@ -128,6 +136,8 @@ def run():
    results[label]={'boot_completed':False,'error':str(e),'scope':'No hardware claim.'}
   finally:
    image.unlink(missing_ok=True)
+   (WORK/'runtime-test-super.img').unlink(missing_ok=True)
+   (WORK/'runtime-test-vbmeta.img').unlink(missing_ok=True)
    if evidence.exists():
     for p in evidence.iterdir():
      if p.is_file(): upload(testrel,p,name=label+'-'+p.name,replace=True)

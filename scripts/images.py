@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Bounded Release range reader, streaming sparse decoder, read-only mount."""
 import contextlib, hashlib, io, json, os, pathlib, shutil, struct, subprocess
-import requests
+import requests, time
 from common import *
 
 class MultipartRemote(io.RawIOBase):
  def __init__(self,parts,block=4*1024**2):
-  self.parts=parts; self.offsets=[]; self.length=0; self.pos=0; self.block=block; self.cache={}
+  self.parts=parts; self.offsets=[]; self.length=0; self.pos=0; self.block=block; self.cache={}; self.transport=requests.Session(); self.object_urls={}
   for p in parts: self.offsets.append(self.length); self.length+=p['size']
  def readable(self): return True
  def seekable(self): return True
@@ -24,15 +24,36 @@ class MultipartRemote(io.RawIOBase):
    local=self.pos-self.offsets[i]; block=local//self.block; key=(i,block)
    if key not in self.cache:
     start=block*self.block; end=min(start+self.block,self.parts[i]['size'])-1
-    with requests.get(self.parts[i]['url'],headers={'Range':f'bytes={start}-{end}'},stream=True,timeout=(30,180)) as r:
-     if r.status_code!=206 or not r.headers.get('Content-Range','').startswith(f'bytes {start}-{end}/'): raise RuntimeError('Release host did not honor bounded HTTP Range request')
-     data=b''.join(r.iter_content(1024*1024))
-     if len(data)!=end-start+1: raise RuntimeError('Truncated Release range')
+    data=None
+    for attempt in range(3):
+     try:
+      url=self.object_urls.get(i,self.parts[i]['url'])
+      with self.transport.get(url,headers={'Range':f'bytes={start}-{end}'},stream=True,timeout=(30,180)) as r:
+       if r.status_code in [401,403] and i in self.object_urls:
+        self.object_urls.pop(i,None);continue
+       if r.status_code>=500:raise requests.RequestException('temporary Release transport failure')
+       if r.status_code!=206 or r.headers.get('Content-Range')!=f'bytes {start}-{end}/{self.parts[i]["size"]}':raise RuntimeError('Release host did not honor exact bounded HTTP Range/total length')
+       collected=bytearray()
+       for chunk in r.iter_content(1024*1024):
+        collected.extend(chunk)
+        if len(collected)>end-start+1:raise RuntimeError('Release range body exceeded requested bound')
+       if len(collected)!=end-start+1:raise requests.RequestException('truncated Release range')
+       data=bytes(collected)
+       # Cache the final signed object URL in RAM only, never in state/logs.
+       final=getattr(r,'url',None)
+       if final and final.startswith('https://'):self.object_urls[i]=final
+      break
+     except requests.RequestException:
+      if attempt==2:raise RuntimeError('Release range transport failed after bounded retries; signed URL suppressed') from None
+      time.sleep(2**attempt)
+    if data is None:raise RuntimeError('Release signed object URL expired; canonical URL refresh did not succeed')
     self.cache[key]=data
     while len(self.cache)>4: self.cache.pop(next(iter(self.cache)))
    data=self.cache[key]; begin=local%self.block; n=min(size,len(data)-begin,self.length-self.pos)
    chunks.append(data[begin:begin+n]); self.pos+=n; size-=n
   return b''.join(chunks)
+ def close(self):
+  self.cache.clear();self.object_urls.clear();self.transport.close();super().close()
  def readinto(self,b):
   data=self.read(len(b)); b[:len(data)]=data; return len(data)
 
