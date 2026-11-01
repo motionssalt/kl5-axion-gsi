@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:23:41.002490+00:00",
+  "updated": "2026-11-01T00:23:46.105645+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -290,11 +290,10 @@
     }
   ],
   "next_actions": [
-    "Finish active emulator runtime mirror using the official matched Android 16 build 14981173.",
-    "Run queued pipeline 41255933320 on x86 host with explicit ARM64 QEMU guest; reuse already mirrored stock/base and canonical partition evidence.",
-    "Regenerate audit/gap report with symlink-safe hash comparison, then require evidence-backed compatibility patch operations before publishing a candidate.",
-    "Obtain genuine patched-image boot, identity, screenshots and logs before any build-* Release. Emulator boot/UI never verifies KL5 hardware.",
-    "Keep sandboxed Play disabled until a compatibility build is released and its framework port can be rigorously validated."
+    "Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.",
+    "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
+    "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
+    "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
   ],
   "provisioning_validation": {
     "at": "2026-11-01T00:23:15.427235+00:00",
@@ -485,6 +484,11 @@
       "at": "2026-11-01T00:08:40.717168+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "2c7d769e140b7f42932c7c0b40f911401fd883dfb2cea4cfe92efb01662e6119"
+    },
+    "document:FINAL_REPORT.md:0c9d2cdcca9c6f17959a66eb577900b468e8c38a1e43275d6fb4cef6836f5a1c": {
+      "at": "2026-11-01T00:23:46.105630+00:00",
+      "name": "FINAL_REPORT.md",
+      "sha256": "0c9d2cdcca9c6f17959a66eb577900b468e8c38a1e43275d6fb4cef6836f5a1c"
     }
   },
   "stages": {
