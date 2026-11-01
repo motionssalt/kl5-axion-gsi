@@ -55,45 +55,6 @@ def design():
  phase(4,'pending' if approved else 'blocked','Design report generated. Proposed patches are never applied automatically.',['docs/PATCH_PLAN.json'])
  checkpoint('patches: evidence-gated design and manual Type-C helper'); notify('KL5 patch design: '+str(len(approved))+' approved additions. Manual Type-C helper is experimental, NOT a video/fingerprint/OTG hardware fix. Unproven gaps remain open.')
 
-def make_otg(text):
- matches=[]
- for path,content in text.items():
-  if not path.endswith('.rc'): continue
-  # Use vendor init's existing property triggers, not guessed sysfs writes.
-  triggers=re.findall(r'^on property:([\w.]+)=(\S+)\s*\n((?:[ \t]+[^\n]*\n|\n)*)',content+'\n',re.M)
-  for prop,value,body in triggers:
-   if 'otg' not in prop.lower() or value not in ['1','true','on']: continue
-   off=next(((v,b) for p,v,b in triggers if p==prop and v in ['0','false','off']),None)
-   if not off: continue
-   if not re.search(r'^\s*write\s+/sys/[^\n]*(?:otg|role|host)',body,re.M|re.I): continue
-   matches.append({'property':prop,'on':value,'off':off[0],'stock_rc':path,'on_actions':body,'off_actions':off[1]})
- discovery={'matches':matches,'selected':matches[0] if len(matches)==1 else None,'warning':'Unverified on physical KL5. Property invokes stock vendor init actions; does not prove USB HAL role negotiation or mouse enumeration.'}
- (ROOT/'docs/OTG_DISCOVERY.json').write_text(json.dumps(discovery,indent=2)+'\n')
- if len(matches)!=1:
-  blocker('otg-control','No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed.',4); return
- clear('otg-control'); plan=matches[0]
- module=WORK/'kl5-otg-manual.zip'
- script='''#!/system/bin/sh
-# Manual only. No boot service, polling, property watcher or forced startup state.
-case "$1" in
-  on) value="ON_VALUE" ;;
-  off) value="OFF_VALUE" ;;
-  status) getprop "PROPERTY"; exit $? ;;
-  *) echo 'usage: kl5-otg on|off|status'; exit 2 ;;
-esac
-[ "$(id -u)" = 0 ] || { echo 'Root required'; exit 1; }
-setprop "PROPERTY" "$value" || exit 1
-actual=$(getprop "PROPERTY")
-[ "$actual" = "$value" ] || { echo 'Property write rejected'; exit 1; }
-echo 'Stock OTG trigger requested. Verify role and device enumeration; this is not proof of success.'
-'''.replace('PROPERTY',plan['property']).replace('ON_VALUE',plan['on']).replace('OFF_VALUE',plan['off'])
- # KernelSU supports module.prop + system overlay; deliberately no service.sh.
- with zipfile.ZipFile(module,'w',zipfile.ZIP_DEFLATED) as z:
-  z.writestr('module.prop','id=kl5_otg_manual\nname=KL5 manual stock OTG trigger (experimental)\nversion=1\nversionCode=1\nauthor=MOTIONSALT\ndescription=Manual stock property trigger only. Hardware unverified. No boot daemon.\n')
-  info=zipfile.ZipInfo('system/bin/kl5-otg'); info.external_attr=0o100755<<16; z.writestr(info,script)
-  z.writestr('stock-evidence.json',json.dumps(discovery,indent=2))
- rel=release('experimental-otg','EXPERIMENTAL manual OTG helper. Stock init property evidence is bundled. No boot daemon or auto-detection. No USB mouse/hardware success is claimed. KernelSU overlay availability varies.'); upload(rel,module,replace=True); module.unlink()
-
 def make_manual_typec(stockrecords,text):
  # Stock USB HAL owns exactly these kernel Type-C ABI nodes. Their semantics are
  # standardized upstream; unlike OTG_CTL this does not guess a vendor boolean.
@@ -101,7 +62,7 @@ def make_manual_typec(stockrecords,text):
  rec=next((r for r in stockrecords if r['partition']=='vendor' and r['path']==expected),None)
  content=text.get(rec.get('evidence_file',''),'') if rec else ''
  required=['/sys/class/typec/port0/'+x for x in ['power_role','data_role','port_type']]
- if not rec or not all(node in content for node in required):
+ if not rec or hashlib.sha256(content.encode()).hexdigest()!=rec.get('sha256') or not all(node in content for node in required):
   blocker('otg-control','No exact stock USB HAL Type-C ABI evidence; no manual helper approved.',4)
   return None
  payload=(ROOT/'scripts/kl5-otg.sh').read_bytes()
