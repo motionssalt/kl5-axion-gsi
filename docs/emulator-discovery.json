@@ -1,12 +1,20 @@
-[
-  {
-    "endpoint": "https://androidbuildinternal.googleapis.com/android/internal/build/v4/builds",
-    "http_status": 404,
-    "body_excerpt": "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www."
+{
+  "api": "https://androidbuild-pa.googleapis.com/v4/",
+  "legacy_v3": "403 legacy API migration response",
+  "previous_v4": "wrong endpoint (404), now corrected",
+  "selected": {
+    "api": "https://androidbuild-pa.googleapis.com/v4/",
+    "build_id": "14981173",
+    "api_level": 36,
+    "sdk_full": "36.1",
+    "guest_architecture": "arm64",
+    "host_architecture": "x86_64",
+    "status": "official metadata verified; Actions mirror/boot pending",
+    "rejected_build": {
+      "build_id": "16644040",
+      "api_level": 37
+    },
+    "evidence": "scripts/emulator_runtime.py"
   },
-  {
-    "endpoint": "https://www.googleapis.com/android/internal/build/v3/builds",
-    "http_status": 403,
-    "body_excerpt": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Rate limit exceeded for legacy API. You must to migrate to Build API v4: go/build-api-v4-clients-migration-guide\",\n    \"errors\": [\n      {\n        \"message\": \"Rate limit exceeded for legacy API. You must to migrate to Build API v4: go/build-api-v4-clients-migration-guide\",\n        \"domain\": \"usageLimits\",\n        \"reason\": \"rateLimitExceeded\"\n      }\n    ]\n  }\n}\n"
-  }
-]
+  "source_properties_sha256": "31534612266f19d3bafe551fe7f57b0a98a7c4d204c02bdd849a90e180982a59"
+}

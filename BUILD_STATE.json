@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:15:29.871126+00:00",
+  "updated": "2026-11-01T00:17:07.140094+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -66,6 +66,30 @@
     {
       "at": "2026-10-31T23:56:08.149007+00:00",
       "decision": "Provisioning verified the uploaded 1,313,731,068-byte base asset against its upstream SHA-256 and recovered its manifest without another image download. Stock mirror remains in the active Actions run."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Existing public repository and complete 6,512,327,514-byte stock mirror found; resumed rather than recreating or re-downloading Drive. Telegram repository secrets and continuation secret were securely provisioned; notification succeeded."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Previous base audit had PermissionError on four root-owned 0600 init/property files, preventing API verification. Added privileged read-only inventory worker without changing any source permissions. Corrected v2 base audit now has zero extraction errors and confirms AxionOS Android 16 API 36/SDK-full 36.1."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Stock ZIP has both Firmware/Open/super.img and Firmware/super.img. Selecting first ZIP entry used the wrong optional image. Canonical extraction now ranks scatter-adjacent Firmware/super.img first; old evidence is retained separately, not silently reused. Includes tr_product hardware inventory where extractable."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Corrected Android Build discovery to official https://androidbuild-pa.googleapis.com/v4/. Verified build 16644040 is Android 17/API 37 and rejected it. Verified official build 14981173 is Android 16/API 36.1 ARM64; added matching host/images mirror bootstrap with MD5 and SHA-256 pinning. Public client key and signed URLs remain process-only."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Use matching x86_64 Cuttlefish host package and explicit ARM64 QEMU TCG guest on free ubuntu-24.04. Native ARM64 Cuttlefish on hosts without KVM cannot reliably disable its hardcoded native KVM path. This changes the test harness only, not ROM performance or device configuration."
+    },
+    {
+      "at": "2026-11-01T00:17:07.140094+00:00",
+      "decision": "Telegram transport now delivers every uploaded screenshot as a photo and key logs/report files as documents, records content-hash receipts, and reconciles unsent screenshots from earlier sessions. Blocked stage retries have six-hour backoff rather than being cached forever."
     }
   ],
   "blockers": [
@@ -73,7 +97,7 @@
       "id": "emulator-artifact-pin",
       "at": "2026-10-31T23:51:37.765087+00:00",
       "phase": 5,
-      "message": "Matching prebuilt Android 16 ARM64 Cuttlefish host/image pair is not pinned; no boot success is claimed."
+      "message": "Official Android 16/API 36.1 ARM64 build 14981173 identified. Matching artifact mirror/bootstrap now implemented; pending Actions acquisition and boot evidence."
     },
     {
       "id": "stock-audit",
@@ -242,13 +266,13 @@
     "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
   ],
   "provisioning_validation": {
-    "at": "2026-10-31T23:56:06.395259+00:00",
-    "unit_tests_passed": 14,
+    "at": "2026-11-01T00:17:07.140094+00:00",
+    "unit_tests_passed": 26,
     "python_compilation": "passed",
     "shell_syntax": "passed",
     "actionlint": "v1.7.7 passed",
-    "credential_scan": "passed on committed source candidates",
-    "scope": "Automation code only, NOT image boot or hardware"
+    "credential_scan": "passed on tracked source; no supplied secret values committed",
+    "scope": "Automation code plus genuine base static audit only; NOT emulator boot or physical hardware"
   },
   "stock_mirror_parts": [
     {
@@ -402,5 +426,27 @@
       "started": "2026-11-01T00:15:19.031859+00:00",
       "run_id": "41255434608"
     }
+  },
+  "base_static_verification": {
+    "release": "audit-base-2ad2e18b7046-v2",
+    "error_count": 0,
+    "api_level": 36,
+    "sdk_full": "36.1",
+    "source": "root-readable system/build.prop from read-only mounted GSI",
+    "note": "Static properties are not emulator or device proof."
+  },
+  "emulator_runtime_discovery": {
+    "api": "https://androidbuild-pa.googleapis.com/v4/",
+    "build_id": "14981173",
+    "api_level": 36,
+    "sdk_full": "36.1",
+    "guest_architecture": "arm64",
+    "host_architecture": "x86_64",
+    "status": "official metadata verified; Actions mirror/boot pending",
+    "rejected_build": {
+      "build_id": "16644040",
+      "api_level": 37
+    },
+    "evidence": "scripts/emulator_runtime.py"
   }
 }
