@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:41:15.168658+00:00",
+  "updated": "2026-11-01T00:41:40.724215+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -672,5 +672,12 @@
     "python_compilation": "passed",
     "scope": "Local automation tests with simulated sysfs; no MediaTek hardware or emulator boot claim",
     "commit_evidence": "scripts/integration_audit.py; tests/test_manual_otg.py; tests/test_stage_ownership.py"
+  },
+  "supplemental_base_audit": {
+    "status": "running",
+    "at": "2026-11-01T00:41:40.724193+00:00",
+    "notes": "Read-only base shell/APEX container inventory; no performance or image modifications.",
+    "evidence": [],
+    "run_id": "41257774157"
   }
 }
