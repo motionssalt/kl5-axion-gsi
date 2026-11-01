@@ -24,4 +24,20 @@ class GuestIntegrationTests(unittest.TestCase):
    with patch.object(emulator_system,'ROOT',p):
     with self.assertRaises(RuntimeError):emulator_system.expected_identity()
 
+ def test_super_partition_discovery_handles_stripped_extents(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=pathlib.Path(d);image=p/'gsi.img';image.write_bytes(b'actual-gsi')
+   (p/'bin').mkdir(); (p/'bin/lpadd').write_bytes(b'fake'); (p/'bin/lpadd').chmod(0o755)
+   (p/'bin/avbtool').write_bytes(b'fake'); (p/'bin/avbtool').chmod(0o755)
+   (p/'super.img').write_bytes(b'fake')
+   mock_meta={'partitions':[{'name':'system_a','group_name':'qemu_dynamic_partitions'},{'name':'system_b','group_name':'qemu_dynamic_partitions'}]}
+   with patch.object(emulator_system,'tool_lpunpack',return_value=p/'lpunpack.py'),         patch.object(emulator_system,'raw_from_stream'),         patch('subprocess.run') as mock_run:
+    mock_run.side_effect = [
+      unittest.mock.Mock(returncode=0, stdout=json.dumps(mock_meta), stderr=''),
+      unittest.mock.Mock(returncode=0, stdout='', stderr=''),
+      unittest.mock.Mock(returncode=0, stdout='', stderr=''),
+    ]
+    args = emulator_system.system_args(p, image, p, '<name>vbmeta_image</name>', {})
+    self.assertTrue(any('--super_image=' in x for x in args))
+    self.assertTrue(any('--vbmeta_image=' in x for x in args))
 if __name__=='__main__':unittest.main()

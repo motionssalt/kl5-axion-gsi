@@ -39,7 +39,8 @@ def unpack(path,dest):
     if m.issym() or m.islnk():
      target=(dest/m.linkname) if m.islnk() else (dest/m.name).parent/m.linkname
      if pathlib.PurePosixPath(m.linkname).is_absolute() or not target.resolve().is_relative_to(dest): raise RuntimeError('Escaping emulator archive link refused')
-   tf.extractall(dest,filter='data')
+   try: tf.extractall(dest,filter='data')
+   except TypeError: tf.extractall(dest)
 
 def adb(cmd,timeout=30):
  return subprocess.run([str(WORK/'cvd/bin/adb'),'-s','127.0.0.1:6520']+cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout)

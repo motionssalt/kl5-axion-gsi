@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:56:13.596992+00:00",
+  "updated": "2026-11-01T05:26:43.835329+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -141,6 +141,10 @@
     {
       "at": "2026-11-01T00:48:10.611050+00:00",
       "decision": "Supplemental Actions evidence confirms base VNDK 31 APEX container and existing Transsion OTG_CTL property handler. No redundant VNDK transplant or guessed gate patch approved. Potential fingerprint/USB recovery guard weakness is documented as a hypothesis, not a confirmed cause; base startup behavior preserved pending runtime evidence."
+    },
+    {
+      "at": "2026-11-01T05:26:43.835329+00:00",
+      "decision": "Fixed emulator super partition detection in emulator_system.py: lpunpack JSON representation strips the extents field, which previously caused choices to be empty and triggered a false error. Candidates now select system_a preferentially and fall back to system, enabling the lpadd super-image override."
     }
   ],
   "blockers": [

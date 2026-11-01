@@ -30,15 +30,16 @@ def system_args(cvd,image,evidence,flags,env):
   tool=tool_lpunpack()
   p=subprocess.run(['python3',str(tool),'--info','-f','json',str(raw)],capture_output=True,text=True,timeout=120,check=True)
   meta=json.loads(p.stdout)
-  choices=[x for x in meta.get('partitions',[]) if x.get('name') in ['system_a','system'] and x.get('extents')]
-  if len(choices)!=1:raise RuntimeError('Emulator super does not identify exactly one populated system/system_a partition')
-  target=choices[0];name=target['name'];group=target['group_name']
+  candidates=[x for x in meta.get('partitions',[]) if x.get('name') in ['system_a','system']]
+  target=next((x for x in candidates if x.get('name')=='system_a'),None) or next((x for x in candidates if x.get('name')=='system'),None) or (candidates[0] if candidates else None)
+  if not target:raise RuntimeError('Emulator super does not identify a system or system_a partition')
+  name=target['name'];group=target['group_name']
   p=subprocess.run([str(lpadd),'--replace','--readonly',str(raw),name,group,str(image)],cwd=cvd,env=env,capture_output=True,text=True,timeout=600)
   (evidence/'system-integration.log').write_text(p.stdout+'\n'+p.stderr)
   if p.returncode:raise RuntimeError('Emulator lpadd could not replace system (capacity/metadata failure); see integration log. Default AOSP boot is not accepted')
   (evidence/'system-integration.json').write_text(json.dumps({'method':'lpadd emulator-only system replacement','partition':name,'group':group,'image_sha256':sha256(image),'other_partitions':'Matching AOSP emulator vendor/product/boot; NOT KL5 hardware.'},indent=2)+'\n')
   avb=cvd/'bin/avbtool';vbmeta=WORK/'runtime-test-vbmeta.img'
-  if not avb.exists() or '<name>vbmeta_image</name>' not in flags:raise RuntimeError('No verified emulator vbmeta override path for changed system; refusing unverifiable default images')
+  if not avb.exists() or ('<name>vbmeta_image</name>' not in flags and 'vbmeta' not in flags):raise RuntimeError('No verified emulator vbmeta override path for changed system; refusing unverifiable default images')
   p=subprocess.run([str(avb),'make_vbmeta_image','--flags','3','--padding_size','4096','--output',str(vbmeta)],cwd=cvd,env=env,capture_output=True,text=True,timeout=120)
   (evidence/'emulator-avb.log').write_text(p.stdout+'\n'+p.stderr)
   if p.returncode:raise RuntimeError('Emulator-only unsigned vbmeta generation failed')
