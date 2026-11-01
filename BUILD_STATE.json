@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:07:04.638055+00:00",
+  "updated": "2026-11-01T00:07:06.284027+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -283,6 +283,14 @@
       "exit_code": 0,
       "blockers": [
         "patch-design"
+      ]
+    },
+    "build": {
+      "fingerprint": "151c3dedf35811338a331daed50dc9410570813674d79f1739f12d06e6f2061b",
+      "at": "2026-11-01T00:07:06.284003+00:00",
+      "exit_code": 0,
+      "blockers": [
+        "image-build"
       ]
     }
   }
