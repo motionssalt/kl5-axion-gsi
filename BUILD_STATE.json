@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:10:53.337692+00:00",
+  "updated": "2026-11-01T00:15:14.956214+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -143,6 +143,10 @@
     {
       "tag": "pipeline-status",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/pipeline-status"
+    },
+    {
+      "tag": "audit-base-2ad2e18b7046-v2",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-base-2ad2e18b7046-v2"
     }
   ],
   "disk_observations": [
@@ -305,9 +309,9 @@
     "base": {
       "system": {
         "asset": "base-system-audit.tar.gz",
-        "release": "audit-base-2ad2e18b7046",
-        "records": 2596,
-        "errors": 4,
+        "release": "audit-base-2ad2e18b7046-v2",
+        "records": 2617,
+        "errors": 0,
         "filesystem": "ext4"
       }
     }
