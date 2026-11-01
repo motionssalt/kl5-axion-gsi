@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:06:57.018109+00:00",
-  "phase": "3",
+  "updated": "2026-11-01T00:07:00.307168+00:00",
+  "phase": "4",
   "phases": {
     "1": {
       "status": "done",
@@ -28,8 +28,8 @@
       ]
     },
     "4": {
-      "status": "pending",
-      "notes": "",
+      "status": "blocked",
+      "notes": "Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version",
       "evidence": []
     },
     "5": {
@@ -89,6 +89,12 @@
       "at": "2026-11-01T00:06:51.241808+00:00",
       "phase": 3,
       "message": "Required stock partitions and/or base inventory remain incomplete."
+    },
+    {
+      "id": "patch-design",
+      "at": "2026-11-01T00:07:00.306527+00:00",
+      "phase": 4,
+      "message": "Base Android API 36 was not verified from build.prop; no compatibility patches approved for an unrecognized framework version"
     }
   ],
   "releases": [
