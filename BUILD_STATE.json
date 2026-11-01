@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:52:25.553741+00:00",
+  "updated": "2026-11-01T00:54:14.207399+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -231,6 +231,10 @@
     {
       "tag": "candidate-2ad2e18b-04f2ef18",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-04f2ef18"
+    },
+    {
+      "tag": "emulator-evidence",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-evidence"
     }
   ],
   "disk_observations": [
@@ -610,6 +614,11 @@
       "at": "2026-11-01T00:48:16.974141+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "ea4408164845ffc03f3db54087282a850db6bcdf42894fc6454f93f6ba592546"
+    },
+    "document:boot-results.json:d940a5d2f868ff3bbc32056f093ddc385fe56433637d747a64a5be250e186861": {
+      "at": "2026-11-01T00:54:14.206105+00:00",
+      "name": "boot-results.json",
+      "sha256": "d940a5d2f868ff3bbc32056f093ddc385fe56433637d747a64a5be250e186861"
     }
   },
   "stages": {
@@ -860,5 +869,12 @@
         ]
       }
     ]
+  },
+  "emulator": {
+    "base": {
+      "boot_completed": false,
+      "error": "Emulator super does not identify exactly one populated system/system_a partition",
+      "scope": "No hardware claim."
+    }
   }
 }
