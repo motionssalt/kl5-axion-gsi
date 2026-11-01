@@ -235,6 +235,11 @@ def summarize():
   candidates=[{'partition':r['partition'],'path':r['path'],'sha256':r.get('sha256')} for r in records if cat in r['categories'] and r.get('sha256') and r['sha256'] not in base_hashes]
   gaps.append({'rank':n+1,'category':cat,'status':'needs device/framework linkage evidence; no blind vendor-file copying','stock_different_or_absent_in_base':candidates,'caveat':'Stock vendor/odm remain on device. Their absence inside GSI is not itself a defect.'})
  result={'schema':1,'stock_partitions':[x['partition'] for x in stockinv],'base_partitions':[x['partition'] for x in baseinv],'coverage':coverage,'stock':stockinv,'base':baseinv,'gap_list':gaps,'unresolved_sonames_candidates':missing_deps,'verification':'Static audit only; no hardware or emulator boot claim.','limitations':['Binary SELinux policy rules are not decompiled; contexts/CIL only when present.','VINTF XML inventory is not checkvintf proof.','Framework overlay resources decoded only when aapt succeeds.','Differences do not justify overriding stock vendor configs or base performance settings.']}
+ from integration_audit import analyze,markdown
+ integration=analyze(stockinv,baseinv,stocktext,basetext)
+ (ROOT/'docs/integration.json').write_text(json.dumps(integration,indent=2)+'\n')
+ (ROOT/'docs/INTEGRATION.md').write_text(markdown(integration))
+ result['integration_report']='integration.json'
  (ROOT/'docs/audit.json').write_text(json.dumps(result,indent=2)+'\n')
  text='# KL5 stock versus GSI audit\n\nStatic evidence only. Missing vendor files inside a GSI are NOT automatically gaps: the stock vendor stays on the device.\n\n'
  text+='Stock partitions: '+(', '.join(result['stock_partitions']) or 'none')+'\n\nBase partitions: '+(', '.join(result['base_partitions']) or 'none')+'\n\n## Coverage\n\n| Area | Stock files | Base files |\n|---|---:|---:|\n'
@@ -248,7 +253,8 @@ def summarize():
  phase(3,'done' if complete else 'blocked','Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.',['docs/audit.json','docs/AUDIT.md'])
  if not complete: blocker('audit-coverage','Required stock partitions and/or base inventory remain incomplete.',3)
  rel=release('audit-report'); upload(rel,ROOT/'docs/audit.json',replace=True); upload(rel,ROOT/'docs/AUDIT.md',replace=True)
- clear('audit-summary'); notify('KL5 static audit report published. Compatibility candidates are not verified fixes.'); checkpoint('audit: ranked gaps and coverage report')
+ upload(rel,ROOT/'docs/integration.json',replace=True); upload(rel,ROOT/'docs/INTEGRATION.md',replace=True)
+ clear('audit-summary'); clear('summary-audit'); notify('KL5 static audit and cross-partition integration reports published. Compatibility candidates are not verified fixes.'); checkpoint('audit: ranked gaps and cross-partition linkage report')
 
 if __name__=='__main__':
  import sys
