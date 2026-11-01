@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:56:09.064039+00:00",
+  "updated": "2026-11-01T00:56:13.596992+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -630,6 +630,11 @@
       "at": "2026-11-01T00:55:40.613035+00:00",
       "name": "boot-results.json",
       "sha256": "99f6fdc71756ccc0d427d67e7a18fba823e0db879ecc5c76fc731f08cab6fd13"
+    },
+    "document:FINAL_REPORT.md:870cedf5bb36228f644f6ae2d08eed551f53ad8ede2498a997ddd0a2de1f496b": {
+      "at": "2026-11-01T00:56:13.596978+00:00",
+      "name": "FINAL_REPORT.md",
+      "sha256": "870cedf5bb36228f644f6ae2d08eed551f53ad8ede2498a997ddd0a2de1f496b"
     }
   },
   "stages": {
