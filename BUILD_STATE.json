@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:37.278640+00:00",
+  "updated": "2026-11-01T00:19:39.495009+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -472,6 +472,11 @@
         "no-proven-system-patch",
         "otg-control"
       ]
+    },
+    "build": {
+      "status": "running",
+      "started": "2026-11-01T00:19:39.494987+00:00",
+      "run_id": "41255434608"
     }
   },
   "base_static_verification": {
