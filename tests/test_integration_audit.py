@@ -34,4 +34,10 @@ class IntegrationTests(unittest.TestCase):
   out=analyze([inv('vendor',[h])],[],{},{})
   self.assertEqual(out['hal_declarations']['stock'][0]['format'],'hidl')
   self.assertEqual(out['hal_declarations']['stock'][0]['versions'],['1.1'])
+ def test_framework_matrix_is_not_a_vendor_hardware_provider(self):
+  h=record('system','system/etc/vintf/compatibility_matrix.8.xml',hal_declarations=['<hal><name>android.hardware.biometrics.fingerprint</name><version>3</version></hal>'])
+  out=analyze([inv('system',[h])],[],{},{})
+  finding=next(x for x in out['priority_findings'] if x['category']=='fingerprint')
+  self.assertEqual(finding['stock_hals'],[])
+  self.assertEqual(out['hal_declarations']['stock'][0]['document_kind'],'compatibility-matrix')
 if __name__=='__main__':unittest.main()

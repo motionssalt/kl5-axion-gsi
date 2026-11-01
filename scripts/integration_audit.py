@@ -29,7 +29,7 @@ def hal_records(records):
    interfaces=[]
    for it in hal.findall('interface'):
     interfaces.append({'name':it.findtext('name'),'instances':[x.text for x in it.findall('instance')],'regex_instances':[x.text for x in it.findall('regex-instance')]})
-   output.append({'path':logical_path(rec),'sha256':rec.get('sha256'),'name':hal.findtext('name'),'format':hal.get('format','hidl'),'versions':[x.text for x in hal.findall('version')],'transport':hal.findtext('transport'),'fqnames':[x.text for x in hal.findall('fqname')],'interfaces':interfaces,'optional':hal.get('optional')})
+   output.append({'path':logical_path(rec),'sha256':rec.get('sha256'),'name':hal.findtext('name'),'format':hal.get('format','hidl'),'versions':[x.text for x in hal.findall('version')],'transport':hal.findtext('transport'),'fqnames':[x.text for x in hal.findall('fqname')],'interfaces':interfaces,'optional':hal.get('optional'),'document_kind':'compatibility-matrix' if 'compatibility_matrix' in rec['path'] else 'manifest','partition':rec['partition']})
  return output
 
 def references(record,text):
@@ -83,8 +83,8 @@ def analyze(stock,base,stocktext,basetext):
    if not providers:entries.append({'soname':needed,'elf_class':rec.get('elf_class'),'assessment':'not-resolved-by-inventory; inspect VNDK/APEX and linker namespace before copying'})
   if entries:result['native_dependencies'].append({'consumer':logical_path(rec),'sha256':rec.get('sha256'),'unresolved':entries})
  for category,words in [('media',['android.hardware.media.c2','android.hardware.media.omx']),('fingerprint',['android.hardware.biometrics.fingerprint']),('usb_otg',['android.hardware.usb'])]:
-  hals=[h for h in result['hal_declarations']['stock'] if h['name'] in words]
-  result['priority_findings'].append({'category':category,'stock_hals':hals,'conclusion':'HAL declaration exists; vendor-side declarations must not be duplicated into framework VINTF. Service startup, binder connection and framework logs still required.' if hals else 'No matching declaration in selective inventory; review coverage before treating absent.'})
+  hals=[h for h in result['hal_declarations']['stock'] if h['name'] in words and h['document_kind']=='manifest' and h['partition'] in ['vendor','odm']]
+  result['priority_findings'].append({'category':category,'stock_hals':hals,'conclusion':'Vendor/odm provider manifest declaration exists; compatibility-matrix requirements and system software services are not counted as hardware providers. Do not duplicate device HALs into framework VINTF. Service startup, binder connection and framework logs still required.' if hals else 'No matching vendor/odm provider manifest declaration in selective inventory; matrix requirements are not evidence of a provider. Review coverage before treating absent.'})
  c2=[]
  for rec in sr:
   if pathlib.PurePosixPath(rec['path']).name!='media_codecs_c2.xml':continue
