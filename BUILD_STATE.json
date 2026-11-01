@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:18:36.370104+00:00",
+  "updated": "2026-11-01T00:18:48.327115+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -70,6 +70,10 @@
     {
       "at": "2026-11-01T00:15:31.002870+00:00",
       "decision": "Canonical stock super selected by scatter-directory proximity: Tecno_Spark_30C_KL5_MT6768_OP_V1085_240811/Firmware/super.img. Alternate Open/super is not assumed equivalent."
+    },
+    {
+      "at": "2026-11-01T00:18:38.322372+00:00",
+      "decision": "Stock logical partition odm was not extractable/present; audit coverage records the gap, not compatibility."
     }
   ],
   "blockers": [
@@ -339,6 +343,13 @@
         "asset": "stock-vendor-audit.tar.gz",
         "release": "audit-stock-9aa24d051881-v2",
         "records": 1929,
+        "errors": 0,
+        "filesystem": "erofs"
+      },
+      "product": {
+        "asset": "stock-product-audit.tar.gz",
+        "release": "audit-stock-9aa24d051881-v2",
+        "records": 217,
         "errors": 0,
         "filesystem": "erofs"
       }
