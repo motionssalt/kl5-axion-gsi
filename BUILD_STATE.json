@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:23:22.114584+00:00",
+  "updated": "2026-11-01T00:23:23.993109+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -30,8 +30,8 @@
       "evidence": []
     },
     "5": {
-      "status": "running",
-      "notes": "Preparing real ARM64 emulator prerequisites.",
+      "status": "blocked",
+      "notes": "Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted",
       "evidence": []
     },
     "6": {
@@ -108,12 +108,6 @@
       "message": "Required stock partitions and/or base inventory remain incomplete."
     },
     {
-      "id": "emulator",
-      "at": "2026-11-01T00:08:18.586558+00:00",
-      "phase": 5,
-      "message": "No pinned, matching Android 16 ARM64 Cuttlefish host/image artifacts. Public discovery status saved; no emulator success fabricated. Configure EMULATOR_ARTIFACTS.json with public matched artifacts and hashes."
-    },
-    {
       "id": "sandbox-prerequisite",
       "at": "2026-11-01T00:08:35.408028+00:00",
       "phase": 6,
@@ -142,6 +136,12 @@
       "at": "2026-11-01T00:19:42.638269+00:00",
       "phase": 4,
       "message": "No approved evidence-backed compatibility patch; no image fabricated"
+    },
+    {
+      "id": "emulator",
+      "at": "2026-11-01T00:23:23.612529+00:00",
+      "phase": 5,
+      "message": "Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted"
     }
   ],
   "releases": [
