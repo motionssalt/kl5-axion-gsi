@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T09:39:48.405956+00:00",
-  "phase": "5",
+  "updated": "2026-11-01T09:39:49.594904+00:00",
+  "phase": "6",
   "phases": {
     "1": {
       "status": "done",
@@ -185,12 +185,6 @@
       "message": "Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed."
     },
     {
-      "id": "sandbox-prerequisite",
-      "at": "2026-11-01T06:16:58.763692+00:00",
-      "phase": 6,
-      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
-    },
-    {
       "id": "otg-hardware",
       "at": "2026-11-01T09:31:29.305224+00:00",
       "phase": 4,
@@ -201,6 +195,12 @@
       "at": "2026-11-01T09:39:34.540606+00:00",
       "phase": 5,
       "message": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass"
+    },
+    {
+      "id": "sandbox-prerequisite",
+      "at": "2026-11-01T09:39:49.594896+00:00",
+      "phase": 6,
+      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
     }
   ],
   "releases": [
