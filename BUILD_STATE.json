@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:44:57.261624+00:00",
+  "updated": "2026-11-01T06:49:57.010586+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -161,6 +161,14 @@
     {
       "at": "2026-11-01T06:38:33.556968+00:00",
       "decision": "Bounded self-dispatch continuation after interrupted/failed job; next attempt 3. Deterministic blockers use scheduled backoff instead of busy loops."
+    },
+    {
+      "at": "2026-11-01T06:49:43.139000+00:00",
+      "decision": "Fixed Ubuntu 24.04 noble package compatibility in emulator host prerequisites: removed obsolete libgl1-mesa-glx dummy package, installed libgl1/libglx-mesa0/libgl1-mesa-dri/libpulse0, and added resilient group creation for kvm/cvdnetwork/render."
+    },
+    {
+      "at": "2026-11-01T06:49:57.010586+00:00",
+      "decision": "Fixed Ubuntu 24.04 noble package compatibility in emulator host prerequisites: removed obsolete libgl1-mesa-glx dummy package, installed libgl1/libglx-mesa0/libgl1-mesa-dri/libpulse0, and added resilient group creation for kvm/cvdnetwork/render."
     }
   ],
   "blockers": [
@@ -660,13 +668,6 @@
       "total": 154894188544,
       "free": 117794033664,
       "used": 37083377664
-    },
-    {
-      "at": "2026-11-01T06:44:44.473402+00:00",
-      "label": "job-end-emulator",
-      "total": 154894188544,
-      "free": 117806747648,
-      "used": 37070663680
     }
   ],
   "next_actions": [
@@ -735,8 +736,8 @@
       "run_id": "41281653502"
     },
     "emulator": {
-      "at": "2026-11-01T06:44:44.471519+00:00",
-      "run_id": "41281653502"
+      "at": "2026-11-01T06:38:17.174084+00:00",
+      "run_id": "41281236142"
     }
   },
   "base_image": {
@@ -934,11 +935,6 @@
       "at": "2026-11-01T06:38:29.948008+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "a546099d9c1a5d8d75dfac545034829fccd75435601b2e925955608de174fcf6"
-    },
-    "document:FINAL_REPORT.md:9dfdb9120edc6fc5226ecb4d9ab80ff7f35f45d23a95ed3d4a826f3240ba7160": {
-      "at": "2026-11-01T06:44:57.261611+00:00",
-      "name": "FINAL_REPORT.md",
-      "sha256": "9dfdb9120edc6fc5226ecb4d9ab80ff7f35f45d23a95ed3d4a826f3240ba7160"
     }
   },
   "stages": {
