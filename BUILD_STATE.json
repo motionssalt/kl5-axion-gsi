@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:40:48.837613+00:00",
+  "updated": "2026-11-01T00:40:58.523123+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -20,9 +20,12 @@
       ]
     },
     "3": {
-      "status": "running",
-      "notes": "Selective stock extraction and read-only filesystem audit.",
-      "evidence": []
+      "status": "done",
+      "notes": "Static inventory produced; see explicit coverage limits. Hardware equivalence is not established.",
+      "evidence": [
+        "docs/audit.json",
+        "docs/AUDIT.md"
+      ]
     },
     "4": {
       "status": "blocked",
@@ -129,12 +132,6 @@
     }
   ],
   "blockers": [
-    {
-      "id": "summary-audit",
-      "at": "2026-11-01T00:19:25.192630+00:00",
-      "phase": 3,
-      "message": "Symlink records without SHA-256 crashed the gap summary. Code and regression test fixed in pushed commit cd57733; automatic regeneration pending."
-    },
     {
       "id": "emulator",
       "at": "2026-11-01T00:23:23.612529+00:00",

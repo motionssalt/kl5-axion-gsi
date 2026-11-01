@@ -163286,5 +163286,6 @@
     "VINTF XML inventory is not checkvintf proof.",
     "Framework overlay resources decoded only when aapt succeeds.",
     "Differences do not justify overriding stock vendor configs or base performance settings."
-  ]
+  ],
+  "integration_report": "integration.json"
 }
