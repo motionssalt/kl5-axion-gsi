@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:48:11.687869+00:00",
+  "updated": "2026-11-01T00:48:16.974166+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -412,8 +412,8 @@
     }
   ],
   "next_actions": [
-    "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
     "Reuse the already mirrored/pinned Android 16 ARM64 runtime; resolve launcher integration and collect genuine base/candidate boot/UI evidence.",
+    "Investigate unresolved media/camera/fingerprint and vendor/framework integration; the manual helper is not a substitute for those fixes.",
     "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
   ],
   "provisioning_validation": {
@@ -607,6 +607,11 @@
       "at": "2026-11-01T00:36:13.731083+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "a71522c4cec0a1ec6001fff0530946f1378b76d44df57308ba8e52c3bfece672"
+    },
+    "document:FINAL_REPORT.md:ea4408164845ffc03f3db54087282a850db6bcdf42894fc6454f93f6ba592546": {
+      "at": "2026-11-01T00:48:16.974141+00:00",
+      "name": "FINAL_REPORT.md",
+      "sha256": "ea4408164845ffc03f3db54087282a850db6bcdf42894fc6454f93f6ba592546"
     }
   },
   "stages": {
