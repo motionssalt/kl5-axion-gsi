@@ -8,43 +8,19 @@ Stock product/system_ext may be separate logical mounts. Read /proc/mounts on-de
 
 ### media
 
-HAL declaration exists; vendor-side declarations must not be duplicated into framework VINTF. Service startup, binder connection and framework logs still required.
+Vendor/odm provider manifest declaration exists; compatibility-matrix requirements and system software services are not counted as hardware providers. Do not duplicate device HALs into framework VINTF. Service startup, binder connection and framework logs still required.
 
-- `android.hardware.media.c2` 1.0 — `/system/etc/vintf/compatibility_matrix.4.xml`
-- `android.hardware.media.omx` 1.0 — `/system/etc/vintf/compatibility_matrix.4.xml`
-- `android.hardware.media.c2` 1.0-1 — `/system/etc/vintf/compatibility_matrix.5.xml`
-- `android.hardware.media.omx` 1.0 — `/system/etc/vintf/compatibility_matrix.5.xml`
-- `android.hardware.media.c2` 1.0-2 — `/system/etc/vintf/compatibility_matrix.6.xml`
-- `android.hardware.media.omx` 1.0 — `/system/etc/vintf/compatibility_matrix.6.xml`
-- `android.hardware.media.c2` 1.0-2 — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.media.omx` 1.0 — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.media.c2` 1.0-2 — `/system/etc/vintf/compatibility_matrix.8.xml`
-- `android.hardware.media.c2` 1.2 — `/system/etc/vintf/manifest/manifest_media_c2_software.xml`
 - `android.hardware.media.omx` 1.0 — `/vendor/etc/vintf/manifest.xml`
 - `android.hardware.media.c2` 1.1 — `/vendor/etc/vintf/manifest/manifest_media_c2_V1_1_default.xml`
 ### fingerprint
 
-HAL declaration exists; vendor-side declarations must not be duplicated into framework VINTF. Service startup, binder connection and framework logs still required.
+Vendor/odm provider manifest declaration exists; compatibility-matrix requirements and system software services are not counted as hardware providers. Do not duplicate device HALs into framework VINTF. Service startup, binder connection and framework logs still required.
 
-- `android.hardware.biometrics.fingerprint` 2.1 — `/system/etc/vintf/compatibility_matrix.4.xml`
-- `android.hardware.biometrics.fingerprint` 2.1-2 — `/system/etc/vintf/compatibility_matrix.5.xml`
-- `android.hardware.biometrics.fingerprint` 2.1-3 — `/system/etc/vintf/compatibility_matrix.6.xml`
-- `android.hardware.biometrics.fingerprint`  — `/system/etc/vintf/compatibility_matrix.6.xml`
-- `android.hardware.biometrics.fingerprint` 2.1-3 — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.biometrics.fingerprint` 2 — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.biometrics.fingerprint` 3 — `/system/etc/vintf/compatibility_matrix.8.xml`
-- `android.hardware.biometrics.fingerprint` 3 — `/system/etc/vintf/compatibility_matrix.device.xml`
 - `android.hardware.biometrics.fingerprint` 2.1 — `/vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml`
 ### usb_otg
 
-HAL declaration exists; vendor-side declarations must not be duplicated into framework VINTF. Service startup, binder connection and framework logs still required.
+Vendor/odm provider manifest declaration exists; compatibility-matrix requirements and system software services are not counted as hardware providers. Do not duplicate device HALs into framework VINTF. Service startup, binder connection and framework logs still required.
 
-- `android.hardware.usb` 1.0-2 — `/system/etc/vintf/compatibility_matrix.4.xml`
-- `android.hardware.usb` 1.0-2 — `/system/etc/vintf/compatibility_matrix.5.xml`
-- `android.hardware.usb` 1.0-3 — `/system/etc/vintf/compatibility_matrix.6.xml`
-- `android.hardware.usb` 1.0-3 — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.usb`  — `/system/etc/vintf/compatibility_matrix.7.xml`
-- `android.hardware.usb` 1-2 — `/system/etc/vintf/compatibility_matrix.8.xml`
 - `android.hardware.usb` 1.3 — `/vendor/etc/vintf/manifest/android.hardware.usb@1.2-service-mediatekv2.xml`
 ### media
 
