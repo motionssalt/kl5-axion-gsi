@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:39.495009+00:00",
+  "updated": "2026-11-01T00:19:42.639251+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -26,10 +26,8 @@
     },
     "4": {
       "status": "blocked",
-      "notes": "Design report generated. Proposed patches are never applied automatically.",
-      "evidence": [
-        "docs/PATCH_PLAN.json"
-      ]
+      "notes": "No approved evidence-backed compatibility patch; no image fabricated",
+      "evidence": []
     },
     "5": {
       "status": "blocked",
@@ -92,12 +90,6 @@
       "message": "Required stock partitions and/or base inventory remain incomplete."
     },
     {
-      "id": "image-build",
-      "at": "2026-11-01T00:07:04.637237+00:00",
-      "phase": 4,
-      "message": "No approved evidence-backed compatibility patch; no image fabricated"
-    },
-    {
       "id": "emulator",
       "at": "2026-11-01T00:08:18.586558+00:00",
       "phase": 5,
@@ -126,6 +118,12 @@
       "at": "2026-11-01T00:19:35.128251+00:00",
       "phase": 4,
       "message": "No unambiguous paired stock OTG property trigger found. No guessed sysfs writes or always-on service installed."
+    },
+    {
+      "id": "image-build",
+      "at": "2026-11-01T00:19:42.638269+00:00",
+      "phase": 4,
+      "message": "No approved evidence-backed compatibility patch; no image fabricated"
     }
   ],
   "releases": [
@@ -164,6 +162,10 @@
     {
       "tag": "audit-stock-9aa24d051881-v2",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-stock-9aa24d051881-v2"
+    },
+    {
+      "tag": "candidate-2ad2e18b-d60b7e11",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-d60b7e11"
     }
   ],
   "disk_observations": [
