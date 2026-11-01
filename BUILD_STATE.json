@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:11.977123+00:00",
+  "updated": "2026-11-01T00:19:14.780215+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -82,12 +82,6 @@
       "at": "2026-10-31T23:51:37.765087+00:00",
       "phase": 5,
       "message": "Official Android 16/API 36.1 ARM64 build 14981173 identified. Matching artifact mirror/bootstrap now implemented; pending Actions acquisition and boot evidence."
-    },
-    {
-      "id": "stock-audit",
-      "at": "2026-11-01T00:06:46.093792+00:00",
-      "phase": 3,
-      "message": "Image is neither raw ext4 nor EROFS"
     },
     {
       "id": "audit-coverage",
