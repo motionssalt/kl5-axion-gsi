@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T06:58:32.858476+00:00",
-  "phase": "2",
+  "updated": "2026-11-01T06:58:34.030898+00:00",
+  "phase": "5",
   "phases": {
     "1": {
       "status": "done",
@@ -33,8 +33,8 @@
       "evidence": []
     },
     "5": {
-      "status": "blocked",
-      "notes": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass",
+      "status": "running",
+      "notes": "Preparing real ARM64 emulator prerequisites.",
       "evidence": []
     },
     "6": {
