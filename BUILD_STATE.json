@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:23:46.105645+00:00",
+  "updated": "2026-11-01T00:23:50.390288+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -98,6 +98,10 @@
     {
       "at": "2026-11-01T00:23:15.427235+00:00",
       "decision": "All 33 local regression tests and Python/shell syntax checks passed. GitHub safety checks for commit 1d524fe also passed; later safety runs and the firmware workflow continue independently. A newer x86-host/ARM64-guest pipeline run is queued behind the active older workflow."
+    },
+    {
+      "at": "2026-11-01T00:23:50.390288+00:00",
+      "decision": "Active Actions run completed official Android 16 ARM64 emulator runtime mirroring and committed SHA-256 pins. Both matching host and image assets are now available in emulator-runtime-14981173-x86-host. Boot/UI remains unverified."
     }
   ],
   "blockers": [
@@ -135,7 +139,7 @@
       "id": "emulator",
       "at": "2026-11-01T00:23:23.612529+00:00",
       "phase": 5,
-      "message": "Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted"
+      "message": "Runtime artifact pinning is resolved. Real AxionOS ARM64 emulator boot/UI evidence remains unavailable; corrected queued workflow uses x86 host with explicit QEMU ARM64 guest."
     },
     {
       "id": "sandbox-prerequisite",
@@ -290,7 +294,7 @@
     }
   ],
   "next_actions": [
-    "Resume selective stock/base audits; preserve per-partition evidence and explicit container/coverage limits.",
+    "Reuse mirrored and SHA-256-pinned Android 16 runtime from emulator-runtime-14981173-x86-host; no external artifact re-download needed.",
     "Resolve evidence-backed system-side mismatch; proposed differences are not automatically safe patches.",
     "Obtain matching pinned Android 16 ARM64 emulator artifacts and collect genuine patched-image boot/UI evidence.",
     "Keep sandboxed Play hidden until framework port and emulator installation proof exist; do not delay the compatibility release."
@@ -564,11 +568,12 @@
     "sdk_full": "36.1",
     "guest_architecture": "arm64",
     "host_architecture": "x86_64",
-    "status": "official metadata verified; Actions mirror/boot pending",
+    "status": "Matched host/images mirrored and SHA-256 pinned; boot/UI still unverified",
     "rejected_build": {
       "build_id": "16644040",
       "api_level": 37
     },
-    "evidence": "scripts/emulator_runtime.py"
+    "evidence": "scripts/emulator_runtime.py",
+    "release": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-runtime-14981173-x86-host"
   }
 }
