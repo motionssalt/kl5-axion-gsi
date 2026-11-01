@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:48:07.799616+00:00",
-  "phase": "4",
+  "updated": "2026-11-01T00:48:11.687869+00:00",
+  "phase": "5",
   "phases": {
     "1": {
       "status": "done",
@@ -33,9 +33,11 @@
       "evidence": []
     },
     "5": {
-      "status": "blocked",
-      "notes": "Pinned emulator host architecture does not match runner; ARM64 guest must not be substituted",
-      "evidence": []
+      "status": "pending",
+      "notes": "Updated x86-host/ARM64-guest harness is queued after the active candidate build. No real base/candidate boot_completed or screenshots yet.",
+      "evidence": [
+        "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41257412968"
+      ]
     },
     "6": {
       "status": "blocked",
@@ -133,15 +135,17 @@
     {
       "at": "2026-11-01T00:42:35.491085+00:00",
       "decision": "Removed now-invalid appended AVB footer from modified system image. No signing keys available; device-specific AVB handling remains mandatory. Stock boot/vendor_boot untouched."
+    },
+    {
+      "at": "2026-11-01T00:48:10.610153+00:00",
+      "decision": "Session verified experimental-otg Release assets and module contents after Actions publication; 57 automation tests pass. Main candidate build remains in Actions, not a claimed boot-verified image. Notification secrets were set through encrypted repository secret APIs only."
+    },
+    {
+      "at": "2026-11-01T00:48:10.611050+00:00",
+      "decision": "Supplemental Actions evidence confirms base VNDK 31 APEX container and existing Transsion OTG_CTL property handler. No redundant VNDK transplant or guessed gate patch approved. Potential fingerprint/USB recovery guard weakness is documented as a hypothesis, not a confirmed cause; base startup behavior preserved pending runtime evidence."
     }
   ],
   "blockers": [
-    {
-      "id": "emulator",
-      "at": "2026-11-01T00:23:23.612529+00:00",
-      "phase": 5,
-      "message": "Runtime artifact pinning is resolved. Real AxionOS ARM64 emulator boot/UI evidence remains unavailable; corrected queued workflow uses x86 host with explicit QEMU ARM64 guest."
-    },
     {
       "id": "sandbox-prerequisite",
       "at": "2026-11-01T00:36:08.680369+00:00",
@@ -159,6 +163,18 @@
       "at": "2026-11-01T00:41:11.579113+00:00",
       "phase": 4,
       "message": "Media/camera/fingerprint and remaining vendor/framework gaps require evidence-backed fixes. Adding a manual helper does NOT resolve full stock-like compatibility."
+    },
+    {
+      "id": "fingerprint-usb-guard",
+      "at": "2026-11-01T00:48:10.611880+00:00",
+      "phase": 4,
+      "message": "Base phh-on-boot USB recovery checks ro.hardware.fingerprint. Stock service is vendor.fps_hal; runtime property/TEE/UDC state is unavailable. Suspected integration gap is documented, not patched or claimed fixed."
+    },
+    {
+      "id": "emulator",
+      "at": "2026-11-01T00:48:11.687845+00:00",
+      "phase": 5,
+      "message": "Matched Android 16 ARM64 runtime is mirrored. Actual AxionOS base/candidate boot/UI evidence is still pending in the active Actions run; no screenshot or hardware result claimed."
     }
   ],
   "releases": [
@@ -673,12 +689,14 @@
     "release": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-runtime-14981173-x86-host"
   },
   "session_validation": {
-    "at": "2026-11-01T00:35:28.208496+00:00",
-    "unit_tests_passed": 51,
-    "shell_syntax": "passed",
+    "at": "2026-11-01T00:48:10.608940+00:00",
+    "unit_tests_passed": 57,
     "python_compilation": "passed",
-    "scope": "Local automation tests with simulated sysfs; no MediaTek hardware or emulator boot claim",
-    "commit_evidence": "scripts/integration_audit.py; tests/test_manual_otg.py; tests/test_stage_ownership.py"
+    "shell_syntax": "passed",
+    "github_safety_checks": "Recent pushed integration/manual-control commits passed; latest source checks continue through checks.yml.",
+    "scope": "Automation and fake-sysfs tests only, NOT Android emulator or KL5 hardware validation.",
+    "actions_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41257412968",
+    "supplemental_run": "https://github.com/motionssalt/kl5-axion-gsi/actions/runs/41257774157"
   },
   "supplemental_base_audit": {
     "status": "done",
