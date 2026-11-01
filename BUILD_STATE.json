@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:18.304060+00:00",
+  "updated": "2026-11-01T00:19:25.193545+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -20,8 +20,8 @@
       ]
     },
     "3": {
-      "status": "running",
-      "notes": "Selective stock extraction and read-only filesystem audit.",
+      "status": "blocked",
+      "notes": "'sha256'",
       "evidence": []
     },
     "4": {
@@ -112,6 +112,12 @@
       "at": "2026-11-01T00:08:35.408028+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
+    },
+    {
+      "id": "summary-audit",
+      "at": "2026-11-01T00:19:25.192630+00:00",
+      "phase": 3,
+      "message": "'sha256'"
     }
   ],
   "releases": [
