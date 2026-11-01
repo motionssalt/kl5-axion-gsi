@@ -1,5 +1,7 @@
 {
-  "approved": [],
+  "approved": [
+    "0101-manual-typec-control"
+  ],
   "proposed": [
     "0001-media",
     "0002-camera",
@@ -23,5 +25,7 @@
     "0020-selinux",
     "0021-hardware_apps"
   ],
-  "no_performance_changes": true
+  "no_performance_changes": true,
+  "hardware_fixes_verified": false,
+  "manual_helper_only": true
 }

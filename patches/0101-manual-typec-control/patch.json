@@ -1,0 +1,35 @@
+{
+  "id": "0101-manual-typec-control",
+  "approved": true,
+  "api_levels": [
+    36
+  ],
+  "status": "experimental-manual-helper-only",
+  "what": "Add inert root-only on/off/restore/status Type-C helper",
+  "why": "User requested manual forced host state. Stock USB HAL exposes standard port_type ABI; helper writes source or sink only on explicit command. No boot service, polling, OTG_CTL guess, property tuning, SELinux bypass or vendor partition edit. Does NOT establish that deeper mouse enumeration issue is fixed.",
+  "hardware_verified": false,
+  "evidence": [
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.usb@1.2-service-mediatekv2.rc",
+      "sha256": "0e4f8055d726abe09112b50324d112edf176c631fdf79eb9cfa144caad21284e",
+      "evidence_file": "files/vendor/etc/init/android.hardware.usb@1.2-service-mediatekv2.rc"
+    },
+    {
+      "source": "https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-typec",
+      "meaning": "source=source-only DFP, sink=sink-only UFP, dual=DRP; active role shown in brackets"
+    }
+  ],
+  "operations": [
+    {
+      "target": "/system/bin/kl5-otg",
+      "source": "kl5-otg",
+      "sha256": "b1137d848b76164da782f44e4b2aa76fca53f80309ba980ca5d93e4f3e53ec77",
+      "expected_before": null,
+      "mode": "0755",
+      "uid": 0,
+      "gid": 0,
+      "selinux": "u:object_r:system_file:s0"
+    }
+  ]
+}

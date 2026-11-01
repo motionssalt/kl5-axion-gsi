@@ -1,5 +1,22 @@
 {
-  "matches": [],
-  "selected": null,
-  "warning": "Unverified on physical KL5. Property invokes stock vendor init actions; does not prove USB HAL role negotiation or mouse enumeration."
+  "method": "explicit standard kernel Type-C port_type request",
+  "on": "source",
+  "off": "sink",
+  "restore": "saved pre-test type",
+  "boot_behavior": "none",
+  "OTG_CTL": "not touched; vendor semantics unproven",
+  "evidence": [
+    {
+      "partition": "vendor",
+      "path": "etc/init/android.hardware.usb@1.2-service-mediatekv2.rc",
+      "sha256": "0e4f8055d726abe09112b50324d112edf176c631fdf79eb9cfa144caad21284e",
+      "evidence_file": "files/vendor/etc/init/android.hardware.usb@1.2-service-mediatekv2.rc"
+    },
+    {
+      "source": "https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-typec",
+      "meaning": "source=source-only DFP, sink=sink-only UFP, dual=DRP; active role shown in brackets"
+    }
+  ],
+  "hardware_verified": false,
+  "warning": "May be rejected/overridden by HAL or fail to power/enumerate devices. Not a compatibility fix. Unplug charger/USB before on. Off leaves sink-only; restore re-enables original dual-role behavior if originally dual."
 }
