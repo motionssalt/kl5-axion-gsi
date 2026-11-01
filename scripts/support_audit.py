@@ -43,6 +43,10 @@ def persist_status(status,notes,evidence=None):
   current=api('GET',path); data=json.loads(base64.b64decode(current['content']))
   data['supplemental_base_audit']={'status':status,'at':now(),'notes':notes,'evidence':evidence or [],'run_id':os.getenv('GITHUB_RUN_ID')}
   data['updated']=now()
+  for url in evidence or []:
+   if '/releases/tag/' in url:
+    tag=url.rsplit('/',1)[-1]
+    if not any(x.get('tag')==tag for x in data.get('releases',[])):data.setdefault('releases',[]).append({'tag':tag,'url':url})
   response=SESSION.put(API+path,json={'message':'audit: supplemental base integration '+status,'sha':current['sha'],'content':base64.b64encode((json.dumps(data,indent=2)+'\n').encode()).decode(),'branch':'main'},timeout=45)
   if response.status_code in [200,201]:return
   if response.status_code not in [409,422]:raise RuntimeError('Supplemental state update HTTP '+str(response.status_code))
@@ -53,7 +57,7 @@ def run():
  persist_status('running','Read-only base shell/APEX container inventory; no performance or image modifications.')
  manifest=state().get('base_input')
  if not manifest:raise RuntimeError('Base mirror unavailable')
- tag='audit-base-support-'+manifest['sha256'][:12];rel=release(tag,'Supplemental read-only GSI integration shell and APEX-container evidence. Not emulator/hardware proof. No image changes or performance tuning. No concurrent BUILD_STATE commit from this independent job.')
+ tag='audit-base-support-'+manifest['sha256'][:12];rel=release(tag,'Supplemental read-only GSI integration shell and APEX-container evidence. Not emulator/hardware proof. No image changes or performance tuning. State updates merge against the latest remote JSON with SHA preconditions.')
  if asset(rel,'base-support.tar.gz'):
   persist_status('done','Existing Release evidence reused; no input re-download.',[rel['html_url']])
   notify('KL5 supplemental base support audit already published: '+rel['html_url']);return

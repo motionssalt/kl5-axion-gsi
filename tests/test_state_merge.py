@@ -10,4 +10,8 @@ class JournalTests(unittest.TestCase):
  def test_merge_is_idempotent(self):
   s={'decisions':[{'decision':'same'}],'releases':[{'tag':'one'}]}
   self.assertEqual(merge_journals(s,s,s),s)
+ def test_supplemental_parallel_job_latest_status_is_not_lost(self):
+  remote={'supplemental_base_audit':{'at':'2026-11-01T01:00:00+00:00','status':'done'}}
+  local={'supplemental_base_audit':{'at':'2026-11-01T00:59:00+00:00','status':'running'}}
+  self.assertEqual(merge_journals(remote,local,local)['supplemental_base_audit']['status'],'done')
 if __name__=='__main__':unittest.main()

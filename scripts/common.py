@@ -81,6 +81,8 @@ def merge_journals(remote,local,rebased):
  receipts={}
  for source in [remote,local,rebased]:receipts.update(source.get('telegram_deliveries',{}))
  if receipts:merged['telegram_deliveries']=receipts
+ supplemental=[s['supplemental_base_audit'] for s in [remote,local,rebased] if s.get('supplemental_base_audit')]
+ if supplemental:merged['supplemental_base_audit']=max(supplemental,key=lambda s:s.get('at',''))
  return merged
 
 def checkpoint(message):
