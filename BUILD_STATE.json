@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:29:32.392651+00:00",
+  "updated": "2026-11-01T00:29:34.336144+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -469,14 +469,14 @@
       "retry_after": null
     },
     "design": {
-      "fingerprint": "6495d7bd2266ce7bd6d700639cdcd41f998776a697da6cedc1cb9220cba6abec",
-      "at": "2026-11-01T00:19:37.277872+00:00",
+      "fingerprint": "1dd7d67d87dee77466a6667b100135e5ef3e6a5ea7daae381fb3c29e45cbd30b",
+      "at": "2026-11-01T00:29:34.335562+00:00",
       "exit_code": 0,
       "blockers": [
         "no-proven-system-patch",
         "otg-control"
       ],
-      "retry_after": "2026-11-01T06:19:37.278621+00:00"
+      "retry_after": "2026-11-01T06:29:34.336131+00:00"
     },
     "build": {
       "fingerprint": "29bf0de31584f123e46876793ba152fa37b06b6aa5e7487f0f2225f9ea90f259",
@@ -535,9 +535,14 @@
       "blockers": []
     },
     "design": {
-      "status": "running",
+      "status": "blocked",
       "started": "2026-11-01T00:29:25.994878+00:00",
-      "run_id": "41255933320"
+      "run_id": "41255933320",
+      "finished": "2026-11-01T00:29:34.336141+00:00",
+      "blockers": [
+        "no-proven-system-patch",
+        "otg-control"
+      ]
     },
     "build": {
       "status": "blocked",
