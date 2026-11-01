@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:20:49.070368+00:00",
+  "updated": "2026-11-01T00:22:26.794488+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -74,15 +74,13 @@
     {
       "at": "2026-11-01T00:18:38.322372+00:00",
       "decision": "Stock logical partition odm was not extractable/present; audit coverage records the gap, not compatibility."
+    },
+    {
+      "at": "2026-11-01T00:22:26.793305+00:00",
+      "decision": "Corrected emulator discovery to official Android Build v4 public API. Latest build 16644040 is API 37 and rejected. Pin matched build 14981173 verified as Android 16/API 36.1 ARM64. Use matching x86_64 host package on free x86 runner for the explicit QEMU TCG ARM64 guest path, avoiding unsupported native ARM64 KVM fallback. Public client key and temporary artifact URLs remain process-only."
     }
   ],
   "blockers": [
-    {
-      "id": "emulator-artifact-pin",
-      "at": "2026-10-31T23:51:37.765087+00:00",
-      "phase": 5,
-      "message": "Official Android 16/API 36.1 ARM64 build 14981173 identified. Matching artifact mirror/bootstrap now implemented; pending Actions acquisition and boot evidence."
-    },
     {
       "id": "audit-coverage",
       "at": "2026-11-01T00:06:51.241808+00:00",
