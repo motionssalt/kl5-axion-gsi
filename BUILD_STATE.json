@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T09:39:49.594904+00:00",
+  "updated": "2026-11-01T09:39:50.664470+00:00",
   "phase": "6",
   "phases": {
     "1": {
@@ -900,13 +900,13 @@
       "retry_after": null
     },
     "sandbox": {
-      "fingerprint": "8cedc406a90bc92493e6471414f3671ef22caf52cecd5bc20e52f944822def5e",
-      "at": "2026-11-01T06:16:59.702955+00:00",
+      "fingerprint": "b4321a20c3265cc302e3cb96cbb9c9f4db4f04a840dd6e4b0f2e4229ce859020",
+      "at": "2026-11-01T09:39:50.663418+00:00",
       "exit_code": 0,
       "blockers": [
         "sandbox-prerequisite"
       ],
-      "retry_after": "2026-11-01T12:16:59.703859+00:00"
+      "retry_after": "2026-11-01T15:39:50.664453+00:00"
     },
     "design": {
       "fingerprint": "f781b135c2ef3a82c10dfc94147678a3cbcc174d293dea0cb5b7c7a74771064e",
@@ -1093,9 +1093,13 @@
       ]
     },
     "sandbox": {
-      "status": "running",
+      "status": "blocked",
       "started": "2026-11-01T09:39:48.405934+00:00",
-      "run_id": "41293203720"
+      "run_id": "41293203720",
+      "finished": "2026-11-01T09:39:50.664466+00:00",
+      "blockers": [
+        "sandbox-prerequisite"
+      ]
     },
     "base-audit": {
       "status": "done",
