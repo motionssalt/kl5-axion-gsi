@@ -25,8 +25,9 @@ def decision(text):
  if not any(x.get('decision')==text for x in s['decisions']): s['decisions'].append({'at':now(),'decision':text})
  save(s)
 def blocker(key,text,phase=None):
- s=state(); s['blockers']=[b for b in s['blockers'] if b.get('id')!=key]
+ s=state(); previous=next((b for b in s['blockers'] if b.get('id')==key),None); s['blockers']=[b for b in s['blockers'] if b.get('id')!=key]
  s['blockers'].append({'id':key,'at':now(),'phase':phase,'message':text}); save(s)
+ if not key.startswith('telegram') and (not previous or previous.get('message')!=text): notify('KL5 blocker '+key+': '+text[:2000])
 def clear(key):
  s=state(); s['blockers']=[b for b in s['blockers'] if b.get('id')!=key]; save(s)
 def phase(p,status,notes='',evidence=None):
@@ -65,7 +66,22 @@ def notify_asset(rel,path,name):
  if name.lower().endswith('.png'):
   send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name+'. Emulator boot/UI only; physical hardware unverified.','photo',delivery_name=name)
  elif any(x in name.lower() for x in ['logcat','launcher.log','kernel.txt','boot-results','final_report']):
-  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name,'document',delivery_name=name)
+  send_telegram_file(path,'KL5 '+rel['tag_name']+' / '+name+' — '+rel['html_url'],'document',delivery_name=name)
+
+def merge_journals(remote,local,rebased):
+ """Keep append-only decisions/evidence and media receipts through concurrent rebases."""
+ merged=dict(rebased)
+ for field in ['decisions','releases','disk_observations']:
+  values=[];seen=set()
+  for source in [remote,local,rebased]:
+   for item in source.get(field,[]):
+    identity=json.dumps(item,sort_keys=True)
+    if identity not in seen: values.append(item);seen.add(identity)
+  if values:merged[field]=values
+ receipts={}
+ for source in [remote,local,rebased]:receipts.update(source.get('telegram_deliveries',{}))
+ if receipts:merged['telegram_deliveries']=receipts
+ return merged
 
 def checkpoint(message):
  if os.getenv('CI')!='true': return
@@ -78,10 +94,16 @@ def checkpoint(message):
   for attempt in range(4):
    pushed=subprocess.run(['git','push','origin','HEAD:main'],cwd=ROOT,capture_output=True,text=True)
    if pushed.returncode==0: break
+   local=state()
    subprocess.run(['git','fetch','origin','main'],cwd=ROOT,check=True,capture_output=True)
+   remote=json.loads(subprocess.check_output(['git','show','origin/main:BUILD_STATE.json'],cwd=ROOT))
    # Replay this serialized job's state/docs checkpoint over newer code commits.
    rebased=subprocess.run(['git','-c','core.editor=true','rebase','-X','theirs','origin/main'],cwd=ROOT,capture_output=True,text=True)
    if rebased.returncode: raise RuntimeError('Checkpoint rebase conflict; local outputs remain in Releases')
+   combined=merge_journals(remote,local,state())
+   if combined!=state():
+    save(combined);subprocess.run(['git','add','BUILD_STATE.json'],cwd=ROOT,check=True)
+    subprocess.run(['git','commit','-m','state: retain concurrent decision and delivery journals'],cwd=ROOT,check=True)
   else: raise RuntimeError('State push failed after bounded rebase retries')
 def sha256(path):
  h=hashlib.sha256()
