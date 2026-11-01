@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:19:46.428141+00:00",
+  "updated": "2026-11-01T00:20:49.070368+00:00",
   "phase": "4",
   "phases": {
     "1": {
@@ -166,6 +166,10 @@
     {
       "tag": "candidate-2ad2e18b-d60b7e11",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/candidate-2ad2e18b-d60b7e11"
+    },
+    {
+      "tag": "emulator-runtime-14981173-x86-host",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/emulator-runtime-14981173-x86-host"
     }
   ],
   "disk_observations": [
