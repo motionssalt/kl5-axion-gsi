@@ -57,7 +57,6 @@ def collect_boot(label,image,config):
   if pathlib.Path('/dev/vhost-vsock').exists(): subprocess.run(['sudo','chmod','666','/dev/vhost-vsock'],capture_output=True,timeout=10)
  except Exception: pass
  args=[str(launch),'--daemon','--resume=false','--system_image_dir='+str(cvd),'--start_webrtc=false','--gpu_mode=guest_swiftshader','--report_anonymous_usage_stats=n']
- if '<name>vhost_user_vsock</name>' in flags: args+=['--vhost_user_vsock=true']
  args+=system_args(cvd,image,evidence,flags,env)
  if not kvm:
   args+=['--vm_manager=qemu_cli','--cpus=2','--memory_mb=4096']
@@ -73,7 +72,16 @@ def collect_boot(label,image,config):
    (evidence/'launcher.log').write_bytes(exc.stdout or b'Launcher timed out')
    raise RuntimeError('Cuttlefish launcher timed out; partial launcher log retained') from None
   (evidence/'launcher.log').write_bytes(r.stdout)
-  if r.returncode!=0: raise RuntimeError('Cuttlefish launcher failed; see launcher log')
+  if r.returncode!=0:
+   print("Standard user launch_cvd exited with code " + str(r.returncode) + "; attempting fallback under sudo...")
+   sudo_args=['sudo','-E']+args
+   try:
+    r_sudo=subprocess.run(sudo_args,cwd=cvd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=boot_budget+60)
+    (evidence/'launcher-sudo.log').write_bytes(r_sudo.stdout)
+    if r_sudo.returncode==0: r=r_sudo
+    else: raise RuntimeError('Cuttlefish launcher failed (standard and sudo attempts); see launcher logs')
+   except subprocess.TimeoutExpired:
+    raise RuntimeError('Cuttlefish sudo launcher timed out')
   poll_round=0
   while time.monotonic()<deadline:
    poll_round+=1
