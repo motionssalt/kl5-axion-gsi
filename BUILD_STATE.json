@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-01T00:15:20.785075+00:00",
+  "updated": "2026-11-01T00:15:29.871126+00:00",
   "phase": "3",
   "phases": {
     "1": {
@@ -144,6 +144,10 @@
     {
       "tag": "audit-base-2ad2e18b7046-v2",
       "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-base-2ad2e18b7046-v2"
+    },
+    {
+      "tag": "audit-stock-9aa24d051881-v2",
+      "url": "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/audit-stock-9aa24d051881-v2"
     }
   ],
   "disk_observations": [
@@ -317,6 +321,15 @@
         "records": 2617,
         "errors": 0,
         "filesystem": "ext4"
+      }
+    },
+    "stock": {
+      "tr_product": {
+        "asset": "stock-tr_product-audit.tar.gz",
+        "release": "audit-stock-9aa24d051881-v2",
+        "records": 1,
+        "errors": 0,
+        "filesystem": "erofs"
       }
     }
   },
