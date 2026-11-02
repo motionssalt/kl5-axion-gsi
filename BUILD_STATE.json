@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-02T20:13:01.230487+00:00",
+  "updated": "2026-11-02T20:13:03.376473+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -35,8 +35,8 @@
       ]
     },
     "5": {
-      "status": "running",
-      "notes": "Preparing real ARM64 emulator prerequisites.",
+      "status": "blocked",
+      "notes": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass",
       "evidence": []
     },
     "6": {
@@ -191,16 +191,16 @@
       "message": "Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5."
     },
     {
-      "id": "emulator",
-      "at": "2026-11-02T02:20:16.676651+00:00",
-      "phase": 5,
-      "message": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass"
-    },
-    {
       "id": "sandbox-prerequisite",
       "at": "2026-11-02T02:20:33.292162+00:00",
       "phase": 6,
       "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
+    },
+    {
+      "id": "emulator",
+      "at": "2026-11-02T20:13:03.375173+00:00",
+      "phase": 5,
+      "message": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass"
     }
   ],
   "releases": [
