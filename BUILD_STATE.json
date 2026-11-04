@@ -201,6 +201,16 @@
       "id": "DEC-S1-02",
       "topic": "No init_boot partition in stock ROM",
       "decision": "Confirmed via scatter file MT6768_Android_scatter.txt that init_boot has file_name NONE and is_download false. Ramdisk resides in boot.img (1.38 MB ramdisk verified in boot header v4). For root, Magisk must patch stock boot.img, not init_boot.img."
+    },
+    {
+      "id": "DEC-S1-03",
+      "topic": "Windows Batch format and strict CMD constraints",
+      "decision": "All Windows scripts use pure ASCII encoding, CRLF newlines, no BOM, %~dp0 directory anchoring, and setlocal EnableDelayedExpansion. Zero external dependencies; certutil and copy /b used for reassembly and verification."
+    },
+    {
+      "id": "DEC-S2-01",
+      "topic": "GSI logical partition management in fastbootd",
+      "decision": "Axion 2.9 GSI bundles system, product, and system_ext code in /system. Stock product_b and system_ext_b are deleted in fastbootd to prevent HiOS overlay conflicts and free 3.87 GB of space in main_b."
     }
   ],
   "blockers": [
@@ -1785,20 +1795,20 @@
     {
       "id": "S1",
       "title": "Stock package for slot B",
-      "status": "in_progress",
-      "notes": "Starting S1: Inspecting stock partitions, scatter file, and super metadata; preparing slot B packaging and Windows scripts."
+      "status": "done",
+      "notes": "Completed S1: Analyzed stock firmware images and MT6768 scatter file. Verified init_boot does not exist; ramdisk is in boot.img (GKI 5.10, header v4). Designed physical flash in bootloader with vbmeta AVB disabled and logical flash in fastbootd. Excluded all sensitive/security partitions (preloader, nvram, persist, etc.). Created 1_reassemble.bat, 2_flash_stock_b.bat, README.txt, manifest, IMAGE_LIST.md, SUPER_LAYOUT.md, and CI workflows."
     },
     {
       "id": "S2",
       "title": "GSI package for slot B",
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "Completed S2: Analyzed Axion 2.9 GSI. Documented super capacity and space budget in GSI_FIT.md. Fastbootd cleanup deletes product_b and system_ext_b. Created 3_flash_gsi_b.bat with AVB disable, logical flash, confirmed wipe, --set-active=b. Validated with tests/test_flash_gsi_b.py."
     },
     {
       "id": "S3",
       "title": "Final tidy-up",
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "Completed S3: Generated docs/FLASH_PACKAGES.md, docs/SLOT_B_PROMPT.md, workflows named stockb-*.yml."
     }
   ],
   "deployment": {
@@ -1808,6 +1818,6 @@
       "GITHUB_PAT"
     ]
   },
-  "last_updated": "2026-11-04T07:27:13.757701+00:00",
-  "last_session_note": "Started S1: slot B stock package analysis and packaging preparation."
+  "last_updated": "2026-11-04T07:55:30.823427+00:00",
+  "last_session_note": "Finished S1, S2, and S3: packages, Windows batch flasher scripts, acceptance tests, workflows, and documentation complete."
 }
