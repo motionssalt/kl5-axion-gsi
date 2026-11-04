@@ -191,6 +191,16 @@
     {
       "at": "2026-11-04T00:17:10.167092+00:00",
       "decision": "Built GitHub Actions workflow otg-build-release.yml and staged release otg-v1 containing kl5-otg-fix.zip, SHA256SUMS.txt, and evidence/OTG_FINDINGS.md."
+    },
+    {
+      "id": "DEC-S1-01",
+      "topic": "Stock partition selection for slot B",
+      "decision": "Flash verified physical A/B partitions (boot, vendor_boot, dtbo, vbmeta with disable flags, vbmeta_system, vbmeta_vendor, md1img, spmfw, scp, sspm, gz, lk, logo, tee, tkv) in bootloader fastboot, then reboot to fastbootd to flash logical partitions (system, vendor, product, system_ext, tr_*) extracted from stock super.img directly to _b partitions. Exclude all security/NVRAM/preloader partitions."
+    },
+    {
+      "id": "DEC-S1-02",
+      "topic": "No init_boot partition in stock ROM",
+      "decision": "Confirmed via scatter file MT6768_Android_scatter.txt that init_boot has file_name NONE and is_download false. Ramdisk resides in boot.img (1.38 MB ramdisk verified in boot header v4). For root, Magisk must patch stock boot.img, not init_boot.img."
     }
   ],
   "blockers": [
@@ -1770,5 +1780,34 @@
     ],
     "target_device": "TECNO KL5 (Spark 30c), MT6768 Helio G81",
     "target_os": "Axion 2.9 GSI (Android 16, API 36)"
-  }
+  },
+  "queue": [
+    {
+      "id": "S1",
+      "title": "Stock package for slot B",
+      "status": "in_progress",
+      "notes": "Starting S1: Inspecting stock partitions, scatter file, and super metadata; preparing slot B packaging and Windows scripts."
+    },
+    {
+      "id": "S2",
+      "title": "GSI package for slot B",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": "S3",
+      "title": "Final tidy-up",
+      "status": "pending",
+      "notes": ""
+    }
+  ],
+  "deployment": {
+    "cloudflare_project": null,
+    "urls": [],
+    "secrets_expected": [
+      "GITHUB_PAT"
+    ]
+  },
+  "last_updated": "2026-11-04T07:27:13.757701+00:00",
+  "last_session_note": "Started S1: slot B stock package analysis and packaging preparation."
 }
