@@ -1,0 +1,387 @@
+#!/system/bin/sh
+#
+# TECNO KL5 (Spark 30c) USB OTG Enabler
+# Author: Victor Jumbo (MOTIONSALT)
+# Designed for Axion 2.9 GSI (Android 16) / KernelSU & Magisk
+#
+
+TRAN_BATTERY_DIR="/sys/devices/platform/odm/odm:tran_battery"
+TRAN_OTG_DIR="/sys/devices/platform/odm/odm:tran_otg"
+TYPEC_PORT0="/sys/class/typec/port0"
+MUSB_ROLE="/sys/class/usb_role/mt_usb-role-switch/role"
+MUSB_PROC_VBUS="/proc/mtk_usb/vbus"
+MUSB_PROC_MODE="/proc/mtk_usb/mode"
+
+# Helper: Find regulator for usb-otg-vbus
+find_vbus_regulator() {
+    for reg in /sys/class/regulator/regulator.*; do
+        if [ -f "$reg/name" ]; then
+            name=$(cat "$reg/name" 2>/dev/null)
+            if [ "$name" = "usb-otg-vbus" ]; then
+                echo "$reg"
+                return 0
+            fi
+        fi
+    done
+    # Fallback to regulator.45 if known
+    if [ -d "/sys/class/regulator/regulator.45" ]; then
+        echo "/sys/class/regulator/regulator.45"
+        return 0
+    fi
+    echo ""
+}
+
+# Helper: safe sleep for fractions of a second
+sub_sleep() {
+    if command -v usleep >/dev/null 2>&1; then
+        usleep 100000 2>/dev/null || sleep 1
+    else
+        sleep 1
+    fi
+}
+
+# Check if actively charging from wall/charger
+is_wall_charging() {
+    for ps in /sys/class/power_supply/*; do
+        if [ -f "$ps/type" ] && [ -f "$ps/online" ]; then
+            pstype=$(cat "$ps/type" 2>/dev/null)
+            online=$(cat "$ps/online" 2>/dev/null)
+            if [ "$pstype" = "Mains" ] || [ "$pstype" = "USB_PD" ] || [ "$pstype" = "USB_DCP" ]; then
+                if [ "$online" = "1" ]; then
+                    return 0
+                fi
+            fi
+        fi
+    done
+    return 1
+}
+
+# Subcommand: ON
+do_on() {
+    echo "=========================================="
+    echo "  TECNO KL5 USB OTG: Enabling Host Mode   "
+    echo "=========================================="
+
+    if is_wall_charging; then
+        echo "[WARN] Device is currently connected to a wall charger/AC supply!"
+        echo "       Disconnect the charger cable before enabling OTG to protect hardware."
+        echo "       If you really want to proceed, unplug first."
+        return 1
+    fi
+
+    echo "[*] Step 1/5: Edge-triggering Transsion OTG Controller (0 -> 1)..."
+    if [ -f "$TRAN_BATTERY_DIR/OTG_CTL" ]; then
+        echo 0 > "$TRAN_BATTERY_DIR/OTG_CTL" 2>/dev/null
+        sub_sleep
+        echo 1 > "$TRAN_BATTERY_DIR/OTG_CTL" 2>/dev/null
+        ctl_val=$(cat "$TRAN_BATTERY_DIR/OTG_CTL" 2>/dev/null)
+        echo "    OTG_CTL current value: $ctl_val"
+    else
+        echo "    [NOTE] $TRAN_BATTERY_DIR/OTG_CTL not present or not accessible"
+    fi
+
+    echo "[*] Step 2/5: Configuring Type-C Port Controller (Source / Host)..."
+    if [ -d "$TYPEC_PORT0" ]; then
+        echo source > "$TYPEC_PORT0/port_type" 2>/dev/null || true
+        echo source > "$TYPEC_PORT0/power_role" 2>/dev/null || true
+        echo host > "$TYPEC_PORT0/data_role" 2>/dev/null || true
+        echo "    port_type: $(cat "$TYPEC_PORT0/port_type" 2>/dev/null)"
+        echo "    power_role: $(cat "$TYPEC_PORT0/power_role" 2>/dev/null)"
+        echo "    data_role: $(cat "$TYPEC_PORT0/data_role" 2>/dev/null)"
+    else
+        echo "    [NOTE] Type-C port0 not exposed in sysfs"
+    fi
+
+    echo "[*] Step 3/5: Switching MediaTek MUSB to Host Mode..."
+    if [ -f "$MUSB_ROLE" ]; then
+        echo host > "$MUSB_ROLE" 2>/dev/null || true
+        echo "    usb_role: $(cat "$MUSB_ROLE" 2>/dev/null)"
+    fi
+    if [ -f "$MUSB_PROC_MODE" ]; then
+        echo host > "$MUSB_PROC_MODE" 2>/dev/null || true
+    fi
+
+    echo "[*] Step 4/5: Asserting VBUS 5V Boost Regulator..."
+    if [ -f "$MUSB_PROC_VBUS" ]; then
+        echo 1 > "$MUSB_PROC_VBUS" 2>/dev/null || true
+        echo "    procfs mtk_usb/vbus: 1"
+    fi
+
+    VBUS_REG=$(find_vbus_regulator)
+    if [ -n "$VBUS_REG" ] && [ -f "$VBUS_REG/state" ]; then
+        echo "    Regulator ($VBUS_REG) state: $(cat "$VBUS_REG/state" 2>/dev/null)"
+    fi
+
+    echo "[*] Step 5/5: Updating MediaTek system properties..."
+    setprop persist.vendor.usb.otg.switch 1 2>/dev/null || true
+    setprop vendor.usb.port.mode usb 2>/dev/null || true
+
+    echo ""
+    echo "[+] OTG Host Mode activation sequence complete."
+    echo "    Please plug in your USB flash drive, mouse, or keyboard."
+    echo "    Run "otg status" to check detected devices."
+    echo "=========================================="
+}
+
+# Subcommand: OFF
+do_off() {
+    echo "=========================================="
+    echo "  TECNO KL5 USB OTG: Disabling Host Mode  "
+    echo "=========================================="
+
+    echo "[*] Resetting Transsion OTG Controller to 0..."
+    if [ -f "$TRAN_BATTERY_DIR/OTG_CTL" ]; then
+        echo 0 > "$TRAN_BATTERY_DIR/OTG_CTL" 2>/dev/null
+    fi
+
+    echo "[*] Disabling VBUS boost..."
+    if [ -f "$MUSB_PROC_VBUS" ]; then
+        echo 0 > "$MUSB_PROC_VBUS" 2>/dev/null || true
+    fi
+
+    echo "[*] Returning USB controller to device mode..."
+    if [ -f "$MUSB_ROLE" ]; then
+        echo device > "$MUSB_ROLE" 2>/dev/null || true
+    fi
+    if [ -f "$MUSB_PROC_MODE" ]; then
+        echo device > "$MUSB_PROC_MODE" 2>/dev/null || true
+    fi
+
+    echo "[*] Returning Type-C port to dual/sink role..."
+    if [ -d "$TYPEC_PORT0" ]; then
+        echo dual > "$TYPEC_PORT0/port_type" 2>/dev/null || true
+        echo sink > "$TYPEC_PORT0/power_role" 2>/dev/null || true
+        echo device > "$TYPEC_PORT0/data_role" 2>/dev/null || true
+    fi
+
+    echo "[*] Resetting properties..."
+    setprop persist.vendor.usb.otg.switch 0 2>/dev/null || true
+    setprop vendor.usb.port.mode none 2>/dev/null || true
+
+    echo "[+] OTG Host Mode disabled. Normal USB peripheral/charging restored."
+    echo "=========================================="
+}
+
+# Subcommand: STATUS
+do_status() {
+    echo "=========================================="
+    echo "        TECNO KL5 USB OTG Status          "
+    echo "=========================================="
+
+    # OTG_CTL
+    if [ -f "$TRAN_BATTERY_DIR/OTG_CTL" ]; then
+        echo "  Transsion OTG_CTL     : $(cat "$TRAN_BATTERY_DIR/OTG_CTL" 2>/dev/null)"
+    else
+        echo "  Transsion OTG_CTL     : Node missing"
+    fi
+
+    # VBUS Regulator
+    VBUS_REG=$(find_vbus_regulator)
+    if [ -n "$VBUS_REG" ]; then
+        reg_state=$(cat "$VBUS_REG/state" 2>/dev/null || echo "unknown")
+        reg_users=$(cat "$VBUS_REG/num_users" 2>/dev/null || echo "0")
+        echo "  usb-otg-vbus State    : $reg_state (users: $reg_users, path: $VBUS_REG)"
+    else
+        echo "  usb-otg-vbus State    : Regulator node not found"
+    fi
+
+    # Type-C port
+    if [ -d "$TYPEC_PORT0" ]; then
+        ptype=$(cat "$TYPEC_PORT0/port_type" 2>/dev/null || echo "n/a")
+        prole=$(cat "$TYPEC_PORT0/power_role" 2>/dev/null || echo "n/a")
+        drole=$(cat "$TYPEC_PORT0/data_role" 2>/dev/null || echo "n/a")
+        echo "  Type-C port0          : Type=$ptype, Power=$prole, Data=$drole"
+    fi
+
+    # USB Role
+    if [ -f "$MUSB_ROLE" ]; then
+        echo "  MediaTek USB Role     : $(cat "$MUSB_ROLE" 2>/dev/null)"
+    fi
+    if [ -f "$MUSB_PROC_VBUS" ]; then
+        echo "  proc mtk_usb/vbus     : $(cat "$MUSB_PROC_VBUS" 2>/dev/null)"
+    fi
+
+    # Properties
+    echo "  persist.vendor.usb.otg: $(getprop persist.vendor.usb.otg.switch)"
+    echo "  vendor.usb.port.mode  : $(getprop vendor.usb.port.mode)"
+
+    # Connected USB Devices
+    echo "------------------------------------------"
+    echo "  Connected USB Devices:"
+    found_dev=0
+    for dev in /sys/bus/usb/devices/[0-9]-*; do
+        if [ -d "$dev" ]; then
+            prod=$(cat "$dev/product" 2>/dev/null || echo "Generic Device")
+            mfg=$(cat "$dev/manufacturer" 2>/dev/null || echo "Unknown Vendor")
+            vid=$(cat "$dev/idVendor" 2>/dev/null || echo "----")
+            pid=$(cat "$dev/idProduct" 2>/dev/null || echo "----")
+            speed=$(cat "$dev/speed" 2>/dev/null || echo "unknown")
+            echo "    -> $(basename "$dev"): $mfg - $prod [$vid:$pid] ($speed Mbps)"
+            found_dev=1
+        fi
+    done
+    if [ "$found_dev" -eq 0 ]; then
+        echo "    (No USB devices enumerated yet - plug in a USB device and re-check)"
+    fi
+    echo "=========================================="
+}
+
+# Subcommand: DEBUG
+do_debug() {
+    OUT_DIR="/sdcard/Download"
+    if [ ! -d "$OUT_DIR" ] || [ ! -w "$OUT_DIR" ]; then
+        OUT_DIR="/data/local/tmp"
+    fi
+    OUT_FILE="$OUT_DIR/otg-debug.txt"
+
+    echo "Collecting full diagnostic dump to $OUT_FILE..."
+    {
+        echo "======================================================="
+        echo "  TECNO KL5 USB OTG Diagnostic Dump"
+        echo "  Date: $(date 2>/dev/null || date)"
+        echo "======================================================="
+        echo ""
+        echo "--- SYSTEM INFO ---"
+        uname -a 2>/dev/null
+        echo "Android version: $(getprop ro.build.version.release)"
+        echo "Security patch : $(getprop ro.build.version.security_patch)"
+        echo "Build ID       : $(getprop ro.build.display.id)"
+        echo "Fingerprint    : $(getprop ro.build.fingerprint)"
+        echo "Device/Board   : $(getprop ro.product.device) / $(getprop ro.product.board)"
+        echo "SELinux        : $(getenforce 2>/dev/null || echo unknown)"
+        echo ""
+
+        echo "--- USB PROPERTIES ---"
+        getprop | grep -E "usb|otg|typec|vbus"
+        echo ""
+
+        echo "--- TRANSSION NODES ---"
+        if [ -d "$TRAN_BATTERY_DIR" ]; then
+            echo "Directory: $TRAN_BATTERY_DIR"
+            ls -la "$TRAN_BATTERY_DIR" 2>/dev/null
+            for f in "$TRAN_BATTERY_DIR"/*; do
+                if [ -f "$f" ]; then
+                    echo "  $(basename "$f"): $(cat "$f" 2>/dev/null)"
+                fi
+            done
+        fi
+        if [ -d "$TRAN_OTG_DIR" ]; then
+            echo "Directory: $TRAN_OTG_DIR"
+            ls -la "$TRAN_OTG_DIR" 2>/dev/null
+            for f in "$TRAN_OTG_DIR"/*; do
+                if [ -f "$f" ]; then
+                    echo "  $(basename "$f"): $(cat "$f" 2>/dev/null)"
+                fi
+            done
+        fi
+        echo ""
+
+        echo "--- TYPE-C & TCPC NODES ---"
+        if [ -d "/sys/class/typec" ]; then
+            ls -la /sys/class/typec 2>/dev/null
+            for node in /sys/class/typec/*; do
+                if [ -d "$node" ]; then
+                    echo "  Directory: $node"
+                    for f in "$node"/*; do
+                        if [ -f "$f" ]; then
+                            echo "    $(basename "$f"): $(cat "$f" 2>/dev/null)"
+                        fi
+                    done
+                fi
+            done
+        fi
+        if [ -d "/sys/class/tcpc" ]; then
+            ls -la /sys/class/tcpc 2>/dev/null
+            for node in /sys/class/tcpc/*; do
+                if [ -d "$node" ]; then
+                    echo "  Directory: $node"
+                    for f in "$node"/*; do
+                        if [ -f "$f" ]; then
+                            echo "    $(basename "$f"): $(cat "$f" 2>/dev/null)"
+                        fi
+                    done
+                fi
+            done
+        fi
+        echo ""
+
+        echo "--- REGULATORS ---"
+        for reg in /sys/class/regulator/regulator.*; do
+            if [ -f "$reg/name" ]; then
+                rname=$(cat "$reg/name" 2>/dev/null)
+                rstate=$(cat "$reg/state" 2>/dev/null)
+                rusers=$(cat "$reg/num_users" 2>/dev/null)
+                if echo "$rname" | grep -iqE "vbus|otg|usb"; then
+                    echo "  [TARGET] $(basename "$reg") ($rname): state=$rstate, users=$rusers"
+                fi
+            fi
+        done
+        echo ""
+
+        echo "--- POWER SUPPLY NODES ---"
+        for ps in /sys/class/power_supply/*; do
+            if [ -d "$ps" ]; then
+                echo "  $(basename "$ps"):"
+                for attr in type status online current_now voltage_now; do
+                    if [ -f "$ps/$attr" ]; then
+                        echo "    $attr: $(cat "$ps/$attr" 2>/dev/null)"
+                    fi
+                done
+            fi
+        done
+        echo ""
+
+        echo "--- USB ROLES & DEVS ---"
+        if [ -f "$MUSB_ROLE" ]; then
+            echo "  $MUSB_ROLE: $(cat "$MUSB_ROLE" 2>/dev/null)"
+        fi
+        if [ -d "/proc/mtk_usb" ]; then
+            for f in /proc/mtk_usb/*; do
+                if [ -f "$f" ]; then
+                    echo "  $f: $(cat "$f" 2>/dev/null)"
+                fi
+            done
+        fi
+        echo "  USB Devices under /sys/bus/usb/devices/:"
+        ls -la /sys/bus/usb/devices/ 2>/dev/null
+        echo ""
+
+        echo "--- KERNEL DMESG LOG (OTG / USB / CHARGER) ---"
+        dmesg 2>/dev/null | grep -iE "musb|mt_usb|vbus|regulator|otg|tran|sgm|sc8950|tcpc|rt-pd|typec|charger" | tail -n 120
+        echo ""
+        echo "======================================================="
+        echo "  End of Dump"
+        echo "======================================================="
+    } > "$OUT_FILE" 2>&1
+
+    echo "[+] Diagnostic dump written to $OUT_FILE"
+    echo "    File size: $(wc -c < "$OUT_FILE" 2>/dev/null || echo "ok") bytes"
+}
+
+# Entrypoint argument parsing
+case "$1" in
+    on)
+        do_on
+        ;;
+    off)
+        do_off
+        ;;
+    status)
+        do_status
+        ;;
+    debug)
+        do_debug
+        ;;
+    *)
+        echo "TECNO KL5 USB OTG Enabler (Axion 2.9 GSI)"
+        echo "Usage: su -c otg {on|off|status|debug}"
+        echo ""
+        echo "Commands:"
+        echo "  on     - Edge-trigger Transsion OTG VBUS boost & switch to Host mode"
+        echo "  off    - Disable VBUS boost and return to Device/Peripheral mode"
+        echo "  status - View real-time status of OTG_CTL, regulator, and connected USB devices"
+        echo "  debug  - Save comprehensive diagnostic dump to /sdcard/Download/otg-debug.txt"
+        exit 1
+        ;;
+esac
+exit 0

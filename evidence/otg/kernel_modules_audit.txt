@@ -1,0 +1,42 @@
+=== TECNO KL5 Kernel Module Audit for USB OTG ===
+
+1. tran_otg.ko (Transsion OTG Driver)
+- Node registration:
+  * /sys/devices/platform/odm/odm:tran_battery/OTG_CTL (dev_attr_OTG_CTL)
+  * /sys/devices/platform/odm/odm:tran_otg/otg_debug (dev_attr_otg_debug)
+- Store function store_OTG_CTL:
+  * Compares input value (0, 1, 2) against current cached value at .bss+0x40.
+  * CRITICAL FINDING: If new value == cached value, the store handler exits immediately WITHOUT calling tran_otg_enable_vbus!
+  * If currently 1 (e.g. from earlier failed app attempt), writing '1' directly is a NO-OP.
+  * Writing '0' then '1' forces the state transition and triggers tran_otg_enable_vbus(1).
+- VBUS Enable function tran_otg_enable_vbus(int val):
+  * Sets boost voltage to 5.0V (0x50df20 uV = 5,300,000 uV) via charger_dev_set_boost_voltage.
+  * Sets boost current limit to 1.2A (1,200,000 uA) via charger_dev_set_boost_current_limit.
+  * Pinctrl state: selects 'otg_gpio_high' (pinmux 0xb200 / GPIO 178 driven HIGH).
+  * Primary Charger: calls charger_dev_enable_otg(primary_chg, 1).
+  * When val == 0: selects 'otg_gpio_low' (GPIO 178 LOW) and calls charger_dev_enable_otg(primary_chg, 0).
+
+2. sgm41516d.ko & sc8950.ko (Switching Charger & VBUS Regulator)
+- Node / Regulator: "usb-otg-vbus" (/sys/class/regulator/regulator.45)
+- Driver implements charger_dev ops -> enable_otg callback (sgm41516d_enable_otg):
+  * Obtains regulator via devm_regulator_get(dev, "usb-otg-vbus").
+  * When enable=1: calls regulator_enable().
+  * When enable=0: calls regulator_disable().
+  * Under the hood, sgm41516d_enable_regulator_otg writes register config to configure OTG boost mode.
+
+3. musb_hdrc.ko & extcon-mtk-usb.ko (MediaTek USB IP & Role Switch)
+- Procfs control nodes under /proc/mtk_usb/:
+  * /proc/mtk_usb/vbus: accepts '1' / '0' to enable/disable regulator.
+  * /proc/mtk_usb/mode: accepts "host" / "device".
+- Sysfs role switch:
+  * /sys/class/usb_role/mt_usb-role-switch/role: accepts "host" / "device".
+- Extcon notification:
+  * extcon-mtk-usb calls tran_get_otg_enable().
+  * If tran_get_otg_enable() == 1, extcon triggers tran_otg_enable_vbus(1) when TCPC reports cable attach.
+  * If OTG_CTL was 0 or not toggled, extcon will NOT trigger VBUS enable.
+
+4. rt_pd_manager.ko & tcpc_class.ko (Type-C Port Controller)
+- Standard Linux Type-C port interface: /sys/class/typec/port0/
+  * port_type: 'source', 'sink', 'dual'
+  * power_role: 'source', 'sink'
+  * data_role: 'host', 'device'

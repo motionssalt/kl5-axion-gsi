@@ -1,0 +1,80 @@
+name: Build and Release TECNO KL5 OTG Module
+
+on:
+  push:
+    paths:
+      - 'otg/**'
+      - 'evidence/OTG_FINDINGS.md'
+      - '.github/workflows/otg-build-release.yml'
+    branches:
+      - main
+    tags:
+      - 'otg-v*'
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Publish release to GitHub'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate Shell Scripts
+        run: |
+          chmod +x otg/system/bin/otg otg/action.sh otg/customize.sh otg/service.sh
+          bash -n otg/system/bin/otg
+          bash -n otg/action.sh
+          bash -n otg/customize.sh
+          bash -n otg/service.sh
+          echo "All shell scripts passed syntax checks."
+
+      - name: Package Magisk / KernelSU Module Zip
+        run: |
+          python3 -c '
+          import os, zipfile
+          otg_dir = "otg"
+          zip_path = "kl5-otg-fix.zip"
+          with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+              for root, dirs, files in os.walk(otg_dir):
+                  for f in files:
+                      full_path = os.path.join(root, f)
+                      rel_path = os.path.relpath(full_path, otg_dir)
+                      st = os.stat(full_path)
+                      zinfo = zipfile.ZipInfo.from_file(full_path, arcname=rel_path)
+                      zinfo.external_attr = (st.st_mode & 0xFFFF) << 16
+                      with open(full_path, "rb") as fp:
+                          z.writestr(zinfo, fp.read())
+          print("Built kl5-otg-fix.zip successfully")
+          '
+          sha256sum kl5-otg-fix.zip > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Upload Module Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kl5-otg-fix
+          path: |
+            kl5-otg-fix.zip
+            SHA256SUMS.txt
+            evidence/OTG_FINDINGS.md
+
+      - name: Create or Update GitHub Release
+        if: startsWith(github.ref, 'refs/tags/otg-v') || (github.event_name == 'workflow_dispatch' && inputs.create_release)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || 'otg-v1' }}
+          name: "TECNO KL5 USB OTG Enabler (${{ github.ref_name || 'otg-v1' }})"
+          body_path: evidence/OTG_FINDINGS.md
+          files: |
+            kl5-otg-fix.zip
+            SHA256SUMS.txt
+            evidence/OTG_FINDINGS.md

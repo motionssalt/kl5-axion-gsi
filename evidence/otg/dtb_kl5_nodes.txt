@@ -1,0 +1,225 @@
+=== TECNO KL5 Stock Base DTB: USB, TCPC & Regulator Nodes ===
+
+--- Block: usb0@11200000 ---
+
+
+	nfiecc@11019000 {
+		compatible = "mediatek,nfiecc";
+		reg = <0x00 0x11019000 0x00 0x1000>;
+	};
+
+	usb0@11200000 {
+		compatible = "mediatek,mt6768-usb20";
+		reg = <0x00 0x11200000 0x00 0x10000 0x00 0x11cc0000 0x00 0x10000>;
+		interrupts = <0x00 0x61 0x04 0x00>;
+		mode = <0x02>;
+		multipoint = <0x01>;
+		num_eps = <0x10>;
+		clocks = <0x07 0x08 0x08 0x66 0x08 0x20>;
+		clock-names = "sys_clk\0ref_clk\0src_clk";
+		pericfg = <0x66>;
+		interrupt-names = "mc";
+		phys = <0x57 0x03>;
+		dr_mode = "otg";
+		usb-role-switch;
+		usb_phy_offset = <0x800>;
+		cdp-block;
+		wakeup-source;
+		infracg = <0x07>;
+		phandle = <0x58>;
+
+		port {
+
+			endpoint@0 {
+				remote-endpoint = <0x67>;
+				phandle = <0xa7>;
+			};
+		};
+	};
+
+	usb-phy@11cc0000 {
+		compatible = "mediatek,generic-tphy-v1";
+		reg = <0x00 0x11cc0000 0x00 0x800>;
+		#address-cells = <0x02>;
+		#size-cells = <0x02>;
+		ranges;
+		status = "okay";
+		phandl
+
+--- Block: extcon_usb ---
+r {
+		compatible = "mediatek,pd_adapter";
+		adapter_name = "pd_adapter";
+		phandle = <0x15c>;
+	};
+
+	extcon_usb {
+		compatible = "mediatek,extcon-usb";
+		tcpc = "type_c_port0";
+		mediatek,bypss-typec-sink = <0x01>;
+		mediatek,u2;
+		phandle = <0x15d>;
+
+		port {
+
+			endpoint@0 {
+				remote-endpoint = <0xa7>;
+				phandle = <0x67>;
+			};
+		};
+	};
+
+	rt9465_slave_chr {
+		compatible = "richtek,rt9465";
+		phandle = <0x15e>;
+	};
+
+	rt-pd-manager {
+		compatible = "mediatek,rt-pd-manager";
+	};
+
+	mt6370_pmu_eint {
+		phandle = <0x15f>;
+	};
+
+	tcpc_pd_eint {
+		phandle = <0x160>;
+	};
+
+	irtx_pwm {
+		compatible = "mediatek,irtx-pwm";
+		pwm_ch = <0x00>;
+		pwm_data_invert = <0x00>;
+		pwm-supply = "vio28";
+		phandle = <0x161>;
+	};
+
+	pmic_clock_buffer_ctrl {
+		compatible = "mediatek,clock_buffer_ctrl";
+		mediatek,xo-buf-hwbblpm-mask = <0x01 0x00 0x00 0x00 0x00 0x00 0x00>;
+		mediatek,xo-buf-hwbblpm-bypass = <0x0
+
+--- Block: rt-pd-manager ---
+7>;
+			};
+		};
+	};
+
+	rt9465_slave_chr {
+		compatible = "richtek,rt9465";
+		phandle = <0x15e>;
+	};
+
+	rt-pd-manager {
+		compatible = "mediatek,rt-pd-manager";
+	};
+
+	mt6370_pmu_eint {
+		phandle = <0x15f>;
+	};
+
+	tcpc_pd_eint {
+		phandle = <0x160>;
+	};
+
+	irtx_pwm {
+		compatible = "mediatek,irtx-pwm";
+		pwm_ch = <0x00>;
+		pwm_data_invert = <0x00>;
+		pwm-supply = "vio28";
+		phandle = <0x161>;
+	};
+
+	pmic_clock_buffer_ctrl {
+		compatible = "mediatek,clock_buffer_ctrl";
+		mediatek,xo-buf-hwbblpm-mask = <0x01 0x00 0x00 0x00 0x00 0x00 0x00>;
+		mediatek,xo-buf-hwbblpm-bypass = <0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+		pmif = <0x3a 0x00>;
+		mediatek,xo-nfc = <0x00>;
+		mediatek,enable;
+		phandle = <0x38>;
+	};
+
+	touch {
+		compatible = "mediatek,touch";
+		phandle = <0x162>;
+	};
+
+	nfc {
+		compatible = "mediatek,nfc-gpio-v2";
+		gpio-rst = <0x9f>;
+		gpio-rst-std = <0x2f 0x9f 0x00>;
+		gpio-irq = <0x09>;
+		gpio
+
+--- Block: usb-otg-vbus-regulator ---
+;
+				phys = <0x57 0x03>;
+				phy-names = "usb2-phy";
+				usb = <0x58>;
+				phandle = <0x126>;
+
+				usb-otg-vbus-regulator {
+					regulator-name = "usb-otg-vbus";
+					regulator-min-microvolt = <0x426030>;
+					regulator-max-microvolt = <0x588040>;
+					regulator-min-microamp = <0x7a120>;
+					regulator-max-microamp = <0x2dc6c0>;
+					phandle = <0x127>;
+				};
+			};
+
+			mt6370_usbc {
+				compatible = "mediatek,mt6370-tcpc";
+				mt6370pd-intr-gpios = <0x2f 0x29 0x00>;
+				tcpc,name = "type_c_port0";
+				tcpc,role-def = <0x05>;
+				tcpc,rp-level = <0x01>;
+				tcpc,vconn-supply = <0x01>;
+				tcpc,notifier-supply-num = <0x03>;
+				boot-mode = <0x31>;
+				phandle = <0x128>;
+
+				pd-data {
+					pd,vid = <0x29cf>;
+					pd,pid = <0x5081>;
+					pd,source-cap-ext = <0x508129cf 0x00 0x00 0x00 0x00 0x7000000>;
+					pd,mfrs = "RichtekTCPC";
+					pd,charging_policy = <0x31>;
+					pd,source-pdo-size = 
+
+--- Block: mt6370_usbc ---
+amp = <0x7a120>;
+					regulator-max-microamp = <0x2dc6c0>;
+					phandle = <0x127>;
+				};
+			};
+
+			mt6370_usbc {
+				compatible = "mediatek,mt6370-tcpc";
+				mt6370pd-intr-gpios = <0x2f 0x29 0x00>;
+				tcpc,name = "type_c_port0";
+				tcpc,role-def = <0x05>;
+				tcpc,rp-level = <0x01>;
+				tcpc,vconn-supply = <0x01>;
+				tcpc,notifier-supply-num = <0x03>;
+				boot-mode = <0x31>;
+				phandle = <0x128>;
+
+				pd-data {
+					pd,vid = <0x29cf>;
+					pd,pid = <0x5081>;
+					pd,source-cap-ext = <0x508129cf 0x00 0x00 0x00 0x00 0x7000000>;
+					pd,mfrs = "RichtekTCPC";
+					pd,charging_policy = <0x31>;
+					pd,source-pdo-size = <0x01>;
+					pd,source-pdo-data = <0x19096>;
+					pd,sink-pdo-size = <0x01>;
+					pd,sink-pdo-data = <0x190c8>;
+					pd,id-vdo-size = <0x06>;
+					pd,id-vdo-data = <0xd14029cf 0x00 0x50810000 0x41800000 0x00 0x21800000>;
+					bat,nr = <0x01>;
+					pd,country_nr = <0x00>;
+
+
+

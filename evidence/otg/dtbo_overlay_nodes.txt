@@ -1,0 +1,254 @@
+=== TECNO KL5 DTBO Overlays: Switch Charger, OTG GPIO & Transsion Nodes ===
+
+--- Block: sc-swchg@6b ---
+
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#address-cells = <0x01>;
+			#size-cells = <0x00>;
+
+			sc-swchg@6b {
+				compatible = "mediatek,sgm41516d\0southchip,sc8950";
+				reg = <0x6b>;
+				status = "okay";
+				sc8950,intr_gpio = <0xffffffff 0x09 0x00>;
+				sgm41516d,intr_gpio_num = <0x09>;
+				sgm41516d,intr_gpio = <0xffffffff 0x09 0x00>;
+				interrupts-extended = <0xffffffff 0x09 0x02>;
+				phys = <0xffffffff 0x03>;
+				phy-names = "usb2-phy";
+				usb = <0xffffffff>;
+				chg_name = "primary_chg";
+				chg_alias_name = "switch_chg";
+				phandle = <0x2e>;
+
+				usb-otg-vbus {
+					regulator-compatible = "usb-otg-vbus";
+					regulator-name = "usb-otg-vbus";
+					regulator-min-microvolt = <0x4a0150>;
+					regulator-max-microvolt = <0x50df20>;
+					regulator-min-microamp = <0x7a120>;
+					regulator-max-microamp = <0x1e8480>;
+					phandle = <0x4a>;
+				};
+			};
+		};
+	};
+
+	fragment@68 {
+		ta
+
+--- Block: tran_battery ---
+lay__ {
+			charger = <0x2e>;
+		};
+	};
+
+	fragment@71 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			tran_battery {
+				compatible = "tran,chg_fun";
+				status = "okay";
+				bootmode = <0xffffffff>;
+				enable_pcb_tml;
+				pcb_temp_step_one = <0x9088>;
+				pcb_cur_step_one = <0xc8>;
+				pcb_temp_step_two = <0x9c40>;
+				pcb_cur_step_two = <0x12c>;
+				pcb_min_chg_cur = <0x7a120>;
+				jeita_below_t0_chg_cur = <0x00>;
+				jeita_t0_to_t1_chg_cur = <0xe7ef0>;
+				jeita_t2_to_t3_chg_cur = <0x1e8480>;
+				jeita_t3_to_t4_chg_cur = <0x1e8480>;
+				jeita_above_t4_chg_cur = <0x00>;
+				jeita_below_t0_input_cur = <0x16e360>;
+				jeita_t0_to_t1_input_cur = <0x16e360>;
+				jeita_t2_to_t3_input_cur = <0x200b20>;
+				jeita_t3_to_t4_input_cur = <0x200b20>;
+				jeita_above_t4_input_cur = <0xf4240>;
+				md_pa_temp_thres = <0xd6d8>;
+				md_pa_temp_thres_minus_x_degree = <0xcb20>;
+				phandle = <0x4b>;
+			};
+
+--- Block: tran_otg ---
+battery_aging_module2 = <0x00>;
+				battery_aging_module3 = <0x00>;
+				phandle = <0x4c>;
+			};
+
+			tran_otg {
+				compatible = "tran,otg_fun";
+				pinctrl-names = "otg_gpio_init\0otg_gpio_low\0otg_gpio_high\0meta_gpio_init\0meta_gpio_low\0meta_gpio_high\0otg_dcp_low\0otg_dcp_high";
+				pinctrl-0 = <0x2f>;
+				pinctrl-1 = <0x30>;
+				pinctrl-2 = <0x31>;
+				pinctrl-3 = <0x32>;
+				pinctrl-4 = <0x33>;
+				pinctrl-5 = <0x34>;
+				pinctrl-6 = <0x35>;
+				pinctrl-7 = <0x36>;
+				support_otg_dcp;
+				phandle = <0x4d>;
+			};
+
+			tran_auto_test {
+				compatible = "tran,auto_test";
+				status = "okay";
+				phandle = <0x4e>;
+			};
+
+			pid_chg {
+				compatible = "tran,pid_chg_algo";
+				pid_array = <0x3e8 0x64 0x2710>;
+				polling_interval = <0x2710>;
+				power_level = <0x320 0x640 0x960 0xc80 0xfa0>;
+				power_delta_temp = <0x00 0x64 0xc8 0x12c 0x12c>;
+				power_update_time = <0x12c>;
+				power_m
+
+--- Block: otg_init ---
+
+				phandle = <0x52>;
+			};
+		};
+	};
+
+	fragment@72 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			otg_init {
+				phandle = <0x2f>;
+
+				pins_cmd_dat {
+					pinmux = <0xb200>;
+					slew-rate = <0x01>;
+				};
+			};
+
+			otg_low {
+				phandle = <0x30>;
+
+				pins_cmd_dat {
+					pinmux = <0xb200>;
+					slew-rate = <0x01>;
+					output-low;
+				};
+			};
+
+			otg_high {
+				phandle = <0x31>;
+
+				pins_cmd_dat {
+					pinmux = <0xb200>;
+					slew-rate = <0x01>;
+					output-high;
+				};
+			};
+
+			meta_init {
+				phandle = <0x32>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+				};
+			};
+
+			meta_low {
+				phandle = <0x33>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+					output-low;
+				};
+			};
+
+			meta_high {
+				phandle = <0x34>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+					output-high;
+				};
+			};
+
+			odcp_low {
+				pha
+
+--- Block: otg_high ---
+		pins_cmd_dat {
+					pinmux = <0xb200>;
+					slew-rate = <0x01>;
+					output-low;
+				};
+			};
+
+			otg_high {
+				phandle = <0x31>;
+
+				pins_cmd_dat {
+					pinmux = <0xb200>;
+					slew-rate = <0x01>;
+					output-high;
+				};
+			};
+
+			meta_init {
+				phandle = <0x32>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+				};
+			};
+
+			meta_low {
+				phandle = <0x33>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+					output-low;
+				};
+			};
+
+			meta_high {
+				phandle = <0x34>;
+
+				pins_cmd_dat {
+					pinmux = <0x800>;
+					slew-rate = <0x01>;
+					output-high;
+				};
+			};
+
+			odcp_low {
+				phandle = <0x35>;
+
+				pins_cmd_dat {
+					pinmux = <0x2800>;
+					slew-rate = <0x01>;
+					output-low;
+				};
+			};
+
+			odcp_high {
+				phandle = <0x36>;
+
+				pins_cmd_dat {
+					pinmux = <0x2800>;
+					slew-rate = <0x01>;
+					output-high;
+				};
+			};
+		
+

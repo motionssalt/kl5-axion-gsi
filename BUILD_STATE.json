@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-03T23:33:41.812711+00:00",
+  "updated": "2026-11-04T00:17:10.167092+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -175,6 +175,22 @@
     {
       "at": "2026-11-01T09:26:54.367Z",
       "decision": "Fixed QEMU vhost-vsock permission denied failure (modprobe vhost_vsock, chmod 666 /dev/vhost-vsock, vhost_user_vsock flag), added CVD process monitoring to terminate polling immediately upon unexpected exit, and eliminated Release upload 400/422 errors for 0-byte log artifacts."
+    },
+    {
+      "at": "2026-11-04T00:17:10.167092+00:00",
+      "decision": "Extracted and decompiled stock KL5 GKI 5.10.209 base DTB and DTBO overlay (dtbo_0.dts). Discovered primary charger IC is sc-swchg@6b (SGM41516D / SC8950) controlling regulator usb-otg-vbus (regulator.45) and Transsion tran_otg controlling GPIO 178 (otg_gpio_high/low)."
+    },
+    {
+      "at": "2026-11-04T00:17:10.167092+00:00",
+      "decision": "Disassembled tran_otg.ko and reverse-engineered store_OTG_CTL. Confirmed store_OTG_CTL is strictly edge-triggered (returns immediately if requested value equals cached value). Prior attempts writing 1 failed because OTG_CTL was already 1. Deterministic fix: edge-trigger 0 -> 1 with 100ms settle delay, which invokes tran_otg_enable_vbus(1), setting 5.0V/1.2A boost, driving GPIO 178 HIGH, and asserting regulator usb-otg-vbus."
+    },
+    {
+      "at": "2026-11-04T00:17:10.167092+00:00",
+      "decision": "Created flashable Magisk/KernelSU module kl5_otg_fix (kl5-otg-fix.zip) with executable /system/bin/otg supporting subcommands on, off, status, debug, KernelSU action.sh toggle button, customize.sh permission enforcement, safe service.sh, and comprehensive diagnostic report generator saving to /sdcard/Download/otg-debug.txt."
+    },
+    {
+      "at": "2026-11-04T00:17:10.167092+00:00",
+      "decision": "Built GitHub Actions workflow otg-build-release.yml and staged release otg-v1 containing kl5-otg-fix.zip, SHA256SUMS.txt, and evidence/OTG_FINDINGS.md."
     }
   ],
   "blockers": [
@@ -1716,5 +1732,19 @@
       "error": "Command '['/home/runner/work/kl5-axion-gsi/kl5-axion-gsi/work/cvd/bin/adb', '-s', '127.0.0.1:6520', 'logcat', '-b', 'all', '-d', '-t', '8000']' timed out after 120 seconds",
       "scope": "No hardware claim."
     }
+  },
+  "otg_module": {
+    "module_id": "kl5_otg_fix",
+    "name": "TECNO KL5 USB OTG Enabler",
+    "version": "v1.0",
+    "release_tag": "otg-v1",
+    "status": "ready",
+    "mechanisms": [
+      "Mechanism 1: Edge-trigger Transsion OTG_CTL (0 -> 1) + Type-C port0 DFP source/host + MUSB host",
+      "Mechanism 2: Direct MediaTek procfs /proc/mtk_usb/vbus=1 & mode=host fallback",
+      "Mechanism 3: Type-C port controller force role-swap"
+    ],
+    "target_device": "TECNO KL5 (Spark 30c), MT6768 Helio G81",
+    "target_os": "Axion 2.9 GSI (Android 16, API 36)"
   }
 }
