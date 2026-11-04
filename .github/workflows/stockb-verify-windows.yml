@@ -1,0 +1,60 @@
+name: stockb-verify-windows
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["stockb-build-and-release"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Fastboot Stub in PATH
+        shell: cmd
+        run: |
+          mkdir "%TEMP%\stub_bin"
+          copy /y "tests\stub_fastboot.bat" "%TEMP%\stub_bin\fastboot.bat"
+          copy /y "tests\stub_fastboot.bat" "%TEMP%\stub_bin\fastboot.cmd"
+          echo %TEMP%\stub_bin>> %GITHUB_PATH%
+
+      - name: Verify Fastboot Stub
+        shell: cmd
+        run: |
+          fastboot getvar product
+          fastboot getvar unlocked
+
+      - name: Download Stock Package Release Assets
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/download_release_assets.py --tag stock-b-v1 --dest stock_pkg
+
+      - name: Run Windows Acceptance Tests (Stock Package)
+        shell: cmd
+        run: |
+          python tests/test_flash_stock_b.py stock_pkg "%TEMP%\stub_bin"
+
+      - name: Download GSI Package Release Assets
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/download_release_assets.py --tag gsi-b-v1 --dest gsi_pkg
+
+      - name: Run Windows Acceptance Tests (GSI Package)
+        shell: cmd
+        run: |
+          python tests/test_flash_gsi_b.py gsi_pkg "%TEMP%\stub_bin"
