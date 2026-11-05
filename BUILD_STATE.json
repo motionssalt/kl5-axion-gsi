@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-05T20:08:01.853005+00:00",
+  "updated": "2026-11-05T20:17:41.370648+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -1767,13 +1767,9 @@
       "blockers": []
     },
     "emulator": {
-      "status": "blocked",
-      "started": "2026-11-05T06:57:17.251675+00:00",
-      "run_id": "41983086465",
-      "finished": "2026-11-05T11:07:21.083696+00:00",
-      "blockers": [
-        "emulator"
-      ]
+      "status": "running",
+      "started": "2026-11-05T20:17:41.370626+00:00",
+      "run_id": "42098939042"
     },
     "sandbox": {
       "status": "blocked",
