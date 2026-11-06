@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-06T06:56:44.301169+00:00",
+  "updated": "2026-11-06T09:01:48.343546+00:00",
   "phase": "5",
   "phases": {
     "1": {
@@ -1795,6 +1795,16 @@
       "at": "2026-11-06T00:28:12.978651+00:00",
       "name": "FINAL_REPORT.md",
       "sha256": "4c1b8b46de530ca5fbf54275cf200012b3253daa2ac9803776e176f418a556a3"
+    },
+    "document:base-host-launcher.log:208d9cd3cb4d8fd88cf6689580ef3fd69f9f7f2e9edfef7f05b27ece30956074": {
+      "at": "2026-11-06T09:01:28.398584+00:00",
+      "name": "base-host-launcher.log",
+      "sha256": "208d9cd3cb4d8fd88cf6689580ef3fd69f9f7f2e9edfef7f05b27ece30956074"
+    },
+    "document:base-launcher.log:1d5aa53c41bf3899cbf7badcd71e01fad991488e8a4c1269b8d659bfa89819b7": {
+      "at": "2026-11-06T09:01:32.470295+00:00",
+      "name": "base-launcher.log",
+      "sha256": "1d5aa53c41bf3899cbf7badcd71e01fad991488e8a4c1269b8d659bfa89819b7"
     }
   },
   "stages": {
@@ -2024,11 +2034,6 @@
   },
   "emulator": {
     "base": {
-      "boot_completed": false,
-      "error": "Command '['/home/runner/work/kl5-axion-gsi/kl5-axion-gsi/work/cvd/bin/adb', '-s', '127.0.0.1:6520', 'logcat', '-b', 'all', '-d', '-t', '8000']' timed out after 120 seconds",
-      "scope": "No hardware claim."
-    },
-    "candidate": {
       "boot_completed": false,
       "error": "Command '['/home/runner/work/kl5-axion-gsi/kl5-axion-gsi/work/cvd/bin/adb', '-s', '127.0.0.1:6520', 'logcat', '-b', 'all', '-d', '-t', '8000']' timed out after 120 seconds",
       "scope": "No hardware claim."
