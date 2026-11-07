@@ -1,7 +1,7 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-07T10:19:58.793711+00:00",
-  "phase": "5",
+  "updated": "2026-11-07T10:20:00.042373+00:00",
+  "phase": "6",
   "phases": {
     "1": {
       "status": "done",
@@ -227,16 +227,16 @@
       "message": "Experimental manual Type-C helper is implemented, but VBUS/mouse enumeration and deeper HAL/kernel issue remain unverified on physical KL5."
     },
     {
-      "id": "sandbox-prerequisite",
-      "at": "2026-11-06T23:42:09.833236+00:00",
-      "phase": 6,
-      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
-    },
-    {
       "id": "emulator",
       "at": "2026-11-07T10:19:40.486649+00:00",
       "phase": 5,
       "message": "Patched image did not achieve verified emulator boot (or no candidate exists); base result is not a patched-image pass"
+    },
+    {
+      "id": "sandbox-prerequisite",
+      "at": "2026-11-07T10:20:00.042367+00:00",
+      "phase": 6,
+      "message": "First deliver compatibility build and real patched-image emulator evidence. Sandbox research notes are preliminary only; no implementation claim."
     }
   ],
   "releases": [
