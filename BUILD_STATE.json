@@ -1,6 +1,6 @@
 {
   "project": "kl5-axion-gsi",
-  "updated": "2026-11-09T22:25:09.564869+00:00",
+  "updated": "2026-11-09T22:25:14.816229+00:00",
   "phase": "2",
   "phases": {
     "1": {
@@ -13,9 +13,11 @@
       ]
     },
     "2": {
-      "status": "running",
-      "notes": "Stock mirror is the first heavy job.",
-      "evidence": []
+      "status": "done",
+      "notes": "Base mirrored with verified SHA-256; stock availability recorded separately.",
+      "evidence": [
+        "https://github.com/motionssalt/kl5-axion-gsi/releases/tag/inputs-c3fff91f5761"
+      ]
     },
     "3": {
       "status": "done",
@@ -1541,6 +1543,13 @@
       "total": 154894188544,
       "free": 118170087424,
       "used": 36707323904
+    },
+    {
+      "at": "2026-11-09T22:25:13.135160+00:00",
+      "label": "base-start",
+      "total": 154894188544,
+      "free": 118169993216,
+      "used": 36707418112
     }
   ],
   "next_actions": [
